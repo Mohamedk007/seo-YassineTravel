@@ -1,0 +1,15 @@
+export const IMG = {
+	duneSunset: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/f6acebf1-3332-4d40-8cde-404de57eaa9d.avif',
+	luxCamp: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/luxcamp.avif',
+	fesDoor: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/fesdoor.avif',
+	camel: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/camel.avif',
+	riad: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/riad.avif',
+	tagine: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/tagine.avif',
+	chefchaouen: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/chefchaouen.avif',
+	marrakech: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/marrakech.avif',
+	couple: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/couple.avif',
+	guide: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/guide.avif',
+	kasbah: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/kasbah.avif',
+	atlas: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/atlas.avif',
+	Essaouira1: 'https://moroccotripholidays.com/wp-content/uploads/2026/07/DSC02595-1920x1280-1.avif',
+};
