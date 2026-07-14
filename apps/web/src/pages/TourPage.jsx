@@ -1,10 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowRight, Check, Clock, MessageCircle, Phone, Play, Star, Users, X } from 'lucide-react';
+import { LeadForm } from '@/components/site/LeadForm';
+import { Layout } from '@/components/site/Layout';
+import { PageHero } from '@/components/site/PageHero';
+import { Seo } from '@/components/site/Seo';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { LeadForm, Layout, PageHero, Seo } from '@/components/site';
-import { CONTACT, EXCLUDED, FAQS, IMG, INCLUDED, TOURS, waLink } from '@/data/site';
-import { TourCard } from './HomePage';
+import { CONTACT, waLink } from '@/data/contact';
+import { FAQS } from '@/data/content';
+import { IMG } from '@/data/images';
+import { ROUTE_PATHS } from '../data/route-config';
+import { EXCLUDED, INCLUDED, TOURS } from '@/data/tours/catalog';
+import { getRelatedTours, getTourBySlug, getToursByCategory } from '@/data/tours/index';
+import { TourCard } from '../components/tours/TourCard';
 import { CTA, MiniReviews } from './page-shell';
 
 function Badge({ icon: Icon, children }) {
@@ -38,11 +46,11 @@ export function TourDetail() {
 	}, []);
 
 	const { slug } = useParams();
-	const tour = TOURS.find((entry) => entry.slug === slug);
+	const tour = getTourBySlug(slug);
 
-	if (!tour) return <Navigate to="/tours" replace />;
+	if (!tour) return <Navigate to={ROUTE_PATHS.tours} replace />;
 
-	const related = TOURS.filter((entry) => entry.slug !== slug).slice(0, 3);
+	const related = getRelatedTours(slug);
 	const priceRows = [
 		['2 travellers', `€${tour.price.toLocaleString()}`, 'per person'],
 		['3–4 travellers', `€${Math.round(tour.price * 0.85).toLocaleString()}`, 'per person'],
@@ -222,7 +230,7 @@ export function TourDetail() {
 }
 
 export function ToursListing({ category, title, subtitle, image, intro }) {
-	const list = category ? TOURS.filter((entry) => entry.category === category) : TOURS;
+	const list = getToursByCategory(category);
 	const shown = list.length ? list : TOURS;
 
 	return (

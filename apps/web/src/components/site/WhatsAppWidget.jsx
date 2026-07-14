@@ -1,6 +1,6 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
-import { waLink } from '@/data/site';
+import { waLink } from '@/data/contact';
 
 export function WhatsAppWidget() {
 	return (

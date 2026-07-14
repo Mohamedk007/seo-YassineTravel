@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Award, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
-import { AWARDS, CONTACT, waLink } from '@/data/site';
+import { CONTACT, waLink } from '@/data/contact';
+import { AWARDS } from '@/data/content';
+import { FOOTER_COMPANY_LINKS, FOOTER_TOUR_LINKS } from '@/data/route-config';
+import { FOOTER_CONFIG, SITE_BRAND } from '@/data/site-config';
 import { Newsletter } from './LeadForm';
 
 function FooterCol({ title, links }) {
@@ -27,8 +30,8 @@ export function Footer() {
 			<div className="border-b border-white/10">
 				<div className="mx-auto flex max-w-[90rem] flex-col items-center gap-6 px-5 py-12 text-center lg:flex-row lg:justify-between lg:px-8 lg:text-left">
 					<div>
-						<h3 className="font-display text-2xl font-semibold text-white">Get insider Morocco travel tips</h3>
-						<p className="mt-1 text-sm text-white/60">Seasonal guides, hidden riads and members-only offers.</p>
+						<h3 className="font-display text-2xl font-semibold text-white">{FOOTER_CONFIG.newsletterTitle}</h3>
+						<p className="mt-1 text-sm text-white/60">{FOOTER_CONFIG.newsletterDescription}</p>
 					</div>
 					<Newsletter />
 				</div>
@@ -36,18 +39,18 @@ export function Footer() {
 			<div className="mx-auto grid max-w-[90rem] gap-10 px-5 py-14 lg:grid-cols-4 lg:px-8">
 				<div>
 					<span className="font-display text-xl font-semibold text-white">
-						Morocco Trip <span className="text-gold">Holidays</span>
+						{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
 					</span>
-					<p className="mt-3 text-sm text-white/60">Bespoke luxury private tours crafted by local experts. Trusted by discerning travellers worldwide since 2011.</p>
+					<p className="mt-3 text-sm text-white/60">{SITE_BRAND.footerDescription}</p>
 					<div className="mt-4 flex gap-3">
 						<Star className="h-5 w-5 fill-gold text-gold" strokeWidth={0} />
-						<span className="text-sm text-white/70">4.9/5 · 1,200+ reviews</span>
+						<span className="text-sm text-white/70">{SITE_BRAND.reviewSummaryCompact}</span>
 					</div>
 					<div className="mt-4 flex gap-3">
-						<a href="#" aria-label="Instagram" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
+						<a href={FOOTER_CONFIG.socialLinks.instagram} aria-label="Instagram" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
 							<Instagram className="h-5 w-5" />
 						</a>
-						<a href="#" aria-label="Facebook" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
+						<a href={FOOTER_CONFIG.socialLinks.facebook} aria-label="Facebook" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
 							<Facebook className="h-5 w-5" />
 						</a>
 						<a href={waLink()} aria-label="WhatsApp" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
@@ -55,8 +58,8 @@ export function Footer() {
 						</a>
 					</div>
 				</div>
-				<FooterCol title="Tours" links={[['Luxury Tours', '/luxury-tours'], ['Private Tours', '/private-tours'], ['Desert Tours', '/desert-tours'], ['Day Trips', '/day-trips'], ['Custom Tours', '/custom-tours']]} />
-				<FooterCol title="Company" links={[['About Us', '/about'], ['Destinations', '/destinations'], ['Reviews', '/reviews'], ['Gallery', '/gallery'], ['Blog', '/blog'], ['Travel Guide', '/travel-guide'], ['FAQ', '/faq']]} />
+				<FooterCol title="Tours" links={FOOTER_TOUR_LINKS} />
+				<FooterCol title="Company" links={FOOTER_COMPANY_LINKS} />
 				<div>
 					<h4 className="font-semibold text-white">Contact</h4>
 					<ul className="mt-4 space-y-3 text-sm">
@@ -83,7 +86,7 @@ export function Footer() {
 				</div>
 			</div>
 			<div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
-				© {new Date().getFullYear()} Morocco Trip Holidays. All rights reserved. · Licensed Moroccan tour operator.
+				© {new Date().getFullYear()} {SITE_BRAND.name}. {SITE_BRAND.footerLegal}
 			</div>
 		</footer>
 	);

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, MessageCircle, X } from 'lucide-react';
-import { CONTACT, NAV, waLink } from '@/data/site';
+import { CONTACT, waLink } from '@/data/contact';
+import { NAV } from '@/data/route-config';
+import { NAVBAR_CONFIG, SITE_BRAND } from '@/data/site-config';
 
 export function Navbar() {
 	const [open, setOpen] = useState(false);
@@ -26,7 +28,7 @@ export function Navbar() {
 			<nav className="mx-auto flex max-w-[90rem] items-center justify-between px-5 lg:px-8">
 				<Link to="/" className="flex shrink-0 items-center gap-2">
 					<span className={`font-display text-xl font-semibold leading-none ${transparent ? 'text-white' : 'text-foreground'}`}>
-						Morocco Trip <span className="text-gold">Holidays</span>
+						{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
 					</span>
 				</Link>
 
@@ -72,7 +74,7 @@ export function Navbar() {
 						rel="noreferrer"
 						className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:bg-primary/90 active:scale-[0.98]"
 					>
-						<MessageCircle className="h-4 w-4" /> Book Now
+						<MessageCircle className="h-4 w-4" /> {NAVBAR_CONFIG.desktopCtaLabel}
 					</a>
 				</div>
 
@@ -85,7 +87,7 @@ export function Navbar() {
 				<div className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-sm lg:hidden">
 					<div className="flex items-center justify-between px-5 py-5">
 						<span className="font-display text-lg font-semibold text-white">
-							Morocco Trip <span className="text-gold">Holidays</span>
+							{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
 						</span>
 						<button onClick={() => setOpen(false)} className="text-white" aria-label="Close">
 							<X className="h-7 w-7" />
@@ -107,7 +109,7 @@ export function Navbar() {
 							rel="noreferrer"
 							className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-4 font-semibold text-primary-foreground"
 						>
-							<MessageCircle className="h-5 w-5" /> Chat on WhatsApp
+							<MessageCircle className="h-5 w-5" /> {NAVBAR_CONFIG.mobileCtaLabel}
 						</a>
 					</div>
 				</div>

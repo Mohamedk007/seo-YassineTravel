@@ -1,21 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import { Layout, PageHero, Seo, Stars } from '@/components/site';
-import { REVIEWS, waLink } from '@/data/site';
+import { Layout } from '@/components/site/Layout';
+import { PageHero } from '@/components/site/PageHero';
+import { Seo } from '@/components/site/Seo';
+import { Stars } from '@/components/site/Typography';
+import { REVIEWS } from '@/data/content';
+import { waLink } from '@/data/contact';
+import { ROUTE_PATHS } from '@/data/route-config';
+import { PAGE_SHELL_CONFIG } from '@/data/site-config';
 
 export function CTA() {
 	return (
 		<section className="bg-primary py-16 text-primary-foreground">
 			<div className="mx-auto max-w-[72rem] px-5 text-center lg:px-8">
-				<h2 className="font-display text-3xl font-semibold md:text-4xl">Ready to experience Morocco in luxury?</h2>
-				<p className="mx-auto mt-3 max-w-xl text-primary-foreground/80">Get a free, tailor-made itinerary within 24 hours — or chat with a local expert right now.</p>
+				<h2 className="font-display text-3xl font-semibold md:text-4xl">{PAGE_SHELL_CONFIG.ctaTitle}</h2>
+				<p className="mx-auto mt-3 max-w-xl text-primary-foreground/80">{PAGE_SHELL_CONFIG.ctaDescription}</p>
 				<div className="mt-7 flex flex-wrap justify-center gap-3">
 					<a href={waLink()} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-primary">
-						<MessageCircle className="h-5 w-5" /> WhatsApp Us
+						<MessageCircle className="h-5 w-5" /> {PAGE_SHELL_CONFIG.ctaWhatsAppLabel}
 					</a>
-					<Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/50 px-7 py-3.5 font-semibold text-white">
-						Get a Free Quote <ArrowRight className="h-4 w-4" />
+					<Link to={ROUTE_PATHS.contact} className="inline-flex items-center gap-2 rounded-full border border-white/50 px-7 py-3.5 font-semibold text-white">
+						{PAGE_SHELL_CONFIG.ctaQuoteLabel} <ArrowRight className="h-4 w-4" />
 					</Link>
 				</div>
 			</div>
@@ -27,7 +33,7 @@ export function MiniReviews() {
 	return (
 		<section className="bg-secondary/60 py-16">
 			<div className="mx-auto max-w-[90rem] px-5 lg:px-8">
-				<h2 className="text-center font-display text-3xl font-semibold md:text-4xl">What our travellers say</h2>
+				<h2 className="text-center font-display text-3xl font-semibold md:text-4xl">{PAGE_SHELL_CONFIG.miniReviewsTitle}</h2>
 				<div className="mt-10 grid gap-6 md:grid-cols-3">
 					{REVIEWS.slice(0, 3).map((review) => (
 						<div key={review.name} className="rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border">
