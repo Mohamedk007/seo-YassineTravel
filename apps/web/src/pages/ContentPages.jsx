@@ -7,10 +7,12 @@ import { Stars } from '@/components/site/Typography';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
 import { FAQS, REVIEWS } from '@/data/content';
-import { DESTINATION_HIGHLIGHTS } from '@/data/destinations';
+import { DESTINATIONS, DESTINATION_HIGHLIGHTS } from '@/data/destinations';
+import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
 import {
 	ABOUT_PAGE,
 	BLOG_PAGE,
+	BLOG_POSTS,
 	CONTACT_PAGE,
 	DESTINATIONS_PAGE,
 	FAQ_PAGE,
@@ -18,11 +20,23 @@ import {
 	REVIEWS_PAGE,
 	TRAVEL_GUIDE_PAGE,
 } from '@/data/editorial';
+import { ROUTE_PATHS } from '@/data/route-config';
+import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
 import { MiniReviews, Page, Prose } from './page-shell';
 
 export function About() {
 	return (
-		<Page title={ABOUT_PAGE.title} subtitle={ABOUT_PAGE.subtitle} image={ABOUT_PAGE.image} crumb={ABOUT_PAGE.crumb}>
+		<Page
+			title={ABOUT_PAGE.title}
+			subtitle={ABOUT_PAGE.subtitle}
+			image={ABOUT_PAGE.image}
+			crumb={ABOUT_PAGE.crumb}
+			pageType="AboutPage"
+			structuredData={buildItemListSchema(
+				ABOUT_PAGE.highlights.map((item) => ({ name: item.caption, url: ROUTE_PATHS.about })),
+				'About Morocco Trip Holidays Highlights'
+			)}
+		>
 			<Prose>
 				{ABOUT_PAGE.paragraphs.map((paragraph, index) => (
 					<p key={paragraph} className={index === 0 ? 'text-lg text-foreground' : undefined}>{paragraph}</p>
@@ -44,12 +58,24 @@ export function About() {
 
 export function Destinations() {
 	return (
-		<Page title={DESTINATIONS_PAGE.title} subtitle={DESTINATIONS_PAGE.subtitle} image={DESTINATIONS_PAGE.image} crumb={DESTINATIONS_PAGE.crumb}>
+		<Page
+			title={DESTINATIONS_PAGE.title}
+			subtitle={DESTINATIONS_PAGE.subtitle}
+			image={DESTINATIONS_PAGE.image}
+			crumb={DESTINATIONS_PAGE.crumb}
+			pageType="CollectionPage"
+			structuredData={buildItemListSchema(
+				DESTINATIONS.map((destination) => ({ name: destination.name, url: `/destinations/${destination.slug}` })),
+				DESTINATIONS_PAGE.title
+			)}
+		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-6 md:grid-cols-3">
-					{DESTINATION_HIGHLIGHTS.map((destination, index) => (
+					{DESTINATIONS.map((destination, index) => (
 						<Reveal key={destination.name} delay={(index % 3) * 80} className="group relative overflow-hidden rounded-2xl">
-							<img src={destination.image} alt={destination.name} className="aspect-[3/4] w-full object-cover transition duration-700 group-hover:scale-105" />
+							<Link to={`/destinations/${destination.slug}`}>
+								<img src={destination.image} alt={destination.name} className="aspect-[3/4] w-full object-cover transition duration-700 group-hover:scale-105" />
+							</Link>
 							<div className="hero-gradient absolute inset-0" />
 							<div className="absolute bottom-0 p-6 text-white">
 								<h3 className="font-display text-2xl font-semibold">{destination.name}</h3>
@@ -58,6 +84,19 @@ export function Destinations() {
 						</Reveal>
 					))}
 				</div>
+				<div className="mt-10 rounded-2xl border border-border bg-card p-6">
+					<h3 className="font-display text-2xl font-semibold">Plan from a destination</h3>
+					<div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+						{DESTINATION_INTERNAL_LINKS.map((entry) => (
+							<Link key={entry.to} to={entry.to} className="rounded-lg border border-border px-4 py-3 text-sm font-medium transition hover:border-primary/40 hover:text-primary">
+								{entry.label}
+							</Link>
+						))}
+					</div>
+					<div className="mt-4 text-sm text-muted-foreground">
+						Nearby inspirations: {DESTINATION_HIGHLIGHTS.slice(0, 4).map((destination) => destination.name).join(' · ')}
+					</div>
+				</div>
 			</section>
 		</Page>
 	);
@@ -65,7 +104,17 @@ export function Destinations() {
 
 export function Gallery() {
 	return (
-		<Page title={GALLERY_PAGE.title} subtitle={GALLERY_PAGE.subtitle} image={GALLERY_PAGE.image} crumb={GALLERY_PAGE.crumb}>
+		<Page
+			title={GALLERY_PAGE.title}
+			subtitle={GALLERY_PAGE.subtitle}
+			image={GALLERY_PAGE.image}
+			crumb={GALLERY_PAGE.crumb}
+			pageType="CollectionPage"
+			structuredData={buildItemListSchema(
+				GALLERY_PAGE.images.map((_, index) => ({ name: `Gallery image ${index + 1}`, url: ROUTE_PATHS.gallery })),
+				GALLERY_PAGE.title
+			)}
+		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="columns-2 gap-4 md:columns-3 lg:columns-4 [&>*]:mb-4">
 					{GALLERY_PAGE.images.map((src, index) => (
@@ -79,7 +128,17 @@ export function Gallery() {
 
 export function Reviews() {
 	return (
-		<Page title={REVIEWS_PAGE.title} subtitle={REVIEWS_PAGE.subtitle} image={REVIEWS_PAGE.image} crumb={REVIEWS_PAGE.crumb}>
+		<Page
+			title={REVIEWS_PAGE.title}
+			subtitle={REVIEWS_PAGE.subtitle}
+			image={REVIEWS_PAGE.image}
+			crumb={REVIEWS_PAGE.crumb}
+			pageType="CollectionPage"
+			structuredData={buildItemListSchema(
+				REVIEWS.map((review) => ({ name: `${review.name} review`, url: ROUTE_PATHS.reviews })),
+				REVIEWS_PAGE.title
+			)}
+		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					{[...REVIEWS, ...REVIEWS].map((review, index) => (
@@ -99,7 +158,14 @@ export function Reviews() {
 
 export function Faq() {
 	return (
-		<Page title={FAQ_PAGE.title} subtitle={FAQ_PAGE.subtitle} image={FAQ_PAGE.image} crumb={FAQ_PAGE.crumb}>
+		<Page
+			title={FAQ_PAGE.title}
+			subtitle={FAQ_PAGE.subtitle}
+			image={FAQ_PAGE.image}
+			crumb={FAQ_PAGE.crumb}
+			pageType="FAQPage"
+			structuredData={buildFaqSchema(FAQS)}
+		>
 			<section className="mx-auto max-w-[56rem] px-5 py-16 lg:px-8">
 				<Accordion type="single" collapsible>
 					{FAQS.map(([question, answer], index) => (
@@ -116,19 +182,34 @@ export function Faq() {
 
 export function Blog() {
 	return (
-		<Page title={BLOG_PAGE.title} subtitle={BLOG_PAGE.subtitle} image={BLOG_PAGE.image} crumb={BLOG_PAGE.crumb}>
+		<Page
+			title={BLOG_PAGE.title}
+			subtitle={BLOG_PAGE.subtitle}
+			image={BLOG_PAGE.image}
+			crumb={BLOG_PAGE.crumb}
+			pageType="Blog"
+			structuredData={buildItemListSchema(
+				BLOG_POSTS.map((post) => ({
+					name: post.title,
+					url: `/blog/${post.slug}`,
+				})),
+				BLOG_PAGE.title
+			)}
+		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-7 md:grid-cols-3">
-					{BLOG_PAGE.posts.map((post, index) => (
+					{BLOG_POSTS.map((post, index) => (
 						<Reveal key={post.title} delay={(index % 3) * 80} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-lg">
 							<div className="aspect-[16/10] overflow-hidden">
-								<img src={post.image} alt={post.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+								<Link to={`/blog/${post.slug}`}>
+									<img src={post.image} alt={post.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+								</Link>
 							</div>
 							<div className="p-6">
 								<span className="text-xs font-semibold uppercase tracking-wider text-primary">{post.category}</span>
 								<h3 className="mt-2 font-display text-xl font-semibold leading-snug">{post.title}</h3>
 								<p className="mt-2 text-sm text-muted-foreground">{post.summary}</p>
-								<span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">Read more <ArrowRight className="h-4 w-4" /></span>
+								<Link to={`/blog/${post.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">Read more <ArrowRight className="h-4 w-4" /></Link>
 							</div>
 						</Reveal>
 					))}
@@ -140,7 +221,17 @@ export function Blog() {
 
 export function TravelGuide() {
 	return (
-		<Page title={TRAVEL_GUIDE_PAGE.title} subtitle={TRAVEL_GUIDE_PAGE.subtitle} image={TRAVEL_GUIDE_PAGE.image} crumb={TRAVEL_GUIDE_PAGE.crumb}>
+		<Page
+			title={TRAVEL_GUIDE_PAGE.title}
+			subtitle={TRAVEL_GUIDE_PAGE.subtitle}
+			image={TRAVEL_GUIDE_PAGE.image}
+			crumb={TRAVEL_GUIDE_PAGE.crumb}
+			pageType="CollectionPage"
+			structuredData={buildItemListSchema(
+				TRAVEL_GUIDE_PAGE.tips.map((tip) => ({ name: tip.title, url: ROUTE_PATHS.travelGuide })),
+				TRAVEL_GUIDE_PAGE.title
+			)}
+		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					{TRAVEL_GUIDE_PAGE.tips.map((tip, index) => (
@@ -158,7 +249,13 @@ export function TravelGuide() {
 
 export function Contact() {
 	return (
-		<Page title={CONTACT_PAGE.title} subtitle={CONTACT_PAGE.subtitle} image={CONTACT_PAGE.image} crumb={CONTACT_PAGE.crumb}>
+		<Page
+			title={CONTACT_PAGE.title}
+			subtitle={CONTACT_PAGE.subtitle}
+			image={CONTACT_PAGE.image}
+			crumb={CONTACT_PAGE.crumb}
+			pageType="ContactPage"
+		>
 			<section className="mx-auto grid max-w-[90rem] gap-10 px-5 py-16 lg:grid-cols-2 lg:px-8">
 				<div>
 					<h2 className="font-display text-3xl font-semibold">{CONTACT_PAGE.heading}</h2>

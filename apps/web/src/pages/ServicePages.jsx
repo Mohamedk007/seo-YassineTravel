@@ -1,7 +1,9 @@
 import React from 'react';
-import { Car, Check, MessageCircle, Plane } from 'lucide-react';
+import { Car, Check, Plane } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { LeadForm } from '@/components/site/LeadForm';
-import { waLink } from '@/data/contact';
+import { WhatsAppCtaButton } from '@/components/site/WhatsAppCtaButton';
+import { AIRPORTS } from '@/data/airports';
 import {
 	AIRPORT_TRANSFER_FEATURES,
 	AIRPORT_TRANSFER_PAGE,
@@ -10,28 +12,75 @@ import {
 	PRIVATE_DRIVER_FEATURES,
 	PRIVATE_DRIVER_PAGE,
 } from '@/data/services';
+import { ROUTE_PATHS } from '@/data/route-config';
+import { buildItemListSchema, buildServiceSchema } from '@/seo/schemas';
 import { MiniReviews, Page } from './page-shell';
 
 export function AirportTransfers() {
 	return (
-		<Page title={AIRPORT_TRANSFER_PAGE.title} subtitle={AIRPORT_TRANSFER_PAGE.subtitle} image={AIRPORT_TRANSFER_PAGE.image} crumb={AIRPORT_TRANSFER_PAGE.crumb}>
+		<Page
+			title={AIRPORT_TRANSFER_PAGE.title}
+			subtitle={AIRPORT_TRANSFER_PAGE.subtitle}
+			image={AIRPORT_TRANSFER_PAGE.image}
+			crumb={AIRPORT_TRANSFER_PAGE.crumb}
+			pageType="CollectionPage"
+			structuredData={[
+				buildServiceSchema({
+					name: AIRPORT_TRANSFER_PAGE.title,
+					description: AIRPORT_TRANSFER_PAGE.subtitle,
+					path: ROUTE_PATHS.airportTransfers,
+				}),
+				buildItemListSchema(
+					AIRPORTS.map((airport) => ({ name: airport.name, url: `/airport-transfers/${airport.slug}` })),
+					AIRPORT_TRANSFER_PAGE.title,
+				),
+			]}
+		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
-				<div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-					<div>
-						<Plane className="h-10 w-10 text-primary" />
-						<h2 className="mt-4 font-display text-3xl font-semibold">{AIRPORT_TRANSFER_PAGE.heading}</h2>
-						<p className="mt-3 text-muted-foreground">{AIRPORT_TRANSFER_PAGE.description}</p>
-						<ul className="mt-6 grid gap-3 sm:grid-cols-2">
-							{AIRPORT_TRANSFER_FEATURES.map((feature) => (
-								<li key={feature} className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" /> {feature}</li>
-							))}
-						</ul>
-						<a href={waLink(AIRPORT_TRANSFER_PAGE.ctaMessage)} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground">
-							<MessageCircle className="h-5 w-5" /> {AIRPORT_TRANSFER_PAGE.ctaLabel}
-						</a>
+					<div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+						<div>
+							<Plane className="h-10 w-10 text-primary" />
+							<h2 className="mt-4 font-display text-3xl font-semibold">{AIRPORT_TRANSFER_PAGE.heading}</h2>
+							<p className="mt-3 text-muted-foreground">{AIRPORT_TRANSFER_PAGE.description}</p>
+							<ul className="mt-6 grid gap-3 sm:grid-cols-2">
+								{AIRPORT_TRANSFER_FEATURES.map((feature) => (
+									<li key={feature} className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" /> {feature}</li>
+								))}
+							</ul>
+							<WhatsAppCtaButton message={AIRPORT_TRANSFER_PAGE.ctaMessage}>{AIRPORT_TRANSFER_PAGE.ctaLabel}</WhatsAppCtaButton>
+						</div>
+						<img src={AIRPORT_TRANSFER_PAGE.imageSecondary} alt={AIRPORT_TRANSFER_PAGE.imageAlt} className="rounded-3xl shadow-xl" />
+						</div>
+
+					<div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+						{AIRPORTS.map((airport) => (
+							<Link key={airport.slug} to={`/airport-transfers/${airport.slug}`} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-xl">
+								<div className="relative aspect-[4/3] overflow-hidden">
+									<img
+										src={airport.image}
+										alt={`${airport.city} airport transfer`}
+										className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+										loading="lazy"
+										decoding="async"
+										sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+									/>
+									<div className="hero-gradient absolute inset-0" />
+									<span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">{airport.code}</span>
+									<span className="absolute bottom-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">Airport transfer</span>
+								</div>
+								<div className="p-6">
+									<div className="flex items-center justify-between gap-4">
+										<div>
+											<h3 className="font-display text-2xl font-semibold">{airport.city}</h3>
+											<p className="mt-2 text-sm text-muted-foreground">{airport.name}</p>
+										</div>
+										<Plane className="h-8 w-8 shrink-0 text-primary/70 transition group-hover:text-primary" />
+									</div>
+									<p className="mt-4 text-sm font-semibold text-primary">Book transfer</p>
+								</div>
+							</Link>
+						))}
 					</div>
-					<img src={AIRPORT_TRANSFER_PAGE.imageSecondary} alt={AIRPORT_TRANSFER_PAGE.imageAlt} className="rounded-3xl shadow-xl" />
-				</div>
 			</section>
 		</Page>
 	);
@@ -39,7 +88,18 @@ export function AirportTransfers() {
 
 export function PrivateDrivers() {
 	return (
-		<Page title={PRIVATE_DRIVER_PAGE.title} subtitle={PRIVATE_DRIVER_PAGE.subtitle} image={PRIVATE_DRIVER_PAGE.image} crumb={PRIVATE_DRIVER_PAGE.crumb}>
+		<Page
+			title={PRIVATE_DRIVER_PAGE.title}
+			subtitle={PRIVATE_DRIVER_PAGE.subtitle}
+			image={PRIVATE_DRIVER_PAGE.image}
+			crumb={PRIVATE_DRIVER_PAGE.crumb}
+			pageType="Service"
+			structuredData={buildServiceSchema({
+				name: PRIVATE_DRIVER_PAGE.title,
+				description: PRIVATE_DRIVER_PAGE.subtitle,
+				path: ROUTE_PATHS.privateDrivers,
+			})}
+		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-10 lg:grid-cols-2 lg:items-center">
 					<img src={PRIVATE_DRIVER_PAGE.imageSecondary} alt={PRIVATE_DRIVER_PAGE.imageAlt} className="order-2 rounded-3xl shadow-xl lg:order-1" />
@@ -52,9 +112,7 @@ export function PrivateDrivers() {
 								<li key={feature} className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" /> {feature}</li>
 							))}
 						</ul>
-						<a href={waLink(PRIVATE_DRIVER_PAGE.ctaMessage)} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground">
-							<MessageCircle className="h-5 w-5" /> {PRIVATE_DRIVER_PAGE.ctaLabel}
-						</a>
+							<WhatsAppCtaButton message={PRIVATE_DRIVER_PAGE.ctaMessage}>{PRIVATE_DRIVER_PAGE.ctaLabel}</WhatsAppCtaButton>
 					</div>
 				</div>
 			</section>
@@ -64,7 +122,18 @@ export function PrivateDrivers() {
 
 export function CustomTours() {
 	return (
-		<Page title={CUSTOM_TOURS_PAGE.title} subtitle={CUSTOM_TOURS_PAGE.subtitle} image={CUSTOM_TOURS_PAGE.image} crumb={CUSTOM_TOURS_PAGE.crumb}>
+		<Page
+			title={CUSTOM_TOURS_PAGE.title}
+			subtitle={CUSTOM_TOURS_PAGE.subtitle}
+			image={CUSTOM_TOURS_PAGE.image}
+			crumb={CUSTOM_TOURS_PAGE.crumb}
+			pageType="Service"
+			structuredData={buildServiceSchema({
+				name: CUSTOM_TOURS_PAGE.title,
+				description: CUSTOM_TOURS_PAGE.subtitle,
+				path: ROUTE_PATHS.customTours,
+			})}
+		>
 			<section className="mx-auto grid max-w-[90rem] gap-10 px-5 py-16 lg:grid-cols-2 lg:px-8">
 				<div>
 					<h2 className="font-display text-3xl font-semibold">{CUSTOM_TOURS_PAGE.heading}</h2>

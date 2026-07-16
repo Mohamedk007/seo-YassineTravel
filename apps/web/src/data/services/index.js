@@ -28,11 +28,11 @@ export const CUSTOM_TOUR_STEPS = [
 export const AIRPORT_TRANSFER_PAGE = {
 	title: 'Private airport transfers across Morocco',
 	subtitle: 'Fixed-price, meet-and-greet transfers in comfort and safety.',
-	image: IMG.atlas,
+	image: IMG.RBT_SLE,
 	crumb: 'Services',
 	heading: 'Arrive relaxed, not stressed',
 	description: 'Skip the taxi queues and haggling. Your professional driver will be waiting at arrivals with a name board, ready to whisk you to your riad or hotel in a spotless, air-conditioned vehicle.',
-	imageSecondary: IMG.guide,
+	imageSecondary: IMG.Driver,
 	imageAlt: 'Private driver in Morocco',
 	ctaLabel: 'Book a transfer',
 	ctaMessage: 'Hi! I need an airport transfer in Morocco.',

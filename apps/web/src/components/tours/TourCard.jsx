@@ -8,7 +8,14 @@ export function TourCard({ tour, delay = 0 }) {
 		<Reveal delay={delay} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-xl">
 			<Link to={`/tour/${tour.slug}`} className="block">
 				<div className="relative aspect-[4/3] overflow-hidden">
-					<img src={tour.image} alt={tour.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+					<img
+						src={tour.image}
+						alt={tour.title}
+						className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+						loading="lazy"
+						decoding="async"
+						sizes="(min-width: 768px) 33vw, 100vw"
+					/>
 					<span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">{tour.category}</span>
 					<span className="absolute bottom-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">from EUR{tour.price.toLocaleString()}</span>
 				</div>

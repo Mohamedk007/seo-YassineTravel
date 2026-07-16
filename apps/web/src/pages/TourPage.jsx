@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { ArrowRight, Check, Clock, MessageCircle, Phone, Play, Star, Users, X } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
 import { Layout } from '@/components/site/Layout';
@@ -9,9 +9,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CONTACT, waLink } from '@/data/contact';
 import { FAQS } from '@/data/content';
 import { IMG } from '@/data/images';
+import { TOUR_INTERNAL_LINKS } from '@/data/internal-links';
 import { ROUTE_PATHS } from '../data/route-config';
 import { EXCLUDED, INCLUDED, TOURS } from '@/data/tours/catalog';
 import { getRelatedTours, getTourBySlug, getToursByCategory } from '@/data/tours/index';
+import { buildFaqSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
 import { TourCard } from '../components/tours/TourCard';
 import { CTA, MiniReviews } from './page-shell';
 
@@ -59,18 +61,19 @@ export function TourDetail() {
 
 	return (
 		<Layout>
-			<Seo title={tour.title} description={tour.tagline} />
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify({
-						'@context': 'https://schema.org',
-						'@type': 'TouristTrip',
-						name: tour.title,
-						description: tour.tagline,
-						offers: { '@type': 'Offer', price: tour.price, priceCurrency: 'EUR' },
-					}),
-				}}
+			<Seo
+				title={tour.title}
+				description={tour.tagline}
+				pageType="TouristTrip"
+				breadcrumbItems={[
+					{ name: 'Home', url: ROUTE_PATHS.home },
+					{ name: 'Tours', url: ROUTE_PATHS.tours },
+					{ name: tour.title, url: `/tour/${tour.slug}` },
+				]}
+				structuredData={[
+					buildTourSchema(tour, `/tour/${tour.slug}`),
+					buildFaqSchema(FAQS.slice(0, 4)),
+				]}
 			/>
 			<PageHero title={tour.title} subtitle={tour.tagline} image={tour.image} crumb={tour.category} />
 
@@ -224,18 +227,47 @@ export function TourDetail() {
 					))}
 				</div>
 			</section>
+
+			<section className="mx-auto max-w-[90rem] px-5 pb-16 lg:px-8">
+				<h2 className="font-display text-2xl font-semibold md:text-3xl">Continue planning your trip</h2>
+				<div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+					{TOUR_INTERNAL_LINKS.map((entry) => (
+						<Link
+							key={entry.to}
+							to={entry.to}
+							className="rounded-xl border border-border bg-card px-5 py-4 text-sm font-medium transition hover:border-primary/40 hover:text-primary"
+						>
+							{entry.label}
+						</Link>
+					))}
+				</div>
+			</section>
 			<CTA />
 		</Layout>
 	);
 }
 
 export function ToursListing({ category, title, subtitle, image, intro }) {
+	const location = useLocation();
 	const list = getToursByCategory(category);
 	const shown = list.length ? list : TOURS;
 
 	return (
 		<Layout>
-			<Seo title={title} description={subtitle} />
+			<Seo
+				title={title}
+				description={subtitle}
+				pageType="CollectionPage"
+				breadcrumbItems={[
+					{ name: 'Home', url: ROUTE_PATHS.home },
+					{ name: 'Tours', url: ROUTE_PATHS.tours },
+					{ name: title, url: location.pathname },
+				]}
+				structuredData={buildItemListSchema(
+					shown.map((entry) => ({ name: entry.title, url: `/tour/${entry.slug}` })),
+					title
+				)}
+			/>
 			<PageHero title={title} subtitle={subtitle} image={image} crumb="Morocco Tours" />
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				{intro && <p className="mx-auto mb-10 max-w-3xl text-center text-lg text-muted-foreground">{intro}</p>}

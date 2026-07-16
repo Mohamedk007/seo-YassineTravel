@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Layout } from '@/components/site/Layout';
 import { PageHero } from '@/components/site/PageHero';
@@ -50,10 +50,23 @@ export function MiniReviews() {
 	);
 }
 
-export function Page({ title, subtitle, image, crumb, children }) {
+export function Page({ title, subtitle, image, crumb, children, structuredData, pageType = 'WebPage', breadcrumbItems }) {
+	const location = useLocation();
+	const resolvedBreadcrumbItems = breadcrumbItems || [
+		{ name: 'Home', url: ROUTE_PATHS.home },
+		{ name: crumb || title, url: location.pathname },
+	];
+
 	return (
 		<Layout>
-			<Seo title={title} description={subtitle} />
+			<Seo
+				title={title}
+				description={subtitle}
+				structuredData={structuredData}
+				pageType={pageType}
+				breadcrumbItems={resolvedBreadcrumbItems}
+				preloadImage
+			/>
 			<PageHero title={title} subtitle={subtitle} image={image} crumb={crumb} />
 			{children}
 			<CTA />

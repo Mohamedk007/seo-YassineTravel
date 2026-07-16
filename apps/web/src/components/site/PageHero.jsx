@@ -3,7 +3,15 @@ import React from 'react';
 export function PageHero({ title, subtitle, image, crumb }) {
 	return (
 		<section className="relative flex min-h-[52vh] items-end overflow-hidden pt-24">
-			<img src={image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
+			<img
+				src={image}
+				alt={title}
+				className="absolute inset-0 h-full w-full object-cover"
+				loading="eager"
+				fetchPriority="high"
+				decoding="async"
+				sizes="100vw"
+			/>
 			<div className="absolute inset-0 hero-gradient" />
 			<div className="relative mx-auto w-full max-w-[72rem] px-5 pb-12 lg:px-8">
 				{crumb && <p className="mb-3 text-sm font-medium uppercase tracking-widest text-gold">{crumb}</p>}
