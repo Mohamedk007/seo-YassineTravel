@@ -34,7 +34,6 @@ export default function HomePage() {
     <Layout>
       <Seo
         breadcrumbItems={[{ name: 'Home', url: ROUTE_PATHS.home }]}
-        preloadImage
         structuredData={[
           buildFaqSchema(FAQS),
           buildItemListSchema(
@@ -46,19 +45,11 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden">
-        <img
-          src={IMG.duneSunset}
-          alt="Sahara desert at sunset in Morocco"
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          sizes="100vw"
-        />
+        <img src={IMG.duneSunset} alt="Sahara desert at sunset in Morocco" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative mx-auto grid w-full max-w-[90rem] gap-10 px-5 pt-28 pb-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-8">
           <div>
-            <Reveal><span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold backdrop-blur"><Star className="h-3.5 w-3.5 fill-current" strokeWidth={0} /> {HOME_PAGE.hero.reviewBadge}</span></Reveal>
+            <Reveal><span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur"><Star className="h-3.5 w-3.5 fill-current" strokeWidth={0} /> {HOME_PAGE.hero.reviewBadge}</span></Reveal>
             <Reveal delay={80}>
               <h1 className="mt-5 max-w-3xl font-display text-5xl font-semibold leading-[1.02] text-white text-balance sm:text-6xl md:text-7xl">
                 {HOME_PAGE.hero.title.split(HOME_PAGE.hero.highlight)[0]}<span className="text-gold">{HOME_PAGE.hero.highlight}</span>{HOME_PAGE.hero.title.split(HOME_PAGE.hero.highlight)[1]}
@@ -178,7 +169,7 @@ export default function HomePage() {
             </div>
           </div>
           <Reveal delay={100} className="relative">
-            <img src={IMG.guide} alt="Local Moroccan tour guide" className="rounded-3xl shadow-2xl" loading="lazy" decoding="async" sizes="(min-width: 1024px) 45vw, 100vw" />
+            <img src={IMG.guide} alt="Local Moroccan tour guide" className="rounded-3xl shadow-2xl" />
             <div className="absolute -bottom-6 -left-4 hidden rounded-2xl bg-card p-5 shadow-xl ring-1 ring-border sm:block">
               <Stars />
               <p className="mt-2 max-w-[14rem] text-sm font-medium">“{HOME_PAGE.whyChooseUs.quote.text}”</p>
@@ -270,7 +261,7 @@ export default function HomePage() {
 
       {/* LEAD CAPTURE */}
       <section className="relative overflow-hidden py-20">
-        <img src={IMG.riad} alt="Luxury riad courtyard" className="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async" sizes="100vw" />
+        <img src={IMG.riad} alt="Luxury riad courtyard" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-ink/80" />
         <div className="relative mx-auto grid max-w-[90rem] items-center gap-10 px-5 lg:grid-cols-2 lg:px-8">
           <div className="text-white">

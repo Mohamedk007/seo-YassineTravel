@@ -40,7 +40,9 @@ function slugify(input = '') {
 async function getBlogPaths() {
 	const blogPostsPath = resolve(process.cwd(), 'src', 'data', 'blog', 'posts.js');
 	const source = await readFile(blogPostsPath, 'utf8');
-	const blogTitles = [...source.matchAll(/title:\s*'([^']+)'/g)].map((match) => match[1]);
+	// Titles containing an apostrophe are written with double quotes in source
+	// (e.g. "A food lover's journey through Morocco"), so both quote styles must be matched.
+	const blogTitles = [...source.matchAll(/title:\s*(['"])((?:(?!\1).)+)\1/g)].map((match) => match[2]);
 	return blogTitles.map((title) => `/blog/${slugify(title)}`);
 }
 
