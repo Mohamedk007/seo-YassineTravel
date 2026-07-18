@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Award, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import { CONTACT, waLink } from '@/data/contact';
 import { AWARDS } from '@/data/content';
@@ -7,15 +8,15 @@ import { FOOTER_COMPANY_LINKS, FOOTER_TOUR_LINKS } from '@/data/route-config';
 import { FOOTER_CONFIG, SITE_BRAND } from '@/data/site-config';
 import { Newsletter } from './LeadForm';
 
-function FooterCol({ title, links }) {
+function FooterCol({ title, links, t }) {
 	return (
 		<div>
 			<h4 className="font-semibold text-white">{title}</h4>
 			<ul className="mt-4 space-y-2.5 text-sm">
-				{links.map(([label, to]) => (
+				{links.map(([label, to, labelKey]) => (
 					<li key={to}>
 						<Link to={to} className="text-white/60 transition hover:text-gold">
-							{label}
+							{t(labelKey, label)}
 						</Link>
 					</li>
 				))}
@@ -25,6 +26,7 @@ function FooterCol({ title, links }) {
 }
 
 export function Footer() {
+	const { t } = useTranslation();
 	return (
 		<footer className="bg-ink text-white/80">
 			<div className="border-b border-white/10">
@@ -58,8 +60,8 @@ export function Footer() {
 						</a>
 					</div>
 				</div>
-				<FooterCol title="Tours" links={FOOTER_TOUR_LINKS} />
-				<FooterCol title="Company" links={FOOTER_COMPANY_LINKS} />
+				<FooterCol title={t('footer.toursHeading', 'Tours')} links={FOOTER_TOUR_LINKS} t={t} />
+				<FooterCol title={t('footer.companyHeading', 'Company')} links={FOOTER_COMPANY_LINKS} t={t} />
 				<div>
 					<h4 className="font-semibold text-white">Contact</h4>
 					<ul className="mt-4 space-y-3 text-sm">

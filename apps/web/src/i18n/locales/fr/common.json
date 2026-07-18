@@ -1,0 +1,35 @@
+{
+	"nav": {
+		"home": "Accueil",
+		"about": "À propos",
+		"tours": "Circuits",
+		"services": "Services",
+		"destinations": "Destinations",
+		"more": "Plus",
+		"contact": "Contact",
+		"allTours": "Tous les circuits",
+		"luxuryTours": "Circuits de luxe",
+		"privateTours": "Circuits privés",
+		"desertTours": "Circuits désert",
+		"dayTrips": "Excursions à la journée",
+		"customTours": "Circuits sur mesure",
+		"airportTransfers": "Transferts aéroport",
+		"privateDrivers": "Chauffeurs privés",
+		"customItineraries": "Itinéraires sur mesure",
+		"blog": "Blog",
+		"travelGuide": "Guide de voyage",
+		"reviews": "Avis",
+		"gallery": "Galerie",
+		"faq": "FAQ"
+	},
+	"footer": {
+		"toursHeading": "Circuits",
+		"companyHeading": "Entreprise"
+	},
+	"common": {
+		"backToArticles": "Retour à tous les articles",
+		"exploreLink": "Découvrir",
+		"planYourTrip": "Planifiez votre voyage",
+		"turnGuideIntoItinerary": "Transformez ce guide en itinéraire"
+	}
+}

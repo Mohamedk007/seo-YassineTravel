@@ -3,9 +3,15 @@ import { resolve } from 'node:path';
 import { ROUTE_PATHS } from '../src/data/route-config.js';
 
 const BASE_URL = 'https://moroccotripholidays.com';
+// Kept as a local constant (rather than importing src/i18n/config.js) so this
+// Node build script doesn't depend on browser-only runtime modules.
+// Keep in sync with SUPPORTED_LANGUAGES in src/i18n/config.js.
+const SUPPORTED_LANGUAGES = ['en', 'fr'];
+const DEFAULT_LANGUAGE = 'en';
 
-function toAbsoluteUrl(pathname) {
-	return new URL(pathname, BASE_URL).toString();
+function toAbsoluteUrl(pathname, lang) {
+	const cleanPath = pathname === '/' ? '' : pathname;
+	return new URL(`/${lang}${cleanPath}`, BASE_URL).toString();
 }
 
 function escapeXml(value) {
@@ -71,10 +77,18 @@ async function getAirportPaths() {
 function buildSitemapXml(paths) {
 	const uniquePaths = [...new Set(paths)];
 	const urls = uniquePaths
-		.map((path) => `  <url><loc>${escapeXml(toAbsoluteUrl(path))}</loc></url>`)
+		.flatMap((path) =>
+			SUPPORTED_LANGUAGES.map((lang) => {
+				const alternates = SUPPORTED_LANGUAGES.map(
+					(altLang) => `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${escapeXml(toAbsoluteUrl(path, altLang))}" />`
+				).join('\n');
+				const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(toAbsoluteUrl(path, DEFAULT_LANGUAGE))}" />`;
+				return `  <url>\n    <loc>${escapeXml(toAbsoluteUrl(path, lang))}</loc>\n${alternates}\n${xDefault}\n  </url>`;
+			})
+		)
 		.join('\n');
 
-	return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+	return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
 }
 
 const outputPath = resolve(process.cwd(), 'public', 'sitemap.xml');

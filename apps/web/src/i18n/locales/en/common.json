@@ -1,0 +1,35 @@
+{
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"tours": "Tours",
+		"services": "Services",
+		"destinations": "Destinations",
+		"more": "More",
+		"contact": "Contact",
+		"allTours": "All Tours",
+		"luxuryTours": "Luxury Tours",
+		"privateTours": "Private Tours",
+		"desertTours": "Desert Tours",
+		"dayTrips": "Day Trips",
+		"customTours": "Custom Tours",
+		"airportTransfers": "Airport Transfers",
+		"privateDrivers": "Private Drivers",
+		"customItineraries": "Custom Itineraries",
+		"blog": "Blog",
+		"travelGuide": "Travel Guide",
+		"reviews": "Reviews",
+		"gallery": "Gallery",
+		"faq": "FAQ"
+	},
+	"footer": {
+		"toursHeading": "Tours",
+		"companyHeading": "Company"
+	},
+	"common": {
+		"backToArticles": "Back to all articles",
+		"exploreLink": "Explore",
+		"planYourTrip": "Plan your own trip",
+		"turnGuideIntoItinerary": "Turn this guide into an itinerary"
+	}
+}

@@ -1,32 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://moroccotripholidays.com/</loc></url>
-  <url><loc>https://moroccotripholidays.com/about</loc></url>
-  <url><loc>https://moroccotripholidays.com/tours</loc></url>
-  <url><loc>https://moroccotripholidays.com/luxury-tours</loc></url>
-  <url><loc>https://moroccotripholidays.com/private-tours</loc></url>
-  <url><loc>https://moroccotripholidays.com/desert-tours</loc></url>
-  <url><loc>https://moroccotripholidays.com/day-trips</loc></url>
-  <url><loc>https://moroccotripholidays.com/custom-tours</loc></url>
-  <url><loc>https://moroccotripholidays.com/destinations</loc></url>
-  <url><loc>https://moroccotripholidays.com/blog</loc></url>
-  <url><loc>https://moroccotripholidays.com/travel-guide</loc></url>
-  <url><loc>https://moroccotripholidays.com/reviews</loc></url>
-  <url><loc>https://moroccotripholidays.com/gallery</loc></url>
-  <url><loc>https://moroccotripholidays.com/faq</loc></url>
-  <url><loc>https://moroccotripholidays.com/contact</loc></url>
-  <url><loc>https://moroccotripholidays.com/airport-transfers</loc></url>
-  <url><loc>https://moroccotripholidays.com/private-drivers</loc></url>
-  <url><loc>https://moroccotripholidays.com/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night</loc></url>
-  <url><loc>https://moroccotripholidays.com/blog/3-perfect-days-in-marrakech</loc></url>
-  <url><loc>https://moroccotripholidays.com/blog/a-food-lovers-journey-through-morocco</loc></url>
-  <url><loc>https://moroccotripholidays.com/blog/why-chefchaouen-belongs-on-your-itinerary</loc></url>
-  <url><loc>https://moroccotripholidays.com/blog/best-time-to-visit-morocco</loc></url>
-  <url><loc>https://moroccotripholidays.com/blog/how-to-choose-the-perfect-riad</loc></url>
-  <url><loc>https://moroccotripholidays.com/airport-transfers/agadir-aga</loc></url>
-  <url><loc>https://moroccotripholidays.com/airport-transfers/casablanca-cmn</loc></url>
-  <url><loc>https://moroccotripholidays.com/airport-transfers/fes-fez</loc></url>
-  <url><loc>https://moroccotripholidays.com/airport-transfers/marrakech-rak</loc></url>
-  <url><loc>https://moroccotripholidays.com/airport-transfers/rabat-rba</loc></url>
-  <url><loc>https://moroccotripholidays.com/airport-transfers/tangier-tng</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://moroccotripholidays.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/about" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/about" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/luxury-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/luxury-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/luxury-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/luxury-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/luxury-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/luxury-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/luxury-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/luxury-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/private-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/private-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/private-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/private-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/private-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/private-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/private-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/private-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/desert-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/desert-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/desert-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/desert-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/desert-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/desert-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/desert-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/desert-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/day-trips</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/day-trips" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/day-trips" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/day-trips" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/day-trips</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/day-trips" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/day-trips" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/day-trips" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/custom-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/custom-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/custom-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/custom-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/custom-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/custom-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/custom-tours" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/custom-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/destinations</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/destinations</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/travel-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/travel-guide" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/travel-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/travel-guide" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/travel-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/travel-guide" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/travel-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/travel-guide" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/reviews</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/reviews" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/reviews" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/reviews</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/reviews" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/reviews" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/gallery</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/gallery" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/gallery" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/gallery</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/gallery" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/gallery" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/gallery" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/faq" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/faq" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/airport-transfers</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/airport-transfers</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/private-drivers</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/private-drivers" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/private-drivers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/private-drivers" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/private-drivers</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/private-drivers" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/private-drivers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/private-drivers" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/3-perfect-days-in-marrakech" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/blog/3-perfect-days-in-marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/3-perfect-days-in-marrakech" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/a-food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/blog/a-food-lovers-journey-through-morocco</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/a-food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/why-chefchaouen-belongs-on-your-itinerary" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/blog/why-chefchaouen-belongs-on-your-itinerary</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/why-chefchaouen-belongs-on-your-itinerary" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/best-time-to-visit-morocco" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/blog/best-time-to-visit-morocco</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/best-time-to-visit-morocco" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/how-to-choose-the-perfect-riad" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/blog/how-to-choose-the-perfect-riad</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/how-to-choose-the-perfect-riad" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/airport-transfers/agadir-aga</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/agadir-aga" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/agadir-aga" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/agadir-aga" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/airport-transfers/agadir-aga</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/agadir-aga" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/agadir-aga" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/agadir-aga" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/airport-transfers/casablanca-cmn</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/casablanca-cmn" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/casablanca-cmn" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/casablanca-cmn" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/airport-transfers/casablanca-cmn</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/casablanca-cmn" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/casablanca-cmn" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/casablanca-cmn" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/airport-transfers/fes-fez</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/fes-fez" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/fes-fez" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/fes-fez" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/airport-transfers/fes-fez</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/fes-fez" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/fes-fez" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/fes-fez" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/airport-transfers/marrakech-rak</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/marrakech-rak" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/marrakech-rak" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/marrakech-rak" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/airport-transfers/marrakech-rak</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/marrakech-rak" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/marrakech-rak" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/marrakech-rak" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/airport-transfers/rabat-rba</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/rabat-rba" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/rabat-rba" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/rabat-rba" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/airport-transfers/rabat-rba</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/rabat-rba" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/rabat-rba" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/rabat-rba" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/airport-transfers/tangier-tng</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/tangier-tng" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/tangier-tng" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/tangier-tng" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/airport-transfers/tangier-tng</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/tangier-tng" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/tangier-tng" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/airport-transfers/tangier-tng" />
+  </url>
 </urlset>
