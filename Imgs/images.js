@@ -11,7 +11,7 @@ import couple from './couple.webp';
 import guide from './guide.webp';
 import kasbah from './kasbah.webp';
 import atlas from './atlas.webp';
-import Essaouira from './essaouira.jpg';
+import Essaouira from './essaouira.webp';
 import rak from './rak.webp';
 import TGN from './TGN.webp';
 import AGA from './AGA.webp';

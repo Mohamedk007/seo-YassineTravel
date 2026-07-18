@@ -28,10 +28,7 @@ export default function DestinationDetailPage() {
 			]}
 		>
 			<section className="mx-auto max-w-[72rem] px-5 py-16 lg:px-8">
-				<div className="overflow-hidden rounded-2xl">
-					<img src={destination.image} alt={destination.name} className="w-full object-cover" loading="eager" decoding="async" sizes="100vw" />
-				</div>
-				<p className="mt-6 text-lg text-muted-foreground">{destination.summary}</p>
+				<p className="text-lg text-muted-foreground">{destination.summary}</p>
 				<div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 					{DESTINATION_INTERNAL_LINKS.map((entry) => (
 						<Link key={entry.to} to={entry.to} className="rounded-lg border border-border px-4 py-3 text-sm font-medium transition hover:border-primary/40 hover:text-primary">

@@ -1,1 +1,0 @@
-export { NAV } from './route-config';
