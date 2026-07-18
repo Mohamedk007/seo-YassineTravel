@@ -12,13 +12,14 @@ import guide from './guide.webp';
 import kasbah from './kasbah.webp';
 import atlas from './atlas.webp';
 import Essaouira from './essaouira.webp';
-import rak from './rak.webp';
+import rak from './RAK.webp';
 import TGN from './TGN.webp';
 import AGA from './AGA.webp';
 import CMN from './cmn.webp';
 import FES_SAISS from './Fess_Sais.webp';
 import RBT_SLE from './AEROPORT_RABAT_SALE.webp';
 import Driver from './driver_help.webp';
+import tripaBadge2026 from './2026_BADGE_tripa.svg';
 
 
 export const images = {
@@ -42,6 +43,7 @@ export const images = {
     FES_SAISS,
     RBT_SLE,
     Driver,
+    tripaBadge2026,
 
 };
 

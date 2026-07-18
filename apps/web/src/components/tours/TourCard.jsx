@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Users } from 'lucide-react';
 import { Reveal } from '@/components/site/Reveal';
+import { IMG } from '@/data/images';
 
 export function TourCard({ tour, delay = 0 }) {
 	return (
@@ -17,6 +18,14 @@ export function TourCard({ tour, delay = 0 }) {
 						sizes="(min-width: 768px) 33vw, 100vw"
 					/>
 					<span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">{tour.category}</span>
+					<img
+						src={IMG.tripaBadge2026}
+						alt="TripAdvisor Travelers' Choice 2026"
+						width={36}
+						height={46}
+						className="absolute bottom-3 left-3"
+						loading="lazy"
+					/>
 					<span className="absolute bottom-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">from EUR{tour.price.toLocaleString()}</span>
 				</div>
 				<div className="p-6">

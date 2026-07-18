@@ -22,4 +22,5 @@ export const IMG = {
     FES_SAISS: images.FES_SAISS,
     RBT_SLE: images.RBT_SLE,
 	Driver: images.Driver,
+	tripaBadge2026: images.tripaBadge2026,
 };
