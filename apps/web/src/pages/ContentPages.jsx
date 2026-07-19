@@ -13,16 +13,17 @@ import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
 import {
 	ABOUT_PAGE,
 	BLOG_PAGE,
-	BLOG_POSTS,
 	CONTACT_PAGE,
 	DESTINATIONS_PAGE,
 	FAQ_PAGE,
 	GALLERY_PAGE,
 	REVIEWS_PAGE,
 	TRAVEL_GUIDE_PAGE,
+	getBlogPosts,
 } from '@/data/editorial';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
+import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page, Prose } from './page-shell';
 
 export function About() {
@@ -190,6 +191,9 @@ export function Faq() {
 }
 
 export function Blog() {
+	const lang = useLocale();
+	const posts = getBlogPosts(lang);
+
 	return (
 		<Page
 			title={BLOG_PAGE.title}
@@ -198,7 +202,7 @@ export function Blog() {
 			crumb={BLOG_PAGE.crumb}
 			pageType="Blog"
 			structuredData={buildItemListSchema(
-				BLOG_POSTS.map((post) => ({
+				posts.map((post) => ({
 					name: post.title,
 					url: `/blog/${post.slug}`,
 				})),
@@ -207,7 +211,7 @@ export function Blog() {
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-7 md:grid-cols-3">
-					{BLOG_POSTS.map((post, index) => (
+					{posts.map((post, index) => (
 						<Reveal key={post.title} delay={(index % 3) * 80} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-lg">
 							<div className="aspect-[16/10] overflow-hidden">
 								<Link to={`/blog/${post.slug}`}>

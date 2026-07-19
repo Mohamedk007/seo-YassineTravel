@@ -3,6 +3,7 @@ import { ROUTE_PATHS } from '@/data/route-config';
 
 export const BLOG_PAGE_POSTS = [
 	{
+		id: 'luxury-sahara-desert-night',
 		image: IMG.duneSunset,
 		title: 'The ultimate guide to a luxury Sahara desert night',
 		category: 'Desert',
@@ -82,30 +83,35 @@ export const BLOG_PAGE_POSTS = [
 		],
 	},
 	{
+		id: '3-perfect-days-in-marrakech',
 		image: IMG.marrakech,
 		title: '3 perfect days in Marrakech',
 		category: 'City Guide',
 		summary: 'How to experience the Red City like an insider, from souks to rooftop dining.',
 	},
 	{
+		id: 'food-lovers-journey-through-morocco',
 		image: IMG.tagine,
 		title: "A food lover's journey through Morocco",
 		category: 'Food',
 		summary: 'Tagines, pastilla and mint tea — the flavours that define Moroccan cuisine.',
 	},
 	{
+		id: 'why-chefchaouen-belongs-on-your-itinerary',
 		image: IMG.chefchaouen,
 		title: 'Why Chefchaouen belongs on your itinerary',
 		category: 'Destinations',
 		summary: "The story behind Morocco's enchanting blue city.",
 	},
 	{
+		id: 'best-time-to-visit-morocco',
 		image: IMG.atlas,
 		title: 'Best time to visit Morocco',
 		category: 'Planning',
 		summary: 'A month-by-month guide to weather, festivals and crowds.',
 	},
 	{
+		id: 'how-to-choose-the-perfect-riad',
 		image: IMG.riad,
 		title: 'How to choose the perfect riad',
 		category: 'Luxury',

@@ -44,12 +44,12 @@ function slugify(input = '') {
 }
 
 async function getBlogPaths() {
-	const blogPostsPath = resolve(process.cwd(), 'src', 'data', 'blog', 'posts.js');
+	const blogPostsPath = resolve(process.cwd(), 'src', 'data', 'blog', 'posts.en.js');
 	const source = await readFile(blogPostsPath, 'utf8');
-	// Titles containing an apostrophe are written with double quotes in source
-	// (e.g. "A food lover's journey through Morocco"), so both quote styles must be matched.
-	const blogTitles = [...source.matchAll(/title:\s*(['"])((?:(?!\1).)+)\1/g)].map((match) => match[2]);
-	return blogTitles.map((title) => `/blog/${slugify(title)}`);
+	// Each post has a stable `id` (independent of the localized title) that is
+	// used as the slug in every language, e.g. /en/blog/x and /fr/blog/x.
+	const ids = [...source.matchAll(/id:\s*'([^']+)'/g)].map((match) => match[1]);
+	return ids.map((id) => `/blog/${id}`);
 }
 
 async function getDestinationPaths() {
