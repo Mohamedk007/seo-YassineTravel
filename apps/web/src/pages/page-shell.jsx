@@ -6,6 +6,7 @@ import { PageHero } from '@/components/site/PageHero';
 import { Seo } from '@/components/site/Seo';
 import { Stars } from '@/components/site/Typography';
 import { REVIEWS } from '@/data/content';
+import { IMG } from '@/data/images';
 import { waLink } from '@/data/contact';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { PAGE_SHELL_CONFIG } from '@/data/site-config';
@@ -36,12 +37,20 @@ export function MiniReviews() {
 				<h2 className="text-center font-display text-3xl font-semibold md:text-4xl">{PAGE_SHELL_CONFIG.miniReviewsTitle}</h2>
 				<div className="mt-10 grid gap-6 md:grid-cols-3">
 					{REVIEWS.slice(0, 3).map((review) => (
-						<div key={review.name} className="rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border">
+						<div key={review.name} className="relative rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border">
 							<Stars />
 							<p className="mt-3 text-sm text-foreground/90">“{review.text}”</p>
 							<p className="mt-4 text-sm font-semibold">
 								{review.name} · <span className="font-normal text-muted-foreground">{review.country}</span>
 							</p>
+							<img
+								src={IMG.tripaBadge2026}
+								alt="Best travel agency in Morocco on TripAdvisor"
+								width={36}
+								height={46}
+								className="absolute bottom-3 right-3"
+								loading="lazy"
+							/>
 						</div>
 					))}
 				</div>

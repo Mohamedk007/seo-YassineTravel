@@ -8,6 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CONTACT, waLink } from '@/data/contact';
 import { FAQS, REVIEWS } from '@/data/content';
 import { DESTINATIONS, DESTINATION_HIGHLIGHTS } from '@/data/destinations';
+import { IMG } from '@/data/images';
 import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
 import {
 	ABOUT_PAGE,
@@ -142,12 +143,20 @@ export function Reviews() {
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					{[...REVIEWS, ...REVIEWS].map((review, index) => (
-						<Reveal key={index} delay={(index % 3) * 70} className="rounded-2xl bg-card p-7 shadow-sm ring-1 ring-border">
+						<Reveal key={index} delay={(index % 3) * 70} className="relative rounded-2xl bg-card p-7 shadow-sm ring-1 ring-border">
 							<Quote className="h-8 w-8 text-primary/20" />
 							<Stars className="mt-2" />
 							<p className="mt-3 text-sm text-foreground/90">“{review.text}”</p>
 							<p className="mt-4 text-sm font-semibold">{review.name} · <span className="font-normal text-muted-foreground">{review.country}</span></p>
 							<p className="text-xs text-muted-foreground">{review.tour}</p>
+							<img
+								src={IMG.tripaBadge2026}
+								alt="Best travel agency in Morocco on TripAdvisor"
+								width={36}
+								height={46}
+								className="absolute bottom-3 right-3"
+								loading="lazy"
+							/>
 						</Reveal>
 					))}
 				</div>
