@@ -164,17 +164,6 @@ export function buildBlogPostingSchema(post, path) {
 		articleSection: post.category,
 		image: post.image,
 		url: toAbsoluteUrl(path || '/blog'),
-		...(post.datePublished ? { datePublished: post.datePublished } : {}),
-		...(post.dateModified ? { dateModified: post.dateModified } : {}),
-		...(post.author?.name
-			? {
-					author: {
-						'@type': 'Person',
-						name: post.author.name,
-						...(post.author.role ? { jobTitle: post.author.role } : {}),
-					},
-				}
-			: {}),
 		publisher: {
 			'@type': 'Organization',
 			name: SITE_BRAND.name,
