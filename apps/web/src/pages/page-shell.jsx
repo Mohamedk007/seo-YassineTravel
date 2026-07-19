@@ -44,7 +44,7 @@ export function MiniReviews() {
 								{review.name} · <span className="font-normal text-muted-foreground">{review.country}</span>
 							</p>
 							<img
-								src={IMG.tripaBadge2026}
+								src={IMG.Tripadvisor}
 								alt="Best travel agency in Morocco on TripAdvisor"
 								width={36}
 								height={46}
