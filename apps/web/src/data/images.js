@@ -23,4 +23,5 @@ export const IMG = {
     RBT_SLE: images.RBT_SLE,
 	Driver: images.Driver,
 	tripaBadge2026: images.tripaBadge2026,
+    Tripadvisor:images.Tripadvisor, 
 };

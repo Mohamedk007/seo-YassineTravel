@@ -20,6 +20,7 @@ import FES_SAISS from './Fess_Sais.webp';
 import RBT_SLE from './AEROPORT_RABAT_SALE.webp';
 import Driver from './driver_help.webp';
 import tripaBadge2026 from './2026_BADGE_tripa.svg';
+import Tripadvisor from './trip_advisor_review.png';
 
 
 export const images = {
@@ -44,6 +45,7 @@ export const images = {
     RBT_SLE,
     Driver,
     tripaBadge2026,
+    Tripadvisor,
 
 };
 

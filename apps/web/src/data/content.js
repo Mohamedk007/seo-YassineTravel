@@ -1,8 +1,58 @@
 export const REVIEWS = [
-	{ name: 'Passenger65802', country: 'TripAdvisor', text: 'It was one of the best tours we ever had. We saw so many things from Tangier to Fes, Sahara and Marrakesh and it was amazing. Our tour guide Yassine was very helpful, kind and very knowledgeable. He was the first person we met in Morocco and now the beauty of this country will always be associated with him. Yassine is the best person to represent Morocco.', tour: 'Grand Tour of Morocco' },
-	{ name: 'Kate M', country: 'TripAdvisor', text: 'The trip was great right from the airport in Casablanca to the end on the Agafay desert. Yassine drove us expertly for the entire holiday and acted as a guide and a strong support resource in our interactions with the lovely Moroccan people. He shared great local information like where to eat, see interesting things and to shop.', tour: 'Private Morocco Tour' },
-	{ name: 'Dcurca', country: 'TripAdvisor', text: 'Impeccable service from the airport pickup to every single recommendation for local stuff, security and care — as far as a trip to the Sahara desert and back to Casablanca, all with the utmost care for his passengers. Yassine just kept over delivering. We will visit Morocco again just because having this guy in our corner made our trip a great memory.', tour: 'Sahara Desert Tour' },
-	{ name: 'Tracy S', country: 'TripAdvisor', text: 'An amazing experience! Yassine was amazing. He was obliging of all of our whims and flexible to any changes we wanted to make to our plans. He is very knowledgeable about all the places he took us to. I would highly recommend him as a driver and tour guide in Morocco.', tour: 'Custom Morocco Tour' },
+  {
+    name: "Kate M",
+    country: "TripAdvisor",
+    text: "The trip was great from the airport in Casablanca to the Agafay Desert. Yassine drove us expertly throughout the holiday, acted as a guide, and shared fantastic local recommendations for food, sightseeing, and shopping.",
+    tour: "Private Morocco Tour",
+  },
+  {
+    name: "djkellyg",
+    country: "TripAdvisor",
+    text: "Yassine transformed our anniversary trip into an unforgettable experience. He introduced us to hidden gems, local artisans, and authentic Moroccan culture. Morocco Trip Holidays didn't just plan our trip—they created memories we'll cherish forever.",
+    tour: "Private Marrakech Experience",
+  },
+  {
+    name: "Rene R",
+    country: "TripAdvisor",
+    text: "Yassine was the best driver and guide we could have asked for. He was knowledgeable, respectful, and incredibly helpful throughout our journey across Morocco. We give him and Morocco Trip Holidays a perfect 100/100.",
+    tour: "Grand Tour of Morocco",
+  },
+  {
+    name: "Youssef Elmaroudi",
+    country: "TripAdvisor",
+    text: "One of the most amazing family experiences we've ever had. Yassine's honesty, kindness, and professionalism made us feel completely comfortable. We trusted him completely and can't wait to return to Morocco.",
+    tour: "Private Family Tour",
+  },
+  {
+    name: "ALBERTO F",
+    country: "TripAdvisor",
+    text: "Yassine accompanied us for five unforgettable days through the High Atlas, Zagora, and Merzouga. His driving, flexibility, local knowledge, and kindness made this journey truly fantastic.",
+    tour: "5 Days Desert Tour",
+  },
+  {
+    name: "Jay M",
+    country: "TripAdvisor",
+    text: "Our 6-day Morocco tour was incredible. Our driver Youseff was professional, punctual, friendly, and always made sure we were comfortable. He made the whole journey enjoyable from beginning to end.",
+    tour: "6 Days Morocco Tour",
+  },
+  {
+    name: "Anonymous",
+    country: "TripAdvisor",
+    text: "Excellent service from the very first communication. Every detail of the trip was perfectly organized, everything ran smoothly, and the team was always available. Highly recommended for a stress-free Moroccan holiday.",
+    tour: "Custom Morocco Tour",
+  },
+  {
+    name: "Kate M",
+    country: "TripAdvisor",
+    text: "Yassine was much more than a driver. He was a trusted guide who helped us interact with locals, discover authentic places, and enjoy Morocco with complete confidence.",
+    tour: "Morocco Private Driver",
+  },
+  {
+    name: "ALBERTO F",
+    country: "TripAdvisor",
+    text: "An excellent driver, experienced guide, and genuinely kind person. His advice, calm driving through the Atlas Mountains, and warm personality made our Moroccan adventure unforgettable.",
+    tour: "Merzouga Desert Tour",
+  },
 ];
 
 export const FAQS = [
