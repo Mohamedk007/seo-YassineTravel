@@ -14,7 +14,7 @@ import { getAwards, getFaqs, getReviews } from '@/data/content';
 import { HOME_BENEFITS, HOME_BOOKING_STEPS, HOME_PAGE, HOME_WHY_POINTS } from '@/data/home';
 import { IMG } from '@/data/images';
 import { ROUTE_PATHS } from '@/data/route-config';
-import { TOURS } from '@/data/tours/catalog';
+import { getTours } from '@/data/tours/catalog';
 import { useLocale } from '@/i18n/LocaleContext';
 import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
 import {
@@ -34,7 +34,7 @@ export default function HomePage() {
   const AWARDS = getAwards(lang);
   const FAQS = getFaqs(lang);
   const REVIEWS = getReviews(lang);
-  const featured = TOURS.slice(0, HOME_PAGE.popularTours.featuredCount);
+  const featured = getTours(lang).slice(0, HOME_PAGE.popularTours.featuredCount);
   return (
     <Layout>
       <Seo

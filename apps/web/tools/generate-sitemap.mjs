@@ -28,7 +28,7 @@ function getStaticPaths() {
 }
 
 async function getTourPaths() {
-	const catalogPath = resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.js');
+	const catalogPath = resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.en.js');
 	const source = await readFile(catalogPath, 'utf8');
 	const slugs = [...source.matchAll(/slug:\s*'([^']+)'/g)].map((match) => match[1]);
 	return slugs.map((slug) => `/tour/${slug}`);
