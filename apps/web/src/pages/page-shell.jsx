@@ -46,8 +46,8 @@ export function MiniReviews() {
 							<img
 								src={IMG.Tripadvisor}
 								alt="Best travel agency in Morocco on TripAdvisor"
-								width={36}
-								height={46}
+								width={80}
+								height={50}
 								className="absolute bottom-3 right-3"
 								loading="lazy"
 							/>
