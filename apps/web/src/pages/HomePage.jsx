@@ -11,7 +11,7 @@ import { Seo } from '@/components/site/Seo';
 import { Eyebrow, Stars } from '@/components/site/Typography';
 import { CONTACT, waLink } from '@/data/contact';
 import { getAwards, getFaqs, getReviews } from '@/data/content';
-import { HOME_BENEFITS, HOME_BOOKING_STEPS, HOME_PAGE, HOME_WHY_POINTS } from '@/data/home';
+import { getHomeBenefits, getHomeBookingSteps, getHomePage, getHomeWhyPoints } from '@/data/home';
 import { IMG } from '@/data/images';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { getTours } from '@/data/tours/catalog';
@@ -34,6 +34,10 @@ export default function HomePage() {
   const AWARDS = getAwards(lang);
   const FAQS = getFaqs(lang);
   const REVIEWS = getReviews(lang);
+  const HOME_PAGE = getHomePage(lang);
+  const HOME_BENEFITS = getHomeBenefits(lang);
+  const HOME_WHY_POINTS = getHomeWhyPoints(lang);
+  const HOME_BOOKING_STEPS = getHomeBookingSteps(lang);
   const featured = getTours(lang).slice(0, HOME_PAGE.popularTours.featuredCount);
   return (
     <Layout>
