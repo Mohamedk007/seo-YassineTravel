@@ -10,11 +10,12 @@ import { Reveal } from '@/components/site/Reveal';
 import { Seo } from '@/components/site/Seo';
 import { Eyebrow, Stars } from '@/components/site/Typography';
 import { CONTACT, waLink } from '@/data/contact';
-import { AWARDS, FAQS, REVIEWS } from '@/data/content';
+import { getAwards, getFaqs, getReviews } from '@/data/content';
 import { HOME_BENEFITS, HOME_BOOKING_STEPS, HOME_PAGE, HOME_WHY_POINTS } from '@/data/home';
 import { IMG } from '@/data/images';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { TOURS } from '@/data/tours/catalog';
+import { useLocale } from '@/i18n/LocaleContext';
 import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
@@ -29,6 +30,10 @@ const HOME_BENEFIT_ICONS = {
 };
 
 export default function HomePage() {
+  const lang = useLocale();
+  const AWARDS = getAwards(lang);
+  const FAQS = getFaqs(lang);
+  const REVIEWS = getReviews(lang);
   const featured = TOURS.slice(0, HOME_PAGE.popularTours.featuredCount);
   return (
     <Layout>

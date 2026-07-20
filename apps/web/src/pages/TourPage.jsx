@@ -7,9 +7,10 @@ import { PageHero } from '@/components/site/PageHero';
 import { Seo } from '@/components/site/Seo';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
-import { FAQS } from '@/data/content';
+import { getFaqs } from '@/data/content';
 import { IMG } from '@/data/images';
 import { TOUR_INTERNAL_LINKS } from '@/data/internal-links';
+import { useLocale } from '@/i18n/LocaleContext';
 import { ROUTE_PATHS } from '../data/route-config';
 import { EXCLUDED, INCLUDED, TOURS } from '@/data/tours/catalog';
 import { getRelatedTours, getTourBySlug, getToursByCategory } from '@/data/tours/index';
@@ -26,6 +27,8 @@ function Badge({ icon: Icon, children }) {
 }
 
 export function TourDetail() {
+	const lang = useLocale();
+	const FAQS = getFaqs(lang);
 	const [showGallery, setShowGallery] = useState(false);
 	const galleryRef = useRef(null);
 

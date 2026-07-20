@@ -5,11 +5,12 @@ import { Layout } from '@/components/site/Layout';
 import { PageHero } from '@/components/site/PageHero';
 import { Seo } from '@/components/site/Seo';
 import { Stars } from '@/components/site/Typography';
-import { REVIEWS } from '@/data/content';
+import { getReviews } from '@/data/content';
 import { IMG } from '@/data/images';
 import { waLink } from '@/data/contact';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { PAGE_SHELL_CONFIG } from '@/data/site-config';
+import { useLocale } from '@/i18n/LocaleContext';
 
 export function CTA() {
 	return (
@@ -31,6 +32,8 @@ export function CTA() {
 }
 
 export function MiniReviews() {
+	const lang = useLocale();
+	const REVIEWS = getReviews(lang);
 	return (
 		<section className="bg-secondary/60 py-16">
 			<div className="mx-auto max-w-[90rem] px-5 lg:px-8">
