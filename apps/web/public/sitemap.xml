@@ -277,6 +277,78 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
   </url>
   <url>
+    <loc>https://moroccotripholidays.com/en/destinations/marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/marrakech" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/marrakech" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/marrakech" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/destinations/marrakech</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/marrakech" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/marrakech" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/marrakech" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/destinations/fes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/fes" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/fes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/fes" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/destinations/fes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/fes" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/fes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/fes" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/destinations/merzouga-sahara</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/merzouga-sahara" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/merzouga-sahara" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/merzouga-sahara" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/destinations/merzouga-sahara</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/merzouga-sahara" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/merzouga-sahara" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/merzouga-sahara" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/destinations/chefchaouen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/chefchaouen" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/chefchaouen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/chefchaouen" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/destinations/chefchaouen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/chefchaouen" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/chefchaouen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/chefchaouen" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/destinations/ait-benhaddou</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/ait-benhaddou" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/ait-benhaddou" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/ait-benhaddou" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/destinations/ait-benhaddou</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/ait-benhaddou" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/ait-benhaddou" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/ait-benhaddou" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/destinations/atlas-mountains</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/atlas-mountains" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/destinations/atlas-mountains</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/atlas-mountains" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
+  </url>
+  <url>
     <loc>https://moroccotripholidays.com/en/airport-transfers/agadir-aga</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/airport-transfers/agadir-aga" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/airport-transfers/agadir-aga" />

@@ -5,11 +5,13 @@ import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
 import { getDestinationBySlug } from '@/data/destinations';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { buildTouristDestinationSchema } from '@/seo/schemas';
+import { useLocale } from '@/i18n/LocaleContext';
 import { Page } from './page-shell';
 
 export default function DestinationDetailPage() {
 	const { slug } = useParams();
-	const destination = getDestinationBySlug(slug);
+	const lang = useLocale();
+	const destination = getDestinationBySlug(slug, lang);
 
 	if (!destination) return <Navigate to={ROUTE_PATHS.destinations} replace />;
 

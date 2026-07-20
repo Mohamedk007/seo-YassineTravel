@@ -7,7 +7,7 @@ import { Stars } from '@/components/site/Typography';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs, getReviews } from '@/data/content';
-import { DESTINATIONS, DESTINATION_HIGHLIGHTS } from '@/data/destinations';
+import { getDestinationHighlights, getDestinations } from '@/data/destinations';
 import { IMG } from '@/data/images';
 import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
 import {
@@ -59,6 +59,9 @@ export function About() {
 }
 
 export function Destinations() {
+	const lang = useLocale();
+	const DESTINATIONS = getDestinations(lang);
+	const DESTINATION_HIGHLIGHTS = getDestinationHighlights(lang);
 	return (
 		<Page
 			title={DESTINATIONS_PAGE.title}
