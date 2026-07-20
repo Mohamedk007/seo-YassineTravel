@@ -1,5 +1,5 @@
 import { IMG } from '../images';
-import { BLOG_PAGE_POSTS, BLOG_POSTS, getBlogPostBySlug } from '@/data/blog';
+import { BLOG_PAGE_POSTS, BLOG_POSTS, getBlogPostBySlug, getBlogPosts } from '@/data/blog';
 
 export const ABOUT_PAGE = {
 	title: 'A family of Moroccan storytellers',
@@ -82,4 +82,4 @@ export const CONTACT_PAGE = {
 	formSubtitle: "We'll craft your free itinerary within 24 hours.",
 };
 
-export { BLOG_POSTS, getBlogPostBySlug };
+export { BLOG_POSTS, getBlogPostBySlug, getBlogPosts };

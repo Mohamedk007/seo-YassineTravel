@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, User } from 'lucide-react';
 import { getBlogPostBySlug } from '@/data/editorial';
+import { useLocale } from '@/i18n/LocaleContext';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { buildBlogPostingSchema } from '@/seo/schemas';
 import { Page } from './page-shell';
@@ -93,7 +94,8 @@ function InternalLinks({ links }) {
 
 export default function BlogArticlePage() {
 	const { slug } = useParams();
-	const post = getBlogPostBySlug(slug);
+	const lang = useLocale();
+	const post = getBlogPostBySlug(slug, lang);
 
 	if (!post) return <Navigate to={ROUTE_PATHS.blog} replace />;
 
