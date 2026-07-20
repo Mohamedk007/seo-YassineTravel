@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Award, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import { CONTACT, waLink } from '@/data/contact';
-import { AWARDS } from '@/data/content';
+import { getAwards } from '@/data/content';
 import { FOOTER_COMPANY_LINKS, FOOTER_TOUR_LINKS } from '@/data/route-config';
 import { FOOTER_CONFIG, SITE_BRAND } from '@/data/site-config';
+import { useLocale } from '@/i18n/LocaleContext';
 import { Newsletter } from './LeadForm';
 
 function FooterCol({ title, links, t }) {
@@ -27,6 +28,8 @@ function FooterCol({ title, links, t }) {
 
 export function Footer() {
 	const { t } = useTranslation();
+	const lang = useLocale();
+	const AWARDS = getAwards(lang);
 	return (
 		<footer className="bg-ink text-white/80">
 			<div className="border-b border-white/10">

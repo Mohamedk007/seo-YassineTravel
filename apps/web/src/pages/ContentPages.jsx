@@ -6,7 +6,7 @@ import { Reveal } from '@/components/site/Reveal';
 import { Stars } from '@/components/site/Typography';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
-import { FAQS, REVIEWS } from '@/data/content';
+import { getFaqs, getReviews } from '@/data/content';
 import { DESTINATIONS, DESTINATION_HIGHLIGHTS } from '@/data/destinations';
 import { IMG } from '@/data/images';
 import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
@@ -129,6 +129,8 @@ export function Gallery() {
 }
 
 export function Reviews() {
+	const lang = useLocale();
+	const REVIEWS = getReviews(lang);
 	return (
 		<Page
 			title={REVIEWS_PAGE.title}
@@ -167,6 +169,8 @@ export function Reviews() {
 }
 
 export function Faq() {
+	const lang = useLocale();
+	const FAQS = getFaqs(lang);
 	return (
 		<Page
 			title={FAQ_PAGE.title}
