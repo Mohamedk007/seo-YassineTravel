@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moroccotripholidays.com/sitemap.xml
+Sitemap: https://moroccotripholidays.com/sitemap-index.xml
