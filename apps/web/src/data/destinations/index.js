@@ -1,34 +1,21 @@
-import { slugify } from '@/lib/slug';
-import { aitBenhaddouDestination } from './ait-benhaddou';
-import { atlasMountainsDestination } from './atlas-mountains';
-import { chefchaouenDestination } from './chefchaouen';
-import { fesDestination } from './fes';
-import { marrakechDestination } from './marrakech';
-import { merzougaSaharaDestination } from './merzouga-sahara';
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { DESTINATION_HIGHLIGHTS as EN_DESTINATIONS } from './en';
+import { DESTINATION_HIGHLIGHTS as FR_DESTINATIONS } from './fr';
 
-export const DESTINATION_HIGHLIGHTS = [
-	marrakechDestination,
-	fesDestination,
-	merzougaSaharaDestination,
-	chefchaouenDestination,
-	aitBenhaddouDestination,
-	atlasMountainsDestination,
-];
+const DESTINATIONS_BY_LANG = { en: EN_DESTINATIONS, fr: FR_DESTINATIONS };
 
-export const DESTINATIONS = DESTINATION_HIGHLIGHTS.map((destination) => ({
-	...destination,
-	slug: slugify(destination.name),
-}));
-
-export function getDestinationBySlug(slug) {
-	return DESTINATIONS.find((destination) => destination.slug === slug);
+export function getDestinationHighlights(lang = DEFAULT_LANGUAGE) {
+	return DESTINATIONS_BY_LANG[lang] || DESTINATIONS_BY_LANG[DEFAULT_LANGUAGE];
 }
 
-export {
-	aitBenhaddouDestination,
-	atlasMountainsDestination,
-	chefchaouenDestination,
-	fesDestination,
-	marrakechDestination,
-	merzougaSaharaDestination,
-};
+export function getDestinations(lang = DEFAULT_LANGUAGE) {
+	return getDestinationHighlights(lang).map((destination) => ({ ...destination, slug: destination.id }));
+}
+
+export function getDestinationBySlug(slug, lang = DEFAULT_LANGUAGE) {
+	return getDestinations(lang).find((destination) => destination.slug === slug);
+}
+
+// Kept for call sites that haven't been made locale-aware yet; always English.
+export const DESTINATION_HIGHLIGHTS = EN_DESTINATIONS;
+export const DESTINATIONS = getDestinations(DEFAULT_LANGUAGE);

@@ -7,26 +7,19 @@ import { Stars } from '@/components/site/Typography';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs, getReviews } from '@/data/content';
-import { DESTINATIONS, DESTINATION_HIGHLIGHTS } from '@/data/destinations';
+import { getDestinationHighlights, getDestinations } from '@/data/destinations';
 import { IMG } from '@/data/images';
 import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
-import {
-	ABOUT_PAGE,
-	BLOG_PAGE,
-	CONTACT_PAGE,
-	DESTINATIONS_PAGE,
-	FAQ_PAGE,
-	GALLERY_PAGE,
-	REVIEWS_PAGE,
-	TRAVEL_GUIDE_PAGE,
-	getBlogPosts,
-} from '@/data/editorial';
+import { getBlogPosts } from '@/data/blog';
+import { getEditorialPage } from '@/data/editorial';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page, Prose } from './page-shell';
 
 export function About() {
+	const lang = useLocale();
+	const ABOUT_PAGE = getEditorialPage('ABOUT_PAGE', lang);
 	return (
 		<Page
 			title={ABOUT_PAGE.title}
@@ -59,6 +52,10 @@ export function About() {
 }
 
 export function Destinations() {
+	const lang = useLocale();
+	const DESTINATIONS = getDestinations(lang);
+	const DESTINATION_HIGHLIGHTS = getDestinationHighlights(lang);
+	const DESTINATIONS_PAGE = getEditorialPage('DESTINATIONS_PAGE', lang);
 	return (
 		<Page
 			title={DESTINATIONS_PAGE.title}
@@ -105,6 +102,8 @@ export function Destinations() {
 }
 
 export function Gallery() {
+	const lang = useLocale();
+	const GALLERY_PAGE = getEditorialPage('GALLERY_PAGE', lang);
 	return (
 		<Page
 			title={GALLERY_PAGE.title}
@@ -131,6 +130,7 @@ export function Gallery() {
 export function Reviews() {
 	const lang = useLocale();
 	const REVIEWS = getReviews(lang);
+	const REVIEWS_PAGE = getEditorialPage('REVIEWS_PAGE', lang);
 	return (
 		<Page
 			title={REVIEWS_PAGE.title}
@@ -171,6 +171,7 @@ export function Reviews() {
 export function Faq() {
 	const lang = useLocale();
 	const FAQS = getFaqs(lang);
+	const FAQ_PAGE = getEditorialPage('FAQ_PAGE', lang);
 	return (
 		<Page
 			title={FAQ_PAGE.title}
@@ -197,6 +198,7 @@ export function Faq() {
 export function Blog() {
 	const lang = useLocale();
 	const posts = getBlogPosts(lang);
+	const BLOG_PAGE = getEditorialPage('BLOG_PAGE', lang);
 
 	return (
 		<Page
@@ -237,6 +239,8 @@ export function Blog() {
 }
 
 export function TravelGuide() {
+	const lang = useLocale();
+	const TRAVEL_GUIDE_PAGE = getEditorialPage('TRAVEL_GUIDE_PAGE', lang);
 	return (
 		<Page
 			title={TRAVEL_GUIDE_PAGE.title}
@@ -265,6 +269,8 @@ export function TravelGuide() {
 }
 
 export function Contact() {
+	const lang = useLocale();
+	const CONTACT_PAGE = getEditorialPage('CONTACT_PAGE', lang);
 	return (
 		<Page
 			title={CONTACT_PAGE.title}

@@ -52,7 +52,7 @@ export function AppRoutes() {
 					<Route
 						key={collection.routeKey}
 						path={ROUTE_PATHS[collection.routeKey]}
-						element={<ToursListing {...collection} />}
+						element={<ToursListing routeKey={collection.routeKey} />}
 					/>
 				))}
 				{SERVICE_PAGE_ROUTES.map((entry) => (

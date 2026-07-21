@@ -4,19 +4,16 @@ import { Link } from 'react-router-dom';
 import { LeadForm } from '@/components/site/LeadForm';
 import { WhatsAppCtaButton } from '@/components/site/WhatsAppCtaButton';
 import { AIRPORTS } from '@/data/airports';
-import {
-	AIRPORT_TRANSFER_FEATURES,
-	AIRPORT_TRANSFER_PAGE,
-	CUSTOM_TOUR_STEPS,
-	CUSTOM_TOURS_PAGE,
-	PRIVATE_DRIVER_FEATURES,
-	PRIVATE_DRIVER_PAGE,
-} from '@/data/services';
+import { getServicesContent } from '@/data/services';
 import { ROUTE_PATHS } from '@/data/route-config';
 import { buildItemListSchema, buildServiceSchema } from '@/seo/schemas';
+import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page } from './page-shell';
 
 export function AirportTransfers() {
+	const lang = useLocale();
+	const AIRPORT_TRANSFER_PAGE = getServicesContent('AIRPORT_TRANSFER_PAGE', lang);
+	const AIRPORT_TRANSFER_FEATURES = getServicesContent('AIRPORT_TRANSFER_FEATURES', lang);
 	return (
 		<Page
 			title={AIRPORT_TRANSFER_PAGE.title}
@@ -87,6 +84,9 @@ export function AirportTransfers() {
 }
 
 export function PrivateDrivers() {
+	const lang = useLocale();
+	const PRIVATE_DRIVER_PAGE = getServicesContent('PRIVATE_DRIVER_PAGE', lang);
+	const PRIVATE_DRIVER_FEATURES = getServicesContent('PRIVATE_DRIVER_FEATURES', lang);
 	return (
 		<Page
 			title={PRIVATE_DRIVER_PAGE.title}
@@ -121,6 +121,9 @@ export function PrivateDrivers() {
 }
 
 export function CustomTours() {
+	const lang = useLocale();
+	const CUSTOM_TOURS_PAGE = getServicesContent('CUSTOM_TOURS_PAGE', lang);
+	const CUSTOM_TOUR_STEPS = getServicesContent('CUSTOM_TOUR_STEPS', lang);
 	return (
 		<Page
 			title={CUSTOM_TOURS_PAGE.title}

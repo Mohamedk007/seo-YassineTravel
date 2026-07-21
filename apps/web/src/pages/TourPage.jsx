@@ -12,8 +12,8 @@ import { IMG } from '@/data/images';
 import { TOUR_INTERNAL_LINKS } from '@/data/internal-links';
 import { useLocale } from '@/i18n/LocaleContext';
 import { ROUTE_PATHS } from '../data/route-config';
-import { EXCLUDED, INCLUDED, TOURS } from '@/data/tours/catalog';
-import { getRelatedTours, getTourBySlug, getToursByCategory } from '@/data/tours/index';
+import { getExcluded, getIncluded, getTours } from '@/data/tours/catalog';
+import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey } from '@/data/tours/index';
 import { buildFaqSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
 import { TourCard } from '../components/tours/TourCard';
 import { CTA, MiniReviews } from './page-shell';
@@ -51,11 +51,13 @@ export function TourDetail() {
 	}, []);
 
 	const { slug } = useParams();
-	const tour = getTourBySlug(slug);
+	const tour = getTourBySlug(slug, lang);
 
 	if (!tour) return <Navigate to={ROUTE_PATHS.tours} replace />;
 
-	const related = getRelatedTours(slug);
+	const related = getRelatedTours(slug, lang);
+	const INCLUDED = getIncluded(lang);
+	const EXCLUDED = getExcluded(lang);
 	const priceRows = [
 		['2 travellers', `€${tour.price.toLocaleString()}`, 'per person'],
 		['3–4 travellers', `€${Math.round(tour.price * 0.85).toLocaleString()}`, 'per person'],
@@ -250,10 +252,13 @@ export function TourDetail() {
 	);
 }
 
-export function ToursListing({ category, title, subtitle, image, intro }) {
+export function ToursListing({ routeKey }) {
 	const location = useLocation();
-	const list = getToursByCategory(category);
-	const shown = list.length ? list : TOURS;
+	const lang = useLocale();
+	const collection = getTourCollectionByRouteKey(routeKey, lang) || {};
+	const { title, subtitle, image, intro, categoryKey } = collection;
+	const list = getToursByCategory(categoryKey, lang);
+	const shown = list.length ? list : getTours(lang);
 
 	return (
 		<Layout>

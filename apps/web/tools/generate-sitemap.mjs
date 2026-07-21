@@ -28,7 +28,7 @@ function getStaticPaths() {
 }
 
 async function getTourPaths() {
-	const catalogPath = resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.js');
+	const catalogPath = resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.en.js');
 	const source = await readFile(catalogPath, 'utf8');
 	const slugs = [...source.matchAll(/slug:\s*'([^']+)'/g)].map((match) => match[1]);
 	return slugs.map((slug) => `/tour/${slug}`);
@@ -53,10 +53,10 @@ async function getBlogPaths() {
 }
 
 async function getDestinationPaths() {
-	const destinationPath = resolve(process.cwd(), 'src', 'data', 'destinations', 'index.js');
+	const destinationPath = resolve(process.cwd(), 'src', 'data', 'destinations', 'en.js');
 	const source = await readFile(destinationPath, 'utf8');
-	const names = [...source.matchAll(/name:\s*'([^']+)'/g)].map((match) => match[1]);
-	return names.map((name) => `/destinations/${slugify(name)}`);
+	const ids = [...source.matchAll(/id:\s*'([^']+)'/g)].map((match) => match[1]);
+	return ids.map((id) => `/destinations/${id}`);
 }
 
 async function getAirportPaths() {
