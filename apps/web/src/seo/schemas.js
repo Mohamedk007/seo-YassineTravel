@@ -29,6 +29,57 @@ export function buildTravelAgencySchema() {
 		description: SITE_BRAND.seoDescription,
 		telephone: CONTACT.phone,
 		email: CONTACT.email,
+		aggregateRating: buildAggregateRatingSchema(),
+	};
+}
+
+// Site-wide rating (4.9/5, 1,200+ reviews) is the one figure we can stand behind —
+// it's not split out per tour anywhere in the data, so it is only ever attached
+// to the Organization/TravelAgency, never fabricated per individual tour.
+export function buildAggregateRatingSchema({ ratingValue = '4.9', reviewCount = 1200, bestRating = '5' } = {}) {
+	return {
+		'@type': 'AggregateRating',
+		ratingValue,
+		reviewCount,
+		bestRating,
+	};
+}
+
+// `reviews` is the REVIEWS array from data/content (real, attributed TripAdvisor
+// testimonials). `itemReviewedName` defaults to the agency itself since reviews
+// aren't tied to a specific tour in the data.
+export function buildReviewSchema(reviews, itemReviewedName = SITE_BRAND.name) {
+	if (!reviews || reviews.length === 0) return null;
+
+	return reviews.map((review) => ({
+		'@context': 'https://schema.org',
+		'@type': 'Review',
+		itemReviewed: {
+			'@type': 'TravelAgency',
+			name: itemReviewedName,
+		},
+		author: {
+			'@type': 'Person',
+			name: review.name,
+		},
+		reviewBody: review.text,
+		publisher: {
+			'@type': 'Organization',
+			name: review.country,
+		},
+	}));
+}
+
+export function buildImageObjectSchema({ url, caption, width, height }) {
+	if (!url) return null;
+
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'ImageObject',
+		contentUrl: toAbsoluteUrl(url),
+		...(caption ? { caption } : {}),
+		...(width ? { width } : {}),
+		...(height ? { height } : {}),
 	};
 }
 

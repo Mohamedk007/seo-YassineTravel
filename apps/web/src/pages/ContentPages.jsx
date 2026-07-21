@@ -13,7 +13,7 @@ import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
 import { getBlogPosts } from '@/data/blog';
 import { getEditorialPage } from '@/data/editorial';
 import { ROUTE_PATHS } from '@/data/route-config';
-import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
+import { buildFaqSchema, buildItemListSchema, buildReviewSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page, Prose } from './page-shell';
 
@@ -138,10 +138,13 @@ export function Reviews() {
 			image={REVIEWS_PAGE.image}
 			crumb={REVIEWS_PAGE.crumb}
 			pageType="CollectionPage"
-			structuredData={buildItemListSchema(
-				REVIEWS.map((review) => ({ name: `${review.name} review`, url: ROUTE_PATHS.reviews })),
-				REVIEWS_PAGE.title
-			)}
+			structuredData={[
+				buildItemListSchema(
+					REVIEWS.map((review) => ({ name: `${review.name} review`, url: ROUTE_PATHS.reviews })),
+					REVIEWS_PAGE.title
+				),
+				...buildReviewSchema(REVIEWS),
+			]}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
