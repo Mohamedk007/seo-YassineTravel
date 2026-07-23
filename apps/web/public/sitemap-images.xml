@@ -4,7 +4,7 @@
     <loc>https://moroccotripholidays.com/en/tour/imperial-cities-sahara</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/imperial-cities-sahara" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/imperial-cities-sahara" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/villes-imperiales-et-sahara-de-luxe" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/imperial-cities-sahara" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/duneSunset.webp</image:loc>
@@ -12,10 +12,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/tour/imperial-cities-sahara</loc>
+    <loc>https://moroccotripholidays.com/fr/circuit/villes-imperiales-et-sahara-de-luxe</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/imperial-cities-sahara" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/imperial-cities-sahara" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/villes-imperiales-et-sahara-de-luxe" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/imperial-cities-sahara" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/duneSunset.webp</image:loc>
@@ -26,7 +26,7 @@
     <loc>https://moroccotripholidays.com/en/tour/marrakech-merzouga-desert</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/marrakech-merzouga-desert" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/marrakech-merzouga-desert" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/marrakech-merzouga-4-jours-desert" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/marrakech-merzouga-desert" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/camel.webp</image:loc>
@@ -34,10 +34,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/tour/marrakech-merzouga-desert</loc>
+    <loc>https://moroccotripholidays.com/fr/circuit/marrakech-merzouga-4-jours-desert</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/marrakech-merzouga-desert" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/marrakech-merzouga-desert" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/marrakech-merzouga-4-jours-desert" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/marrakech-merzouga-desert" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/camel.webp</image:loc>
@@ -48,7 +48,7 @@
     <loc>https://moroccotripholidays.com/en/tour/marrakech-day-trips</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/marrakech-day-trips" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/marrakech-day-trips" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/excursions-a-la-journee-depuis-marrakech" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/marrakech-day-trips" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/atlas.webp</image:loc>
@@ -56,10 +56,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/tour/marrakech-day-trips</loc>
+    <loc>https://moroccotripholidays.com/fr/circuit/excursions-a-la-journee-depuis-marrakech</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/marrakech-day-trips" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/marrakech-day-trips" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/excursions-a-la-journee-depuis-marrakech" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/marrakech-day-trips" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/atlas.webp</image:loc>
@@ -70,7 +70,7 @@
     <loc>https://moroccotripholidays.com/en/tour/grand-tour-morocco</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/grand-tour-morocco" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/grand-tour-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/grand-tour-du-maroc-14-jours" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/grand-tour-morocco" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/kasbah.webp</image:loc>
@@ -78,10 +78,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/tour/grand-tour-morocco</loc>
+    <loc>https://moroccotripholidays.com/fr/circuit/grand-tour-du-maroc-14-jours</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/tour/grand-tour-morocco" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/tour/grand-tour-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/circuit/grand-tour-du-maroc-14-jours" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/tour/grand-tour-morocco" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/kasbah.webp</image:loc>
@@ -180,7 +180,7 @@
     <loc>https://moroccotripholidays.com/en/destinations/atlas-mountains</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/atlas-mountains" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/montagnes-atlas" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/atlas.webp</image:loc>
@@ -188,10 +188,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/destinations/atlas-mountains</loc>
+    <loc>https://moroccotripholidays.com/fr/destinations/montagnes-atlas</loc>
     <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/atlas-mountains" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/destinations/montagnes-atlas" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/destinations/atlas-mountains" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/atlas.webp</image:loc>
@@ -199,22 +199,22 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/en/blog/luxury-sahara-desert-night</loc>
+    <loc>https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night</loc>
     <lastmod>2026-07-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/luxury-sahara-desert-night" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/luxury-sahara-desert-night" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/guide-ultime-nuit-de-luxe-desert-sahara" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/duneSunset.webp</image:loc>
       <image:caption>The ultimate guide to a luxury Sahara desert night</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/blog/luxury-sahara-desert-night</loc>
+    <loc>https://moroccotripholidays.com/fr/blog/guide-ultime-nuit-de-luxe-desert-sahara</loc>
     <lastmod>2026-07-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/luxury-sahara-desert-night" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/luxury-sahara-desert-night" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/guide-ultime-nuit-de-luxe-desert-sahara" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/duneSunset.webp</image:loc>
       <image:caption>The ultimate guide to a luxury Sahara desert night</image:caption>
@@ -224,7 +224,7 @@
     <loc>https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/3-perfect-days-in-marrakech" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/3-jours-parfaits-a-marrakech" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/marrakech.webp</image:loc>
@@ -232,10 +232,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/blog/3-perfect-days-in-marrakech</loc>
+    <loc>https://moroccotripholidays.com/fr/blog/3-jours-parfaits-a-marrakech</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/3-perfect-days-in-marrakech" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/3-jours-parfaits-a-marrakech" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/3-perfect-days-in-marrakech" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/marrakech.webp</image:loc>
@@ -243,22 +243,22 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/en/blog/food-lovers-journey-through-morocco</loc>
+    <loc>https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco</loc>
     <lastmod>2026-07-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/food-lovers-journey-through-morocco" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/food-lovers-journey-through-morocco" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/voyage-gourmand-a-travers-le-maroc" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/tagine.webp</image:loc>
       <image:caption></image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/blog/food-lovers-journey-through-morocco</loc>
+    <loc>https://moroccotripholidays.com/fr/blog/voyage-gourmand-a-travers-le-maroc</loc>
     <lastmod>2026-07-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/food-lovers-journey-through-morocco" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/food-lovers-journey-through-morocco" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/voyage-gourmand-a-travers-le-maroc" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/a-food-lovers-journey-through-morocco" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/tagine.webp</image:loc>
       <image:caption></image:caption>
@@ -268,7 +268,7 @@
     <loc>https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/why-chefchaouen-belongs-on-your-itinerary" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/pourquoi-chefchaouen-a-sa-place-dans-votre-itineraire" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/chefchaouen.webp</image:loc>
@@ -276,10 +276,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/blog/why-chefchaouen-belongs-on-your-itinerary</loc>
+    <loc>https://moroccotripholidays.com/fr/blog/pourquoi-chefchaouen-a-sa-place-dans-votre-itineraire</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/why-chefchaouen-belongs-on-your-itinerary" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/pourquoi-chefchaouen-a-sa-place-dans-votre-itineraire" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/why-chefchaouen-belongs-on-your-itinerary" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/chefchaouen.webp</image:loc>
@@ -290,7 +290,7 @@
     <loc>https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/best-time-to-visit-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/meilleure-periode-pour-visiter-le-maroc" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/atlas.webp</image:loc>
@@ -298,10 +298,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/blog/best-time-to-visit-morocco</loc>
+    <loc>https://moroccotripholidays.com/fr/blog/meilleure-periode-pour-visiter-le-maroc</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/best-time-to-visit-morocco" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/meilleure-periode-pour-visiter-le-maroc" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/best-time-to-visit-morocco" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/atlas.webp</image:loc>
@@ -312,7 +312,7 @@
     <loc>https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/how-to-choose-the-perfect-riad" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/comment-choisir-le-riad-parfait" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/riad.webp</image:loc>
@@ -320,10 +320,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://moroccotripholidays.com/fr/blog/how-to-choose-the-perfect-riad</loc>
+    <loc>https://moroccotripholidays.com/fr/blog/comment-choisir-le-riad-parfait</loc>
     <lastmod>2026-07-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/how-to-choose-the-perfect-riad" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/blog/comment-choisir-le-riad-parfait" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/blog/how-to-choose-the-perfect-riad" />
     <image:image>
       <image:loc>https://moroccotripholidays.com/images/riad.webp</image:loc>

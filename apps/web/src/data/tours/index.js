@@ -1,8 +1,8 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
-import { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTours } from './catalog';
+import { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTourTranslations, getTours } from './catalog';
 import { TOUR_COLLECTIONS, getTourCollectionByRouteKey, getTourCollections } from './categories';
 
-export { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTours };
+export { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTourTranslations, getTours };
 export { TOUR_COLLECTIONS, getTourCollectionByRouteKey, getTourCollections };
 
 export function getTourBySlug(slug, lang = DEFAULT_LANGUAGE) {
@@ -15,6 +15,12 @@ export function getToursByCategory(categoryKey, lang = DEFAULT_LANGUAGE) {
 	const tours = getTours(lang);
 	if (!categoryKey) return tours;
 	return tours.filter((entry) => entry.categoryKey === categoryKey || entry.category === categoryKey);
+}
+
+// Entity relationship: which tours actually visit a given destination (by stable id).
+export function getToursForDestination(destinationId, lang = DEFAULT_LANGUAGE) {
+	if (!destinationId) return [];
+	return getTours(lang).filter((tour) => tour.destinationIds?.includes(destinationId));
 }
 
 export function getRelatedTours(slug, lang = DEFAULT_LANGUAGE, limit = 3) {

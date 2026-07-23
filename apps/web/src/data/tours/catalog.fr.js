@@ -2,7 +2,9 @@ import { IMG } from '../images';
 
 export const TOURS = [
 	{
-		slug: 'imperial-cities-sahara',
+		id: 'imperial-cities-sahara',
+		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
+		slug: 'villes-imperiales-et-sahara-de-luxe',
 		categoryKey: 'luxury-tours',
 		title: 'Villes impériales & Sahara de luxe en 10 jours',
 		category: 'Circuits de luxe',
@@ -32,7 +34,9 @@ export const TOURS = [
 		],
 	},
 	{
-		slug: 'marrakech-merzouga-desert',
+		id: 'marrakech-merzouga-desert',
+		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
+		slug: 'marrakech-merzouga-4-jours-desert',
 		categoryKey: 'desert-tours',
 		title: 'Marrakech - Merzouga : 4 jours dans le désert',
 		category: 'Circuits désert',
@@ -55,7 +59,9 @@ export const TOURS = [
 		],
 	},
 	{
-		slug: 'private-fes-city',
+		id: 'private-fes-city',
+		destinationIds: ['fes'],
+		slug: 'decouverte-culturelle-privee-de-fes',
 		categoryKey: 'private-tours',
 		title: 'Découverte culturelle privée de Fès',
 		category: 'Circuits privés',
@@ -77,7 +83,9 @@ export const TOURS = [
 		],
 	},
 	{
-		slug: 'marrakech-day-trips',
+		id: 'marrakech-day-trips',
+		destinationIds: ['marrakech', 'atlas-mountains'],
+		slug: 'excursions-a-la-journee-depuis-marrakech',
 		categoryKey: 'day-trips',
 		title: 'Collection d\'excursions à la journée depuis Marrakech',
 		category: 'Excursions à la journée',
@@ -99,7 +107,9 @@ export const TOURS = [
 		],
 	},
 	{
-		slug: 'day-Trip-to-Essaouira-from-Marrakech',
+		id: 'essaouira-day-trip',
+		destinationIds: ['marrakech'],
+		slug: 'excursion-a-essaouira-depuis-marrakech',
 		categoryKey: 'day-trips',
 		title: 'Excursion à Essaouira depuis Marrakech',
 		category: 'Excursions à la journée',
@@ -125,7 +135,9 @@ export const TOURS = [
 		],
 	},
 	{
-		slug: 'grand-tour-morocco',
+		id: 'grand-tour-morocco',
+		destinationIds: ['marrakech', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
+		slug: 'grand-tour-du-maroc-14-jours',
 		categoryKey: 'luxury-tours',
 		title: 'Grand tour du Maroc en 14 jours',
 		category: 'Circuits de luxe',
@@ -149,7 +161,9 @@ export const TOURS = [
 		],
 	},
 	{
-		slug: 'agafay-luxury-camp',
+		id: 'agafay-luxury-camp',
+		destinationIds: ['marrakech'],
+		slug: 'nuit-de-luxe-desert-agafay',
 		categoryKey: 'desert-tours',
 		title: 'Nuit de luxe dans le désert d\'Agafay',
 		category: 'Circuits désert',

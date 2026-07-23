@@ -1,14 +1,57 @@
 import { execSync } from 'node:child_process';
 import { copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { ROUTE_PATHS } from '../src/data/route-config.js';
 
 const BASE_URL = 'https://moroccotripholidays.com';
-// Kept as a local constant (rather than importing src/i18n/config.js) so this
-// Node build script doesn't depend on browser-only runtime modules.
-// Keep in sync with SUPPORTED_LANGUAGES in src/i18n/config.js.
+// Route paths and supported languages are duplicated here (rather than imported
+// from src/data/route-config.js / src/i18n/config.js) so this plain Node build
+// script never depends on browser-only/aliased runtime modules. Keep in sync.
 const SUPPORTED_LANGUAGES = ['en', 'fr'];
 const DEFAULT_LANGUAGE = 'en';
+
+const STATIC_PATHS_BY_LANG = {
+	en: {
+		home: '/',
+		about: '/about',
+		tours: '/tours',
+		luxuryTours: '/luxury-tours',
+		privateTours: '/private-tours',
+		desertTours: '/desert-tours',
+		dayTrips: '/day-trips',
+		customTours: '/custom-tours',
+		destinations: '/destinations',
+		blog: '/blog',
+		travelGuide: '/travel-guide',
+		reviews: '/reviews',
+		gallery: '/gallery',
+		faq: '/faq',
+		contact: '/contact',
+		airportTransfers: '/airport-transfers',
+		privateDrivers: '/private-drivers',
+	},
+	fr: {
+		home: '/',
+		about: '/a-propos',
+		tours: '/circuits',
+		luxuryTours: '/circuits-de-luxe',
+		privateTours: '/circuits-prives',
+		desertTours: '/circuits-desert',
+		dayTrips: '/excursions-a-la-journee',
+		customTours: '/circuits-sur-mesure',
+		destinations: '/destinations',
+		blog: '/blog',
+		travelGuide: '/guide-de-voyage',
+		reviews: '/avis',
+		gallery: '/galerie',
+		faq: '/faq',
+		contact: '/contact',
+		airportTransfers: '/transferts-aeroport',
+		privateDrivers: '/chauffeurs-prives',
+	},
+};
+const TOUR_DETAIL_PREFIX = { en: '/tour', fr: '/circuit' };
+const AIRPORT_DETAIL_PREFIX = { en: '/airport-transfers', fr: '/transferts-aeroport' };
+
 const PUBLIC_DIR = resolve(process.cwd(), 'public');
 
 function toAbsoluteUrl(pathname, lang) {
@@ -25,15 +68,6 @@ function escapeXml(value) {
 		.replaceAll("'", '&apos;');
 }
 
-function slugify(input = '') {
-	return String(input)
-		.toLowerCase()
-		.trim()
-		.replace(/[^a-z0-9\s-]/g, '')
-		.replace(/\s+/g, '-')
-		.replace(/-+/g, '-');
-}
-
 // Real last-modified date from git history for a given source file — reflects
 // when that content actually last changed, rather than a fabricated "today".
 function lastmodFromGit(relativeFilePath) {
@@ -47,53 +81,96 @@ function lastmodFromGit(relativeFilePath) {
 	}
 }
 
+// Parses `{ id: '...', slug: '...', ... }` object blocks out of a data file's
+// source text (regex-based, since these files are plain JS literals, not JSON).
+function parseBlocks(source) {
+	return source.split(/\n\t\{/).slice(1);
+}
+
 async function getStaticPaths() {
 	const lastmod = lastmodFromGit('apps/web/src/data/route-config.js');
-	return Object.values(ROUTE_PATHS)
-		.filter((path) => !path.includes(':'))
-		.map((path) => ({ path, lastmod }));
+	const routeKeys = Object.keys(STATIC_PATHS_BY_LANG[DEFAULT_LANGUAGE]);
+	return routeKeys.map((key) => ({
+		pathByLang: Object.fromEntries(SUPPORTED_LANGUAGES.map((lang) => [lang, STATIC_PATHS_BY_LANG[lang][key]])),
+		lastmod,
+	}));
+}
+
+// Reads id+slug pairs from an en/fr pair of data files and joins them by id
+// (the stable, language-independent key) into one entry per piece of content,
+// each carrying its own per-language path.
+async function getLocalizedEntries({ enFile, frFile, buildPath, extraFields = () => ({}) }) {
+	const enSource = await readFile(enFile, 'utf8');
+	const frSource = await readFile(frFile, 'utf8');
+	const enBlocks = parseBlocks(enSource);
+	const frBlocks = parseBlocks(frSource);
+
+	const frById = new Map();
+	for (const block of frBlocks) {
+		const id = block.match(/id:\s*'([^']+)'/)?.[1];
+		const slug = block.match(/slug:\s*'([^']+)'/)?.[1];
+		if (id && slug) frById.set(id, slug);
+	}
+
+	return enBlocks
+		.map((block) => {
+			const id = block.match(/id:\s*'([^']+)'/)?.[1];
+			const enSlug = block.match(/slug:\s*'([^']+)'/)?.[1];
+			const frSlug = id ? frById.get(id) : undefined;
+			if (!id || !enSlug || !frSlug) return null;
+
+			return {
+				pathByLang: { en: buildPath('en', enSlug), fr: buildPath('fr', frSlug) },
+				...extraFields(block),
+			};
+		})
+		.filter(Boolean);
 }
 
 async function getTourEntries() {
-	const catalogFile = resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.en.js');
-	const source = await readFile(catalogFile, 'utf8');
 	const lastmod = lastmodFromGit('apps/web/src/data/tours/catalog.en.js');
-	const blocks = source.split(/\n\t\{/).slice(1);
-	return blocks.map((block) => {
-		const slug = block.match(/slug:\s*'([^']+)'/)?.[1];
-		const image = block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1];
-		const title = block.match(/title:\s*'([^']+)'/)?.[1];
-		return { path: `/tour/${slug}`, lastmod, image, imageCaption: title };
+	return getLocalizedEntries({
+		enFile: resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.en.js'),
+		frFile: resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.fr.js'),
+		buildPath: (lang, slug) => `${TOUR_DETAIL_PREFIX[lang]}/${slug}`,
+		extraFields: (block) => ({
+			lastmod,
+			image: block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1],
+			imageCaption: block.match(/title:\s*'([^']+)'/)?.[1],
+		}),
 	});
 }
 
 async function getBlogEntries() {
-	const postsFile = resolve(process.cwd(), 'src', 'data', 'blog', 'posts.en.js');
-	const source = await readFile(postsFile, 'utf8');
 	const gitLastmod = lastmodFromGit('apps/web/src/data/blog/posts.en.js');
-	const blocks = source.split(/\n\t\{/).slice(1);
-	return blocks.map((block) => {
-		const id = block.match(/id:\s*'([^']+)'/)?.[1];
-		const image = block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1];
-		const title = block.match(/title:\s*'([^']+)'/)?.[1];
-		const dateModified = block.match(/dateModified:\s*'([^']+)'/)?.[1];
-		return { path: `/blog/${id}`, lastmod: dateModified || gitLastmod, image, imageCaption: title };
+	return getLocalizedEntries({
+		enFile: resolve(process.cwd(), 'src', 'data', 'blog', 'posts.en.js'),
+		frFile: resolve(process.cwd(), 'src', 'data', 'blog', 'posts.fr.js'),
+		buildPath: (lang, slug) => `${STATIC_PATHS_BY_LANG[lang].blog}/${slug}`,
+		extraFields: (block) => ({
+			lastmod: block.match(/dateModified:\s*'([^']+)'/)?.[1] || gitLastmod,
+			image: block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1],
+			imageCaption: block.match(/title:\s*'([^']+)'/)?.[1],
+		}),
 	});
 }
 
 async function getDestinationEntries() {
-	const destinationFile = resolve(process.cwd(), 'src', 'data', 'destinations', 'en.js');
-	const source = await readFile(destinationFile, 'utf8');
 	const lastmod = lastmodFromGit('apps/web/src/data/destinations/en.js');
-	const blocks = source.split(/\n\t\{/).slice(1);
-	return blocks.map((block) => {
-		const id = block.match(/id:\s*'([^']+)'/)?.[1];
-		const image = block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1];
-		const name = block.match(/name:\s*'([^']+)'/)?.[1];
-		return { path: `/destinations/${id}`, lastmod, image, imageCaption: name };
+	return getLocalizedEntries({
+		enFile: resolve(process.cwd(), 'src', 'data', 'destinations', 'en.js'),
+		frFile: resolve(process.cwd(), 'src', 'data', 'destinations', 'fr.js'),
+		buildPath: (lang, slug) => `${STATIC_PATHS_BY_LANG[lang].destinations}/${slug}`,
+		extraFields: (block) => ({
+			lastmod,
+			image: block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1],
+			imageCaption: block.match(/name:\s*'([^']+)'/)?.[1],
+		}),
 	});
 }
 
+// Airport content itself isn't translated (mostly proper nouns), but the
+// /airport-transfers vs /transferts-aeroport prefix still needs to change per language.
 async function getAirportEntries() {
 	const airportsDir = resolve(process.cwd(), 'src', 'data', 'airports');
 	const files = await readdir(airportsDir);
@@ -104,7 +181,12 @@ async function getAirportEntries() {
 		const source = await readFile(resolve(airportsDir, file), 'utf8');
 		const slug = source.match(/slug:\s*'([^']+)'/)?.[1];
 		const lastmod = lastmodFromGit(`apps/web/src/data/airports/${file}`);
-		if (slug) entries.push({ path: `/airport-transfers/${slug}`, lastmod });
+		if (slug) {
+			entries.push({
+				pathByLang: Object.fromEntries(SUPPORTED_LANGUAGES.map((lang) => [lang, `${AIRPORT_DETAIL_PREFIX[lang]}/${slug}`])),
+				lastmod,
+			});
+		}
 	}
 
 	return entries;
@@ -140,17 +222,17 @@ async function resolveImageUrl(imgKey) {
 	}
 }
 
-function urlBlock({ path, lastmod, imageCaption, imageUrl }) {
+function urlBlock({ pathByLang, lastmod, imageCaption, imageUrl }) {
 	return SUPPORTED_LANGUAGES.map((lang) => {
 		const alternates = SUPPORTED_LANGUAGES.map(
-			(altLang) => `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${escapeXml(toAbsoluteUrl(path, altLang))}" />`
+			(altLang) => `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${escapeXml(toAbsoluteUrl(pathByLang[altLang], altLang))}" />`
 		).join('\n');
-		const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(toAbsoluteUrl(path, DEFAULT_LANGUAGE))}" />`;
+		const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(toAbsoluteUrl(pathByLang[DEFAULT_LANGUAGE], DEFAULT_LANGUAGE))}" />`;
 		const lastmodTag = lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : '';
 		const imageTag = imageUrl
 			? `    <image:image>\n      <image:loc>${escapeXml(new URL(imageUrl, BASE_URL).toString())}</image:loc>\n      <image:caption>${escapeXml(imageCaption || '')}</image:caption>\n    </image:image>\n`
 			: '';
-		return `  <url>\n    <loc>${escapeXml(toAbsoluteUrl(path, lang))}</loc>\n${lastmodTag}${alternates}\n${xDefault}\n${imageTag}  </url>`;
+		return `  <url>\n    <loc>${escapeXml(toAbsoluteUrl(pathByLang[lang], lang))}</loc>\n${lastmodTag}${alternates}\n${xDefault}\n${imageTag}  </url>`;
 	}).join('\n');
 }
 
@@ -162,8 +244,9 @@ function wrapUrlset(urlBlocks, { withImageNamespace = false } = {}) {
 async function writeSitemap(filename, entries, options) {
 	const seen = new Set();
 	const uniqueEntries = entries.filter((entry) => {
-		if (seen.has(entry.path)) return false;
-		seen.add(entry.path);
+		const key = entry.pathByLang[DEFAULT_LANGUAGE];
+		if (seen.has(key)) return false;
+		seen.add(key);
 		return true;
 	});
 	const blocks = uniqueEntries.map((entry) => urlBlock(entry));
@@ -190,7 +273,12 @@ const destinationEntries = await getDestinationEntries();
 const airportEntries = await getAirportEntries();
 // No individual review URLs exist (reviews live on one /reviews page, not one
 // page per review), so the "reviews" sitemap covers that single collection page.
-const reviewEntries = [{ path: ROUTE_PATHS.reviews, lastmod: staticEntries[0]?.lastmod }];
+const reviewEntries = [
+	{
+		pathByLang: Object.fromEntries(SUPPORTED_LANGUAGES.map((lang) => [lang, STATIC_PATHS_BY_LANG[lang].reviews])),
+		lastmod: staticEntries[0]?.lastmod,
+	},
+];
 
 const pagesCount = await writeSitemap('sitemap-pages.xml', [...staticEntries, ...airportEntries]);
 const toursCount = await writeSitemap('sitemap-tours.xml', tourEntries);

@@ -8,11 +8,13 @@ import { Stars } from '@/components/site/Typography';
 import { getReviews } from '@/data/content';
 import { IMG } from '@/data/images';
 import { waLink } from '@/data/contact';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getRoutePaths } from '@/data/route-config';
 import { PAGE_SHELL_CONFIG } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 
 export function CTA() {
+	const lang = useLocale();
+	const ROUTE_PATHS = getRoutePaths(lang);
 	return (
 		<section className="bg-primary py-16 text-primary-foreground">
 			<div className="mx-auto max-w-[72rem] px-5 text-center lg:px-8">
@@ -62,8 +64,10 @@ export function MiniReviews() {
 	);
 }
 
-export function Page({ title, subtitle, image, crumb, children, structuredData, pageType = 'WebPage', breadcrumbItems }) {
+export function Page({ title, subtitle, image, crumb, children, structuredData, pageType = 'WebPage', breadcrumbItems, alternateUrls }) {
 	const location = useLocation();
+	const lang = useLocale();
+	const ROUTE_PATHS = getRoutePaths(lang);
 	const resolvedBreadcrumbItems = breadcrumbItems || [
 		{ name: 'Home', url: ROUTE_PATHS.home },
 		{ name: crumb || title, url: location.pathname },
@@ -77,6 +81,7 @@ export function Page({ title, subtitle, image, crumb, children, structuredData, 
 				structuredData={structuredData}
 				pageType={pageType}
 				breadcrumbItems={resolvedBreadcrumbItems}
+				alternateUrls={alternateUrls}
 				preloadImage
 			/>
 			<PageHero title={title} subtitle={subtitle} image={image} crumb={crumb} />

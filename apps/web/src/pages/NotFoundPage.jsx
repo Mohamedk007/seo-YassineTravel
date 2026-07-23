@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Compass } from 'lucide-react';
 import { Layout } from '@/components/site/Layout';
 import { Seo } from '@/components/site/Seo';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getRoutePaths } from '@/data/route-config';
+import { useLocale } from '@/i18n/LocaleContext';
 
 export default function NotFoundPage() {
+	const lang = useLocale();
+	const ROUTE_PATHS = getRoutePaths(lang);
 	return (
 		<Layout>
 			<Seo

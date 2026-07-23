@@ -1,15 +1,28 @@
-import { ROUTE_PATHS } from './route-config';
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { getRoutePaths } from './route-config';
 
-export const TOUR_INTERNAL_LINKS = [
-	{ label: 'Related destinations', to: ROUTE_PATHS.destinations },
-	{ label: 'Airport transfers', to: ROUTE_PATHS.airportTransfers },
-	{ label: 'Travel guides', to: ROUTE_PATHS.travelGuide },
-	{ label: 'Blog articles', to: ROUTE_PATHS.blog },
-];
+export function getTourInternalLinks(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	const isFr = lang === 'fr';
+	return [
+		{ label: isFr ? 'Destinations liées' : 'Related destinations', to: P.destinations },
+		{ label: isFr ? "Transferts aéroport" : 'Airport transfers', to: P.airportTransfers },
+		{ label: isFr ? 'Guides de voyage' : 'Travel guides', to: P.travelGuide },
+		{ label: isFr ? 'Articles du blog' : 'Blog articles', to: P.blog },
+	];
+}
 
-export const DESTINATION_INTERNAL_LINKS = [
-	{ label: 'Browse tours', to: ROUTE_PATHS.tours },
-	{ label: 'Airport transfers', to: ROUTE_PATHS.airportTransfers },
-	{ label: 'Travel guides', to: ROUTE_PATHS.travelGuide },
-	{ label: 'Blog articles', to: ROUTE_PATHS.blog },
-];
+export function getDestinationInternalLinks(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	const isFr = lang === 'fr';
+	return [
+		{ label: isFr ? 'Voir les circuits' : 'Browse tours', to: P.tours },
+		{ label: isFr ? "Transferts aéroport" : 'Airport transfers', to: P.airportTransfers },
+		{ label: isFr ? 'Guides de voyage' : 'Travel guides', to: P.travelGuide },
+		{ label: isFr ? 'Articles du blog' : 'Blog articles', to: P.blog },
+	];
+}
+
+// Kept for call sites that haven't been made locale-aware yet; always English.
+export const TOUR_INTERNAL_LINKS = getTourInternalLinks(DEFAULT_LANGUAGE);
+export const DESTINATION_INTERNAL_LINKS = getDestinationInternalLinks(DEFAULT_LANGUAGE);

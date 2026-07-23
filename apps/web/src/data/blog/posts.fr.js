@@ -1,9 +1,13 @@
 import { IMG } from '../images';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getRoutePaths } from '@/data/route-config';
+
+const ROUTE_PATHS = getRoutePaths('fr');
 
 export const BLOG_PAGE_POSTS = [
 	{
 		id: 'luxury-sahara-desert-night',
+		destinationId: 'merzouga-sahara',
+		slug: 'guide-ultime-nuit-de-luxe-desert-sahara',
 		image: IMG.duneSunset,
 		title: 'Le guide ultime d\'une nuit de luxe dans le désert du Sahara',
 		category: 'Désert',
@@ -63,12 +67,12 @@ export const BLOG_PAGE_POSTS = [
 			{
 				label: 'Marrakech-Merzouga en 4 jours',
 				description: 'Notre circuit phare vers les dunes majestueuses de l\'Erg Chebbi, avec l\'Atlas et les gorges du Todra en chemin.',
-				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'marrakech-merzouga-desert')}`,
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'marrakech-merzouga-4-jours-desert')}`,
 			},
 			{
 				label: 'Nuit de luxe dans le désert d\'Agafay',
 				description: 'Une nuit de luxe dans le désert à seulement 45 minutes de Marrakech — idéal pour les séjours courts.',
-				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'agafay-luxury-camp')}`,
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'nuit-de-luxe-desert-agafay')}`,
 			},
 			{
 				label: 'Tous les circuits désert',
@@ -84,6 +88,8 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: '3-perfect-days-in-marrakech',
+		destinationId: 'marrakech',
+		slug: '3-jours-parfaits-a-marrakech',
 		image: IMG.marrakech,
 		title: '3 jours parfaits à Marrakech',
 		category: 'Guide de ville',
@@ -91,6 +97,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'food-lovers-journey-through-morocco',
+		slug: 'voyage-gourmand-a-travers-le-maroc',
 		image: IMG.tagine,
 		title: 'Un voyage gourmand à travers le Maroc',
 		category: 'Gastronomie',
@@ -98,6 +105,8 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'why-chefchaouen-belongs-on-your-itinerary',
+		destinationId: 'chefchaouen',
+		slug: 'pourquoi-chefchaouen-a-sa-place-dans-votre-itineraire',
 		image: IMG.chefchaouen,
 		title: 'Pourquoi Chefchaouen a sa place dans votre itinéraire',
 		category: 'Destinations',
@@ -105,6 +114,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'best-time-to-visit-morocco',
+		slug: 'meilleure-periode-pour-visiter-le-maroc',
 		image: IMG.atlas,
 		title: 'Meilleure période pour visiter le Maroc',
 		category: 'Préparer son voyage',
@@ -112,6 +122,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'how-to-choose-the-perfect-riad',
+		slug: 'comment-choisir-le-riad-parfait',
 		image: IMG.riad,
 		title: 'Comment choisir le riad parfait',
 		category: 'Luxe',

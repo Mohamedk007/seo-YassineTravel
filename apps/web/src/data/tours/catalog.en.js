@@ -2,6 +2,8 @@ import { IMG } from '../images';
 
 export const TOURS = [
 	{
+		id: 'imperial-cities-sahara',
+		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
 		slug: 'imperial-cities-sahara',
 		categoryKey: 'luxury-tours',
 		title: '10-Day Imperial Cities & Sahara Luxury',
@@ -32,6 +34,8 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'marrakech-merzouga-desert',
+		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
 		slug: 'marrakech-merzouga-desert',
 		categoryKey: 'desert-tours',
 		title: '4-Day Marrakech to Merzouga Desert',
@@ -55,6 +59,8 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'private-fes-city',
+		destinationIds: ['fes'],
 		slug: 'private-fes-city',
 		categoryKey: 'private-tours',
 		title: 'Private Fes Cultural Discovery',
@@ -77,6 +83,8 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'marrakech-day-trips',
+		destinationIds: ['marrakech', 'atlas-mountains'],
 		slug: 'marrakech-day-trips',
 		categoryKey: 'day-trips',
 		title: 'Marrakech Day Trips Collection',
@@ -99,6 +107,8 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'essaouira-day-trip',
+		destinationIds: ['marrakech'],
 		slug: 'day-Trip-to-Essaouira-from-Marrakech',
 		categoryKey: 'day-trips',
 		title: 'Day Trip to Essaouira from Marrakech',
@@ -125,6 +135,8 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'grand-tour-morocco',
+		destinationIds: ['marrakech', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
 		slug: 'grand-tour-morocco',
 		categoryKey: 'luxury-tours',
 		title: '14-Day Grand Tour of Morocco',
@@ -149,6 +161,8 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'agafay-luxury-camp',
+		destinationIds: ['marrakech'],
 		slug: 'agafay-luxury-camp',
 		categoryKey: 'desert-tours',
 		title: 'Agafay Desert Luxury Overnight',

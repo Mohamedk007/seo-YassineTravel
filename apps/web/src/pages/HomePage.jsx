@@ -13,7 +13,7 @@ import { CONTACT, waLink } from '@/data/contact';
 import { getAwards, getFaqs, getReviews } from '@/data/content';
 import { getHomeBenefits, getHomeBookingSteps, getHomePage, getHomeWhyPoints } from '@/data/home';
 import { IMG } from '@/data/images';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getRoutePaths } from '@/data/route-config';
 import { getTours } from '@/data/tours/catalog';
 import { useLocale } from '@/i18n/LocaleContext';
 import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
@@ -38,6 +38,7 @@ export default function HomePage() {
   const HOME_BENEFITS = getHomeBenefits(lang);
   const HOME_WHY_POINTS = getHomeWhyPoints(lang);
   const HOME_BOOKING_STEPS = getHomeBookingSteps(lang);
+  const ROUTE_PATHS = getRoutePaths(lang);
   const featured = getTours(lang).slice(0, HOME_PAGE.popularTours.featuredCount);
   return (
     <Layout>

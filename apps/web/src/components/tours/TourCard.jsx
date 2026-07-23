@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Users } from 'lucide-react';
 import { Reveal } from '@/components/site/Reveal';
 import { IMG } from '@/data/images';
+import { getPath } from '@/data/route-config';
+import { useLocale } from '@/i18n/LocaleContext';
 
 export function TourCard({ tour, delay = 0 }) {
+	const lang = useLocale();
 	return (
 		<Reveal delay={delay} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-xl">
-			<Link to={`/tour/${tour.slug}`} className="block">
+			<Link to={getPath('tourDetail', lang, { slug: tour.slug })} className="block">
 				<div className="relative aspect-[4/3] overflow-hidden">
 					<img
 						src={tour.image}

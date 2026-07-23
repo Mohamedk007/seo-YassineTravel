@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Award, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import { CONTACT, waLink } from '@/data/contact';
 import { getAwards } from '@/data/content';
-import { FOOTER_COMPANY_LINKS, FOOTER_TOUR_LINKS } from '@/data/route-config';
+import { getFooterCompanyLinks, getFooterTourLinks } from '@/data/route-config';
 import { FOOTER_CONFIG, SITE_BRAND } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { Newsletter } from './LeadForm';
@@ -30,6 +30,8 @@ export function Footer() {
 	const { t } = useTranslation();
 	const lang = useLocale();
 	const AWARDS = getAwards(lang);
+	const FOOTER_TOUR_LINKS = getFooterTourLinks(lang);
+	const FOOTER_COMPANY_LINKS = getFooterCompanyLinks(lang);
 	return (
 		<footer className="bg-ink text-white/80">
 			<div className="border-b border-white/10">

@@ -9,11 +9,22 @@ export function getDestinationHighlights(lang = DEFAULT_LANGUAGE) {
 }
 
 export function getDestinations(lang = DEFAULT_LANGUAGE) {
-	return getDestinationHighlights(lang).map((destination) => ({ ...destination, slug: destination.id }));
+	return getDestinationHighlights(lang);
 }
 
 export function getDestinationBySlug(slug, lang = DEFAULT_LANGUAGE) {
 	return getDestinations(lang).find((destination) => destination.slug === slug);
+}
+
+// Finds the same destination (by stable, language-independent `id`) in every
+// language — used for hreflang alternates and the language switcher.
+export function getDestinationTranslations(id) {
+	const result = {};
+	for (const [lang, destinations] of Object.entries(DESTINATIONS_BY_LANG)) {
+		const match = destinations.find((destination) => destination.id === id);
+		if (match) result[lang] = match;
+	}
+	return result;
 }
 
 // Kept for call sites that haven't been made locale-aware yet; always English.

@@ -4,6 +4,8 @@ import { ROUTE_PATHS } from '@/data/route-config';
 export const BLOG_PAGE_POSTS = [
 	{
 		id: 'luxury-sahara-desert-night',
+		destinationId: 'merzouga-sahara',
+		slug: 'the-ultimate-guide-to-a-luxury-sahara-desert-night',
 		image: IMG.duneSunset,
 		title: 'The ultimate guide to a luxury Sahara desert night',
 		category: 'Desert',
@@ -84,6 +86,8 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: '3-perfect-days-in-marrakech',
+		destinationId: 'marrakech',
+		slug: '3-perfect-days-in-marrakech',
 		image: IMG.marrakech,
 		title: '3 perfect days in Marrakech',
 		category: 'City Guide',
@@ -91,6 +95,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'food-lovers-journey-through-morocco',
+		slug: 'a-food-lovers-journey-through-morocco',
 		image: IMG.tagine,
 		title: "A food lover's journey through Morocco",
 		category: 'Food',
@@ -98,6 +103,8 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'why-chefchaouen-belongs-on-your-itinerary',
+		destinationId: 'chefchaouen',
+		slug: 'why-chefchaouen-belongs-on-your-itinerary',
 		image: IMG.chefchaouen,
 		title: 'Why Chefchaouen belongs on your itinerary',
 		category: 'Destinations',
@@ -105,6 +112,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'best-time-to-visit-morocco',
+		slug: 'best-time-to-visit-morocco',
 		image: IMG.atlas,
 		title: 'Best time to visit Morocco',
 		category: 'Planning',
@@ -112,6 +120,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'how-to-choose-the-perfect-riad',
+		slug: 'how-to-choose-the-perfect-riad',
 		image: IMG.riad,
 		title: 'How to choose the perfect riad',
 		category: 'Luxury',
