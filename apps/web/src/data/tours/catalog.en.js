@@ -2,6 +2,7 @@ import { IMG } from '../images';
 
 export const TOURS = [
 	{
+		id: 'imperial-cities-sahara',
 		slug: 'imperial-cities-sahara',
 		categoryKey: 'luxury-tours',
 		title: '10-Day Imperial Cities & Sahara Luxury',
@@ -32,6 +33,7 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'marrakech-merzouga-desert',
 		slug: 'marrakech-merzouga-desert',
 		categoryKey: 'desert-tours',
 		title: '4-Day Marrakech to Merzouga Desert',
@@ -55,6 +57,7 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'private-fes-city',
 		slug: 'private-fes-city',
 		categoryKey: 'private-tours',
 		title: 'Private Fes Cultural Discovery',
@@ -77,6 +80,7 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'marrakech-day-trips',
 		slug: 'marrakech-day-trips',
 		categoryKey: 'day-trips',
 		title: 'Marrakech Day Trips Collection',
@@ -99,6 +103,7 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'essaouira-day-trip',
 		slug: 'day-Trip-to-Essaouira-from-Marrakech',
 		categoryKey: 'day-trips',
 		title: 'Day Trip to Essaouira from Marrakech',
@@ -125,6 +130,7 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'grand-tour-morocco',
 		slug: 'grand-tour-morocco',
 		categoryKey: 'luxury-tours',
 		title: '14-Day Grand Tour of Morocco',
@@ -149,6 +155,7 @@ export const TOURS = [
 		],
 	},
 	{
+		id: 'agafay-luxury-camp',
 		slug: 'agafay-luxury-camp',
 		categoryKey: 'desert-tours',
 		title: 'Agafay Desert Luxury Overnight',

@@ -9,11 +9,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs } from '@/data/content';
 import { IMG } from '@/data/images';
-import { TOUR_INTERNAL_LINKS } from '@/data/internal-links';
+import { getTourInternalLinks } from '@/data/internal-links';
 import { useLocale } from '@/i18n/LocaleContext';
-import { ROUTE_PATHS } from '../data/route-config';
+import { getPath, getRoutePaths } from '../data/route-config';
 import { getExcluded, getIncluded, getTours } from '@/data/tours/catalog';
-import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey } from '@/data/tours/index';
+import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey, getTourTranslations } from '@/data/tours/index';
+import { SITE_BRAND } from '@/data/site-config';
 import { buildFaqSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
 import { TourCard } from '../components/tours/TourCard';
 import { CTA, MiniReviews } from './page-shell';
@@ -52,12 +53,22 @@ export function TourDetail() {
 
 	const { slug } = useParams();
 	const tour = getTourBySlug(slug, lang);
+	const P = getRoutePaths(lang);
 
-	if (!tour) return <Navigate to={ROUTE_PATHS.tours} replace />;
+	if (!tour) return <Navigate to={P.tours} replace />;
 
 	const related = getRelatedTours(slug, lang);
 	const INCLUDED = getIncluded(lang);
 	const EXCLUDED = getExcluded(lang);
+	const tourPath = getPath('tourDetail', lang, { slug: tour.slug });
+	const TOUR_INTERNAL_LINKS = getTourInternalLinks(lang);
+	const tourTranslations = getTourTranslations(tour.id);
+	const alternateUrls = Object.fromEntries(
+		Object.entries(tourTranslations).map(([code, translated]) => {
+			const path = getPath('tourDetail', code, { slug: translated.slug });
+			return [code, `${SITE_BRAND.origin}/${code}${path}`];
+		})
+	);
 	const priceRows = [
 		['2 travellers', `€${tour.price.toLocaleString()}`, 'per person'],
 		['3–4 travellers', `€${Math.round(tour.price * 0.85).toLocaleString()}`, 'per person'],
@@ -71,14 +82,15 @@ export function TourDetail() {
 				description={tour.tagline}
 				pageType="TouristTrip"
 				breadcrumbItems={[
-					{ name: 'Home', url: ROUTE_PATHS.home },
-					{ name: 'Tours', url: ROUTE_PATHS.tours },
-					{ name: tour.title, url: `/tour/${tour.slug}` },
+					{ name: 'Home', url: P.home },
+					{ name: 'Tours', url: P.tours },
+					{ name: tour.title, url: tourPath },
 				]}
 				structuredData={[
-					buildTourSchema(tour, `/tour/${tour.slug}`),
+					buildTourSchema(tour, tourPath),
 					buildFaqSchema(FAQS.slice(0, 4)),
 				]}
+				alternateUrls={alternateUrls}
 			/>
 			<PageHero title={tour.title} subtitle={tour.tagline} image={tour.image} crumb={tour.category} />
 
@@ -255,6 +267,7 @@ export function TourDetail() {
 export function ToursListing({ routeKey }) {
 	const location = useLocation();
 	const lang = useLocale();
+	const P = getRoutePaths(lang);
 	const collection = getTourCollectionByRouteKey(routeKey, lang) || {};
 	const { title, subtitle, image, intro, categoryKey } = collection;
 	const list = getToursByCategory(categoryKey, lang);
@@ -267,12 +280,12 @@ export function ToursListing({ routeKey }) {
 				description={subtitle}
 				pageType="CollectionPage"
 				breadcrumbItems={[
-					{ name: 'Home', url: ROUTE_PATHS.home },
-					{ name: 'Tours', url: ROUTE_PATHS.tours },
+					{ name: 'Home', url: P.home },
+					{ name: 'Tours', url: P.tours },
 					{ name: title, url: location.pathname },
 				]}
 				structuredData={buildItemListSchema(
-					shown.map((entry) => ({ name: entry.title, url: `/tour/${entry.slug}` })),
+					shown.map((entry) => ({ name: entry.title, url: getPath('tourDetail', lang, { slug: entry.slug }) })),
 					title
 				)}
 			/>

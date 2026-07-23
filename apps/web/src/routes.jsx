@@ -8,7 +8,8 @@ const BlogArticlePage = React.lazy(() => import('@/pages/BlogArticlePage'));
 const DestinationPage = React.lazy(() => import('@/pages/DestinationPage'));
 const DestinationDetailPage = React.lazy(() => import('@/pages/DestinationDetailPage'));
 const NotFoundPage = React.lazy(() => import('@/pages/NotFoundPage'));
-import { ROUTE_PATHS } from './data/route-config';
+import { getRoutePaths } from './data/route-config';
+import { useLocale } from '@/i18n/LocaleContext';
 const About = React.lazy(() => import('@/pages/ContentPages').then((mod) => ({ default: mod.About })));
 const Contact = React.lazy(() => import('@/pages/ContentPages').then((mod) => ({ default: mod.Contact })));
 const Faq = React.lazy(() => import('@/pages/ContentPages').then((mod) => ({ default: mod.Faq })));
@@ -39,27 +40,29 @@ const SERVICE_PAGE_ROUTES = [
 ];
 
 export function AppRoutes() {
+	const lang = useLocale();
+	const P = getRoutePaths(lang);
 	return (
 		<React.Suspense fallback={<RouteFallback />}>
 			<Routes>
-				<Route path={ROUTE_PATHS.home} element={<Home />} />
+				<Route path={P.home} element={<Home />} />
 				{CONTENT_PAGE_ROUTES.map((entry) => (
-					<Route key={entry.routeKey} path={ROUTE_PATHS[entry.routeKey]} element={entry.element} />
+					<Route key={entry.routeKey} path={P[entry.routeKey]} element={entry.element} />
 				))}
-				<Route path={ROUTE_PATHS.destinationDetail} element={<DestinationDetailPage />} />
-				<Route path={ROUTE_PATHS.blogArticle} element={<BlogArticlePage />} />
+				<Route path={P.destinationDetail} element={<DestinationDetailPage />} />
+				<Route path={P.blogArticle} element={<BlogArticlePage />} />
 				{TOUR_COLLECTIONS.map((collection) => (
 					<Route
 						key={collection.routeKey}
-						path={ROUTE_PATHS[collection.routeKey]}
+						path={P[collection.routeKey]}
 						element={<ToursListing routeKey={collection.routeKey} />}
 					/>
 				))}
 				{SERVICE_PAGE_ROUTES.map((entry) => (
-					<Route key={entry.routeKey} path={ROUTE_PATHS[entry.routeKey]} element={entry.element} />
+					<Route key={entry.routeKey} path={P[entry.routeKey]} element={entry.element} />
 				))}
-				<Route path={ROUTE_PATHS.airportTransferDetail} element={<AirportTransferDetailPage />} />
-				<Route path={ROUTE_PATHS.tourDetail} element={<TourDetail />} />
+				<Route path={P.airportTransferDetail} element={<AirportTransferDetailPage />} />
+				<Route path={P.tourDetail} element={<TourDetail />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</React.Suspense>

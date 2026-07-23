@@ -5,14 +5,19 @@ import { AirportTransferBookingForm } from '@/components/site/AirportTransferBoo
 import { Layout } from '@/components/site/Layout';
 import { Seo } from '@/components/site/Seo';
 import { getAirportBySlug } from '@/data/airports';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildWebPageSchema } from '@/seo/schemas';
+import { useLocale } from '@/i18n/LocaleContext';
 
 export default function AirportTransferDetailPage() {
 	const { slug } = useParams();
+	const lang = useLocale();
 	const airport = getAirportBySlug(slug);
+	const P = getRoutePaths(lang);
 
-	if (!airport) return <Navigate to={ROUTE_PATHS.airportTransfers} replace />;
+	if (!airport) return <Navigate to={P.airportTransfers} replace />;
+
+	const airportPath = getPath('airportTransferDetail', lang, { slug: airport.slug });
 
 	return (
 		<Layout>
@@ -20,19 +25,19 @@ export default function AirportTransferDetailPage() {
 				title={`${airport.name} airport transfer`}
 				description={`Book a private transfer from ${airport.name} in ${airport.city}.`}
 				breadcrumbItems={[
-					{ name: 'Home', url: ROUTE_PATHS.home },
-					{ name: 'Airport Transfers', url: ROUTE_PATHS.airportTransfers },
-					{ name: airport.name, url: `/airport-transfers/${airport.slug}` },
+					{ name: 'Home', url: P.home },
+					{ name: 'Airport Transfers', url: P.airportTransfers },
+					{ name: airport.name, url: airportPath },
 				]}
 				pageType="WebPage"
 				structuredData={buildWebPageSchema({
 					title: `${airport.name} airport transfer`,
 					description: `Book a private transfer from ${airport.name} in ${airport.city}.`,
-					url: `/airport-transfers/${airport.slug}`,
+					url: airportPath,
 				})}
 			/>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
-				<Link to={ROUTE_PATHS.airportTransfers} className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+				<Link to={P.airportTransfers} className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
 					<ArrowLeft className="h-4 w-4" /> Back to airports
 				</Link>
 				<div className="mt-6 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">

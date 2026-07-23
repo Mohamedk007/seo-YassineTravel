@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, User } from 'lucide-react';
-import { getBlogPostBySlug } from '@/data/editorial';
+import { getBlogPostBySlug, getBlogPostTranslations } from '@/data/editorial';
+import { SITE_BRAND } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildBlogPostingSchema } from '@/seo/schemas';
 import { Page } from './page-shell';
 
@@ -96,8 +97,18 @@ export default function BlogArticlePage() {
 	const { slug } = useParams();
 	const lang = useLocale();
 	const post = getBlogPostBySlug(slug, lang);
+	const P = getRoutePaths(lang);
 
-	if (!post) return <Navigate to={ROUTE_PATHS.blog} replace />;
+	if (!post) return <Navigate to={P.blog} replace />;
+
+	const postPath = getPath('blogArticle', lang, { slug: post.slug });
+	const translations = getBlogPostTranslations(post.id);
+	const alternateUrls = Object.fromEntries(
+		Object.entries(translations).map(([code, translatedPost]) => {
+			const path = getPath('blogArticle', code, { slug: translatedPost.slug });
+			return [code, `${SITE_BRAND.origin}/${code}${path}`];
+		})
+	);
 
 	return (
 		<Page
@@ -106,11 +117,12 @@ export default function BlogArticlePage() {
 			image={post.image}
 			crumb="Blog"
 			pageType="BlogPosting"
-			structuredData={buildBlogPostingSchema(post, `/blog/${post.slug}`)}
+			structuredData={buildBlogPostingSchema(post, postPath)}
+			alternateUrls={alternateUrls}
 			breadcrumbItems={[
-				{ name: 'Home', url: ROUTE_PATHS.home },
-				{ name: 'Blog', url: ROUTE_PATHS.blog },
-				{ name: post.title, url: `/blog/${post.slug}` },
+				{ name: 'Home', url: P.home },
+				{ name: 'Blog', url: P.blog },
+				{ name: post.title, url: postPath },
 			]}
 		>
 			<article className="mx-auto max-w-[56rem] px-5 py-16 lg:px-8">
@@ -127,7 +139,7 @@ export default function BlogArticlePage() {
 
 				<InternalLinks links={post.internalLinks} />
 
-				<Link to={ROUTE_PATHS.blog} className="mt-10 inline-flex items-center gap-2 font-semibold text-primary">
+				<Link to={P.blog} className="mt-10 inline-flex items-center gap-2 font-semibold text-primary">
 					<ArrowLeft className="h-4 w-4" /> Back to all articles
 				</Link>
 			</article>

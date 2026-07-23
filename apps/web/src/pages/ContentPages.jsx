@@ -12,7 +12,7 @@ import { IMG } from '@/data/images';
 import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
 import { getBlogPosts } from '@/data/blog';
 import { getEditorialPage } from '@/data/editorial';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getRoutePaths } from '@/data/route-config';
 import { buildFaqSchema, buildItemListSchema, buildReviewSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page, Prose } from './page-shell';
@@ -28,7 +28,7 @@ export function About() {
 			crumb={ABOUT_PAGE.crumb}
 			pageType="AboutPage"
 			structuredData={buildItemListSchema(
-				ABOUT_PAGE.highlights.map((item) => ({ name: item.caption, url: ROUTE_PATHS.about })),
+				ABOUT_PAGE.highlights.map((item) => ({ name: item.caption, url: getRoutePaths(lang).about })),
 				'About Morocco Trip Holidays Highlights'
 			)}
 		>
@@ -112,7 +112,7 @@ export function Gallery() {
 			crumb={GALLERY_PAGE.crumb}
 			pageType="CollectionPage"
 			structuredData={buildItemListSchema(
-				GALLERY_PAGE.images.map((_, index) => ({ name: `Gallery image ${index + 1}`, url: ROUTE_PATHS.gallery })),
+				GALLERY_PAGE.images.map((_, index) => ({ name: `Gallery image ${index + 1}`, url: getRoutePaths(lang).gallery })),
 				GALLERY_PAGE.title
 			)}
 		>
@@ -140,7 +140,7 @@ export function Reviews() {
 			pageType="CollectionPage"
 			structuredData={[
 				buildItemListSchema(
-					REVIEWS.map((review) => ({ name: `${review.name} review`, url: ROUTE_PATHS.reviews })),
+					REVIEWS.map((review) => ({ name: `${review.name} review`, url: getRoutePaths(lang).reviews })),
 					REVIEWS_PAGE.title
 				),
 				...buildReviewSchema(REVIEWS),
@@ -252,7 +252,7 @@ export function TravelGuide() {
 			crumb={TRAVEL_GUIDE_PAGE.crumb}
 			pageType="CollectionPage"
 			structuredData={buildItemListSchema(
-				TRAVEL_GUIDE_PAGE.tips.map((tip) => ({ name: tip.title, url: ROUTE_PATHS.travelGuide })),
+				TRAVEL_GUIDE_PAGE.tips.map((tip) => ({ name: tip.title, url: getRoutePaths(lang).travelGuide })),
 				TRAVEL_GUIDE_PAGE.title
 			)}
 		>

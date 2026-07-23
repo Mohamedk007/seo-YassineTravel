@@ -18,6 +18,17 @@ export function getExcluded(lang = DEFAULT_LANGUAGE) {
 	return EXCLUDED_BY_LANG[lang] || EXCLUDED_BY_LANG[DEFAULT_LANGUAGE];
 }
 
+// Finds the same tour (by stable, language-independent `id`) in every
+// language — used for hreflang alternates and the language switcher.
+export function getTourTranslations(id) {
+	const result = {};
+	for (const [lang, tours] of Object.entries(TOURS_BY_LANG)) {
+		const match = tours.find((tour) => tour.id === id);
+		if (match) result[lang] = match;
+	}
+	return result;
+}
+
 // Kept for call sites that haven't been made locale-aware yet; always English.
 export const TOURS = EN_TOURS;
 export const INCLUDED = EN_INCLUDED;

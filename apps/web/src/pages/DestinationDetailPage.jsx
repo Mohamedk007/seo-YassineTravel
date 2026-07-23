@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
-import { getDestinationBySlug } from '@/data/destinations';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getDestinationInternalLinks } from '@/data/internal-links';
+import { getDestinationBySlug, getDestinationTranslations } from '@/data/destinations';
+import { getPath, getRoutePaths } from '@/data/route-config';
+import { SITE_BRAND } from '@/data/site-config';
 import { buildTouristDestinationSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { Page } from './page-shell';
@@ -12,8 +13,19 @@ export default function DestinationDetailPage() {
 	const { slug } = useParams();
 	const lang = useLocale();
 	const destination = getDestinationBySlug(slug, lang);
+	const P = getRoutePaths(lang);
 
-	if (!destination) return <Navigate to={ROUTE_PATHS.destinations} replace />;
+	if (!destination) return <Navigate to={P.destinations} replace />;
+
+	const destinationPath = getPath('destinationDetail', lang, { slug: destination.slug });
+	const DESTINATION_INTERNAL_LINKS = getDestinationInternalLinks(lang);
+	const translations = getDestinationTranslations(destination.id);
+	const alternateUrls = Object.fromEntries(
+		Object.entries(translations).map(([code, translated]) => {
+			const path = getPath('destinationDetail', code, { slug: translated.slug });
+			return [code, `${SITE_BRAND.origin}/${code}${path}`];
+		})
+	);
 
 	return (
 		<Page
@@ -22,11 +34,12 @@ export default function DestinationDetailPage() {
 			image={destination.image}
 			crumb="Destinations"
 			pageType="TouristDestination"
-			structuredData={buildTouristDestinationSchema(destination, `/destinations/${destination.slug}`)}
+			structuredData={buildTouristDestinationSchema(destination, destinationPath)}
+			alternateUrls={alternateUrls}
 			breadcrumbItems={[
-				{ name: 'Home', url: ROUTE_PATHS.home },
-				{ name: 'Destinations', url: ROUTE_PATHS.destinations },
-				{ name: destination.name, url: `/destinations/${destination.slug}` },
+				{ name: 'Home', url: P.home },
+				{ name: 'Destinations', url: P.destinations },
+				{ name: destination.name, url: destinationPath },
 			]}
 		>
 			<section className="mx-auto max-w-[72rem] px-5 py-16 lg:px-8">
@@ -38,7 +51,7 @@ export default function DestinationDetailPage() {
 						</Link>
 					))}
 				</div>
-				<Link to={ROUTE_PATHS.destinations} className="mt-8 inline-flex items-center gap-2 font-semibold text-primary">
+				<Link to={P.destinations} className="mt-8 inline-flex items-center gap-2 font-semibold text-primary">
 					<ArrowLeft className="h-4 w-4" /> Back to destinations
 				</Link>
 			</section>

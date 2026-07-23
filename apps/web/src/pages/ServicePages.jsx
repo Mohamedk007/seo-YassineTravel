@@ -5,7 +5,7 @@ import { LeadForm } from '@/components/site/LeadForm';
 import { WhatsAppCtaButton } from '@/components/site/WhatsAppCtaButton';
 import { AIRPORTS } from '@/data/airports';
 import { getServicesContent } from '@/data/services';
-import { ROUTE_PATHS } from '@/data/route-config';
+import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildItemListSchema, buildServiceSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page } from './page-shell';
@@ -25,10 +25,10 @@ export function AirportTransfers() {
 				buildServiceSchema({
 					name: AIRPORT_TRANSFER_PAGE.title,
 					description: AIRPORT_TRANSFER_PAGE.subtitle,
-					path: ROUTE_PATHS.airportTransfers,
+					path: getRoutePaths(lang).airportTransfers,
 				}),
 				buildItemListSchema(
-					AIRPORTS.map((airport) => ({ name: airport.name, url: `/airport-transfers/${airport.slug}` })),
+					AIRPORTS.map((airport) => ({ name: airport.name, url: getPath('airportTransferDetail', lang, { slug: airport.slug }) })),
 					AIRPORT_TRANSFER_PAGE.title,
 				),
 			]}
@@ -97,7 +97,7 @@ export function PrivateDrivers() {
 			structuredData={buildServiceSchema({
 				name: PRIVATE_DRIVER_PAGE.title,
 				description: PRIVATE_DRIVER_PAGE.subtitle,
-				path: ROUTE_PATHS.privateDrivers,
+				path: getRoutePaths(lang).privateDrivers,
 			})}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
@@ -134,7 +134,7 @@ export function CustomTours() {
 			structuredData={buildServiceSchema({
 				name: CUSTOM_TOURS_PAGE.title,
 				description: CUSTOM_TOURS_PAGE.subtitle,
-				path: ROUTE_PATHS.customTours,
+				path: getRoutePaths(lang).customTours,
 			})}
 		>
 			<section className="mx-auto grid max-w-[90rem] gap-10 px-5 py-16 lg:grid-cols-2 lg:px-8">

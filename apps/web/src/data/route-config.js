@@ -1,4 +1,6 @@
-export const ROUTE_PATHS = {
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
+
+const ROUTE_PATHS_EN = {
 	home: '/',
 	about: '/about',
 	tours: '/tours',
@@ -22,55 +24,122 @@ export const ROUTE_PATHS = {
 	tourDetail: '/tour/:slug',
 };
 
+const ROUTE_PATHS_FR = {
+	home: '/',
+	about: '/a-propos',
+	tours: '/circuits',
+	luxuryTours: '/circuits-de-luxe',
+	privateTours: '/circuits-prives',
+	desertTours: '/circuits-desert',
+	dayTrips: '/excursions-a-la-journee',
+	customTours: '/circuits-sur-mesure',
+	destinations: '/destinations',
+	destinationDetail: '/destinations/:slug',
+	blog: '/blog',
+	blogArticle: '/blog/:slug',
+	travelGuide: '/guide-de-voyage',
+	reviews: '/avis',
+	gallery: '/galerie',
+	faq: '/faq',
+	contact: '/contact',
+	airportTransfers: '/transferts-aeroport',
+	airportTransferDetail: '/transferts-aeroport/:slug',
+	privateDrivers: '/chauffeurs-prives',
+	tourDetail: '/circuit/:slug',
+};
+
+const ROUTE_PATHS_BY_LANG = { en: ROUTE_PATHS_EN, fr: ROUTE_PATHS_FR };
+
+export function getRoutePaths(lang = DEFAULT_LANGUAGE) {
+	return ROUTE_PATHS_BY_LANG[lang] || ROUTE_PATHS_BY_LANG[DEFAULT_LANGUAGE];
+}
+
+// Builds a path for `routeKey` in `lang`, substituting `:slug` with params.slug
+// when present (the localized slug for that piece of content).
+export function getPath(routeKey, lang = DEFAULT_LANGUAGE, params = {}) {
+	const pattern = getRoutePaths(lang)[routeKey];
+	if (!pattern) return '/';
+	return params.slug ? pattern.replace(':slug', params.slug) : pattern;
+}
+
+// Kept for call sites that haven't been made locale-aware yet; always English.
+export const ROUTE_PATHS = ROUTE_PATHS_EN;
+
 // `labelKey` points into src/i18n/locales/{lang}/common.json; `label` is the
 // English fallback used until every string has a matching translation key.
-export const TOUR_ROUTE_LINKS = [
-	{ label: 'All Tours', labelKey: 'nav.allTours', to: ROUTE_PATHS.tours },
-	{ label: 'Luxury Tours', labelKey: 'nav.luxuryTours', to: ROUTE_PATHS.luxuryTours },
-	{ label: 'Private Tours', labelKey: 'nav.privateTours', to: ROUTE_PATHS.privateTours },
-	{ label: 'Desert Tours', labelKey: 'nav.desertTours', to: ROUTE_PATHS.desertTours },
-	{ label: 'Day Trips', labelKey: 'nav.dayTrips', to: ROUTE_PATHS.dayTrips },
-	{ label: 'Custom Tours', labelKey: 'nav.customTours', to: ROUTE_PATHS.customTours },
-];
+export function getTourRouteLinks(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	return [
+		{ label: 'All Tours', labelKey: 'nav.allTours', to: P.tours },
+		{ label: 'Luxury Tours', labelKey: 'nav.luxuryTours', to: P.luxuryTours },
+		{ label: 'Private Tours', labelKey: 'nav.privateTours', to: P.privateTours },
+		{ label: 'Desert Tours', labelKey: 'nav.desertTours', to: P.desertTours },
+		{ label: 'Day Trips', labelKey: 'nav.dayTrips', to: P.dayTrips },
+		{ label: 'Custom Tours', labelKey: 'nav.customTours', to: P.customTours },
+	];
+}
 
-export const SERVICE_ROUTE_LINKS = [
-	{ label: 'Airport Transfers', labelKey: 'nav.airportTransfers', to: ROUTE_PATHS.airportTransfers },
-	{ label: 'Private Drivers', labelKey: 'nav.privateDrivers', to: ROUTE_PATHS.privateDrivers },
-	{ label: 'Custom Itineraries', labelKey: 'nav.customItineraries', to: ROUTE_PATHS.customTours },
-];
+export function getServiceRouteLinks(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	return [
+		{ label: 'Airport Transfers', labelKey: 'nav.airportTransfers', to: P.airportTransfers },
+		{ label: 'Private Drivers', labelKey: 'nav.privateDrivers', to: P.privateDrivers },
+		{ label: 'Custom Itineraries', labelKey: 'nav.customItineraries', to: P.customTours },
+	];
+}
 
-export const MORE_ROUTE_LINKS = [
-	{ label: 'Blog', labelKey: 'nav.blog', to: ROUTE_PATHS.blog },
-	{ label: 'Travel Guide', labelKey: 'nav.travelGuide', to: ROUTE_PATHS.travelGuide },
-	{ label: 'Reviews', labelKey: 'nav.reviews', to: ROUTE_PATHS.reviews },
-	{ label: 'Gallery', labelKey: 'nav.gallery', to: ROUTE_PATHS.gallery },
-	{ label: 'FAQ', labelKey: 'nav.faq', to: ROUTE_PATHS.faq },
-];
+export function getMoreRouteLinks(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	return [
+		{ label: 'Blog', labelKey: 'nav.blog', to: P.blog },
+		{ label: 'Travel Guide', labelKey: 'nav.travelGuide', to: P.travelGuide },
+		{ label: 'Reviews', labelKey: 'nav.reviews', to: P.reviews },
+		{ label: 'Gallery', labelKey: 'nav.gallery', to: P.gallery },
+		{ label: 'FAQ', labelKey: 'nav.faq', to: P.faq },
+	];
+}
 
-export const NAV = [
-	{ label: 'Home', labelKey: 'nav.home', to: ROUTE_PATHS.home },
-	{ label: 'About', labelKey: 'nav.about', to: ROUTE_PATHS.about },
-	{ label: 'Tours', labelKey: 'nav.tours', to: ROUTE_PATHS.tours, children: TOUR_ROUTE_LINKS },
-	{ label: 'Services', labelKey: 'nav.services', to: ROUTE_PATHS.airportTransfers, children: SERVICE_ROUTE_LINKS },
-	{ label: 'Destinations', labelKey: 'nav.destinations', to: ROUTE_PATHS.destinations },
-	{ label: 'More', labelKey: 'nav.more', to: ROUTE_PATHS.blog, children: MORE_ROUTE_LINKS },
-	{ label: 'Contact', labelKey: 'nav.contact', to: ROUTE_PATHS.contact },
-];
+export function getNav(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	return [
+		{ label: 'Home', labelKey: 'nav.home', to: P.home },
+		{ label: 'About', labelKey: 'nav.about', to: P.about },
+		{ label: 'Tours', labelKey: 'nav.tours', to: P.tours, children: getTourRouteLinks(lang) },
+		{ label: 'Services', labelKey: 'nav.services', to: P.airportTransfers, children: getServiceRouteLinks(lang) },
+		{ label: 'Destinations', labelKey: 'nav.destinations', to: P.destinations },
+		{ label: 'More', labelKey: 'nav.more', to: P.blog, children: getMoreRouteLinks(lang) },
+		{ label: 'Contact', labelKey: 'nav.contact', to: P.contact },
+	];
+}
 
-export const FOOTER_TOUR_LINKS = [
-	['Luxury Tours', ROUTE_PATHS.luxuryTours, 'nav.luxuryTours'],
-	['Private Tours', ROUTE_PATHS.privateTours, 'nav.privateTours'],
-	['Desert Tours', ROUTE_PATHS.desertTours, 'nav.desertTours'],
-	['Day Trips', ROUTE_PATHS.dayTrips, 'nav.dayTrips'],
-	['Custom Tours', ROUTE_PATHS.customTours, 'nav.customTours'],
-];
+export function getFooterTourLinks(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	return [
+		['Luxury Tours', P.luxuryTours, 'nav.luxuryTours'],
+		['Private Tours', P.privateTours, 'nav.privateTours'],
+		['Desert Tours', P.desertTours, 'nav.desertTours'],
+		['Day Trips', P.dayTrips, 'nav.dayTrips'],
+		['Custom Tours', P.customTours, 'nav.customTours'],
+	];
+}
 
-export const FOOTER_COMPANY_LINKS = [
-	['About Us', ROUTE_PATHS.about, 'nav.about'],
-	['Destinations', ROUTE_PATHS.destinations, 'nav.destinations'],
-	['Reviews', ROUTE_PATHS.reviews, 'nav.reviews'],
-	['Gallery', ROUTE_PATHS.gallery, 'nav.gallery'],
-	['Blog', ROUTE_PATHS.blog, 'nav.blog'],
-	['Travel Guide', ROUTE_PATHS.travelGuide, 'nav.travelGuide'],
-	['FAQ', ROUTE_PATHS.faq, 'nav.faq'],
-];
+export function getFooterCompanyLinks(lang = DEFAULT_LANGUAGE) {
+	const P = getRoutePaths(lang);
+	return [
+		['About Us', P.about, 'nav.about'],
+		['Destinations', P.destinations, 'nav.destinations'],
+		['Reviews', P.reviews, 'nav.reviews'],
+		['Gallery', P.gallery, 'nav.gallery'],
+		['Blog', P.blog, 'nav.blog'],
+		['Travel Guide', P.travelGuide, 'nav.travelGuide'],
+		['FAQ', P.faq, 'nav.faq'],
+	];
+}
+
+// Kept for call sites that haven't been made locale-aware yet; always English.
+export const NAV = getNav(DEFAULT_LANGUAGE);
+export const TOUR_ROUTE_LINKS = getTourRouteLinks(DEFAULT_LANGUAGE);
+export const SERVICE_ROUTE_LINKS = getServiceRouteLinks(DEFAULT_LANGUAGE);
+export const MORE_ROUTE_LINKS = getMoreRouteLinks(DEFAULT_LANGUAGE);
+export const FOOTER_TOUR_LINKS = getFooterTourLinks(DEFAULT_LANGUAGE);
+export const FOOTER_COMPANY_LINKS = getFooterCompanyLinks(DEFAULT_LANGUAGE);

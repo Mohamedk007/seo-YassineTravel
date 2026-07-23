@@ -1,8 +1,8 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
-import { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTours } from './catalog';
+import { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTourTranslations, getTours } from './catalog';
 import { TOUR_COLLECTIONS, getTourCollectionByRouteKey, getTourCollections } from './categories';
 
-export { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTours };
+export { EXCLUDED, INCLUDED, TOURS, getExcluded, getIncluded, getTourTranslations, getTours };
 export { TOUR_COLLECTIONS, getTourCollectionByRouteKey, getTourCollections };
 
 export function getTourBySlug(slug, lang = DEFAULT_LANGUAGE) {

@@ -34,12 +34,18 @@ export function Seo({
 	structuredData,
 	pageType = 'WebPage',
 	preloadImage = false,
+	// Optional { en: '<absolute url>', fr: '<absolute url>' } map for pages where
+	// each language uses a different slug (blog/tour/destination detail pages).
+	// When omitted, hreflang alternates are derived from the current pathname
+	// (correct for pages where the path is identical across languages).
+	alternateUrls,
 }) {
 	const location = useLocation();
 	const lang = useLocale();
 	const full = title ? `${title} | ${SITE_BRAND.seoTitleSuffix}` : SITE_BRAND.seoTitle;
 	const metaDescription = description || SITE_BRAND.seoDescription;
-	const canonicalUrl = canonical || buildLocalizedUrl(lang, location.pathname);
+	const getAlternateUrl = (code) => alternateUrls?.[code] || buildLocalizedUrl(code, location.pathname);
+	const canonicalUrl = canonical || getAlternateUrl(lang);
 	const defaultSchemas = [
 		buildOrganizationSchema(),
 		buildTravelAgencySchema(),
@@ -68,9 +74,9 @@ export function Seo({
 				<meta name="description" content={metaDescription} />
 				<link rel="canonical" href={canonicalUrl} />
 				{SUPPORTED_LANGUAGES.map((code) => (
-					<link key={code} rel="alternate" hrefLang={code} href={buildLocalizedUrl(code, location.pathname)} />
+					<link key={code} rel="alternate" hrefLang={code} href={getAlternateUrl(code)} />
 				))}
-				<link rel="alternate" hrefLang="x-default" href={buildLocalizedUrl(SUPPORTED_LANGUAGES[0], location.pathname)} />
+				<link rel="alternate" hrefLang="x-default" href={getAlternateUrl(SUPPORTED_LANGUAGES[0])} />
 				<meta property="og:site_name" content={SITE_BRAND.name} />
 				<meta property="og:locale" content={OG_LOCALES[lang] || SITE_BRAND.locale} />
 				<meta property="og:type" content={type} />
