@@ -12,6 +12,16 @@ export function getReviews(lang = DEFAULT_LANGUAGE) {
 	return resolve(lang).REVIEWS;
 }
 
+// Entity relationship: reviews aren't tagged with a destination id in the data,
+// so this matches on the review's free-text `tour` label mentioning the
+// destination's name (e.g. "Merzouga desert circuit" review -> Merzouga Sahara).
+// Falls back to an empty array rather than showing unrelated reviews.
+export function getReviewsForDestination(destinationName, lang = DEFAULT_LANGUAGE) {
+	if (!destinationName) return [];
+	const keyword = destinationName.split(' ')[0].toLowerCase();
+	return getReviews(lang).filter((review) => review.tour?.toLowerCase().includes(keyword));
+}
+
 export function getFaqs(lang = DEFAULT_LANGUAGE) {
 	return resolve(lang).FAQS;
 }

@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, MapPin, Plane } from 'lucide-react';
 import { getDestinationInternalLinks } from '@/data/internal-links';
-import { getDestinationBySlug, getDestinationTranslations } from '@/data/destinations';
+import { getDestinationBySlug, getDestinationTranslations, getDestinations } from '@/data/destinations';
+import { getBlogPostsForDestination } from '@/data/blog';
+import { getFaqs, getReviewsForDestination } from '@/data/content';
+import { getAirportBySlug } from '@/data/airports';
+import { getToursForDestination } from '@/data/tours/index';
 import { getPath, getRoutePaths } from '@/data/route-config';
 import { SITE_BRAND } from '@/data/site-config';
-import { buildTouristDestinationSchema } from '@/seo/schemas';
+import { buildFaqSchema, buildTouristDestinationSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
+import { Stars } from '@/components/site/Typography';
+import { TourCard } from '@/components/tours/TourCard';
 import { Page } from './page-shell';
 
 export default function DestinationDetailPage() {
@@ -27,6 +33,16 @@ export default function DestinationDetailPage() {
 		})
 	);
 
+	// Entity relationships that actually power this hub, instead of a lone summary paragraph.
+	const relatedTours = getToursForDestination(destination.id, lang);
+	const relatedArticles = getBlogPostsForDestination(destination.id, lang);
+	const relatedReviews = getReviewsForDestination(destination.name, lang).slice(0, 3);
+	const generalFaqs = getFaqs(lang).slice(0, 4);
+	const nearestAirport = destination.nearestAirportSlug ? getAirportBySlug(destination.nearestAirportSlug) : null;
+	const nearbyDestinations = (destination.nearbyDestinationIds || [])
+		.map((id) => getDestinations(lang).find((entry) => entry.id === id))
+		.filter(Boolean);
+
 	return (
 		<Page
 			title={destination.name}
@@ -34,7 +50,10 @@ export default function DestinationDetailPage() {
 			image={destination.image}
 			crumb="Destinations"
 			pageType="TouristDestination"
-			structuredData={buildTouristDestinationSchema(destination, destinationPath)}
+			structuredData={[
+				buildTouristDestinationSchema(destination, destinationPath),
+				buildFaqSchema(generalFaqs),
+			]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[
 				{ name: 'Home', url: P.home },
@@ -43,14 +62,144 @@ export default function DestinationDetailPage() {
 			]}
 		>
 			<section className="mx-auto max-w-[72rem] px-5 py-16 lg:px-8">
+				{/* Overview */}
 				<p className="text-lg text-muted-foreground">{destination.summary}</p>
-				<div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+
+				{/* Things to do */}
+				{destination.thingsToDo && (
+					<div className="mt-10">
+						<h2 className="font-display text-2xl font-semibold">Things to do in {destination.name}</h2>
+						<ul className="mt-4 grid gap-3 sm:grid-cols-2">
+							{destination.thingsToDo.map((item) => (
+								<li key={item} className="flex items-start gap-2 rounded-lg border border-border px-4 py-3 text-sm">
+									<MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+
+				{/* Best tours here */}
+				{relatedTours.length > 0 && (
+					<div className="mt-14">
+						<h2 className="font-display text-2xl font-semibold">Best tours to {destination.name}</h2>
+						<div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+							{relatedTours.slice(0, 3).map((tour, index) => (
+								<TourCard key={tour.slug} tour={tour} delay={index * 60} />
+							))}
+						</div>
+					</div>
+				)}
+
+				{/* Best time to visit / weather */}
+				{destination.bestTimeToVisit && (
+					<div className="mt-14 rounded-2xl border border-border bg-secondary/40 p-6">
+						<p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+							<Calendar className="h-4 w-4" /> Best time to visit
+						</p>
+						<p className="mt-2 text-muted-foreground">{destination.bestTimeToVisit}</p>
+					</div>
+				)}
+
+				{/* Travel practicalities: airport transfer + private driver */}
+				<div className="mt-10 grid gap-4 sm:grid-cols-2">
+					{nearestAirport && (
+						<Link
+							to={getPath('airportTransferDetail', lang, { slug: nearestAirport.slug })}
+							className="group flex items-center justify-between rounded-xl border border-border p-5 transition hover:border-primary/40"
+						>
+							<span className="inline-flex items-center gap-2 font-medium">
+								<Plane className="h-4 w-4 text-primary" /> Airport transfer from {nearestAirport.name}
+							</span>
+							<ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
+						</Link>
+					)}
+					<Link
+						to={P.privateDrivers}
+						className="group flex items-center justify-between rounded-xl border border-border p-5 transition hover:border-primary/40"
+					>
+						<span className="font-medium">Book a private driver for {destination.name}</span>
+						<ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
+					</Link>
+				</div>
+
+				{/* Reviews specific to this destination, when we have them */}
+				{relatedReviews.length > 0 && (
+					<div className="mt-14">
+						<h2 className="font-display text-2xl font-semibold">What travellers say</h2>
+						<div className="mt-5 grid gap-5 sm:grid-cols-3">
+							{relatedReviews.map((review) => (
+								<div key={review.name} className="rounded-2xl bg-card p-5 shadow-sm ring-1 ring-border">
+									<Stars />
+									<p className="mt-3 text-sm text-foreground/90">“{review.text}”</p>
+									<p className="mt-3 text-sm font-semibold">{review.name}</p>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
+
+				{/* Related articles */}
+				{relatedArticles.length > 0 && (
+					<div className="mt-14">
+						<h2 className="font-display text-2xl font-semibold">Read more about {destination.name}</h2>
+						<div className="mt-5 grid gap-4 sm:grid-cols-2">
+							{relatedArticles.map((post) => (
+								<Link
+									key={post.slug}
+									to={getPath('blogArticle', lang, { slug: post.slug })}
+									className="group flex items-center justify-between rounded-xl border border-border p-5 transition hover:border-primary/40"
+								>
+									<span className="font-medium">{post.title}</span>
+									<ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
+								</Link>
+							))}
+						</div>
+					</div>
+				)}
+
+				{/* FAQ */}
+				<div className="mt-14">
+					<h2 className="font-display text-2xl font-semibold">Frequently asked questions</h2>
+					<div className="mt-5 space-y-4">
+						{generalFaqs.map(([question, answer]) => (
+							<div key={question} className="rounded-xl border border-border p-5">
+								<p className="font-semibold">{question}</p>
+								<p className="mt-1.5 text-sm text-muted-foreground">{answer}</p>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* Nearby attractions */}
+				{nearbyDestinations.length > 0 && (
+					<div className="mt-14">
+						<h2 className="font-display text-2xl font-semibold">Nearby destinations</h2>
+						<div className="mt-5 grid gap-4 sm:grid-cols-2">
+							{nearbyDestinations.map((nearby) => (
+								<Link
+									key={nearby.slug}
+									to={getPath('destinationDetail', lang, { slug: nearby.slug })}
+									className="group flex items-center justify-between rounded-xl border border-border p-5 transition hover:border-primary/40"
+								>
+									<span className="font-medium">{nearby.name}</span>
+									<ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
+								</Link>
+							))}
+						</div>
+					</div>
+				)}
+
+				{/* Generic internal links (gallery, blog, tours, airport transfers index) */}
+				<div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 					{DESTINATION_INTERNAL_LINKS.map((entry) => (
 						<Link key={entry.to} to={entry.to} className="rounded-lg border border-border px-4 py-3 text-sm font-medium transition hover:border-primary/40 hover:text-primary">
 							{entry.label}
 						</Link>
 					))}
 				</div>
+
 				<Link to={P.destinations} className="mt-8 inline-flex items-center gap-2 font-semibold text-primary">
 					<ArrowLeft className="h-4 w-4" /> Back to destinations
 				</Link>

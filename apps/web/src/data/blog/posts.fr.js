@@ -6,6 +6,7 @@ const ROUTE_PATHS = getRoutePaths('fr');
 export const BLOG_PAGE_POSTS = [
 	{
 		id: 'luxury-sahara-desert-night',
+		destinationId: 'merzouga-sahara',
 		slug: 'guide-ultime-nuit-de-luxe-desert-sahara',
 		image: IMG.duneSunset,
 		title: 'Le guide ultime d\'une nuit de luxe dans le désert du Sahara',
@@ -87,6 +88,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: '3-perfect-days-in-marrakech',
+		destinationId: 'marrakech',
 		slug: '3-jours-parfaits-a-marrakech',
 		image: IMG.marrakech,
 		title: '3 jours parfaits à Marrakech',
@@ -103,6 +105,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'why-chefchaouen-belongs-on-your-itinerary',
+		destinationId: 'chefchaouen',
 		slug: 'pourquoi-chefchaouen-a-sa-place-dans-votre-itineraire',
 		image: IMG.chefchaouen,
 		title: 'Pourquoi Chefchaouen a sa place dans votre itinéraire',

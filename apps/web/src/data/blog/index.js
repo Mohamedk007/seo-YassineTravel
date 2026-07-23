@@ -12,6 +12,12 @@ export function getBlogPostBySlug(slug, lang = DEFAULT_LANGUAGE) {
 	return getBlogPosts(lang).find((post) => post.slug === slug);
 }
 
+// Entity relationship: which articles are tagged as relevant to a given destination.
+export function getBlogPostsForDestination(destinationId, lang = DEFAULT_LANGUAGE) {
+	if (!destinationId) return [];
+	return getBlogPosts(lang).filter((post) => post.destinationId === destinationId);
+}
+
 // Finds the same article (by stable, language-independent `id`) in every
 // language, keyed by lang — used to build hreflang alternate URLs and the
 // language switcher on article detail pages, since each language has its own slug.

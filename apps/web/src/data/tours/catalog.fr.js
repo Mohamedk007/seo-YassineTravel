@@ -3,6 +3,7 @@ import { IMG } from '../images';
 export const TOURS = [
 	{
 		id: 'imperial-cities-sahara',
+		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
 		slug: 'villes-imperiales-et-sahara-de-luxe',
 		categoryKey: 'luxury-tours',
 		title: 'Villes impériales & Sahara de luxe en 10 jours',
@@ -34,6 +35,7 @@ export const TOURS = [
 	},
 	{
 		id: 'marrakech-merzouga-desert',
+		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
 		slug: 'marrakech-merzouga-4-jours-desert',
 		categoryKey: 'desert-tours',
 		title: 'Marrakech - Merzouga : 4 jours dans le désert',
@@ -58,6 +60,7 @@ export const TOURS = [
 	},
 	{
 		id: 'private-fes-city',
+		destinationIds: ['fes'],
 		slug: 'decouverte-culturelle-privee-de-fes',
 		categoryKey: 'private-tours',
 		title: 'Découverte culturelle privée de Fès',
@@ -81,6 +84,7 @@ export const TOURS = [
 	},
 	{
 		id: 'marrakech-day-trips',
+		destinationIds: ['marrakech', 'atlas-mountains'],
 		slug: 'excursions-a-la-journee-depuis-marrakech',
 		categoryKey: 'day-trips',
 		title: 'Collection d\'excursions à la journée depuis Marrakech',
@@ -104,6 +108,7 @@ export const TOURS = [
 	},
 	{
 		id: 'essaouira-day-trip',
+		destinationIds: ['marrakech'],
 		slug: 'excursion-a-essaouira-depuis-marrakech',
 		categoryKey: 'day-trips',
 		title: 'Excursion à Essaouira depuis Marrakech',
@@ -131,6 +136,7 @@ export const TOURS = [
 	},
 	{
 		id: 'grand-tour-morocco',
+		destinationIds: ['marrakech', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
 		slug: 'grand-tour-du-maroc-14-jours',
 		categoryKey: 'luxury-tours',
 		title: 'Grand tour du Maroc en 14 jours',
@@ -156,6 +162,7 @@ export const TOURS = [
 	},
 	{
 		id: 'agafay-luxury-camp',
+		destinationIds: ['marrakech'],
 		slug: 'nuit-de-luxe-desert-agafay',
 		categoryKey: 'desert-tours',
 		title: 'Nuit de luxe dans le désert d\'Agafay',

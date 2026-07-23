@@ -17,6 +17,12 @@ export function getToursByCategory(categoryKey, lang = DEFAULT_LANGUAGE) {
 	return tours.filter((entry) => entry.categoryKey === categoryKey || entry.category === categoryKey);
 }
 
+// Entity relationship: which tours actually visit a given destination (by stable id).
+export function getToursForDestination(destinationId, lang = DEFAULT_LANGUAGE) {
+	if (!destinationId) return [];
+	return getTours(lang).filter((tour) => tour.destinationIds?.includes(destinationId));
+}
+
 export function getRelatedTours(slug, lang = DEFAULT_LANGUAGE, limit = 3) {
 	return getTours(lang)
 		.filter((entry) => entry.slug !== slug)

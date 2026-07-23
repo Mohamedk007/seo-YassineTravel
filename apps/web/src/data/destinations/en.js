@@ -3,6 +3,10 @@ import { IMG } from '../images';
 export const DESTINATION_HIGHLIGHTS = [
 	{
 		id: 'marrakech',
+		nearestAirportSlug: 'marrakech-rak',
+		nearbyDestinationIds: ['atlas-mountains', 'ait-benhaddou'],
+		thingsToDo: ['Explore Jemaa el-Fnaa and the souks', 'Visit Bahia Palace and Majorelle Garden', "Get lost in the Medina's tanneries and spice markets", 'Take a day trip into the Atlas foothills'],
+		bestTimeToVisit: 'March–May and September–November, for warm days without summer heat.',
 		slug: 'marrakech',
 		name: 'Marrakech',
 		summary: 'The Red City — palaces, souks and the electric Jemaa el-Fnaa.',
@@ -10,6 +14,10 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'fes',
+		nearestAirportSlug: 'fes-fez',
+		nearbyDestinationIds: ['chefchaouen'],
+		thingsToDo: ['Wander the ancient Fes el Bali medina', 'Visit the Chouara Tanneries', "See Al Quaraouiyine, one of the world's oldest universities", 'Explore the Bou Inania Madrasa'],
+		bestTimeToVisit: 'March–May and September–November, avoiding the summer heat in the medina.',
 		slug: 'fes',
 		name: 'Fes',
 		summary: "The spiritual heart, home to the world's largest living medieval medina.",
@@ -17,6 +25,10 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'merzouga-sahara',
+		nearestAirportSlug: null,
+		nearbyDestinationIds: ['ait-benhaddou'],
+		thingsToDo: ['Camel trek into the Erg Chebbi dunes', 'Sleep in a luxury desert camp under the stars', 'Sandboard down the dunes at sunset', 'Visit a local Berber village'],
+		bestTimeToVisit: 'October–April, for cool desert nights and comfortable days.',
 		slug: 'merzouga-sahara',
 		name: 'Merzouga Sahara',
 		summary: 'Towering Erg Chebbi dunes and unforgettable luxury desert camps.',
@@ -24,6 +36,10 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'chefchaouen',
+		nearestAirportSlug: 'tangier-tng',
+		nearbyDestinationIds: ['fes'],
+		thingsToDo: ['Wander the blue-washed old town', 'Photograph the iconic blue alleyways', 'Hike to the Spanish Mosque viewpoint', 'Shop for handwoven wool and leather crafts'],
+		bestTimeToVisit: 'March–June and September–October, for mild mountain weather.',
 		slug: 'chefchaouen',
 		name: 'Chefchaouen',
 		summary: 'The dreamy blue-washed mountain town of the Rif.',
@@ -31,6 +47,10 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'ait-benhaddou',
+		nearestAirportSlug: 'marrakech-rak',
+		nearbyDestinationIds: ['marrakech', 'atlas-mountains'],
+		thingsToDo: ['Explore the UNESCO-listed kasbah', 'Spot film locations from famous movies and series', 'Cross the Ounila River on foot', 'Photograph the mudbrick architecture at sunset'],
+		bestTimeToVisit: 'March–May and September–November, before or after peak summer heat.',
 		slug: 'ait-benhaddou',
 		name: 'Ait Benhaddou',
 		summary: 'The iconic UNESCO kasbah and gateway to the desert.',
@@ -38,6 +58,10 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'atlas-mountains',
+		nearestAirportSlug: 'marrakech-rak',
+		nearbyDestinationIds: ['marrakech', 'ait-benhaddou'],
+		thingsToDo: ['Hike through Berber villages and valleys', 'Visit a traditional argan oil cooperative', "Drive the dramatic Tizi n'Tichka pass", 'Enjoy mint tea with a local family'],
+		bestTimeToVisit: 'April–June and September–October for hiking; snow-capped peaks December–February.',
 		slug: 'atlas-mountains',
 		name: 'Atlas Mountains',
 		summary: 'Berber villages, dramatic passes and snow-capped peaks.',

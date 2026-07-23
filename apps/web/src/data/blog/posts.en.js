@@ -4,6 +4,7 @@ import { ROUTE_PATHS } from '@/data/route-config';
 export const BLOG_PAGE_POSTS = [
 	{
 		id: 'luxury-sahara-desert-night',
+		destinationId: 'merzouga-sahara',
 		slug: 'the-ultimate-guide-to-a-luxury-sahara-desert-night',
 		image: IMG.duneSunset,
 		title: 'The ultimate guide to a luxury Sahara desert night',
@@ -85,6 +86,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: '3-perfect-days-in-marrakech',
+		destinationId: 'marrakech',
 		slug: '3-perfect-days-in-marrakech',
 		image: IMG.marrakech,
 		title: '3 perfect days in Marrakech',
@@ -101,6 +103,7 @@ export const BLOG_PAGE_POSTS = [
 	},
 	{
 		id: 'why-chefchaouen-belongs-on-your-itinerary',
+		destinationId: 'chefchaouen',
 		slug: 'why-chefchaouen-belongs-on-your-itinerary',
 		image: IMG.chefchaouen,
 		title: 'Why Chefchaouen belongs on your itinerary',
