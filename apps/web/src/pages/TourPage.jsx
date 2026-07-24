@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
-import { ArrowRight, Check, Clock, MessageCircle, Phone, Play, Star, Users, X } from 'lucide-react';
+import { ArrowRight, Check, Clock, MapPin, MessageCircle, Phone, Play, Star, Users, X } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
 import { Layout } from '@/components/site/Layout';
 import { PageHero } from '@/components/site/PageHero';
 import { Seo } from '@/components/site/Seo';
+import { Gallery } from '@/components/site/Gallery';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs } from '@/data/content';
 import { IMG } from '@/data/images';
+import { getGalleryForDestinationIds } from '@/data/destinations';
 import { getTourInternalLinks } from '@/data/internal-links';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '../data/route-config';
@@ -16,6 +18,7 @@ import { getExcluded, getIncluded, getTours } from '@/data/tours/catalog';
 import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey, getTourTranslations } from '@/data/tours/index';
 import { SITE_BRAND } from '@/data/site-config';
 import { buildFaqSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
+import { buildGoogleMapsRouteUrl } from '@/lib/maps';
 import { TourCard } from '../components/tours/TourCard';
 import { CTA, MiniReviews } from './page-shell';
 
@@ -69,6 +72,8 @@ export function TourDetail() {
 			return [code, `${SITE_BRAND.origin}/${code}${path}`];
 		})
 	);
+	const routeMapUrl = buildGoogleMapsRouteUrl(tour.mapStops);
+	const tourGallery = getGalleryForDestinationIds(tour.destinationIds, lang);
 	const priceRows = [
 		['2 travellers', `€${tour.price.toLocaleString()}`, 'per person'],
 		['3–4 travellers', `€${Math.round(tour.price * 0.85).toLocaleString()}`, 'per person'],
@@ -115,6 +120,16 @@ export function TourDetail() {
 					</ul>
 
 					<h2 className="mt-10 font-display text-3xl font-semibold">Detailed itinerary</h2>
+					{routeMapUrl && (
+						<a
+							href={routeMapUrl}
+							target="_blank"
+							rel="noreferrer"
+							className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+						>
+							<MapPin className="h-4 w-4" /> View this route on Google Maps
+						</a>
+					)}
 					<div className="mt-5 space-y-4">
 						{tour.itinerary.map(([day, title, description]) => (
 							<div key={day} className="flex gap-4">
@@ -126,6 +141,15 @@ export function TourDetail() {
 							</div>
 						))}
 					</div>
+
+					{tourGallery.length > 0 && (
+						<>
+							<h2 className="mt-10 font-display text-3xl font-semibold">Gallery</h2>
+							<div className="mt-5">
+								<Gallery images={tourGallery} altPrefix={tour.title} />
+							</div>
+						</>
+					)}
 
 					<h2 className="mt-10 font-display text-3xl font-semibold">Pricing</h2>
 					<div className="mt-4 overflow-hidden rounded-xl border border-border">

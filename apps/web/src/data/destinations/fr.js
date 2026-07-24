@@ -3,6 +3,7 @@ import { IMG } from '../images';
 export const DESTINATION_HIGHLIGHTS = [
 	{
 		id: 'marrakech',
+		gallery: [IMG.marrakech, IMG.couple, IMG.guide],
 		nearestAirportSlug: 'marrakech-rak',
 		nearbyDestinationIds: ['atlas-mountains', 'ait-benhaddou'],
 		thingsToDo: ['Explorer Jemaa el-Fna et les souks', 'Visiter le palais de la Bahia et le jardin Majorelle', 'Se perdre dans les tanneries et marchés d\'épices de la médina', 'Faire une excursion dans les contreforts de l\'Atlas'],
@@ -14,6 +15,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'fes',
+		gallery: [IMG.fesDoor, IMG.guide],
 		nearestAirportSlug: 'fes-fez',
 		nearbyDestinationIds: ['chefchaouen'],
 		thingsToDo: ['Se promener dans l\'ancienne médina de Fès el-Bali', 'Visiter les tanneries Chouara', 'Découvrir Al Quaraouiyine, l\'une des plus anciennes universités au monde', 'Explorer la médersa Bou Inania'],
@@ -25,6 +27,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'merzouga-sahara',
+		gallery: [IMG.duneSunset, IMG.camel, IMG.luxCamp],
 		nearestAirportSlug: null,
 		nearbyDestinationIds: ['ait-benhaddou'],
 		thingsToDo: ['Balade à dos de chameau dans les dunes de l\'Erg Chebbi', 'Dormir dans un camp de désert de luxe sous les étoiles', 'Glisser sur les dunes au coucher du soleil', 'Visiter un village berbère local'],
@@ -36,6 +39,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'chefchaouen',
+		gallery: [IMG.chefchaouen],
 		nearestAirportSlug: 'tangier-tng',
 		nearbyDestinationIds: ['fes'],
 		thingsToDo: ['Se promener dans la vieille ville aux murs bleus', 'Photographier les emblématiques ruelles bleues', 'Randonner jusqu\'au belvédère de la mosquée espagnole', 'Acheter de la laine tissée et des articles en cuir'],
@@ -47,6 +51,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'ait-benhaddou',
+		gallery: [IMG.kasbah],
 		nearestAirportSlug: 'marrakech-rak',
 		nearbyDestinationIds: ['marrakech', 'atlas-mountains'],
 		thingsToDo: ['Explorer le ksar classé à l\'UNESCO', 'Repérer les lieux de tournage de films et séries célèbres', 'Traverser la rivière Ounila à pied', 'Photographier l\'architecture en pisé au coucher du soleil'],
@@ -58,6 +63,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'atlas-mountains',
+		gallery: [IMG.atlas],
 		nearestAirportSlug: 'marrakech-rak',
 		nearbyDestinationIds: ['marrakech', 'ait-benhaddou'],
 		thingsToDo: ['Randonner à travers villages et vallées berbères', 'Visiter une coopérative traditionnelle d\'huile d\'argan', 'Parcourir le col spectaculaire du Tizi n\'Tichka', 'Partager un thé à la menthe avec une famille locale'],
