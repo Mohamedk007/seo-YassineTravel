@@ -12,6 +12,7 @@ export const BLOG_PAGE_POSTS = [
 		title: 'Le guide ultime d\'une nuit de luxe dans le désert du Sahara',
 		category: 'Désert',
 		summary: 'Tout ce qu\'il faut savoir pour séjourner dans un camp de désert marocain cinq étoiles.',
+		quickAnswer: 'Une nuit de luxe dans le Sahara, c\'est une tente privée avec un vrai lit et une salle de bain attenante, un dîner marocain à plusieurs services, et une balade à dos de chameau au coucher du soleil — soit à l\'Erg Chebbi près de Merzouga (les dunes majestueuses, 9-10h depuis Marrakech), soit à Agafay (un désert rocailleux à seulement 45 minutes de Marrakech, idéal si le temps manque).',
 		datePublished: '2026-02-10',
 		dateModified: '2026-07-16',
 		readTime: 'Lecture 9 min',
@@ -33,6 +34,15 @@ export const BLOG_PAGE_POSTS = [
 					'Agafay est un désert rocailleux, presque lunaire, à seulement 45 minutes de Marrakech. Il n\'a pas l\'ampleur de l\'Erg Chebbi, mais offre une véritable nuit de luxe dans le désert — dîner sous les étoiles, piscine privée dans certains camps, musique live — sans sacrifier deux jours de votre itinéraire. C\'est le meilleur choix si votre séjour dure moins d\'une semaine ou si vous voulez encadrer l\'expérience désert de temps passé à Marrakech.',
 					'Si les dunes majestueuses sont non négociables pour vos photos et vos souvenirs, notre circuit de 4 jours Marrakech-Merzouga est fait pour ça. Si le temps manque, la nuit de luxe à Agafay vous offre 90% de la magie en une fraction du temps de trajet.',
 				],
+				table: {
+					headers: ['', 'Merzouga (Erg Chebbi)', 'Agafay'],
+					rows: [
+						['Distance depuis Marrakech', '9-10 heures de route', '45 minutes'],
+						['Ampleur des dunes', 'Dunes majestueuses, Sahara classique', 'Désert rocailleux, paysage lunaire'],
+						['Durée minimale du séjour', '3-4 jours', '1 nuit'],
+						['Idéal pour', 'Photos de Sahara incontournables', 'Séjours courts, complément facile à Marrakech'],
+					],
+				},
 			},
 			{
 				heading: 'Ce que "luxe" signifie vraiment dans un camp de désert',
