@@ -10,6 +10,7 @@ export const BLOG_PAGE_POSTS = [
 		title: 'The ultimate guide to a luxury Sahara desert night',
 		category: 'Desert',
 		summary: 'Everything you need to know about staying in a five-star Moroccan desert camp.',
+		quickAnswer: 'A luxury Sahara desert night means a private tent with a real bed and en-suite bathroom, a multi-course Moroccan dinner, and a camel trek at sunset — either at Erg Chebbi near Merzouga (the towering dunes, 9-10 hours from Marrakech) or Agafay (a rocky desert just 45 minutes from Marrakech, best if time is short).',
 		datePublished: '2026-02-10',
 		dateModified: '2026-07-16',
 		readTime: '9 min read',
@@ -31,6 +32,15 @@ export const BLOG_PAGE_POSTS = [
 					'Agafay is a rocky, moon-like desert only 45 minutes from Marrakech. It cannot match Erg Chebbi\'s scale, but it delivers a genuine luxury desert night — dinner under the stars, a private pool at some camps, live music — without sacrificing two days of your itinerary. It is the better choice if your trip is under a week or if you want the desert experience bookended by city time in Marrakech.',
 					'If the towering dunes are non-negotiable for your photos and memories, our 4-Day Marrakech to Merzouga Desert route is built exactly for that. If time is tighter, the Agafay Desert Luxury Overnight gets you 90% of the magic in a fraction of the travel time.',
 				],
+				table: {
+					headers: ['', 'Merzouga (Erg Chebbi)', 'Agafay'],
+					rows: [
+						['Distance from Marrakech', '9-10 hours by road', '45 minutes'],
+						['Dune scale', 'Towering, classic Sahara dunes', 'Rocky, moon-like desert'],
+						['Minimum trip length', '3-4 days', '1 night'],
+						['Best for', 'Bucket-list Sahara photos', 'Short trips, easy add-on to Marrakech'],
+					],
+				},
 			},
 			{
 				heading: 'What "luxury" actually means in a desert camp',

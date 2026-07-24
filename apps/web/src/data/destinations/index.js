@@ -16,6 +16,15 @@ export function getDestinationBySlug(slug, lang = DEFAULT_LANGUAGE) {
 	return getDestinations(lang).find((destination) => destination.slug === slug);
 }
 
+// Aggregates a gallery for a tour from the real photos of every destination it
+// visits (deduped) — a tour has no dedicated photo set of its own, so this
+// reuses genuine, destination-tagged images rather than repeating one shot.
+export function getGalleryForDestinationIds(destinationIds = [], lang = DEFAULT_LANGUAGE) {
+	const destinations = getDestinations(lang);
+	const images = destinationIds.flatMap((id) => destinations.find((d) => d.id === id)?.gallery || []);
+	return [...new Set(images)];
+}
+
 // Finds the same destination (by stable, language-independent `id`) in every
 // language — used for hreflang alternates and the language switcher.
 export function getDestinationTranslations(id) {

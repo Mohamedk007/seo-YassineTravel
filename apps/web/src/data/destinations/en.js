@@ -3,6 +3,7 @@ import { IMG } from '../images';
 export const DESTINATION_HIGHLIGHTS = [
 	{
 		id: 'marrakech',
+		gallery: [IMG.marrakech, IMG.couple, IMG.guide],
 		nearestAirportSlug: 'marrakech-rak',
 		nearbyDestinationIds: ['atlas-mountains', 'ait-benhaddou'],
 		thingsToDo: ['Explore Jemaa el-Fnaa and the souks', 'Visit Bahia Palace and Majorelle Garden', "Get lost in the Medina's tanneries and spice markets", 'Take a day trip into the Atlas foothills'],
@@ -14,6 +15,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'fes',
+		gallery: [IMG.fesDoor, IMG.guide],
 		nearestAirportSlug: 'fes-fez',
 		nearbyDestinationIds: ['chefchaouen'],
 		thingsToDo: ['Wander the ancient Fes el Bali medina', 'Visit the Chouara Tanneries', "See Al Quaraouiyine, one of the world's oldest universities", 'Explore the Bou Inania Madrasa'],
@@ -25,6 +27,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'merzouga-sahara',
+		gallery: [IMG.duneSunset, IMG.camel, IMG.luxCamp],
 		nearestAirportSlug: null,
 		nearbyDestinationIds: ['ait-benhaddou'],
 		thingsToDo: ['Camel trek into the Erg Chebbi dunes', 'Sleep in a luxury desert camp under the stars', 'Sandboard down the dunes at sunset', 'Visit a local Berber village'],
@@ -36,6 +39,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'chefchaouen',
+		gallery: [IMG.chefchaouen],
 		nearestAirportSlug: 'tangier-tng',
 		nearbyDestinationIds: ['fes'],
 		thingsToDo: ['Wander the blue-washed old town', 'Photograph the iconic blue alleyways', 'Hike to the Spanish Mosque viewpoint', 'Shop for handwoven wool and leather crafts'],
@@ -47,6 +51,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'ait-benhaddou',
+		gallery: [IMG.kasbah],
 		nearestAirportSlug: 'marrakech-rak',
 		nearbyDestinationIds: ['marrakech', 'atlas-mountains'],
 		thingsToDo: ['Explore the UNESCO-listed kasbah', 'Spot film locations from famous movies and series', 'Cross the Ounila River on foot', 'Photograph the mudbrick architecture at sunset'],
@@ -58,6 +63,7 @@ export const DESTINATION_HIGHLIGHTS = [
 	},
 	{
 		id: 'atlas-mountains',
+		gallery: [IMG.atlas],
 		nearestAirportSlug: 'marrakech-rak',
 		nearbyDestinationIds: ['marrakech', 'ait-benhaddou'],
 		thingsToDo: ['Hike through Berber villages and valleys', 'Visit a traditional argan oil cooperative', "Drive the dramatic Tizi n'Tichka pass", 'Enjoy mint tea with a local family'],

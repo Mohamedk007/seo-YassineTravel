@@ -5,7 +5,7 @@ import { getBlogPostBySlug, getBlogPostTranslations } from '@/data/editorial';
 import { SITE_BRAND } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '@/data/route-config';
-import { buildBlogPostingSchema } from '@/seo/schemas';
+import { buildBlogPostingSchema, buildImageObjectSchema } from '@/seo/schemas';
 import { Page } from './page-shell';
 
 function formatDate(isoDate) {
@@ -48,17 +48,57 @@ function ArticleMeta({ post }) {
 	);
 }
 
+function ComparisonTable({ table }) {
+	return (
+		<div className="mt-6 overflow-x-auto rounded-xl border border-border">
+			<table className="w-full text-left text-sm">
+				<thead className="bg-secondary">
+					<tr>
+						{table.headers.map((header) => (
+							<th key={header} className="p-3 font-semibold">
+								{header}
+							</th>
+						))}
+					</tr>
+				</thead>
+				<tbody>
+					{table.rows.map((row) => (
+						<tr key={row[0]} className="border-t border-border">
+							{row.map((cell, cellIndex) => (
+								<td key={cellIndex} className="p-3 text-muted-foreground">
+									{cell}
+								</td>
+							))}
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	);
+}
+
+function QuickAnswer({ text }) {
+	if (!text) return null;
+	return (
+		<div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
+			<p className="text-sm font-semibold uppercase tracking-wide text-primary">In short</p>
+			<p className="mt-1.5 text-base leading-relaxed">{text}</p>
+		</div>
+	);
+}
+
 function ArticleBody({ content }) {
 	return (
 		<div className="mt-10 space-y-6">
 			{content.map((block, index) => (
 				<div key={block.heading || index}>
 					{block.heading && <h2 className="mt-10 mb-4 font-display text-2xl font-semibold md:text-3xl">{block.heading}</h2>}
-					{block.paragraphs.map((paragraph, pIndex) => (
+					{block.paragraphs?.map((paragraph, pIndex) => (
 						<p key={pIndex} className="mt-4 leading-relaxed text-muted-foreground first:mt-0">
 							{paragraph}
 						</p>
 					))}
+					{block.table && <ComparisonTable table={block.table} />}
 				</div>
 			))}
 		</div>
@@ -117,7 +157,7 @@ export default function BlogArticlePage() {
 			image={post.image}
 			crumb="Blog"
 			pageType="BlogPosting"
-			structuredData={buildBlogPostingSchema(post, postPath)}
+			structuredData={[buildBlogPostingSchema(post, postPath), buildImageObjectSchema({ url: post.image, caption: post.title })]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[
 				{ name: 'Home', url: P.home },
@@ -128,6 +168,7 @@ export default function BlogArticlePage() {
 			<article className="mx-auto max-w-[56rem] px-5 py-16 lg:px-8">
 				<p className="text-xs font-semibold uppercase tracking-widest text-primary">{post.category}</p>
 				<ArticleMeta post={post} />
+				<QuickAnswer text={post.quickAnswer} />
 
 				{post.content ? (
 					<ArticleBody content={post.content} />

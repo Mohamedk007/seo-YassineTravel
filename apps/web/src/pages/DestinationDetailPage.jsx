@@ -9,10 +9,12 @@ import { getAirportBySlug } from '@/data/airports';
 import { getToursForDestination } from '@/data/tours/index';
 import { getPath, getRoutePaths } from '@/data/route-config';
 import { SITE_BRAND } from '@/data/site-config';
-import { buildFaqSchema, buildTouristDestinationSchema } from '@/seo/schemas';
+import { buildFaqSchema, buildImageObjectSchema, buildTouristDestinationSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { Stars } from '@/components/site/Typography';
+import { Gallery } from '@/components/site/Gallery';
 import { TourCard } from '@/components/tours/TourCard';
+import { buildGoogleMapsEmbedUrl } from '@/lib/maps';
 import { Page } from './page-shell';
 
 export default function DestinationDetailPage() {
@@ -42,6 +44,7 @@ export default function DestinationDetailPage() {
 	const nearbyDestinations = (destination.nearbyDestinationIds || [])
 		.map((id) => getDestinations(lang).find((entry) => entry.id === id))
 		.filter(Boolean);
+	const mapEmbedUrl = buildGoogleMapsEmbedUrl(`${destination.name}, Morocco`);
 
 	return (
 		<Page
@@ -53,6 +56,7 @@ export default function DestinationDetailPage() {
 			structuredData={[
 				buildTouristDestinationSchema(destination, destinationPath),
 				buildFaqSchema(generalFaqs),
+				buildImageObjectSchema({ url: destination.image, caption: destination.name }),
 			]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[
@@ -77,6 +81,34 @@ export default function DestinationDetailPage() {
 								</li>
 							))}
 						</ul>
+					</div>
+				)}
+
+				{/* Gallery */}
+				{destination.gallery && destination.gallery.length > 0 && (
+					<div className="mt-14">
+						<h2 className="font-display text-2xl font-semibold">{destination.name} in pictures</h2>
+						<div className="mt-5">
+							<Gallery images={destination.gallery} altPrefix={destination.name} />
+						</div>
+					</div>
+				)}
+
+				{/* Compact map */}
+				{mapEmbedUrl && (
+					<div className="mt-14">
+						<h2 className="font-display text-2xl font-semibold">Where is {destination.name}?</h2>
+						<div className="mt-5 overflow-hidden rounded-2xl border border-border">
+							<iframe
+								src={mapEmbedUrl}
+								title={`Map of ${destination.name}`}
+								width="100%"
+								height="320"
+								loading="lazy"
+								style={{ border: 0 }}
+								referrerPolicy="no-referrer-when-downgrade"
+							/>
+						</div>
 					</div>
 				)}
 

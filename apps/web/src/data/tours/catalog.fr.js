@@ -3,6 +3,7 @@ import { IMG } from '../images';
 export const TOURS = [
 	{
 		id: 'imperial-cities-sahara',
+		mapStops: ['Marrakech, Morocco', 'Ait Benhaddou, Morocco', 'Merzouga, Morocco', 'Fes, Morocco', 'Chefchaouen, Morocco', 'Marrakech, Morocco'],
 		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
 		slug: 'villes-imperiales-et-sahara-de-luxe',
 		categoryKey: 'luxury-tours',
@@ -35,6 +36,7 @@ export const TOURS = [
 	},
 	{
 		id: 'marrakech-merzouga-desert',
+		mapStops: ['Marrakech, Morocco', 'Ait Benhaddou, Morocco', 'Merzouga, Morocco', 'Marrakech, Morocco'],
 		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
 		slug: 'marrakech-merzouga-4-jours-desert',
 		categoryKey: 'desert-tours',
@@ -60,6 +62,7 @@ export const TOURS = [
 	},
 	{
 		id: 'private-fes-city',
+		mapStops: ['Fes, Morocco', 'Volubilis, Morocco', 'Meknes, Morocco'],
 		destinationIds: ['fes'],
 		slug: 'decouverte-culturelle-privee-de-fes',
 		categoryKey: 'private-tours',
@@ -84,6 +87,7 @@ export const TOURS = [
 	},
 	{
 		id: 'marrakech-day-trips',
+		mapStops: ['Marrakech, Morocco', 'Atlas Mountains, Morocco'],
 		destinationIds: ['marrakech', 'atlas-mountains'],
 		slug: 'excursions-a-la-journee-depuis-marrakech',
 		categoryKey: 'day-trips',
@@ -108,6 +112,7 @@ export const TOURS = [
 	},
 	{
 		id: 'essaouira-day-trip',
+		mapStops: ['Marrakech, Morocco', 'Essaouira, Morocco'],
 		destinationIds: ['marrakech'],
 		slug: 'excursion-a-essaouira-depuis-marrakech',
 		categoryKey: 'day-trips',
@@ -136,6 +141,7 @@ export const TOURS = [
 	},
 	{
 		id: 'grand-tour-morocco',
+		mapStops: ['Marrakech, Morocco', 'Ait Benhaddou, Morocco', 'Merzouga, Morocco', 'Fes, Morocco', 'Chefchaouen, Morocco', 'Essaouira, Morocco', 'Marrakech, Morocco'],
 		destinationIds: ['marrakech', 'ait-benhaddou', 'merzouga-sahara', 'fes', 'chefchaouen'],
 		slug: 'grand-tour-du-maroc-14-jours',
 		categoryKey: 'luxury-tours',
@@ -162,6 +168,7 @@ export const TOURS = [
 	},
 	{
 		id: 'agafay-luxury-camp',
+		mapStops: ['Marrakech, Morocco', 'Agafay Desert, Morocco'],
 		destinationIds: ['marrakech'],
 		slug: 'nuit-de-luxe-desert-agafay',
 		categoryKey: 'desert-tours',
