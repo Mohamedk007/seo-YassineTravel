@@ -9,7 +9,7 @@ import { getAirportBySlug } from '@/data/airports';
 import { getToursForDestination } from '@/data/tours/index';
 import { getPath, getRoutePaths } from '@/data/route-config';
 import { SITE_BRAND } from '@/data/site-config';
-import { buildFaqSchema, buildTouristDestinationSchema } from '@/seo/schemas';
+import { buildFaqSchema, buildImageObjectSchema, buildTouristDestinationSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { Stars } from '@/components/site/Typography';
 import { Gallery } from '@/components/site/Gallery';
@@ -56,6 +56,7 @@ export default function DestinationDetailPage() {
 			structuredData={[
 				buildTouristDestinationSchema(destination, destinationPath),
 				buildFaqSchema(generalFaqs),
+				buildImageObjectSchema({ url: destination.image, caption: destination.name }),
 			]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[

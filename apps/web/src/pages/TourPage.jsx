@@ -17,7 +17,7 @@ import { getPath, getRoutePaths } from '../data/route-config';
 import { getExcluded, getIncluded, getTours } from '@/data/tours/catalog';
 import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey, getTourTranslations } from '@/data/tours/index';
 import { SITE_BRAND } from '@/data/site-config';
-import { buildFaqSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
+import { buildFaqSchema, buildImageObjectSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
 import { buildGoogleMapsRouteUrl } from '@/lib/maps';
 import { TourCard } from '../components/tours/TourCard';
 import { CTA, MiniReviews } from './page-shell';
@@ -94,6 +94,7 @@ export function TourDetail() {
 				structuredData={[
 					buildTourSchema(tour, tourPath),
 					buildFaqSchema(FAQS.slice(0, 4)),
+					buildImageObjectSchema({ url: tour.image, caption: tour.title }),
 				]}
 				alternateUrls={alternateUrls}
 			/>

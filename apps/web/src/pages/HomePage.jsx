@@ -179,7 +179,7 @@ export default function HomePage() {
             </div>
           </div>
           <Reveal delay={100} className="relative">
-            <img src={IMG.guide} alt="Local Moroccan tour guide" className="rounded-3xl shadow-2xl" />
+            <img src={IMG.guide} alt="Local Moroccan tour guide" width={1024} height={1024} className="rounded-3xl shadow-2xl" loading="lazy" decoding="async" />
             <div className="absolute -bottom-6 -left-4 hidden rounded-2xl bg-card p-5 shadow-xl ring-1 ring-border sm:block">
               <Stars />
               <p className="mt-2 max-w-[14rem] text-sm font-medium">“{HOME_PAGE.whyChooseUs.quote.text}”</p>

@@ -5,7 +5,7 @@ import { getBlogPostBySlug, getBlogPostTranslations } from '@/data/editorial';
 import { SITE_BRAND } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '@/data/route-config';
-import { buildBlogPostingSchema } from '@/seo/schemas';
+import { buildBlogPostingSchema, buildImageObjectSchema } from '@/seo/schemas';
 import { Page } from './page-shell';
 
 function formatDate(isoDate) {
@@ -117,7 +117,7 @@ export default function BlogArticlePage() {
 			image={post.image}
 			crumb="Blog"
 			pageType="BlogPosting"
-			structuredData={buildBlogPostingSchema(post, postPath)}
+			structuredData={[buildBlogPostingSchema(post, postPath), buildImageObjectSchema({ url: post.image, caption: post.title })]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[
 				{ name: 'Home', url: P.home },

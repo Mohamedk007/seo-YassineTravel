@@ -46,7 +46,7 @@ export function AirportTransfers() {
 							</ul>
 							<WhatsAppCtaButton message={AIRPORT_TRANSFER_PAGE.ctaMessage}>{AIRPORT_TRANSFER_PAGE.ctaLabel}</WhatsAppCtaButton>
 						</div>
-						<img src={AIRPORT_TRANSFER_PAGE.imageSecondary} alt={AIRPORT_TRANSFER_PAGE.imageAlt} className="rounded-3xl shadow-xl" />
+						<img src={AIRPORT_TRANSFER_PAGE.imageSecondary} alt={AIRPORT_TRANSFER_PAGE.imageAlt} width={740} height={494} className="rounded-3xl shadow-xl" loading="lazy" decoding="async" />
 						</div>
 
 					<div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -102,7 +102,7 @@ export function PrivateDrivers() {
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-					<img src={PRIVATE_DRIVER_PAGE.imageSecondary} alt={PRIVATE_DRIVER_PAGE.imageAlt} className="order-2 rounded-3xl shadow-xl lg:order-1" />
+					<img src={PRIVATE_DRIVER_PAGE.imageSecondary} alt={PRIVATE_DRIVER_PAGE.imageAlt} width={1344} height={768} className="order-2 rounded-3xl shadow-xl lg:order-1" loading="lazy" decoding="async" />
 					<div className="order-1 lg:order-2">
 						<Car className="h-10 w-10 text-primary" />
 						<h2 className="mt-4 font-display text-3xl font-semibold">{PRIVATE_DRIVER_PAGE.heading}</h2>
