@@ -18,7 +18,7 @@ import { getExcluded, getIncluded, getTours } from '@/data/tours/catalog';
 import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey, getTourTranslations } from '@/data/tours/index';
 import { SITE_BRAND } from '@/data/site-config';
 import { buildFaqSchema, buildImageObjectSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
-import { buildGoogleMapsRouteUrl } from '@/lib/maps';
+import { buildGoogleMapsRouteEmbedUrl, buildGoogleMapsRouteUrl } from '@/lib/maps';
 import { TourCard } from '../components/tours/TourCard';
 import { CTA, MiniReviews } from './page-shell';
 
@@ -73,6 +73,7 @@ export function TourDetail() {
 		})
 	);
 	const routeMapUrl = buildGoogleMapsRouteUrl(tour.mapStops);
+	const routeEmbedUrl = buildGoogleMapsRouteEmbedUrl(tour.mapStops);
 	const tourGallery = getGalleryForDestinationIds(tour.destinationIds, lang);
 	const priceRows = [
 		['2 travellers', `€${tour.price.toLocaleString()}`, 'per person'],
@@ -120,17 +121,38 @@ export function TourDetail() {
 						))}
 					</ul>
 
-					<h2 className="mt-10 font-display text-3xl font-semibold">Detailed itinerary</h2>
+					<h2 className="mt-10 font-display text-3xl font-semibold">Where you'll travel</h2>
+					{routeEmbedUrl ? (
+						<div className="mt-4 overflow-hidden rounded-2xl border border-border">
+							<iframe
+								src={routeEmbedUrl}
+								title={`Route map for ${tour.title}`}
+								width="100%"
+								height="360"
+								loading="lazy"
+								style={{ border: 0 }}
+								referrerPolicy="no-referrer-when-downgrade"
+							/>
+						</div>
+					) : null}
+					{tour.mapStops && tour.mapStops.length > 0 && (
+						<p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+							<MapPin className="h-4 w-4 shrink-0 text-primary" />
+							{tour.mapStops.join(' → ')}
+						</p>
+					)}
 					{routeMapUrl && (
 						<a
 							href={routeMapUrl}
 							target="_blank"
 							rel="noreferrer"
-							className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+							className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-primary"
 						>
-							<MapPin className="h-4 w-4" /> View this route on Google Maps
+							Open this route in Google Maps
 						</a>
 					)}
+
+					<h2 className="mt-10 font-display text-3xl font-semibold">Detailed itinerary</h2>
 					<div className="mt-5 space-y-4">
 						{tour.itinerary.map(([day, title, description]) => (
 							<div key={day} className="flex gap-4">
