@@ -121,7 +121,19 @@ export function TourDetail() {
 						))}
 					</ul>
 
-					<h2 className="mt-10 font-display text-3xl font-semibold">Detailed itinerary</h2>
+                    <h2 className="mt-10 font-display text-3xl font-semibold">Detailed itinerary</h2>
+					<div className="mt-5 space-y-4">
+						{tour.itinerary.map(([day, title, description]) => (
+							<div key={day} className="flex gap-4">
+								<div className="flex h-fit shrink-0 items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">{day}</div>
+								<div>
+									<h3 className="font-semibold">{title}</h3>
+									<p className="mt-1 text-sm text-muted-foreground">{description}</p>
+								</div>
+							</div>
+						))}
+					</div>
+					
 					{routeEmbedUrl ? (
 						<div className="mt-4 overflow-hidden rounded-2xl border border-border">
 							<iframe
@@ -151,18 +163,6 @@ export function TourDetail() {
 							Open this route in Google Maps
 						</a>
 					)}
-
-					<div className="mt-5 space-y-4">
-						{tour.itinerary.map(([day, title, description]) => (
-							<div key={day} className="flex gap-4">
-								<div className="flex h-fit shrink-0 items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">{day}</div>
-								<div>
-									<h3 className="font-semibold">{title}</h3>
-									<p className="mt-1 text-sm text-muted-foreground">{description}</p>
-								</div>
-							</div>
-						))}
-					</div>
 
 					{tourGallery.length > 0 && (
 						<>
@@ -244,10 +244,7 @@ export function TourDetail() {
 						</button>
 					</div>
 
-					<h2 className="mt-10 font-display text-3xl font-semibold">Where you&apos;ll travel</h2>
-					<div className="mt-4 overflow-hidden rounded-xl border border-border">
-						<iframe title="Tour map" className="h-72 w-full" loading="lazy" src="https://www.google.com/maps?q=Morocco&output=embed" />
-					</div>
+	
 
 					<h2 className="mt-10 font-display text-3xl font-semibold">Tour FAQs</h2>
 					<Accordion type="single" collapsible className="mt-4">
