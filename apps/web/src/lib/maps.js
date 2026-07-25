@@ -12,3 +12,13 @@ export function buildGoogleMapsEmbedUrl(query) {
 	if (!query) return null;
 	return `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
 }
+
+// Embeds a multi-stop route (not just a single point) using Google's legacy
+// saddr/daddr + "to:" waypoint syntax, still supported with output=embed —
+// no API key needed, unlike the newer Directions/Embed APIs.
+export function buildGoogleMapsRouteEmbedUrl(stops = []) {
+	if (!stops || stops.length < 2) return null;
+	const [start, ...rest] = stops;
+	const destination = rest.map((stop) => encodeURIComponent(stop)).join('+to:');
+	return `https://www.google.com/maps?saddr=${encodeURIComponent(start)}&daddr=${destination}&output=embed`;
+}
