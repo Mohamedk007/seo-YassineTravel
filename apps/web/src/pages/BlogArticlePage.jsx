@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, User } from 'lucide-react';
-import { getBlogPostBySlug, getBlogPostTranslations } from '@/data/editorial';
+import { getBlogPostBySlug, getBlogPostTranslations, getBlogPostsForDestination } from '@/data/editorial';
+import { getDestinations } from '@/data/destinations';
 import { SITE_BRAND } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '@/data/route-config';
@@ -105,6 +106,28 @@ function ArticleBody({ content }) {
 	);
 }
 
+function TopicCluster({ posts, destinationName, lang }) {
+	if (!posts || posts.length === 0) return null;
+
+	return (
+		<div className="mt-10 rounded-2xl border border-border p-6 md:p-8">
+			<p className="text-xs font-semibold uppercase tracking-widest text-primary">More about {destinationName}</p>
+			<div className="mt-4 space-y-3">
+				{posts.map((related) => (
+					<Link
+						key={related.slug}
+						to={getPath('blogArticle', lang, { slug: related.slug })}
+						className="group flex items-center justify-between rounded-lg border border-border px-4 py-3 transition hover:border-primary/40"
+					>
+						<span className="font-medium">{related.title}</span>
+						<ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
+					</Link>
+				))}
+			</div>
+		</div>
+	);
+}
+
 function InternalLinks({ links }) {
 	if (!links || links.length === 0) return null;
 
@@ -149,6 +172,10 @@ export default function BlogArticlePage() {
 			return [code, `${SITE_BRAND.origin}/${code}${path}`];
 		})
 	);
+	const clusterPosts = post.destinationId
+		? getBlogPostsForDestination(post.destinationId, lang).filter((p) => p.slug !== post.slug)
+		: [];
+	const clusterDestination = post.destinationId ? getDestinations(lang).find((d) => d.id === post.destinationId) : null;
 
 	return (
 		<Page
@@ -178,6 +205,7 @@ export default function BlogArticlePage() {
 					</p>
 				)}
 
+				<TopicCluster posts={clusterPosts} destinationName={clusterDestination?.name} lang={lang} />
 				<InternalLinks links={post.internalLinks} />
 
 				<Link to={P.blog} className="mt-10 inline-flex items-center gap-2 font-semibold text-primary">
