@@ -104,6 +104,70 @@ export const BLOG_PAGE_POSTS = [
 		title: '3 jours parfaits à Marrakech',
 		category: 'Guide de ville',
 		summary: 'Comment vivre la Ville Rouge comme un habitué, des souks aux dîners sur les toits.',
+		quickAnswer: 'Trois jours suffisent pour l\'essentiel de Marrakech : jour 1 dans la médina (Jemaa el-Fna, les souks, le palais de la Bahia), jour 2 dans les jardins et la ville nouvelle (jardin Majorelle, Guéliz), et jour 3 en excursion d\'une demi-journée dans les contreforts de l\'Atlas ou le désert d\'Agafay avant le départ.',
+		datePublished: '2026-03-02',
+		dateModified: '2026-07-16',
+		readTime: 'Lecture 7 min',
+		author: {
+			name: 'Sofia Bennani',
+			role: 'Spécialiste destination Marrakech, Morocco Trip Holidays',
+		},
+		content: [
+			{
+				paragraphs: [
+					'Marrakech récompense un rythme plus lent que celui adopté par la plupart des visiteurs de passage. Trois jours pleins, c\'est le juste équilibre : assez de temps pour voir l\'essentiel de la médina sans se presser, et assez de marge pour au moins une sortie hors des remparts. Voici comment nous organisons ces trois jours pour nos clients.',
+				],
+			},
+			{
+				heading: 'Jour 1 : la médina, comme il se doit',
+				paragraphs: [
+					'Commencez tôt sur Jemaa el-Fna avant que la place ne se remplisse, puis glissez-vous dans les souks pendant que la lumière est encore douce — le marché aux épices, le souk des teinturiers et les fabricants de lanternes se trouvent tous à quelques minutes les uns des autres. Le palais de la Bahia et les tombeaux saadiens valent le prix d\'entrée rien que pour les zelliges ; les deux sont bondés dès midi, visez donc avant 11h.',
+					'Terminez la journée sur un toit-terrasse surplombant la place. L\'appel à la prière au coucher du soleil, avec les martinets tournoyant au-dessus de la place, est un de ces instants que les photos ne captent jamais vraiment.',
+				],
+			},
+			{
+				heading: 'Jour 2 : jardins, design et ville nouvelle',
+				paragraphs: [
+					'Le jardin Majorelle est populaire à juste titre — la villa bleu cobalt au milieu des cactus et des bambous est réellement saisissante, et le petit musée berbère à l\'intérieur mérite le billet supplémentaire. Réservez votre créneau en ligne à l\'avance ; il est complet la plupart des matins.',
+					'Passez l\'après-midi à Guéliz, le quartier plus récent de Marrakech, pour des concept stores, des galeries d\'art contemporain, et un changement de rythme après l\'intensité de la médina. C\'est aussi là que se trouvent certains des meilleurs restaurants marocains modernes de la ville, si vous voulez une pause tajine.',
+				],
+			},
+			{
+				heading: 'Jour 3 : s\'échapper de la ville quelques heures',
+				paragraphs: [
+					'C\'est le jour que la plupart des itinéraires ratent — soit ils le suppriment complètement, soit ils tentent d\'y caser un voyage complet dans le désert qui épuise avant le départ. Une demi-journée dans les contreforts de l\'Atlas ou le désert d\'Agafay est le meilleur choix : assez proche pour être de retour en ville en milieu d\'après-midi, assez différent pour ressentir un vrai changement de décor.',
+					'Si votre vol est tardif, cela fonctionne aussi très bien comme excursion du matin avant de rejoindre l\'aéroport.',
+				],
+			},
+			{
+				heading: 'Quelques notes pratiques',
+				paragraphs: [
+					'Les riads se réservent plus vite que les hôtels en haute saison (mars-mai, septembre-novembre), réservez donc au moins six semaines à l\'avance si vous avez des dates précises. L\'argent liquide reste préféré dans les souks pour les petits achats, et le marchandage est attendu — commencez à environ la moitié du premier prix annoncé.',
+				],
+			},
+		],
+		internalLinks: [
+			{
+				label: 'Collection d\'excursions à la journée depuis Marrakech',
+				description: 'Montagnes de l\'Atlas, désert d\'Agafay, ou côte atlantique — de retour en ville le soir même.',
+				to: ROUTE_PATHS.dayTrips,
+			},
+			{
+				label: 'Nuit de luxe dans le désert d\'Agafay',
+				description: 'Transformez votre troisième jour en escapade d\'une nuit si vous voulez plus qu\'une demi-journée.',
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'nuit-de-luxe-desert-agafay')}`,
+			},
+			{
+				label: 'Guide de la destination Marrakech',
+				description: 'Tout le reste à voir et à faire dans la Ville Rouge.',
+				to: `${ROUTE_PATHS.destinationDetail.replace(':slug', 'marrakech')}`,
+			},
+			{
+				label: 'Chauffeurs privés au Maroc',
+				description: 'Évitez les négociations de taxi avec un chauffeur-guide privé pour vos journées à Marrakech.',
+				to: ROUTE_PATHS.privateDrivers,
+			},
+		],
 	},
 	{
 		id: 'food-lovers-journey-through-morocco',
@@ -112,6 +176,57 @@ export const BLOG_PAGE_POSTS = [
 		title: 'Un voyage gourmand à travers le Maroc',
 		category: 'Gastronomie',
 		summary: 'Tajines, pastilla et thé à la menthe — les saveurs qui définissent la cuisine marocaine.',
+		quickAnswer: 'La cuisine marocaine repose sur les tajines mijotés lentement (agneau, poulet ou légumes, avec citron confit et olives), le couscous du vendredi, la pastilla (une tourte sucrée-salée au pigeon ou au poulet), et le thé à la menthe versé de haut en signe d\'hospitalité. Les spécialités varient selon les régions — Fès pour la pastilla, Essaouira pour les sardines grillées, Marrakech pour la tanjia.',
+		datePublished: '2026-03-18',
+		dateModified: '2026-07-16',
+		readTime: 'Lecture 6 min',
+		author: {
+			name: 'Youssef El Amrani',
+			role: 'Responsable des opérations désert, Morocco Trip Holidays',
+		},
+		content: [
+			{
+				paragraphs: [
+					'Demandez à n\'importe quel Marocain de parler de nourriture et la conversation durera longtemps — la cuisine ici est régionale, saisonnière, et profondément liée à l\'hospitalité. Quelques plats se retrouvent partout, mais les meilleures versions de chacun appartiennent souvent à une ville précise, voire à une grand-mère précise.',
+				],
+			},
+			{
+				heading: 'Le tajine, comme il se doit',
+				paragraphs: [
+					'Un tajine désigne à la fois le plat en terre cuite et le mets lui-même — viande ou légumes mijotés lentement avec un équilibre d\'épices précis, généralement du citron confit, des olives, ou des fruits secs selon la région. Le couvercle conique piège la vapeur et la renvoie dans le plat, ce qui explique qu\'un bon tajine ne nécessite presque aucun liquide ajouté. Le poulet au citron confit et aux olives est le grand classique ; l\'agneau aux pruneaux et amandes est la version festive servie aux mariages.',
+				],
+			},
+			{
+				heading: 'Au-delà du tajine : que chercher selon la ville',
+				paragraphs: [
+					'Fès est l\'endroit pour la pastilla — une tourte délicate traditionnellement fourrée au pigeon, plus souvent au poulet aujourd\'hui, superposée d\'amandes, de cannelle et de sucre dans une combinaison sucrée-salée qui surprend la plupart des primo-visiteurs. À Marrakech, cherchez la tanjia : bœuf ou agneau mijoté pendant des heures dans une urne scellée, traditionnellement dans les braises d\'un four de hammam. Sur la côte à Essaouira, tout tourne autour du grill — sardines et pêche du jour, simplement préparées à la chermoula.',
+					'Le couscous est traditionnellement un plat du vendredi, servi avec sept légumes et un bouillon riche. Si vous voyagez avec un guide privé, demandez où les locaux mangent réellement — le meilleur couscous se trouve rarement dans le restaurant à la plus belle terrasse.',
+				],
+			},
+			{
+				heading: 'Le thé à la menthe n\'est pas un détail',
+				paragraphs: [
+					'Surnommé à moitié en plaisantant le "whisky marocain", le thé à la menthe est versé de haut pour l\'aérer et créer une légère mousse — une petite mise en scène qui signale aussi l\'hospitalité. Refuser un verre lorsqu\'il est proposé est considéré comme impoli ; attendez-vous à au moins trois tournées si vous êtes invité chez quelqu\'un, selon le dicton local sur les trois verres, chacun ayant un goût différent.',
+				],
+			},
+		],
+		internalLinks: [
+			{
+				label: 'Circuits sur mesure',
+				description: 'Construisez un voyage autour des marchés, cours de cuisine et spécialités régionales.',
+				to: ROUTE_PATHS.customTours,
+			},
+			{
+				label: 'Le voyage gourmand continue à Fès',
+				description: 'Associez ce guide à notre circuit privé de découverte culturelle de Fès.',
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'decouverte-culturelle-privee-de-fes')}`,
+			},
+			{
+				label: 'Tous les circuits',
+				description: 'Tous les itinéraires que nous proposons, des excursions à la journée aux circuits de luxe de deux semaines.',
+				to: ROUTE_PATHS.tours,
+			},
+		],
 	},
 	{
 		id: 'why-chefchaouen-belongs-on-your-itinerary',
@@ -121,6 +236,57 @@ export const BLOG_PAGE_POSTS = [
 		title: 'Pourquoi Chefchaouen a sa place dans votre itinéraire',
 		category: 'Destinations',
 		summary: "L'histoire derrière la ville bleue enchanteresse du Maroc.",
+		quickAnswer: 'Chefchaouen est une ville de montagne dans le Rif, célèbre pour sa vieille ville aux murs bleus — une tradition souvent associée aux réfugiés juifs des années 1930, bien que ses origines exactes soient débattues. Elle se trouve à 4-5h de route de Fès ou Tanger, mieux vécue en escale d\'1-2 jours plutôt qu\'en excursion précipitée à la journée.',
+		datePublished: '2026-04-05',
+		dateModified: '2026-07-16',
+		readTime: 'Lecture 6 min',
+		author: {
+			name: 'Sofia Bennani',
+			role: 'Spécialiste destination Marrakech, Morocco Trip Holidays',
+		},
+		content: [
+			{
+				paragraphs: [
+					'Les photos de Chefchaouen circulent tellement en ligne qu\'il est facile de croire que le bleu n\'est qu\'un argument touristique. Ce n\'est pas le cas — la tradition remonte à plusieurs générations, et parcourir les ruelles en personne procure une sensation différente de n\'importe quelle photo, le bleu changeant de teinte selon l\'angle de la lumière et l\'heure de la journée.',
+				],
+			},
+			{
+				heading: 'D\'où vient ce bleu',
+				paragraphs: [
+					'L\'explication la plus répandue relie cette tradition aux réfugiés juifs installés à Chefchaouen dans les années 1930, pour qui le bleu avait une signification religieuse, rappelant le ciel et Dieu. D\'autres théories l\'associent à un moyen d\'éloigner les moustiques, ou simplement à une esthétique qui s\'est imposée avec le temps. Les habitants donnent souvent une réponse différente selon la personne interrogée — ce qui fait partie du charme de la ville.',
+				],
+			},
+			{
+				heading: 'Que faire vraiment sur place',
+				paragraphs: [
+					'La vieille ville elle-même est l\'attraction principale : s\'y promener sans plan fixe est la meilleure façon de la découvrir, car les plus belles ruelles sont rarement celles indiquées sur une carte. La mosquée espagnole, à 20-30 minutes de marche en montée depuis la médina, offre une vue large sur les toits bleus et vaut le coup d\'être visitée au coucher du soleil.',
+					'Chefchaouen est aussi un bon endroit pour acheter de la laine tissée à la main et des articles en cuir directement auprès de ceux qui les fabriquent, généralement à des prix plus justes et une meilleure qualité que dans les souks des grandes villes.',
+				],
+			},
+			{
+				heading: 'Comment l\'intégrer dans un voyage plus long',
+				paragraphs: [
+					'Chefchaouen se prête mal à une excursion d\'une seule journée depuis la plupart des points de départ — elle fonctionne bien mieux comme étape d\'1-2 nuits entre Fès et Tanger, ou dans le cadre d\'un circuit plus long incluant aussi les villes impériales et le Sahara. La visiter dans la journée depuis Fès signifie environ 8 heures de route pour quelques heures sur place, ce que nous ne recommandons pas.',
+				],
+			},
+		],
+		internalLinks: [
+			{
+				label: 'Guide de la destination Chefchaouen',
+				description: 'Les informations pratiques pour visiter la ville bleue.',
+				to: `${ROUTE_PATHS.destinationDetail.replace(':slug', 'chefchaouen')}`,
+			},
+			{
+				label: 'Villes impériales & Sahara de luxe en 10 jours',
+				description: 'Notre circuit qui inclut une étape à Chefchaouen, aux côtés de Fès et du désert.',
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'villes-imperiales-et-sahara-de-luxe')}`,
+			},
+			{
+				label: 'Grand tour du Maroc en 14 jours',
+				description: 'Un circuit plus long qui accorde à Chefchaouen le temps qu\'elle mérite.',
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'grand-tour-du-maroc-14-jours')}`,
+			},
+		],
 	},
 	{
 		id: 'best-time-to-visit-morocco',
@@ -129,13 +295,129 @@ export const BLOG_PAGE_POSTS = [
 		title: 'Meilleure période pour visiter le Maroc',
 		category: 'Préparer son voyage',
 		summary: 'Un guide mois par mois de la météo, des festivals et de l\'affluence.',
+		quickAnswer: 'La meilleure période pour visiter le Maroc dans l\'ensemble est mars-mai ou septembre-novembre, quand les températures sont douces dans tout le pays. L\'été (juin-août) convient à la côte et aux montagnes mais est très chaud dans le Sahara et les villes impériales ; l\'hiver (décembre-février) est agréable dans le sud mais froid la nuit dans le désert et les montagnes.',
+		datePublished: '2026-04-20',
+		dateModified: '2026-07-16',
+		readTime: 'Lecture 7 min',
+		author: {
+			name: 'Youssef El Amrani',
+			role: 'Responsable des opérations désert, Morocco Trip Holidays',
+		},
+		content: [
+			{
+				paragraphs: [
+					'La géographie du Maroc fait de cette question une vraie question régionale — la côte, le Sahara et les montagnes de l\'Atlas partagent rarement la même météo à la même période de l\'année. La réponse courte est le printemps et l\'automne pour la plupart des itinéraires, mais le bon mois dépend fortement de votre destination réelle.',
+				],
+				table: {
+					headers: ['Saison', 'Idéal pour', 'À surveiller'],
+					rows: [
+						['Mars-mai', 'Marrakech, Fès, randonnée dans l\'Atlas, circuits complets', 'Pluies occasionnelles au nord en début de printemps'],
+						['Juin-août', 'Villes côtières (Essaouira, Tanger), retraites en montagne', 'Chaleur extrême dans le Sahara et les villes impériales, 40°C+'],
+						['Septembre-novembre', 'Circuits complets, nuits dans le désert', 'Réserver tôt — c\'est la haute saison'],
+						['Décembre-février', 'Marrakech (journées douces), observation des étoiles au Sahara', 'Nuits froides dans le désert et les montagnes, proches de zéro'],
+					],
+				},
+			},
+			{
+				heading: 'Pour un voyage axé sur le désert',
+				paragraphs: [
+					'D\'octobre à avril, c\'est la période idéale pour une nuit confortable dans le Sahara — la chaleur diurne reste gérable et les soirées sont assez fraîches pour profiter d\'un feu sans que ce soit insupportable. En plein été, la chaleur du désert dépasse régulièrement 40°C en journée, ce qui rend la route de plusieurs jours entre Marrakech et Merzouga réellement éprouvante.',
+				],
+			},
+			{
+				heading: 'Pour les villes impériales (Marrakech, Fès, Meknès)',
+				paragraphs: [
+					'Le printemps et l\'automne l\'emportent encore ici — les après-midis d\'été dans les médinas peuvent être épuisants pour les visites à pied, tandis que l\'hiver reste doux en journée mais les riads (construits autour de cours ouvertes) peuvent sembler froids la nuit sans chauffage adapté. Demandez spécifiquement le chauffage lors de la réservation d\'un riad pour un séjour de décembre à février.',
+				],
+			},
+			{
+				heading: 'Festivals à prendre en compte',
+				paragraphs: [
+					'Les dates du Ramadan changent chaque année dans le calendrier grégorien ; les horaires des restaurants et la restauration en journée changent significativement pendant ce mois, ce qui vaut la peine d\'être vérifié avant de réserver si les expériences culinaires sont une priorité. En dehors de cela, des moussems régionaux (festivals traditionnels) ont lieu toute l\'année dans différentes villes — votre concepteur de voyage peut signaler ceux qui coïncident avec vos dates.',
+				],
+			},
+		],
+		internalLinks: [
+			{
+				label: 'Le guide ultime d\'une nuit de luxe dans le désert du Sahara',
+				description: 'Programmez votre nuit dans le désert selon les meilleurs mois.',
+				to: `${ROUTE_PATHS.blogArticle.replace(':slug', 'guide-ultime-nuit-de-luxe-desert-sahara')}`,
+			},
+			{
+				label: 'Circuits sur mesure',
+				description: 'Indiquez-nous vos dates de voyage et nous concevrons l\'itinéraire autour des meilleures régions pour cette saison.',
+				to: ROUTE_PATHS.customTours,
+			},
+			{
+				label: 'Tous les circuits',
+				description: 'Parcourez les itinéraires par saison et par région.',
+				to: ROUTE_PATHS.tours,
+			},
+		],
 	},
 	{
 		id: 'how-to-choose-the-perfect-riad',
+		destinationId: 'marrakech',
 		slug: 'comment-choisir-le-riad-parfait',
 		image: IMG.riad,
 		title: 'Comment choisir le riad parfait',
 		category: 'Luxe',
 		summary: 'Ce qui distingue un riad marocain vraiment exceptionnel.',
+		quickAnswer: 'Un excellent riad se résume à quatre choses : un emplacement réellement calme, juste à côté (pas sur) d\'une ruelle animée, de la lumière naturelle dans le patio, des avis récents honnêtes mentionnant le bruit et le service, et la confirmation de ce qui est réellement inclus (petit-déjeuner, transfert aéroport, accès au toit-terrasse) avant de réserver.',
+		datePublished: '2026-05-08',
+		dateModified: '2026-07-16',
+		readTime: 'Lecture 6 min',
+		author: {
+			name: 'Sofia Bennani',
+			role: 'Spécialiste destination Marrakech, Morocco Trip Holidays',
+		},
+		content: [
+			{
+				paragraphs: [
+					'Un riad est une maison marocaine traditionnelle construite autour d\'un patio ou jardin intérieur, et ce format est devenu synonyme d\'un certain genre de séjour intime et design. Mais le mot seul en dit très peu — nous avons vu des riads extraordinaires et d\'autres qui ne sont qu\'une maison rénovée avec un joli compte Instagram. Voici ce qui distingue réellement les deux.',
+				],
+			},
+			{
+				heading: 'L\'emplacement compte plus que les photos',
+				paragraphs: [
+					'Le facteur le plus important pour la satisfaction des clients est le bruit, pas la décoration. Un riad directement sur une ruelle animée de la médina peut signifier des charrettes de livraison tôt le matin et un passage piéton important le soir devant votre fenêtre ; un riad niché à deux virages du chemin principal, même à 30 mètres seulement, est souvent nettement plus calme. Demandez précisément la position exacte du riad par rapport au souk ou à la place la plus proche avant de réserver, pas seulement le quartier général.',
+				],
+			},
+			{
+				heading: 'La lumière naturelle dans le patio',
+				paragraphs: [
+					'Les riads sont construits vers l\'intérieur, ce qui signifie que certains patios reçoivent très peu de lumière directe selon la hauteur des murs environnants et la période de l\'année. Un patio qui reste lumineux toute la journée change réellement la perception de tout le séjour, surtout si vous prévoyez d\'y passer du temps libre plutôt que d\'être en visite à l\'extérieur.',
+				],
+			},
+			{
+				heading: 'Lisez les avis récents, pas seulement la note',
+				paragraphs: [
+					'Une moyenne de 4,8 étoiles peut cacher beaucoup de choses. Lisez les 10 à 15 avis les plus récents en cherchant spécifiquement les mentions de bruit, de fiabilité de la climatisation, et de réactivité du personnel — ce sont les détails qui varient le plus entre un riad moyen et un riad exceptionnel, et ils apparaissent rarement dans les photos professionnelles.',
+				],
+			},
+			{
+				heading: 'Confirmez ce qui est réellement inclus',
+				paragraphs: [
+					'Le petit-déjeuner, le transfert aéroport, et l\'accès au toit-terrasse ou à la piscine sont parfois inclus et parfois facturés séparément, même parmi des riads à un prix similaire. Cela vaut la peine d\'être confirmé directement, surtout pour des séjours en haute saison où de petites exclusions peuvent autrement devenir des coûts supplémentaires inattendus.',
+				],
+			},
+		],
+		internalLinks: [
+			{
+				label: 'Guide de la destination Marrakech',
+				description: 'Où se trouvent réellement les meilleurs quartiers de riads.',
+				to: `${ROUTE_PATHS.destinationDetail.replace(':slug', 'marrakech')}`,
+			},
+			{
+				label: '3 jours parfaits à Marrakech',
+				description: 'Planifiez vos journées dans la médina autour de l\'emplacement de votre riad.',
+				to: `${ROUTE_PATHS.blogArticle.replace(':slug', '3-jours-parfaits-a-marrakech')}`,
+			},
+			{
+				label: 'Circuits sur mesure',
+				description: 'Nous sélectionnons les riads à la main dans chaque itinéraire sur mesure que nous concevons.',
+				to: ROUTE_PATHS.customTours,
+			},
+		],
 	},
 ];
