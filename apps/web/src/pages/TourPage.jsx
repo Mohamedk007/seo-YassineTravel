@@ -121,7 +121,7 @@ export function TourDetail() {
 						))}
 					</ul>
 
-					<h2 className="mt-10 font-display text-3xl font-semibold">Where you'll travel</h2>
+					<h2 className="mt-10 font-display text-3xl font-semibold">Detailed itinerary</h2>
 					{routeEmbedUrl ? (
 						<div className="mt-4 overflow-hidden rounded-2xl border border-border">
 							<iframe
@@ -152,7 +152,6 @@ export function TourDetail() {
 						</a>
 					)}
 
-					<h2 className="mt-10 font-display text-3xl font-semibold">Detailed itinerary</h2>
 					<div className="mt-5 space-y-4">
 						{tour.itinerary.map(([day, title, description]) => (
 							<div key={day} className="flex gap-4">
