@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { ArrowRight, Check, Clock, MapPin, MessageCircle, Phone, Star, Users, X } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
@@ -9,12 +9,10 @@ import { Gallery } from '@/components/site/Gallery';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs } from '@/data/content';
-import { IMG, getImageAttrs } from '@/data/images';
-import { getGalleryForDestinationIds } from '@/data/destinations';
 import { getTourInternalLinks } from '@/data/internal-links';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '../data/route-config';
-import { getExcluded, getIncluded, getTours } from '@/data/tours/catalog';
+import { getTours } from '@/data/tours/catalog';
 import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey, getTourTranslations } from '@/data/tours/index';
 import { SITE_BRAND } from '@/data/site-config';
 import { buildFaqSchema, buildImageObjectSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
@@ -97,26 +95,6 @@ const COPY = {
 export function TourDetail() {
 	const lang = useLocale();
 	const FAQS = getFaqs(lang);
-	const [showGallery, setShowGallery] = useState(false);
-	const galleryRef = useRef(null);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					setShowGallery(true);
-					observer.disconnect();
-				}
-			},
-			{ rootMargin: '200px' }
-		);
-
-		if (galleryRef.current) {
-			observer.observe(galleryRef.current);
-		}
-
-		return () => observer.disconnect();
-	}, []);
 
 	const { slug } = useParams();
 	const tour = getTourBySlug(slug, lang);
@@ -126,8 +104,8 @@ export function TourDetail() {
 	if (!tour) return <Navigate to={P.tours} replace />;
 
 	const related = getRelatedTours(slug, lang);
-	const INCLUDED = getIncluded(lang);
-	const EXCLUDED = getExcluded(lang);
+	const INCLUDED = tour.included || [];
+	const EXCLUDED = tour.excluded || [];
 	const tourPath = getPath('tourDetail', lang, { slug: tour.slug });
 	const TOUR_INTERNAL_LINKS = getTourInternalLinks(lang);
 	const tourTranslations = getTourTranslations(tour.id);
@@ -139,7 +117,7 @@ export function TourDetail() {
 	);
 	const routeMapUrl = buildGoogleMapsRouteUrl(tour.mapStops);
 	const routeEmbedUrl = buildGoogleMapsRouteEmbedUrl(tour.mapStops);
-	const tourGallery = getGalleryForDestinationIds(tour.destinationIds, lang);
+	const tourGallery = tour.gallery || [];
 	const priceRows = [
 		[copy.travellers2, `€${tour.price.toLocaleString()}`],
 		[copy.travellers34, `€${Math.round(tour.price * 0.85).toLocaleString()}`],
@@ -279,34 +257,6 @@ export function TourDetail() {
 							</ul>
 						</div>
 					</div>
-
-					{/* Fallback gallery: only rendered when this tour has no destination
-					    gallery above, so the page never carries two "Gallery" headings. */}
-					{tourGallery.length === 0 && (
-						<section ref={galleryRef}>
-							<h2 className="mt-10 font-display text-3xl font-semibold">{copy.gallery}</h2>
-							{showGallery ? (
-								<div className="mt-5 grid grid-cols-3 gap-3">
-									{[tour.image, IMG.riad, IMG.tagine, IMG.camel, IMG.kasbah, IMG.chefchaouen].map((image, index) => (
-										<img
-											key={index}
-											src={image}
-											{...getImageAttrs(image, lang, tour.title)}
-											className="aspect-square w-full rounded-xl object-cover"
-											loading="lazy"
-											decoding="async"
-										/>
-									))}
-								</div>
-							) : (
-								<div className="mt-5 grid grid-cols-3 gap-3">
-									{Array.from({ length: 6 }).map((_, index) => (
-										<div key={index} className="aspect-square animate-pulse rounded-xl bg-gray-200" />
-									))}
-								</div>
-							)}
-						</section>
-					)}
 
 					<h2 className="mt-10 font-display text-3xl font-semibold">{copy.tourFaqs}</h2>
 					<Accordion type="single" collapsible className="mt-4">

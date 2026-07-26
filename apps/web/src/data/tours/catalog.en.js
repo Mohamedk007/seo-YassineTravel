@@ -1,5 +1,28 @@
 import { IMG } from '../images';
 
+// Shared for every tour for now (real content, not placeholder text) — each
+// tour object below has its own `included`/`excluded` field pointing at these,
+// so a specific tour can later get its own bespoke list just by replacing
+// that one field, with no change needed to how the page renders it.
+export const INCLUDED = [
+	'Private air-conditioned vehicle & fuel',
+	'Professional English-speaking driver-guide',
+	'Accommodation as specified (luxury riads & camps)',
+	'Daily breakfast and select dinners',
+	'Camel trek and desert camp experience',
+	'All entrance fees to monuments listed',
+	'Bottled water throughout the journey',
+	'24/7 on-trip concierge support',
+];
+
+export const EXCLUDED = [
+	'International flights',
+	'Travel insurance',
+	'Lunches and drinks not specified',
+	'Personal expenses and gratuities',
+	'Optional activities (quad, hot-air balloon)',
+];
+
 export const TOURS = [
 	{
 		id: 'imperial-cities-sahara',
@@ -33,6 +56,9 @@ export const TOURS = [
 			['Day 9', 'Return to Marrakech', 'Scenic transfer, farewell dinner, final night in your riad.'],
 			['Day 10', 'Departure', 'Private transfer to the airport at your leisure.'],
 		],
+		gallery: [IMG.luxCamp, IMG.kasbah, IMG.fesDoor, IMG.chefchaouen, IMG.marrakech],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'marrakech-merzouga-desert',
@@ -59,6 +85,9 @@ export const TOURS = [
 			['Day 3', 'Merzouga → Fes or return', 'Sunrise dunes, drive through the valleys.'],
 			['Day 4', 'Return to Marrakech', 'Scenic return transfer.'],
 		],
+		gallery: [IMG.duneSunset, IMG.kasbah, IMG.luxCamp, IMG.atlas],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'private-fes-city',
@@ -84,6 +113,9 @@ export const TOURS = [
 			['Day 2', 'Medina Deep Dive', 'Full-day private tour of madrasas, tanneries, souks.'],
 			['Day 3', 'Volubilis & Meknes', 'UNESCO Roman ruins and imperial Meknes, departure.'],
 		],
+		gallery: [IMG.guide, IMG.riad, IMG.tagine],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'marrakech-day-trips',
@@ -109,6 +141,9 @@ export const TOURS = [
 			['Midday', 'Guided Experience', 'Lunch, walking tour, and free time.'],
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
+		gallery: [IMG.marrakech, IMG.couple, IMG.kasbah],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'essaouira-day-trip',
@@ -138,6 +173,9 @@ export const TOURS = [
 			['Midday', 'Guided Experience', 'Lunch, walking tour, and free time.'],
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
+		gallery: [IMG.Essaouira1, IMG.marrakech],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'grand-tour-morocco',
@@ -165,6 +203,9 @@ export const TOURS = [
 			['Day 10-11', 'Chefchaouen', 'The blue city and Rif mountains.'],
 			['Day 12-14', 'Essaouira & departure', 'Atlantic coast, return to Marrakech.'],
 		],
+		gallery: [IMG.duneSunset, IMG.fesDoor, IMG.chefchaouen, IMG.Essaouira1, IMG.marrakech],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'agafay-luxury-camp',
@@ -189,24 +230,8 @@ export const TOURS = [
 			['Day 1', 'Marrakech → Agafay', 'Afternoon transfer, camel ride, sunset dinner.'],
 			['Day 2', 'Sunrise & return', 'Breakfast, pool time, return to Marrakech.'],
 		],
+		gallery: [IMG.camel, IMG.marrakech, IMG.couple],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
-];
-
-export const INCLUDED = [
-	'Private air-conditioned vehicle & fuel',
-	'Professional English-speaking driver-guide',
-	'Accommodation as specified (luxury riads & camps)',
-	'Daily breakfast and select dinners',
-	'Camel trek and desert camp experience',
-	'All entrance fees to monuments listed',
-	'Bottled water throughout the journey',
-	'24/7 on-trip concierge support',
-];
-
-export const EXCLUDED = [
-	'International flights',
-	'Travel insurance',
-	'Lunches and drinks not specified',
-	'Personal expenses and gratuities',
-	'Optional activities (quad, hot-air balloon)',
 ];

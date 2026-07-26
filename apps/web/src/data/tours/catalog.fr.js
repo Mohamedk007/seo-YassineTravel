@@ -1,5 +1,29 @@
 import { IMG } from '../images';
 
+// Partagé par tous les circuits pour le moment (contenu réel, pas un texte de
+// substitution) — chaque circuit ci-dessous a son propre champ
+// `included`/`excluded` pointant vers ces listes, afin qu'un circuit précis
+// puisse plus tard recevoir sa propre liste sur mesure en remplaçant juste ce
+// champ, sans changement nécessaire à l'affichage de la page.
+export const INCLUDED = [
+	'Véhicule privé climatisé et carburant',
+	'Chauffeur-guide professionnel anglophone',
+	'Hébergement tel que spécifié (riads et camps de luxe)',
+	'Petit-déjeuner quotidien et certains dîners',
+	'Balade à dos de chameau et expérience du camp de désert',
+	'Tous les frais d\'entrée aux monuments listés',
+	'Eau en bouteille tout au long du voyage',
+	'Assistance conciergerie 24/7 pendant le voyage',
+];
+
+export const EXCLUDED = [
+	'Vols internationaux',
+	'Assurance voyage',
+	'Déjeuners et boissons non spécifiés',
+	'Dépenses personnelles et pourboires',
+	'Activités optionnelles (quad, montgolfière)',
+];
+
 export const TOURS = [
 	{
 		id: 'imperial-cities-sahara',
@@ -33,6 +57,9 @@ export const TOURS = [
 			['Jour 9', 'Retour à Marrakech', 'Transfert panoramique, dîner d\'adieu, dernière nuit dans votre riad.'],
 			['Jour 10', 'Départ', 'Transfert privé vers l\'aéroport à votre rythme.'],
 		],
+		gallery: [IMG.luxCamp, IMG.kasbah, IMG.fesDoor, IMG.chefchaouen, IMG.marrakech],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'marrakech-merzouga-desert',
@@ -59,6 +86,9 @@ export const TOURS = [
 			['Jour 3', 'Merzouga → Fès ou retour', 'Lever de soleil sur les dunes, traversée des vallées.'],
 			['Jour 4', 'Retour à Marrakech', 'Transfert retour panoramique.'],
 		],
+		gallery: [IMG.duneSunset, IMG.kasbah, IMG.luxCamp, IMG.atlas],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'private-fes-city',
@@ -84,6 +114,9 @@ export const TOURS = [
 			['Jour 2', 'Immersion dans la médina', 'Journée complète de visite privée des médersas, tanneries et souks.'],
 			['Jour 3', 'Volubilis & Meknès', 'Ruines romaines classées UNESCO et Meknès impériale, départ.'],
 		],
+		gallery: [IMG.guide, IMG.riad, IMG.tagine],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'marrakech-day-trips',
@@ -109,6 +142,9 @@ export const TOURS = [
 			['Midi', 'Expérience guidée', 'Déjeuner, visite à pied et temps libre.'],
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
+		gallery: [IMG.marrakech, IMG.couple, IMG.kasbah],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'essaouira-day-trip',
@@ -138,6 +174,9 @@ export const TOURS = [
 			['Midi', 'Expérience guidée', 'Déjeuner, visite à pied et temps libre.'],
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
+		gallery: [IMG.Essaouira1, IMG.marrakech],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'grand-tour-morocco',
@@ -165,6 +204,9 @@ export const TOURS = [
 			['Jours 10-11', 'Chefchaouen', 'La ville bleue et les montagnes du Rif.'],
 			['Jours 12-14', 'Essaouira & départ', 'Littoral atlantique, retour à Marrakech.'],
 		],
+		gallery: [IMG.duneSunset, IMG.fesDoor, IMG.chefchaouen, IMG.Essaouira1, IMG.marrakech],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
 	{
 		id: 'agafay-luxury-camp',
@@ -189,24 +231,8 @@ export const TOURS = [
 			['Jour 1', 'Marrakech → Agafay', 'Transfert l\'après-midi, balade à dos de chameau, dîner au coucher du soleil.'],
 			['Jour 2', 'Lever de soleil & retour', 'Petit-déjeuner, temps à la piscine, retour à Marrakech.'],
 		],
+		gallery: [IMG.camel, IMG.marrakech, IMG.couple],
+		included: INCLUDED,
+		excluded: EXCLUDED,
 	},
-];
-
-export const INCLUDED = [
-	'Véhicule privé climatisé et carburant',
-	'Chauffeur-guide professionnel anglophone',
-	'Hébergement tel que spécifié (riads et camps de luxe)',
-	'Petit-déjeuner quotidien et certains dîners',
-	'Balade à dos de chameau et expérience du camp de désert',
-	'Tous les frais d\'entrée aux monuments listés',
-	'Eau en bouteille tout au long du voyage',
-	'Assistance conciergerie 24/7 pendant le voyage',
-];
-
-export const EXCLUDED = [
-	'Vols internationaux',
-	'Assurance voyage',
-	'Déjeuners et boissons non spécifiés',
-	'Dépenses personnelles et pourboires',
-	'Activités optionnelles (quad, montgolfière)',
 ];
