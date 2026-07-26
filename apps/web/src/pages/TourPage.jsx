@@ -47,7 +47,7 @@ const COPY = {
 		gallery: 'Gallery',
 		pricing: 'Pricing',
 		groupSize: 'Group size',
-		price: 'Price',
+		price: 'Price per person',
 		travellers2: '2 travellers',
 		travellers34: '3–4 travellers',
 		travellers5plus: '5+ travellers',
@@ -75,7 +75,7 @@ const COPY = {
 		gallery: 'Galerie',
 		pricing: 'Tarifs',
 		groupSize: 'Taille du groupe',
-		price: 'Prix',
+		price: 'Prix par personne',
 		travellers2: '2 voyageurs',
 		travellers34: '3-4 voyageurs',
 		travellers5plus: '5 voyageurs et +',
@@ -141,9 +141,9 @@ export function TourDetail() {
 	const routeEmbedUrl = buildGoogleMapsRouteEmbedUrl(tour.mapStops);
 	const tourGallery = getGalleryForDestinationIds(tour.destinationIds, lang);
 	const priceRows = [
-		[copy.travellers2, `€${tour.price.toLocaleString()}`, copy.perPerson],
-		[copy.travellers34, `€${Math.round(tour.price * 0.85).toLocaleString()}`, copy.perPerson],
-		[copy.travellers5plus, `€${Math.round(tour.price * 0.72).toLocaleString()}`, copy.perPerson],
+		[copy.travellers2, `€${tour.price.toLocaleString()}`],
+		[copy.travellers34, `€${Math.round(tour.price * 0.85).toLocaleString()}`],
+		[copy.travellers5plus, `€${Math.round(tour.price * 0.72).toLocaleString()}`],
 	];
 
 	return (
@@ -244,7 +244,6 @@ export function TourDetail() {
 								<tr>
 									<th className="p-4 font-semibold">{copy.groupSize}</th>
 									<th className="p-4 font-semibold">{copy.price}</th>
-									<th className="p-4 font-semibold"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -252,7 +251,6 @@ export function TourDetail() {
 									<tr key={row[0]} className="border-t border-border">
 										<td className="p-4">{row[0]}</td>
 										<td className="p-4 font-semibold text-primary">{row[1]}</td>
-										<td className="p-4 text-muted-foreground">{row[2]}</td>
 									</tr>
 								))}
 							</tbody>
