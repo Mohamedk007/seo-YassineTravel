@@ -7,18 +7,16 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-const distPath = path.join(__dirname, "dist/apps/web");
+const dist = path.join(__dirname, "dist/apps/web");
 
-// Serve static assets
-app.use(express.static(distPath));
+app.use(express.static(dist));
 
-// React Router fallback
-app.get("*", (req, res) => {
-  res.sendFile(path.join(distPath, "index.html"));
+app.get("/{*any}", (req, res) => {
+  res.sendFile(path.join(dist, "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server started on ${PORT}`);
 });
