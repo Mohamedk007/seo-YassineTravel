@@ -88,13 +88,15 @@ export function Navbar() {
 
 				<button
 					type="button"
-					className={`lg:hidden ${transparent ? 'text-white' : 'text-foreground'}`}
+					className={`inline-flex h-10 w-10 items-center justify-center rounded-full lg:hidden ${
+						transparent ? 'bg-black/25 text-white backdrop-blur-sm' : 'bg-secondary text-foreground'
+					}`}
 					onClick={() => setOpen(true)}
 					aria-label="Open menu"
 					aria-expanded={open}
 					aria-controls="mobile-nav-drawer"
 				>
-					<Menu className="h-7 w-7" />
+					<Menu className="h-6 w-6" />
 				</button>
 			</nav>
 
