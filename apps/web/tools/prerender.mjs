@@ -258,16 +258,27 @@ function serializeJsonLd(entry) {
 	return JSON.stringify(entry).replaceAll('<', '\\u003c');
 }
 
+// Every tag below except <title> is stamped with data-rh="true" — the same
+// marker react-helmet-async's own SSR output would carry. Client-side, Helmet
+// only ever looks at existing meta/link/script tags that already have this
+// marker (see node_modules/react-helmet-async/lib/index.js's updateTags) to
+// decide what to replace on the first render/navigation. Without it, these
+// statically-prerendered tags are invisible to Helmet, which just appends its
+// own correct copies on top instead of replacing them — leaving stale
+// canonical/hreflang/OG/twitter/JSON-LD tags from whichever page a user's
+// session first loaded, duplicated indefinitely across every client-side
+// navigation. <title> needs no marker: Helmet always sets document.title
+// directly regardless of any existing markup.
 function renderHeadTags(head) {
 	const lines = [
 		`<title>${escapeHtmlText(head.title)}</title>`,
-		`<meta name="description" content="${escapeHtmlAttr(head.description)}" />`,
-		`<meta name="robots" content="${escapeHtmlAttr(head.robotsContent)}" />`,
-		`<link rel="canonical" href="${escapeHtmlAttr(head.canonicalUrl)}" />`,
-		...head.hreflangLinks.map((link) => `<link rel="alternate" hreflang="${link.hrefLang}" href="${escapeHtmlAttr(link.href)}" />`),
-		...head.openGraphTags.map((tag) => `<meta property="${tag.property}" content="${escapeHtmlAttr(tag.content)}" />`),
-		...head.twitterTags.map((tag) => `<meta name="${tag.name}" content="${escapeHtmlAttr(tag.content)}" />`),
-		...head.schemas.map((schema) => `<script type="application/ld+json">${serializeJsonLd(schema)}</script>`),
+		`<meta name="description" content="${escapeHtmlAttr(head.description)}" data-rh="true" />`,
+		`<meta name="robots" content="${escapeHtmlAttr(head.robotsContent)}" data-rh="true" />`,
+		`<link rel="canonical" href="${escapeHtmlAttr(head.canonicalUrl)}" data-rh="true" />`,
+		...head.hreflangLinks.map((link) => `<link rel="alternate" hreflang="${link.hrefLang}" href="${escapeHtmlAttr(link.href)}" data-rh="true" />`),
+		...head.openGraphTags.map((tag) => `<meta property="${tag.property}" content="${escapeHtmlAttr(tag.content)}" data-rh="true" />`),
+		...head.twitterTags.map((tag) => `<meta name="${tag.name}" content="${escapeHtmlAttr(tag.content)}" data-rh="true" />`),
+		...head.schemas.map((schema) => `<script type="application/ld+json" data-rh="true">${serializeJsonLd(schema)}</script>`),
 	];
 	return lines.join('\n\t\t');
 }
