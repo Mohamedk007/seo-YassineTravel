@@ -260,8 +260,17 @@ export const TOURS = [
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel à Marrakech.'],
 		],
 		gallery: [IMG.aitBenhaddouVillage, IMG.kasbah, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Véhicule privé climatisé et chauffeur-guide professionnel',
+			'Prise en charge et retour à l\'hôtel à Marrakech',
+			'Visite guidée du ksar d\'Aït Ben Haddou',
+			'Eau en bouteille à bord',
+		],
+		excluded: [
+			'Déjeuner et boissons',
+			'Frais d\'entrée aux maisons/musées individuels du ksar',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 	{
 		id: 'agafay-sunset-evening',
@@ -288,8 +297,17 @@ export const TOURS = [
 			['Soir', 'Dîner & retour', 'Dîner 3 services autour du feu de camp, puis transfert retour à Marrakech.'],
 		],
 		gallery: [IMG.agafayEvening, IMG.luxCamp],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Transfert privé depuis votre hôtel à Marrakech',
+			'Balade à dos de chameau au coucher du soleil dans le désert d\'Agafay',
+			'Dîner marocain traditionnel 3 services',
+			'Musique live autour du feu de camp',
+		],
+		excluded: [
+			'Boissons alcoolisées',
+			'Quad en option',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 	{
 		id: 'ouzoud-waterfalls-day-trip',
@@ -316,8 +334,17 @@ export const TOURS = [
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.ouzoud, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Véhicule privé climatisé et chauffeur-guide',
+			'Prise en charge et retour à l\'hôtel à Marrakech',
+			'Descente guidée jusqu\'aux cascades',
+			'Eau en bouteille à bord',
+		],
+		excluded: [
+			'Déjeuner et boissons',
+			'Balade en barque optionnelle jusqu\'au pied des chutes',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 	{
 		id: 'ourika-valley-day-trip',
@@ -344,8 +371,17 @@ export const TOURS = [
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.ourika, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Véhicule privé climatisé et chauffeur-guide',
+			'Prise en charge et retour à l\'hôtel à Marrakech',
+			'Marche guidée jusqu\'aux cascades de l\'Ourika',
+			'Déjeuner marocain traditionnel',
+		],
+		excluded: [
+			'Boissons',
+			'Frais d\'entrée à la Kasbah Bab Ourika',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 	{
 		id: 'imlil-day-trip',
@@ -372,8 +408,17 @@ export const TOURS = [
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.imlil, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Véhicule privé climatisé et chauffeur-guide',
+			'Prise en charge et retour à l\'hôtel à Marrakech',
+			'Balade guidée à travers le village d\'Imlil',
+			'Eau en bouteille à bord',
+		],
+		excluded: [
+			'Déjeuner et boissons',
+			'Balade à dos de mulet en option',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 	{
 		id: 'casablanca-day-trip',
@@ -400,8 +445,17 @@ export const TOURS = [
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.casablancaDayTrip],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Véhicule privé climatisé et chauffeur-guide',
+			'Prise en charge et retour à l\'hôtel à Marrakech',
+			'Visite guidée de l\'extérieur de la mosquée Hassan II et de la Corniche',
+			'Eau en bouteille à bord',
+		],
+		excluded: [
+			'Déjeuner et boissons',
+			'Billet d\'entrée à l\'intérieur de la mosquée Hassan II',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 	{
 		id: 'agadir-day-trip',
@@ -428,8 +482,17 @@ export const TOURS = [
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.agadir],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Véhicule privé climatisé et chauffeur-guide',
+			'Prise en charge et retour à l\'hôtel à Marrakech',
+			'Temps libre à la Marina et au point de vue de la Kasbah',
+			'Eau en bouteille à bord',
+		],
+		excluded: [
+			'Déjeuner et boissons',
+			'Activités de plage ou nautiques',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 	{
 		id: 'ouirgane-day-trip',
@@ -456,7 +519,16 @@ export const TOURS = [
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.ouirgane, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Véhicule privé climatisé et chauffeur-guide',
+			'Prise en charge et retour à l\'hôtel à Marrakech',
+			'Visite guidée de villages berbères',
+			'Eau en bouteille à bord',
+		],
+		excluded: [
+			'Déjeuner et boissons',
+			'Frais de guide de randonnée en option',
+			'Dépenses personnelles et pourboires',
+		],
 	},
 ];

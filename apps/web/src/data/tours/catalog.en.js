@@ -259,8 +259,17 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your Marrakech hotel.'],
 		],
 		gallery: [IMG.aitBenhaddouVillage, IMG.kasbah, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & professional driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided tour of the Ait Ben Haddou kasbah',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Entrance fees to individual kasbah houses/museums',
+			'Personal expenses and gratuities',
+		],
 	},
 	{
 		id: 'agafay-sunset-evening',
@@ -287,8 +296,17 @@ export const TOURS = [
 			['Evening', 'Dinner & Return', '3-course dinner around the campfire, then transfer back to Marrakech.'],
 		],
 		gallery: [IMG.agafayEvening, IMG.luxCamp],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private transfer from your Marrakech hotel',
+			'Sunset camel ride in the Agafay Desert',
+			'3-course traditional Moroccan dinner',
+			'Live music around the campfire',
+		],
+		excluded: [
+			'Alcoholic beverages',
+			'Optional quad biking',
+			'Personal expenses and gratuities',
+		],
 	},
 	{
 		id: 'ouzoud-waterfalls-day-trip',
@@ -315,8 +333,17 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.ouzoud, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided walk down to the waterfalls',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Optional boat ride to the base of the falls',
+			'Personal expenses and gratuities',
+		],
 	},
 	{
 		id: 'ourika-valley-day-trip',
@@ -343,8 +370,17 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.ourika, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided walk to the Ourika waterfalls',
+			'Traditional Moroccan lunch',
+		],
+		excluded: [
+			'Drinks',
+			'Entrance fee to Kasbah Bab Ourika',
+			'Personal expenses and gratuities',
+		],
 	},
 	{
 		id: 'imlil-day-trip',
@@ -371,8 +407,17 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.imlil, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided walk through Imlil village',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Optional mule ride',
+			'Personal expenses and gratuities',
+		],
 	},
 	{
 		id: 'casablanca-day-trip',
@@ -399,8 +444,17 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.casablancaDayTrip],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided visit of the Hassan II Mosque exterior and Corniche',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Hassan II Mosque interior entrance ticket',
+			'Personal expenses and gratuities',
+		],
 	},
 	{
 		id: 'agadir-day-trip',
@@ -427,8 +481,17 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.agadir],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Free time at the Marina and Kasbah viewpoint',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Beach or water activities',
+			'Personal expenses and gratuities',
+		],
 	},
 	{
 		id: 'ouirgane-day-trip',
@@ -455,7 +518,16 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.ouirgane, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided visit of Berber villages',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Optional hiking guide fee',
+			'Personal expenses and gratuities',
+		],
 	},
 ];
