@@ -1,4 +1,5 @@
 export { Seo, default as SeoComponent } from './Seo';
+export { buildSeoHead } from './head';
 export { StructuredData } from './StructuredData';
 export { SEO_CONFIG, SEO_DEFAULTS_BY_LANG, getSeoDefaults, getAlternateOgLocales } from './seo.config';
 export { buildCanonicalUrl, stripQueryAndHash } from './canonical';

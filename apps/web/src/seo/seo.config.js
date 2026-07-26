@@ -1,6 +1,8 @@
-import { IMG } from '@/data/images';
-import { SITE_BRAND } from '@/data/site-config';
-import { DEFAULT_LANGUAGE, SITE_ORIGIN, SUPPORTED_LANGUAGES, resolveLanguage } from './sitemap';
+// Relative imports only (no `@/` alias, no image imports) — this file sits on
+// the dependency path of buildSeoHead() in ./head.js, which tools/prerender.mjs
+// runs directly under plain Node, without a bundler to resolve `@/` or assets.
+import { SITE_BRAND } from '../data/site-config.js';
+import { DEFAULT_LANGUAGE, SITE_ORIGIN, SUPPORTED_LANGUAGES, resolveLanguage } from './sitemap.js';
 
 /**
  * Per-language SEO defaults. Every page falls back to these, so a page that
@@ -33,7 +35,11 @@ export const SEO_CONFIG = {
 	supportedLanguages: SUPPORTED_LANGUAGES,
 	// Language used for the `x-default` alternate.
 	xDefaultLanguage: DEFAULT_LANGUAGE,
-	defaultImage: IMG.duneSunset,
+	// A stable, non-hashed copy under /public/images (produced by
+	// tools/generate-sitemap.mjs), not the Vite-hashed IMG.duneSunset import.
+	// og:image/twitter:image get cached by crawlers for a long time; pointing at
+	// a hashed client asset would 404 the moment that hash changes on a rebuild.
+	defaultImage: '/images/sahara-desert-dunes-sunset-morocco.webp',
 	// Google truncates well before these; they exist to catch outliers, not to
 	// clip every title.
 	titleMaxLength: 65,

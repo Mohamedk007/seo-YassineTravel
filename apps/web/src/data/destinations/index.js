@@ -16,6 +16,15 @@ export function getDestinationBySlug(slug, lang = DEFAULT_LANGUAGE) {
 	return getDestinations(lang).find((destination) => destination.slug === slug);
 }
 
+// Real entity relationship already used by DestinationDetailPage (each
+// destination names its nearestAirportSlug) — inverted here so an airport
+// page can link to the destinations it actually serves, instead of a
+// fabricated or manually-maintained list.
+export function getDestinationsForAirport(airportSlug, lang = DEFAULT_LANGUAGE) {
+	if (!airportSlug) return [];
+	return getDestinations(lang).filter((destination) => destination.nearestAirportSlug === airportSlug);
+}
+
 // Aggregates a gallery for a tour from the real photos of every destination it
 // visits (deduped) — a tour has no dedicated photo set of its own, so this
 // reuses genuine, destination-tagged images rather than repeating one shot.

@@ -6,7 +6,7 @@ import {
 	resolveLanguage,
 	toAbsoluteUrl,
 	toLocalizedPath,
-} from './sitemap';
+} from './sitemap.js';
 
 export { DEFAULT_LANGUAGE, SITE_ORIGIN, SUPPORTED_LANGUAGES, getRoutePathTable, resolveLanguage, toLocalizedPath };
 

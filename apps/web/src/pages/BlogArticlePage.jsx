@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, User } from 'lucide-react';
 import { getBlogPostBySlug, getBlogPostTranslations, getBlogPostsForDestination } from '@/data/editorial';
 import { getDestinations } from '@/data/destinations';
@@ -10,14 +11,36 @@ import { buildBlogPostingSchema, buildImageObjectSchema } from '@/seo/schemas';
 import { getBreadcrumbLabel } from '@/seo/breadcrumbs';
 import { Page } from './page-shell';
 
-function formatDate(isoDate) {
+const DATE_LOCALES = { en: 'en-US', fr: 'fr-FR' };
+
+const COPY = {
+	en: {
+		published: 'Published',
+		updated: 'Updated',
+		inShort: 'In short',
+		moreAbout: (name) => `More about ${name}`,
+		defaultBody: 'This guide is part of our Morocco travel journal and is continuously refined by our local team to keep advice practical, current, and route-aware.',
+		backToArticles: 'Back to all articles',
+	},
+	fr: {
+		published: 'Publié le',
+		updated: 'Mis à jour le',
+		inShort: 'En bref',
+		moreAbout: (name) => `En savoir plus sur ${name}`,
+		defaultBody: 'Ce guide fait partie de notre journal de voyage sur le Maroc et est continuellement enrichi par notre équipe locale pour rester pratique, actuel et ancré sur le terrain.',
+		backToArticles: 'Retour à tous les articles',
+	},
+};
+
+function formatDate(isoDate, lang) {
 	if (!isoDate) return null;
-	return new Date(isoDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+	return new Date(isoDate).toLocaleDateString(DATE_LOCALES[lang] || DATE_LOCALES.en, { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function ArticleMeta({ post }) {
-	const published = formatDate(post.datePublished);
-	const updated = formatDate(post.dateModified);
+function ArticleMeta({ post, lang }) {
+	const copy = COPY[lang] || COPY.en;
+	const published = formatDate(post.datePublished, lang);
+	const updated = formatDate(post.dateModified, lang);
 	if (!published && !post.author && !post.readTime) return null;
 
 	return (
@@ -35,8 +58,8 @@ function ArticleMeta({ post }) {
 				<span className="inline-flex items-center gap-1.5">
 					<CalendarDays className="h-4 w-4" />
 					<span>
-						Published {published}
-						{updated && updated !== published ? ` · Updated ${updated}` : ''}
+						{copy.published} {published}
+						{updated && updated !== published ? ` · ${copy.updated} ${updated}` : ''}
 					</span>
 				</span>
 			)}
@@ -79,11 +102,12 @@ function ComparisonTable({ table }) {
 	);
 }
 
-function QuickAnswer({ text }) {
+function QuickAnswer({ text, lang }) {
 	if (!text) return null;
+	const copy = COPY[lang] || COPY.en;
 	return (
 		<div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
-			<p className="text-sm font-semibold uppercase tracking-wide text-primary">In short</p>
+			<p className="text-sm font-semibold uppercase tracking-wide text-primary">{copy.inShort}</p>
 			<p className="mt-1.5 text-base leading-relaxed">{text}</p>
 		</div>
 	);
@@ -109,10 +133,11 @@ function ArticleBody({ content }) {
 
 function TopicCluster({ posts, destinationName, lang }) {
 	if (!posts || posts.length === 0) return null;
+	const copy = COPY[lang] || COPY.en;
 
 	return (
 		<div className="mt-10 rounded-2xl border border-border p-6 md:p-8">
-			<p className="text-xs font-semibold uppercase tracking-widest text-primary">More about {destinationName}</p>
+			<p className="text-xs font-semibold uppercase tracking-widest text-primary">{copy.moreAbout(destinationName)}</p>
 			<div className="mt-4 space-y-3">
 				{posts.map((related) => (
 					<Link
@@ -130,12 +155,13 @@ function TopicCluster({ posts, destinationName, lang }) {
 }
 
 function InternalLinks({ links }) {
+	const { t } = useTranslation();
 	if (!links || links.length === 0) return null;
 
 	return (
 		<div className="mt-14 rounded-2xl border border-border bg-secondary/40 p-6 md:p-8">
-			<p className="text-xs font-semibold uppercase tracking-widest text-primary">Plan your own trip</p>
-			<h2 className="mt-2 font-display text-2xl font-semibold">Turn this guide into an itinerary</h2>
+			<p className="text-xs font-semibold uppercase tracking-widest text-primary">{t('common.planYourTrip')}</p>
+			<h2 className="mt-2 font-display text-2xl font-semibold">{t('common.turnGuideIntoItinerary')}</h2>
 			<div className="mt-6 grid gap-4 sm:grid-cols-2">
 				{links.map((link) => (
 					<Link
@@ -148,7 +174,7 @@ function InternalLinks({ links }) {
 							<p className="mt-1.5 text-sm text-muted-foreground">{link.description}</p>
 						</div>
 						<span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-							Explore <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
+							{t('common.exploreLink')} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
 						</span>
 					</Link>
 				))}
@@ -177,6 +203,7 @@ export default function BlogArticlePage() {
 		? getBlogPostsForDestination(post.destinationId, lang).filter((p) => p.slug !== post.slug)
 		: [];
 	const clusterDestination = post.destinationId ? getDestinations(lang).find((d) => d.id === post.destinationId) : null;
+	const copy = COPY[lang] || COPY.en;
 
 	return (
 		<Page
@@ -199,22 +226,20 @@ export default function BlogArticlePage() {
 		>
 			<article className="mx-auto max-w-[56rem] px-5 py-16 lg:px-8">
 				<p className="text-xs font-semibold uppercase tracking-widest text-primary">{post.category}</p>
-				<ArticleMeta post={post} />
-				<QuickAnswer text={post.quickAnswer} />
+				<ArticleMeta post={post} lang={lang} />
+				<QuickAnswer text={post.quickAnswer} lang={lang} />
 
 				{post.content ? (
 					<ArticleBody content={post.content} />
 				) : (
-					<p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-						This guide is part of our Morocco travel journal and is continuously refined by our local team to keep advice practical, current, and route-aware.
-					</p>
+					<p className="mt-8 text-lg leading-relaxed text-muted-foreground">{copy.defaultBody}</p>
 				)}
 
 				<TopicCluster posts={clusterPosts} destinationName={clusterDestination?.name} lang={lang} />
 				<InternalLinks links={post.internalLinks} />
 
 				<Link to={P.blog} className="mt-10 inline-flex items-center gap-2 font-semibold text-primary">
-					<ArrowLeft className="h-4 w-4" /> Back to all articles
+					<ArrowLeft className="h-4 w-4" /> {copy.backToArticles}
 				</Link>
 			</article>
 		</Page>

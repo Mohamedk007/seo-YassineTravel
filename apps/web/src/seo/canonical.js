@@ -1,4 +1,4 @@
-import { absoluteUrl, normalizePath } from './utils';
+import { absoluteUrl, normalizePath } from './utils.js';
 
 /**
  * Canonical URL for the current page.

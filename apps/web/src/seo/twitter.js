@@ -1,5 +1,5 @@
-import { SEO_CONFIG, getSeoDefaults } from './seo.config';
-import { assetUrl } from './utils';
+import { SEO_CONFIG, getSeoDefaults } from './seo.config.js';
+import { assetUrl } from './utils.js';
 
 /**
  * Twitter Card tags as `{ name, content }` descriptors.

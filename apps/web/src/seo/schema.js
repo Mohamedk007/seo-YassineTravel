@@ -1,7 +1,9 @@
-import { CONTACT } from '@/data/contact';
-import { SITE_BRAND } from '@/data/site-config';
-import { SEO_CONFIG, getSeoDefaults } from './seo.config';
-import { DEFAULT_LANGUAGE, SITE_ORIGIN, absoluteUrl, assetUrl, resolveLanguage } from './utils';
+// Relative imports only — see the note in seo.config.js; this file is also on
+// buildSeoHead()'s dependency path, run directly under plain Node.
+import { CONTACT } from '../data/contact.js';
+import { SITE_BRAND } from '../data/site-config.js';
+import { SEO_CONFIG, getSeoDefaults } from './seo.config.js';
+import { DEFAULT_LANGUAGE, SITE_ORIGIN, absoluteUrl, assetUrl, resolveLanguage } from './utils.js';
 
 /**
  * JSON-LD builders. Every builder that takes an in-app `path` also takes the
@@ -118,7 +120,7 @@ export function buildLocalBusinessSchema() {
 	};
 }
 
-export function buildWebPageSchema({ title, description, url, image, pageType = 'WebPage', lang = DEFAULT_LANGUAGE }) {
+export function buildWebPageSchema({ title, description, url, image, pageType = 'WebPage', lang = DEFAULT_LANGUAGE, speakable }) {
 	const language = resolveLanguage(lang);
 	return {
 		'@context': 'https://schema.org',
@@ -129,6 +131,7 @@ export function buildWebPageSchema({ title, description, url, image, pageType = 
 		inLanguage: language,
 		image: assetUrl(image) || undefined,
 		isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+		...(speakable ? { speakable } : {}),
 	};
 }
 
@@ -191,7 +194,16 @@ export function buildTourSchema(tour, path, lang = DEFAULT_LANGUAGE) {
 	};
 }
 
-export function buildServiceSchema({ name, description, path, lang = DEFAULT_LANGUAGE }) {
+export function buildServiceSchema({
+	name,
+	description,
+	path,
+	lang = DEFAULT_LANGUAGE,
+	areaServed = 'Morocco',
+	availableChannel,
+	hasOfferCatalog,
+	aggregateRating,
+}) {
 	if (!name) return null;
 
 	return {
@@ -204,8 +216,86 @@ export function buildServiceSchema({ name, description, path, lang = DEFAULT_LAN
 			name: SITE_BRAND.name,
 			url: SITE_ORIGIN,
 		},
-		areaServed: 'Morocco',
+		areaServed,
 		url: absoluteUrl(path || '/', lang),
+		...(availableChannel ? { availableChannel } : {}),
+		...(hasOfferCatalog ? { hasOfferCatalog } : {}),
+		...(aggregateRating ? { aggregateRating } : {}),
+	};
+}
+
+/**
+ * How a booking channel can be reached (phone / WhatsApp). Attached to a
+ * Service's `availableChannel` — lets Google/AI systems surface the exact
+ * contact method rather than just a generic "Service" node.
+ */
+export function buildServiceChannelSchema({ phone, whatsappUrl, availableLanguage } = {}) {
+	return {
+		'@type': 'ServiceChannel',
+		...(whatsappUrl ? { serviceUrl: whatsappUrl } : {}),
+		...(phone ? { servicePhone: phone } : {}),
+		...(availableLanguage ? { availableLanguage } : {}),
+	};
+}
+
+/**
+ * A single priced line item (e.g. "Airport → Medina, sedan, from €25").
+ * `price` is a starting/"from" figure, so `minPrice` is set rather than a
+ * fixed `price` — this must reflect real, currently-charged rates before
+ * shipping to production; placeholder figures should never carry this schema.
+ */
+export function buildPriceSpecificationSchema({ price, priceCurrency = 'EUR' } = {}) {
+	if (price === undefined || price === null || Number.isNaN(Number(price))) return null;
+
+	return {
+		'@type': 'PriceSpecification',
+		minPrice: Number(price),
+		priceCurrency,
+	};
+}
+
+/**
+ * A priced catalog of routes/services (e.g. every destination reachable from
+ * one airport). Each `rows` entry is `{ name, description, price, priceCurrency }`.
+ */
+export function buildOfferCatalogSchema(rows, catalogName, lang = DEFAULT_LANGUAGE) {
+	if (!rows || rows.length === 0) return null;
+
+	const itemListElement = rows
+		.filter((row) => row?.name)
+		.map((row) => ({
+			'@type': 'Offer',
+			itemOffered: {
+				'@type': 'Service',
+				name: row.name,
+				...(row.description ? { description: row.description } : {}),
+			},
+			...(row.price !== undefined && row.price !== null
+				? { priceSpecification: buildPriceSpecificationSchema({ price: row.price, priceCurrency: row.priceCurrency }) }
+				: {}),
+			areaServed: 'Morocco',
+		}));
+
+	return {
+		'@type': 'OfferCatalog',
+		name: catalogName,
+		itemListElement,
+	};
+}
+
+/**
+ * Marks which on-page sections are optimised for voice assistants and AI
+ * answer engines to quote directly (Google Assistant "speakable", and by
+ * extension the same short, self-contained-answer style AI Overviews /
+ * ChatGPT / Perplexity favour). `cssSelectors` are `#id` selectors on the
+ * actual DOM elements holding the concise answers (see AirportAEOAnswers).
+ */
+export function buildSpeakableSchema(cssSelectors) {
+	if (!cssSelectors || cssSelectors.length === 0) return null;
+
+	return {
+		'@type': 'SpeakableSpecification',
+		cssSelector: cssSelectors,
 	};
 }
 
@@ -281,10 +371,10 @@ export function buildTouristDestinationSchema(destination, path, lang = DEFAULT_
  * its own primary entity (a TouristTrip on a tour page, say) the generic page
  * node is skipped, so one URL never describes two nodes of the same type.
  */
-export function buildDefaultSchemas({ title, description, url, image, pageType, lang, breadcrumbItems, existingTypes = [] }) {
+export function buildDefaultSchemas({ title, description, url, image, pageType, lang, breadcrumbItems, existingTypes = [], speakable }) {
 	const pageSchema = existingTypes.includes(pageType)
 		? null
-		: buildWebPageSchema({ title, description, url, image, pageType, lang });
+		: buildWebPageSchema({ title, description, url, image, pageType, lang, speakable });
 
 	return [
 		buildOrganizationSchema(lang),

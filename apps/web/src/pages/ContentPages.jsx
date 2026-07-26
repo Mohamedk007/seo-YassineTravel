@@ -105,7 +105,7 @@ export function Destinations() {
 					))}
 				</div>
 				<div className="mt-10 rounded-2xl border border-border bg-card p-6">
-					<h3 className="font-display text-2xl font-semibold">Plan from a destination</h3>
+					<h3 className="font-display text-2xl font-semibold">{lang === 'fr' ? 'Planifiez à partir d’une destination' : 'Plan from a destination'}</h3>
 					<div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
 						{DESTINATION_INTERNAL_LINKS.map((entry) => (
 							<Link key={entry.to} to={entry.to} className="rounded-lg border border-border px-4 py-3 text-sm font-medium transition hover:border-primary/40 hover:text-primary">
@@ -114,7 +114,7 @@ export function Destinations() {
 						))}
 					</div>
 					<div className="mt-4 text-sm text-muted-foreground">
-						Nearby inspirations: {DESTINATION_HIGHLIGHTS.slice(0, 4).map((destination) => destination.name).join(' · ')}
+						{lang === 'fr' ? 'Inspirations à proximité' : 'Nearby inspirations'}: {DESTINATION_HIGHLIGHTS.slice(0, 4).map((destination) => destination.name).join(' · ')}
 					</div>
 				</div>
 			</section>
@@ -322,9 +322,15 @@ export function TravelGuide() {
 	);
 }
 
+const CONTACT_COPY = {
+	en: { callUs: 'Call us', visitOrWrite: 'Visit / write', officeMap: 'Office map' },
+	fr: { callUs: 'Appelez-nous', visitOrWrite: 'Nous rendre visite / écrire', officeMap: 'Carte du bureau' },
+};
+
 export function Contact() {
 	const lang = useLocale();
 	const CONTACT_PAGE = getEditorialPage('CONTACT_PAGE', lang);
+	const copy = CONTACT_COPY[lang] || CONTACT_COPY.en;
 	return (
 		<Page
 			title={CONTACT_PAGE.title}
@@ -341,7 +347,7 @@ export function Contact() {
 					<div className="mt-8 space-y-4">
 						<a href={CONTACT.phoneHref} className="flex items-center gap-4 rounded-xl border border-border bg-card p-5 transition hover:shadow-md">
 							<Phone className="h-6 w-6 text-primary" />
-							<div><div className="font-semibold">Call us</div><div className="text-sm text-muted-foreground">{CONTACT.phone}</div></div>
+							<div><div className="font-semibold">{copy.callUs}</div><div className="text-sm text-muted-foreground">{CONTACT.phone}</div></div>
 						</a>
 						<a href={waLink()} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-xl border border-border bg-card p-5 transition hover:shadow-md">
 							<MessageCircle className="h-6 w-6 text-[#25D366]" />
@@ -349,11 +355,11 @@ export function Contact() {
 						</a>
 						<a href={`mailto:${CONTACT.email}`} className="flex items-center gap-4 rounded-xl border border-border bg-card p-5 transition hover:shadow-md">
 							<Compass className="h-6 w-6 text-primary" />
-							<div><div className="font-semibold">Visit / write</div><div className="text-sm text-muted-foreground">{CONTACT.address}</div></div>
+							<div><div className="font-semibold">{copy.visitOrWrite}</div><div className="text-sm text-muted-foreground">{CONTACT.address}</div></div>
 						</a>
 					</div>
 					<div className="mt-6 overflow-hidden rounded-2xl border border-border">
-						<iframe title="Office map" className="h-64 w-full" loading="lazy" src="https://www.google.com/maps?q=Marrakech,Morocco&output=embed" />
+						<iframe title={copy.officeMap} className="h-64 w-full" loading="lazy" src="https://www.google.com/maps?q=Marrakech,Morocco&output=embed" />
 					</div>
 				</div>
 				<LeadForm title={CONTACT_PAGE.formTitle} subtitle={CONTACT_PAGE.formSubtitle} />

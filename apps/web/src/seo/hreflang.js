@@ -1,6 +1,6 @@
-import { SEO_CONFIG } from './seo.config';
-import { toAlternatePath } from './sitemap';
-import { SUPPORTED_LANGUAGES, absoluteUrl, normalizePath } from './utils';
+import { SEO_CONFIG } from './seo.config.js';
+import { toAlternatePath } from './sitemap.js';
+import { SUPPORTED_LANGUAGES, absoluteUrl, normalizePath } from './utils.js';
 
 /**
  * Resolves the absolute URL of this page in every supported language.

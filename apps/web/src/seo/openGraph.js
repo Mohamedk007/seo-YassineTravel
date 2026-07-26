@@ -1,5 +1,5 @@
-import { SEO_CONFIG, getAlternateOgLocales, getSeoDefaults } from './seo.config';
-import { assetUrl } from './utils';
+import { SEO_CONFIG, getAlternateOgLocales, getSeoDefaults } from './seo.config.js';
+import { assetUrl } from './utils.js';
 
 /**
  * Open Graph tags as `{ property, content }` descriptors.

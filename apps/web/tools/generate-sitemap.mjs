@@ -1,38 +1,22 @@
-import { execSync } from 'node:child_process';
-import { copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 // Origin, languages and the localized route table come from src/seo/sitemap.js —
 // the same module the runtime SEO layer uses. That file is deliberately
 // dependency-free (no `@/` aliases, no browser APIs) so this plain Node script
 // can import it directly, which removes the old "keep in sync" duplication.
+import { DEFAULT_LANGUAGE, SITEMAP_FILES, SITEMAP_INDEX_FILE, SITE_ORIGIN as BASE_URL, SUPPORTED_LANGUAGES, toAbsoluteUrl } from '../src/seo/sitemap.js';
 import {
-	DEFAULT_LANGUAGE,
-	SITEMAP_FILES,
-	SITEMAP_INDEX_FILE,
-	SITE_ORIGIN as BASE_URL,
-	SUPPORTED_LANGUAGES,
-	getDetailPrefix,
-	getRoutePathTable,
-	getStaticRouteKeys,
-	toAbsoluteUrl,
-} from '../src/seo/sitemap.js';
+	getAirportEntries,
+	getBlogEntries,
+	getDestinationEntries,
+	getStaticPathsByLang,
+	getTourEntries,
+	lastmodFromGit,
+	resolveStableImageUrl,
+} from './lib/content-entries.mjs';
 
-// Only route keys that resolve to a real URL (no `:slug` placeholder).
-const STATIC_ROUTE_KEYS = getStaticRouteKeys();
-const STATIC_PATHS_BY_LANG = Object.fromEntries(
-	SUPPORTED_LANGUAGES.map((lang) => [
-		lang,
-		Object.fromEntries(STATIC_ROUTE_KEYS.map((key) => [key, getRoutePathTable(lang)[key]])),
-	])
-);
-const TOUR_DETAIL_PREFIX = Object.fromEntries(
-	SUPPORTED_LANGUAGES.map((lang) => [lang, getDetailPrefix('tourDetail', lang)])
-);
-const AIRPORT_DETAIL_PREFIX = Object.fromEntries(
-	SUPPORTED_LANGUAGES.map((lang) => [lang, getDetailPrefix('airportTransferDetail', lang)])
-);
-
+const STATIC_PATHS_BY_LANG = getStaticPathsByLang();
 const PUBLIC_DIR = resolve(process.cwd(), 'public');
 
 function escapeXml(value) {
@@ -44,25 +28,6 @@ function escapeXml(value) {
 		.replaceAll("'", '&apos;');
 }
 
-// Real last-modified date from git history for a given source file — reflects
-// when that content actually last changed, rather than a fabricated "today".
-function lastmodFromGit(relativeFilePath) {
-	try {
-		const iso = execSync(`git log -1 --format=%aI -- "${relativeFilePath}"`, { cwd: resolve(process.cwd(), '..', '..') })
-			.toString()
-			.trim();
-		return iso ? iso.slice(0, 10) : null;
-	} catch {
-		return null;
-	}
-}
-
-// Parses `{ id: '...', slug: '...', ... }` object blocks out of a data file's
-// source text (regex-based, since these files are plain JS literals, not JSON).
-function parseBlocks(source) {
-	return source.split(/\n\t\{/).slice(1);
-}
-
 async function getStaticPaths() {
 	const lastmod = lastmodFromGit('apps/web/src/data/route-config.js');
 	const routeKeys = Object.keys(STATIC_PATHS_BY_LANG[DEFAULT_LANGUAGE]);
@@ -70,154 +35,6 @@ async function getStaticPaths() {
 		pathByLang: Object.fromEntries(SUPPORTED_LANGUAGES.map((lang) => [lang, STATIC_PATHS_BY_LANG[lang][key]])),
 		lastmod,
 	}));
-}
-
-// Reads id+slug pairs from an en/fr pair of data files and joins them by id
-// (the stable, language-independent key) into one entry per piece of content,
-// each carrying its own per-language path.
-async function getLocalizedEntries({ enFile, frFile, buildPath, extraFields = () => ({}) }) {
-	const enSource = await readFile(enFile, 'utf8');
-	const frSource = await readFile(frFile, 'utf8');
-	const enBlocks = parseBlocks(enSource);
-	const frBlocks = parseBlocks(frSource);
-
-	const frById = new Map();
-	for (const block of frBlocks) {
-		const id = block.match(/id:\s*'([^']+)'/)?.[1];
-		const slug = block.match(/slug:\s*'([^']+)'/)?.[1];
-		if (id && slug) frById.set(id, slug);
-	}
-
-	return enBlocks
-		.map((block) => {
-			const id = block.match(/id:\s*'([^']+)'/)?.[1];
-			const enSlug = block.match(/slug:\s*'([^']+)'/)?.[1];
-			const frSlug = id ? frById.get(id) : undefined;
-			if (!id || !enSlug || !frSlug) return null;
-
-			return {
-				pathByLang: { en: buildPath('en', enSlug), fr: buildPath('fr', frSlug) },
-				...extraFields(block),
-			};
-		})
-		.filter(Boolean);
-}
-
-async function getTourEntries() {
-	const lastmod = lastmodFromGit('apps/web/src/data/tours/catalog.en.js');
-	return getLocalizedEntries({
-		enFile: resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.en.js'),
-		frFile: resolve(process.cwd(), 'src', 'data', 'tours', 'catalog.fr.js'),
-		buildPath: (lang, slug) => `${TOUR_DETAIL_PREFIX[lang]}/${slug}`,
-		extraFields: (block) => ({
-			lastmod,
-			image: block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1],
-			imageCaption: block.match(/title:\s*'([^']+)'/)?.[1],
-		}),
-	});
-}
-
-async function getBlogEntries() {
-	const gitLastmod = lastmodFromGit('apps/web/src/data/blog/posts.en.js');
-	return getLocalizedEntries({
-		enFile: resolve(process.cwd(), 'src', 'data', 'blog', 'posts.en.js'),
-		frFile: resolve(process.cwd(), 'src', 'data', 'blog', 'posts.fr.js'),
-		buildPath: (lang, slug) => `${STATIC_PATHS_BY_LANG[lang].blog}/${slug}`,
-		extraFields: (block) => ({
-			lastmod: block.match(/dateModified:\s*'([^']+)'/)?.[1] || gitLastmod,
-			image: block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1],
-			imageCaption: block.match(/title:\s*'([^']+)'/)?.[1],
-		}),
-	});
-}
-
-async function getDestinationEntries() {
-	const lastmod = lastmodFromGit('apps/web/src/data/destinations/en.js');
-	return getLocalizedEntries({
-		enFile: resolve(process.cwd(), 'src', 'data', 'destinations', 'en.js'),
-		frFile: resolve(process.cwd(), 'src', 'data', 'destinations', 'fr.js'),
-		buildPath: (lang, slug) => `${STATIC_PATHS_BY_LANG[lang].destinations}/${slug}`,
-		extraFields: (block) => ({
-			lastmod,
-			image: block.match(/image:\s*IMG\.([A-Za-z0-9_]+)/)?.[1],
-			imageCaption: block.match(/name:\s*'([^']+)'/)?.[1],
-		}),
-	});
-}
-
-// Airport content itself isn't translated (mostly proper nouns), but the
-// /airport-transfers vs /transferts-aeroport prefix still needs to change per language.
-async function getAirportEntries() {
-	const airportsDir = resolve(process.cwd(), 'src', 'data', 'airports');
-	const files = await readdir(airportsDir);
-	const airportFiles = files.filter((file) => file.endsWith('.js') && file !== 'index.js');
-	const entries = [];
-
-	for (const file of airportFiles) {
-		const source = await readFile(resolve(airportsDir, file), 'utf8');
-		const slug = source.match(/slug:\s*'([^']+)'/)?.[1];
-		const lastmod = lastmodFromGit(`apps/web/src/data/airports/${file}`);
-		if (slug) {
-			entries.push({
-				pathByLang: Object.fromEntries(SUPPORTED_LANGUAGES.map((lang) => [lang, `${AIRPORT_DETAIL_PREFIX[lang]}/${slug}`])),
-				lastmod,
-			});
-		}
-	}
-
-	return entries;
-}
-
-// Resolves an IMG.<key> reference (e.g. "luxCamp") to a stable, crawlable URL.
-// The app imports these through Vite (which hashes filenames at build time), so
-// for the sitemap the source file is additionally copied into public/images/
-// under its descriptive name — a parallel static copy solely for crawlers.
-//
-// Two hops are needed because the IMG key and the underlying import identifier
-// don't always match (IMG.luxCamp -> `luxcamp` -> luxury-desert-camp-morocco.webp).
-// Resolving only the first hop previously dropped those images from the sitemap.
-const IMGS_DIR = resolve(process.cwd(), '..', '..', 'Imgs');
-let FILENAME_BY_IMG_KEY = null;
-
-async function loadImageFilenameMap() {
-	if (FILENAME_BY_IMG_KEY) return FILENAME_BY_IMG_KEY;
-
-	const imagesSource = await readFile(resolve(IMGS_DIR, 'images.js'), 'utf8');
-	const dataSource = await readFile(resolve(process.cwd(), 'src', 'data', 'images.js'), 'utf8');
-
-	// `import luxcamp from './luxury-desert-camp-morocco.webp'`
-	const fileByIdentifier = new Map(
-		[...imagesSource.matchAll(/import\s+([A-Za-z0-9_$]+)\s+from\s+'\.\/([^']+)'/g)].map((m) => [m[1], m[2]])
-	);
-	// `luxCamp: images.luxcamp,`
-	FILENAME_BY_IMG_KEY = new Map(
-		[...dataSource.matchAll(/^\t([A-Za-z0-9_$]+):\s*images\.([A-Za-z0-9_$]+),/gm)]
-			.map(([, imgKey, identifier]) => [imgKey, fileByIdentifier.get(identifier)])
-			.filter(([, fileName]) => Boolean(fileName))
-	);
-
-	return FILENAME_BY_IMG_KEY;
-}
-
-const IMAGE_URL_CACHE = new Map();
-async function resolveImageUrl(imgKey) {
-	if (!imgKey) return null;
-	if (IMAGE_URL_CACHE.has(imgKey)) return IMAGE_URL_CACHE.get(imgKey);
-
-	try {
-		const fileName = (await loadImageFilenameMap()).get(imgKey);
-		if (!fileName) return null;
-
-		const destDir = resolve(PUBLIC_DIR, 'images');
-		await mkdir(destDir, { recursive: true });
-		await copyFile(resolve(IMGS_DIR, fileName), resolve(destDir, fileName));
-
-		const url = `/images/${fileName}`;
-		IMAGE_URL_CACHE.set(imgKey, url);
-		return url;
-	} catch {
-		return null;
-	}
 }
 
 function urlBlock({ pathByLang, lastmod, imageCaption, imageUrl }) {
@@ -268,7 +85,7 @@ async function writeSitemap(filename, entries, options) {
 async function writeImageSitemap(entriesWithImages) {
 	const withImages = [];
 	for (const entry of entriesWithImages) {
-		const imageUrl = await resolveImageUrl(entry.image);
+		const imageUrl = await resolveStableImageUrl(entry.image, PUBLIC_DIR);
 		if (imageUrl) withImages.push({ ...entry, imageUrl });
 	}
 	return writeSitemap('sitemap-images.xml', withImages, { withImageNamespace: true });

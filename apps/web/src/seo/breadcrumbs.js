@@ -1,4 +1,4 @@
-import { absoluteUrl, getRoutePathTable, resolveLanguage } from './utils';
+import { absoluteUrl, getRoutePathTable, resolveLanguage } from './utils.js';
 
 /**
  * Breadcrumb labels keyed by route key. Kept next to the trail builder (rather

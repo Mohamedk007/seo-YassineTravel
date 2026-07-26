@@ -73,7 +73,7 @@ export function AirportTransfers() {
 									/>
 									<div className="hero-gradient absolute inset-0" />
 									<span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">{airport.code}</span>
-									<span className="absolute bottom-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">Airport transfer</span>
+									<span className="absolute bottom-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">{lang === 'fr' ? 'Transfert aéroport' : 'Airport transfer'}</span>
 								</div>
 								<div className="p-6">
 									<div className="flex items-center justify-between gap-4">
@@ -83,7 +83,7 @@ export function AirportTransfers() {
 										</div>
 										<Plane className="h-8 w-8 shrink-0 text-primary/70 transition group-hover:text-primary" />
 									</div>
-									<p className="mt-4 text-sm font-semibold text-primary">Book transfer</p>
+									<p className="mt-4 text-sm font-semibold text-primary">{lang === 'fr' ? 'Réserver un transfert' : 'Book transfer'}</p>
 								</div>
 							</Link>
 						))}

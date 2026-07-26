@@ -1,4 +1,7 @@
-import { DEFAULT_LANGUAGE } from '@/seo/sitemap';
+// Relative import (not the `@/` alias) — this file is on buildSeoHead()'s
+// dependency path (via seo.config.js), which tools/prerender.mjs runs directly
+// under plain Node without a bundler to resolve `@/`.
+import { DEFAULT_LANGUAGE } from '../seo/sitemap.js';
 
 // Brand identity: name, origin, locale. These are not translated — a brand
 // name stays the same across languages, and seoTitle/seoDescription here are
