@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronDown, Menu, MessageCircle, X } from 'lucide-react';
 import { CONTACT, waLink } from '@/data/contact';
 import { getNav } from '@/data/route-config';
-import { NAVBAR_CONFIG, SITE_BRAND } from '@/data/site-config';
+import { SITE_BRAND, getNavbarConfig } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -12,6 +12,7 @@ export function Navbar() {
 	const { t } = useTranslation();
 	const lang = useLocale();
 	const NAV = getNav(lang);
+	const NAVBAR_CONFIG = getNavbarConfig(lang);
 	const [open, setOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 	const [openMenu, setOpenMenu] = useState(null);

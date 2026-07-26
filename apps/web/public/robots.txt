@@ -1,4 +1,24 @@
 User-agent: *
 Allow: /
 
+# Hashed build assets carry no standalone search value and only waste crawl budget.
+Disallow: /assets/
+
+# AI answer engines are allowed explicitly rather than relying on the wildcard,
+# so a future tightening of `User-agent: *` doesn't silently drop them.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://moroccotripholidays.com/sitemap-index.xml

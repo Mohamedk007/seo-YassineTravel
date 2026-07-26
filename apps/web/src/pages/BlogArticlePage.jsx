@@ -7,6 +7,7 @@ import { SITE_BRAND } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildBlogPostingSchema, buildImageObjectSchema } from '@/seo/schemas';
+import { getBreadcrumbLabel } from '@/seo/breadcrumbs';
 import { Page } from './page-shell';
 
 function formatDate(isoDate) {
@@ -182,14 +183,18 @@ export default function BlogArticlePage() {
 			title={post.title}
 			subtitle={post.summary}
 			image={post.image}
-			crumb="Blog"
+			imageAlt={post.title}
+			crumb={getBreadcrumbLabel('blog', lang)}
 			pageType="BlogPosting"
-			structuredData={[buildBlogPostingSchema(post, postPath), buildImageObjectSchema({ url: post.image, caption: post.title })]}
+			structuredData={[
+				buildBlogPostingSchema(post, postPath, lang),
+				buildImageObjectSchema({ url: post.image, caption: post.title }),
+			]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[
-				{ name: 'Home', url: P.home },
-				{ name: 'Blog', url: P.blog },
-				{ name: post.title, url: postPath },
+				{ routeKey: 'home' },
+				{ routeKey: 'blog' },
+				{ name: post.title, path: postPath },
 			]}
 		>
 			<article className="mx-auto max-w-[56rem] px-5 py-16 lg:px-8">

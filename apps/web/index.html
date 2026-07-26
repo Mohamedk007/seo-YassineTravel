@@ -4,7 +4,19 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title></title>
+		<!--
+			Static fallbacks only. <Seo /> (src/seo/Seo.jsx) replaces the title,
+			description and robots tag on every route via react-helmet-async; these
+			values are what a crawler sees before React hydrates, so an empty <title>
+			here was a real risk.
+		-->
+		<title>Morocco Trip Holidays - Luxury Private Morocco Tours</title>
+		<meta
+			name="description"
+			content="Bespoke luxury private tours of Morocco - Sahara desert, imperial cities, five-star riads. Trusted by travellers from the US, UK, Canada &amp; Australia."
+		/>
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<link rel="preconnect" href="https://www.google.com" />
 	</head>
 	<body>
 		<div id="root"></div>

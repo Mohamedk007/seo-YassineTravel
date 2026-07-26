@@ -2,62 +2,38 @@ import { execSync } from 'node:child_process';
 import { copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-const BASE_URL = 'https://moroccotripholidays.com';
-// Route paths and supported languages are duplicated here (rather than imported
-// from src/data/route-config.js / src/i18n/config.js) so this plain Node build
-// script never depends on browser-only/aliased runtime modules. Keep in sync.
-const SUPPORTED_LANGUAGES = ['en', 'fr'];
-const DEFAULT_LANGUAGE = 'en';
+// Origin, languages and the localized route table come from src/seo/sitemap.js —
+// the same module the runtime SEO layer uses. That file is deliberately
+// dependency-free (no `@/` aliases, no browser APIs) so this plain Node script
+// can import it directly, which removes the old "keep in sync" duplication.
+import {
+	DEFAULT_LANGUAGE,
+	SITEMAP_FILES,
+	SITEMAP_INDEX_FILE,
+	SITE_ORIGIN as BASE_URL,
+	SUPPORTED_LANGUAGES,
+	getDetailPrefix,
+	getRoutePathTable,
+	getStaticRouteKeys,
+	toAbsoluteUrl,
+} from '../src/seo/sitemap.js';
 
-const STATIC_PATHS_BY_LANG = {
-	en: {
-		home: '/',
-		about: '/about',
-		tours: '/tours',
-		luxuryTours: '/luxury-tours',
-		privateTours: '/private-tours',
-		desertTours: '/desert-tours',
-		dayTrips: '/day-trips',
-		customTours: '/custom-tours',
-		destinations: '/destinations',
-		blog: '/blog',
-		travelGuide: '/travel-guide',
-		reviews: '/reviews',
-		gallery: '/gallery',
-		faq: '/faq',
-		contact: '/contact',
-		airportTransfers: '/airport-transfers',
-		privateDrivers: '/private-drivers',
-	},
-	fr: {
-		home: '/',
-		about: '/a-propos',
-		tours: '/circuits',
-		luxuryTours: '/circuits-de-luxe',
-		privateTours: '/circuits-prives',
-		desertTours: '/circuits-desert',
-		dayTrips: '/excursions-a-la-journee',
-		customTours: '/circuits-sur-mesure',
-		destinations: '/destinations',
-		blog: '/blog',
-		travelGuide: '/guide-de-voyage',
-		reviews: '/avis',
-		gallery: '/galerie',
-		faq: '/faq',
-		contact: '/contact',
-		airportTransfers: '/transferts-aeroport',
-		privateDrivers: '/chauffeurs-prives',
-	},
-};
-const TOUR_DETAIL_PREFIX = { en: '/tour', fr: '/circuit' };
-const AIRPORT_DETAIL_PREFIX = { en: '/airport-transfers', fr: '/transferts-aeroport' };
+// Only route keys that resolve to a real URL (no `:slug` placeholder).
+const STATIC_ROUTE_KEYS = getStaticRouteKeys();
+const STATIC_PATHS_BY_LANG = Object.fromEntries(
+	SUPPORTED_LANGUAGES.map((lang) => [
+		lang,
+		Object.fromEntries(STATIC_ROUTE_KEYS.map((key) => [key, getRoutePathTable(lang)[key]])),
+	])
+);
+const TOUR_DETAIL_PREFIX = Object.fromEntries(
+	SUPPORTED_LANGUAGES.map((lang) => [lang, getDetailPrefix('tourDetail', lang)])
+);
+const AIRPORT_DETAIL_PREFIX = Object.fromEntries(
+	SUPPORTED_LANGUAGES.map((lang) => [lang, getDetailPrefix('airportTransferDetail', lang)])
+);
 
 const PUBLIC_DIR = resolve(process.cwd(), 'public');
-
-function toAbsoluteUrl(pathname, lang) {
-	const cleanPath = pathname === '/' ? '' : pathname;
-	return new URL(`/${lang}${cleanPath}`, BASE_URL).toString();
-}
 
 function escapeXml(value) {
 	return String(value)
@@ -192,27 +168,49 @@ async function getAirportEntries() {
 	return entries;
 }
 
-// Resolves an IMG.<key> reference (e.g. "duneSunset") to a stable, crawlable URL.
-// The app itself imports these through Vite (which hashes filenames at build time),
-// so for the sitemap we additionally copy the source file into public/images/
-// under its original name — a parallel static copy solely for crawlers, added
-// without touching how the app renders images.
+// Resolves an IMG.<key> reference (e.g. "luxCamp") to a stable, crawlable URL.
+// The app imports these through Vite (which hashes filenames at build time), so
+// for the sitemap the source file is additionally copied into public/images/
+// under its descriptive name — a parallel static copy solely for crawlers.
+//
+// Two hops are needed because the IMG key and the underlying import identifier
+// don't always match (IMG.luxCamp -> `luxcamp` -> luxury-desert-camp-morocco.webp).
+// Resolving only the first hop previously dropped those images from the sitemap.
+const IMGS_DIR = resolve(process.cwd(), '..', '..', 'Imgs');
+let FILENAME_BY_IMG_KEY = null;
+
+async function loadImageFilenameMap() {
+	if (FILENAME_BY_IMG_KEY) return FILENAME_BY_IMG_KEY;
+
+	const imagesSource = await readFile(resolve(IMGS_DIR, 'images.js'), 'utf8');
+	const dataSource = await readFile(resolve(process.cwd(), 'src', 'data', 'images.js'), 'utf8');
+
+	// `import luxcamp from './luxury-desert-camp-morocco.webp'`
+	const fileByIdentifier = new Map(
+		[...imagesSource.matchAll(/import\s+([A-Za-z0-9_$]+)\s+from\s+'\.\/([^']+)'/g)].map((m) => [m[1], m[2]])
+	);
+	// `luxCamp: images.luxcamp,`
+	FILENAME_BY_IMG_KEY = new Map(
+		[...dataSource.matchAll(/^\t([A-Za-z0-9_$]+):\s*images\.([A-Za-z0-9_$]+),/gm)]
+			.map(([, imgKey, identifier]) => [imgKey, fileByIdentifier.get(identifier)])
+			.filter(([, fileName]) => Boolean(fileName))
+	);
+
+	return FILENAME_BY_IMG_KEY;
+}
+
 const IMAGE_URL_CACHE = new Map();
 async function resolveImageUrl(imgKey) {
 	if (!imgKey) return null;
 	if (IMAGE_URL_CACHE.has(imgKey)) return IMAGE_URL_CACHE.get(imgKey);
 
 	try {
-		const imagesSourcePath = resolve(process.cwd(), '..', '..', 'Imgs', 'images.js');
-		const imagesSource = await readFile(imagesSourcePath, 'utf8');
-		const importLine = imagesSource.match(new RegExp(`import ${imgKey} from '\\./([^']+)'`));
-		const fileName = importLine?.[1];
+		const fileName = (await loadImageFilenameMap()).get(imgKey);
 		if (!fileName) return null;
 
-		const sourcePath = resolve(process.cwd(), '..', '..', 'Imgs', fileName);
 		const destDir = resolve(PUBLIC_DIR, 'images');
 		await mkdir(destDir, { recursive: true });
-		await copyFile(sourcePath, resolve(destDir, fileName));
+		await copyFile(resolve(IMGS_DIR, fileName), resolve(destDir, fileName));
 
 		const url = `/images/${fileName}`;
 		IMAGE_URL_CACHE.set(imgKey, url);
@@ -241,6 +239,10 @@ function wrapUrlset(urlBlocks, { withImageNamespace = false } = {}) {
 	return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"${imageNs}>\n${urlBlocks.join('\n')}\n</urlset>\n`;
 }
 
+// Newest <lastmod> written into each child sitemap, so the index reports when a
+// child's content actually changed rather than "the day the build ran".
+const LASTMOD_BY_FILE = new Map();
+
 async function writeSitemap(filename, entries, options) {
 	const seen = new Set();
 	const uniqueEntries = entries.filter((entry) => {
@@ -252,6 +254,14 @@ async function writeSitemap(filename, entries, options) {
 	const blocks = uniqueEntries.map((entry) => urlBlock(entry));
 	const xml = wrapUrlset(blocks, options);
 	await writeFile(resolve(PUBLIC_DIR, filename), xml, 'utf8');
+
+	const newest = uniqueEntries
+		.map((entry) => entry.lastmod)
+		.filter(Boolean)
+		.sort()
+		.at(-1);
+	if (newest) LASTMOD_BY_FILE.set(filename, newest);
+
 	return uniqueEntries.length;
 }
 
@@ -292,12 +302,13 @@ const imagesCount = await writeImageSitemap([...tourEntries, ...destinationEntri
 const today = new Date().toISOString().slice(0, 10);
 const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${['sitemap-pages.xml', 'sitemap-tours.xml', 'sitemap-destinations.xml', 'sitemap-blog.xml', 'sitemap-reviews.xml', 'sitemap-images.xml']
-	.map((file) => `  <sitemap>\n    <loc>${BASE_URL}/${file}</loc>\n    <lastmod>${today}</lastmod>\n  </sitemap>`)
-	.join('\n')}
+${SITEMAP_FILES.map(
+	(file) =>
+		`  <sitemap>\n    <loc>${BASE_URL}/${file}</loc>\n    <lastmod>${LASTMOD_BY_FILE.get(file) || today}</lastmod>\n  </sitemap>`
+).join('\n')}
 </sitemapindex>
 `;
-await writeFile(resolve(PUBLIC_DIR, 'sitemap-index.xml'), sitemapIndex, 'utf8');
+await writeFile(resolve(PUBLIC_DIR, SITEMAP_INDEX_FILE), sitemapIndex, 'utf8');
 
 console.log(
 	`[build] Generated sitemap-index.xml (pages: ${pagesCount}, tours: ${toursCount}, destinations: ${destinationsCount}, blog: ${blogCount}, reviews: ${reviewsCount}, images: ${imagesCount})`

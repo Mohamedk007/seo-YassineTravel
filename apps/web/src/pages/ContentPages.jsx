@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Compass, MessageCircle, Phone, Quote } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
 import { Reveal } from '@/components/site/Reveal';
@@ -8,11 +9,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs, getReviews } from '@/data/content';
 import { getDestinationHighlights, getDestinations } from '@/data/destinations';
-import { IMG } from '@/data/images';
-import { DESTINATION_INTERNAL_LINKS } from '@/data/internal-links';
+import { IMG, getImageAlt, getImageAttrs } from '@/data/images';
+import { getDestinationInternalLinks } from '@/data/internal-links';
 import { getBlogPosts } from '@/data/blog';
 import { getEditorialPage } from '@/data/editorial';
-import { getRoutePaths } from '@/data/route-config';
+import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildFaqSchema, buildItemListSchema, buildReviewSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page, Prose } from './page-shell';
@@ -27,9 +28,11 @@ export function About() {
 			image={ABOUT_PAGE.image}
 			crumb={ABOUT_PAGE.crumb}
 			pageType="AboutPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'about' }]}
 			structuredData={buildItemListSchema(
 				ABOUT_PAGE.highlights.map((item) => ({ name: item.caption, url: getRoutePaths(lang).about })),
-				'About Morocco Trip Holidays Highlights'
+				ABOUT_PAGE.title,
+				lang
 			)}
 		>
 			<Prose>
@@ -41,7 +44,13 @@ export function About() {
 				<div className="grid gap-4 sm:grid-cols-3">
 					{ABOUT_PAGE.highlights.map((item) => (
 						<div key={item.caption} className="overflow-hidden rounded-2xl">
-							<img src={item.image} alt={item.caption} className="aspect-[4/3] w-full object-cover" />
+							<img
+								src={item.image}
+								{...getImageAttrs(item.image, lang, item.caption)}
+								className="aspect-[4/3] w-full object-cover"
+								loading="lazy"
+								decoding="async"
+							/>
 						</div>
 					))}
 				</div>
@@ -56,6 +65,7 @@ export function Destinations() {
 	const DESTINATIONS = getDestinations(lang);
 	const DESTINATION_HIGHLIGHTS = getDestinationHighlights(lang);
 	const DESTINATIONS_PAGE = getEditorialPage('DESTINATIONS_PAGE', lang);
+	const DESTINATION_INTERNAL_LINKS = getDestinationInternalLinks(lang);
 	return (
 		<Page
 			title={DESTINATIONS_PAGE.title}
@@ -63,17 +73,28 @@ export function Destinations() {
 			image={DESTINATIONS_PAGE.image}
 			crumb={DESTINATIONS_PAGE.crumb}
 			pageType="CollectionPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'destinations' }]}
 			structuredData={buildItemListSchema(
-				DESTINATIONS.map((destination) => ({ name: destination.name, url: `/destinations/${destination.slug}` })),
-				DESTINATIONS_PAGE.title
+				DESTINATIONS.map((destination) => ({
+					name: destination.name,
+					url: getPath('destinationDetail', lang, { slug: destination.slug }),
+				})),
+				DESTINATIONS_PAGE.title,
+				lang
 			)}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-6 md:grid-cols-3">
 					{DESTINATIONS.map((destination, index) => (
 						<Reveal key={destination.name} delay={(index % 3) * 80} className="group relative overflow-hidden rounded-2xl">
-							<Link to={`/destinations/${destination.slug}`}>
-								<img src={destination.image} alt={destination.name} className="aspect-[3/4] w-full object-cover transition duration-700 group-hover:scale-105" />
+							<Link to={getPath('destinationDetail', lang, { slug: destination.slug })}>
+								<img
+									src={destination.image}
+									{...getImageAttrs(destination.image, lang, destination.name)}
+									className="aspect-[3/4] w-full object-cover transition duration-700 group-hover:scale-105"
+									loading="lazy"
+									decoding="async"
+								/>
 							</Link>
 							<div className="hero-gradient absolute inset-0" />
 							<div className="absolute bottom-0 p-6 text-white">
@@ -111,15 +132,30 @@ export function Gallery() {
 			image={GALLERY_PAGE.image}
 			crumb={GALLERY_PAGE.crumb}
 			pageType="CollectionPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'gallery' }]}
 			structuredData={buildItemListSchema(
-				GALLERY_PAGE.images.map((_, index) => ({ name: `Gallery image ${index + 1}`, url: getRoutePaths(lang).gallery })),
-				GALLERY_PAGE.title
+				// Each entry is named after what the photo actually shows rather than
+				// "Gallery image N", which carried no information for search engines.
+				GALLERY_PAGE.images.map((src) => ({
+					name: getImageAlt(src, lang, GALLERY_PAGE.title),
+					url: getRoutePaths(lang).gallery,
+				})),
+				GALLERY_PAGE.title,
+				lang
 			)}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="columns-2 gap-4 md:columns-3 lg:columns-4 [&>*]:mb-4">
 					{GALLERY_PAGE.images.map((src, index) => (
-						<img key={index} src={src} alt="Morocco gallery" className="w-full break-inside-avoid rounded-xl object-cover" loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} decoding="async" />
+						<img
+							key={src}
+							src={src}
+							{...getImageAttrs(src, lang, GALLERY_PAGE.title)}
+							className="w-full break-inside-avoid rounded-xl object-cover"
+							loading={index === 0 ? 'eager' : 'lazy'}
+							fetchPriority={index === 0 ? 'high' : 'auto'}
+							decoding="async"
+						/>
 					))}
 				</div>
 			</section>
@@ -138,17 +174,19 @@ export function Reviews() {
 			image={REVIEWS_PAGE.image}
 			crumb={REVIEWS_PAGE.crumb}
 			pageType="CollectionPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'reviews' }]}
 			structuredData={[
 				buildItemListSchema(
 					REVIEWS.map((review) => ({ name: `${review.name} review`, url: getRoutePaths(lang).reviews })),
-					REVIEWS_PAGE.title
+					REVIEWS_PAGE.title,
+					lang
 				),
 				...buildReviewSchema(REVIEWS),
 			]}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{[...REVIEWS, ...REVIEWS].map((review, index) => (
+					{REVIEWS.map((review, index) => (
 						<Reveal key={index} delay={(index % 3) * 70} className="relative rounded-2xl bg-card p-7 shadow-sm ring-1 ring-border">
 							<Quote className="h-8 w-8 text-primary/20" />
 							<Stars className="mt-2" />
@@ -157,11 +195,12 @@ export function Reviews() {
 							<p className="text-xs text-muted-foreground">{review.tour}</p>
 							<img
 								src={IMG.Tripadvisor}
-								alt="Best travel agency in Morocco on TripAdvisor"
+								alt={getImageAlt(IMG.Tripadvisor, lang)}
 								width={65}
 								height={50}
 								className="absolute bottom-3 right-3"
 								loading="lazy"
+								decoding="async"
 							/>
 						</Reveal>
 					))}
@@ -182,6 +221,7 @@ export function Faq() {
 			image={FAQ_PAGE.image}
 			crumb={FAQ_PAGE.crumb}
 			pageType="FAQPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'faq' }]}
 			structuredData={buildFaqSchema(FAQS)}
 		>
 			<section className="mx-auto max-w-[56rem] px-5 py-16 lg:px-8">
@@ -200,6 +240,7 @@ export function Faq() {
 
 export function Blog() {
 	const lang = useLocale();
+	const { t } = useTranslation();
 	const posts = getBlogPosts(lang);
 	const BLOG_PAGE = getEditorialPage('BLOG_PAGE', lang);
 
@@ -210,12 +251,14 @@ export function Blog() {
 			image={BLOG_PAGE.image}
 			crumb={BLOG_PAGE.crumb}
 			pageType="Blog"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'blog' }]}
 			structuredData={buildItemListSchema(
 				posts.map((post) => ({
 					name: post.title,
-					url: `/blog/${post.slug}`,
+					url: getPath('blogArticle', lang, { slug: post.slug }),
 				})),
-				BLOG_PAGE.title
+				BLOG_PAGE.title,
+				lang
 			)}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
@@ -223,15 +266,21 @@ export function Blog() {
 					{posts.map((post, index) => (
 						<Reveal key={post.title} delay={(index % 3) * 80} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-lg">
 							<div className="aspect-[16/10] overflow-hidden">
-								<Link to={`/blog/${post.slug}`}>
-									<img src={post.image} alt={post.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+								<Link to={getPath('blogArticle', lang, { slug: post.slug })}>
+									<img
+										src={post.image}
+										{...getImageAttrs(post.image, lang, post.title)}
+										className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+										loading="lazy"
+										decoding="async"
+									/>
 								</Link>
 							</div>
 							<div className="p-6">
 								<span className="text-xs font-semibold uppercase tracking-wider text-primary">{post.category}</span>
 								<h3 className="mt-2 font-display text-xl font-semibold leading-snug">{post.title}</h3>
 								<p className="mt-2 text-sm text-muted-foreground">{post.summary}</p>
-								<Link to={`/blog/${post.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">Read more <ArrowRight className="h-4 w-4" /></Link>
+								<Link to={getPath('blogArticle', lang, { slug: post.slug })} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">{t('common.readMore')} <ArrowRight className="h-4 w-4" /></Link>
 							</div>
 						</Reveal>
 					))}
@@ -251,9 +300,11 @@ export function TravelGuide() {
 			image={TRAVEL_GUIDE_PAGE.image}
 			crumb={TRAVEL_GUIDE_PAGE.crumb}
 			pageType="CollectionPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'travelGuide' }]}
 			structuredData={buildItemListSchema(
 				TRAVEL_GUIDE_PAGE.tips.map((tip) => ({ name: tip.title, url: getRoutePaths(lang).travelGuide })),
-				TRAVEL_GUIDE_PAGE.title
+				TRAVEL_GUIDE_PAGE.title,
+				lang
 			)}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
@@ -281,6 +332,7 @@ export function Contact() {
 			image={CONTACT_PAGE.image}
 			crumb={CONTACT_PAGE.crumb}
 			pageType="ContactPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'contact' }]}
 		>
 			<section className="mx-auto grid max-w-[90rem] gap-10 px-5 py-16 lg:grid-cols-2 lg:px-8">
 				<div>

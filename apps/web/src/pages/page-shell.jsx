@@ -6,15 +6,16 @@ import { PageHero } from '@/components/site/PageHero';
 import { Seo } from '@/components/site/Seo';
 import { Stars } from '@/components/site/Typography';
 import { getReviews } from '@/data/content';
-import { IMG } from '@/data/images';
+import { IMG, getImageAttrs } from '@/data/images';
 import { waLink } from '@/data/contact';
 import { getRoutePaths } from '@/data/route-config';
-import { PAGE_SHELL_CONFIG } from '@/data/site-config';
+import { getPageShellConfig } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 
 export function CTA() {
 	const lang = useLocale();
 	const ROUTE_PATHS = getRoutePaths(lang);
+	const PAGE_SHELL_CONFIG = getPageShellConfig(lang);
 	return (
 		<section className="bg-primary py-16 text-primary-foreground">
 			<div className="mx-auto max-w-[72rem] px-5 text-center lg:px-8">
@@ -36,6 +37,8 @@ export function CTA() {
 export function MiniReviews() {
 	const lang = useLocale();
 	const REVIEWS = getReviews(lang);
+	const tripadvisor = getImageAttrs(IMG.Tripadvisor, lang);
+	const PAGE_SHELL_CONFIG = getPageShellConfig(lang);
 	return (
 		<section className="bg-secondary/60 py-16">
 			<div className="mx-auto max-w-[90rem] px-5 lg:px-8">
@@ -50,11 +53,12 @@ export function MiniReviews() {
 							</p>
 							<img
 								src={IMG.Tripadvisor}
-								alt="Best travel agency in Morocco on TripAdvisor"
+								alt={tripadvisor.alt}
 								width={80}
 								height={50}
 								className="absolute bottom-3 right-3"
 								loading="lazy"
+								decoding="async"
 							/>
 						</div>
 					))}
@@ -64,13 +68,24 @@ export function MiniReviews() {
 	);
 }
 
-export function Page({ title, subtitle, image, crumb, children, structuredData, pageType = 'WebPage', breadcrumbItems, alternateUrls }) {
+export function Page({
+	title,
+	subtitle,
+	image,
+	imageAlt,
+	crumb,
+	children,
+	structuredData,
+	pageType = 'WebPage',
+	breadcrumbItems,
+	alternateUrls,
+}) {
 	const location = useLocation();
-	const lang = useLocale();
-	const ROUTE_PATHS = getRoutePaths(lang);
+	// Breadcrumb labels come from @/seo/breadcrumbs (localized), so the trail on a
+	// French route reads "Accueil › …" in both the JSON-LD and the UI crumb.
 	const resolvedBreadcrumbItems = breadcrumbItems || [
-		{ name: 'Home', url: ROUTE_PATHS.home },
-		{ name: crumb || title, url: location.pathname },
+		{ routeKey: 'home' },
+		{ name: crumb || title, path: location.pathname },
 	];
 
 	return (
@@ -78,6 +93,8 @@ export function Page({ title, subtitle, image, crumb, children, structuredData, 
 			<Seo
 				title={title}
 				description={subtitle}
+				image={image}
+				imageAlt={imageAlt || title}
 				structuredData={structuredData}
 				pageType={pageType}
 				breadcrumbItems={resolvedBreadcrumbItems}

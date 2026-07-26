@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LeadForm } from '@/components/site/LeadForm';
 import { WhatsAppCtaButton } from '@/components/site/WhatsAppCtaButton';
 import { AIRPORTS } from '@/data/airports';
+import { getImageAttrs } from '@/data/images';
 import { getServicesContent } from '@/data/services';
 import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildItemListSchema, buildServiceSchema } from '@/seo/schemas';
@@ -21,15 +22,18 @@ export function AirportTransfers() {
 			image={AIRPORT_TRANSFER_PAGE.image}
 			crumb={AIRPORT_TRANSFER_PAGE.crumb}
 			pageType="CollectionPage"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'airportTransfers' }]}
 			structuredData={[
 				buildServiceSchema({
 					name: AIRPORT_TRANSFER_PAGE.title,
 					description: AIRPORT_TRANSFER_PAGE.subtitle,
 					path: getRoutePaths(lang).airportTransfers,
+					lang,
 				}),
 				buildItemListSchema(
 					AIRPORTS.map((airport) => ({ name: airport.name, url: getPath('airportTransferDetail', lang, { slug: airport.slug }) })),
 					AIRPORT_TRANSFER_PAGE.title,
+					lang,
 				),
 			]}
 		>
@@ -46,16 +50,22 @@ export function AirportTransfers() {
 							</ul>
 							<WhatsAppCtaButton message={AIRPORT_TRANSFER_PAGE.ctaMessage}>{AIRPORT_TRANSFER_PAGE.ctaLabel}</WhatsAppCtaButton>
 						</div>
-						<img src={AIRPORT_TRANSFER_PAGE.imageSecondary} alt={AIRPORT_TRANSFER_PAGE.imageAlt} width={740} height={494} className="rounded-3xl shadow-xl" loading="lazy" decoding="async" />
+						<img
+							src={AIRPORT_TRANSFER_PAGE.imageSecondary}
+							{...getImageAttrs(AIRPORT_TRANSFER_PAGE.imageSecondary, lang, AIRPORT_TRANSFER_PAGE.imageAlt)}
+							className="rounded-3xl shadow-xl"
+							loading="lazy"
+							decoding="async"
+						/>
 						</div>
 
 					<div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 						{AIRPORTS.map((airport) => (
-							<Link key={airport.slug} to={`/airport-transfers/${airport.slug}`} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-xl">
+							<Link key={airport.slug} to={getPath('airportTransferDetail', lang, { slug: airport.slug })} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-xl">
 								<div className="relative aspect-[4/3] overflow-hidden">
 									<img
 										src={airport.image}
-										alt={`${airport.city} airport transfer`}
+										{...getImageAttrs(airport.image, lang, `${airport.name}, ${airport.city}`)}
 										className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
 										loading="lazy"
 										decoding="async"
@@ -94,15 +104,23 @@ export function PrivateDrivers() {
 			image={PRIVATE_DRIVER_PAGE.image}
 			crumb={PRIVATE_DRIVER_PAGE.crumb}
 			pageType="Service"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'privateDrivers' }]}
 			structuredData={buildServiceSchema({
 				name: PRIVATE_DRIVER_PAGE.title,
 				description: PRIVATE_DRIVER_PAGE.subtitle,
 				path: getRoutePaths(lang).privateDrivers,
+				lang,
 			})}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-					<img src={PRIVATE_DRIVER_PAGE.imageSecondary} alt={PRIVATE_DRIVER_PAGE.imageAlt} width={1344} height={768} className="order-2 rounded-3xl shadow-xl lg:order-1" loading="lazy" decoding="async" />
+					<img
+						src={PRIVATE_DRIVER_PAGE.imageSecondary}
+						{...getImageAttrs(PRIVATE_DRIVER_PAGE.imageSecondary, lang, PRIVATE_DRIVER_PAGE.imageAlt)}
+						className="order-2 rounded-3xl shadow-xl lg:order-1"
+						loading="lazy"
+						decoding="async"
+					/>
 					<div className="order-1 lg:order-2">
 						<Car className="h-10 w-10 text-primary" />
 						<h2 className="mt-4 font-display text-3xl font-semibold">{PRIVATE_DRIVER_PAGE.heading}</h2>
@@ -131,10 +149,12 @@ export function CustomTours() {
 			image={CUSTOM_TOURS_PAGE.image}
 			crumb={CUSTOM_TOURS_PAGE.crumb}
 			pageType="Service"
+			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'tours' }, { routeKey: 'customTours' }]}
 			structuredData={buildServiceSchema({
 				name: CUSTOM_TOURS_PAGE.title,
 				description: CUSTOM_TOURS_PAGE.subtitle,
 				path: getRoutePaths(lang).customTours,
+				lang,
 			})}
 		>
 			<section className="mx-auto grid max-w-[90rem] gap-10 px-5 py-16 lg:grid-cols-2 lg:px-8">

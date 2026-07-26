@@ -27,6 +27,9 @@
 		"companyHeading": "Company"
 	},
 	"common": {
+		"readMore": "Read more",
+		"viewDetails": "View details",
+		"from": "from",
 		"backToArticles": "Back to all articles",
 		"exploreLink": "Explore",
 		"planYourTrip": "Plan your own trip",

@@ -12,8 +12,8 @@ import { Eyebrow, Stars } from '@/components/site/Typography';
 import { CONTACT, waLink } from '@/data/contact';
 import { getAwards, getFaqs, getReviews } from '@/data/content';
 import { getHomeBenefits, getHomeBookingSteps, getHomePage, getHomeWhyPoints } from '@/data/home';
-import { IMG } from '@/data/images';
-import { getRoutePaths } from '@/data/route-config';
+import { IMG, getImageAttrs } from '@/data/images';
+import { getPath, getRoutePaths } from '@/data/route-config';
 import { getTours } from '@/data/tours/catalog';
 import { useLocale } from '@/i18n/LocaleContext';
 import { buildFaqSchema, buildItemListSchema } from '@/seo/schemas';
@@ -43,19 +43,29 @@ export default function HomePage() {
   return (
     <Layout>
       <Seo
-        breadcrumbItems={[{ name: 'Home', url: ROUTE_PATHS.home }]}
+        image={IMG.duneSunset}
+        breadcrumbItems={[{ routeKey: 'home' }]}
         structuredData={[
           buildFaqSchema(FAQS),
           buildItemListSchema(
-            featured.map((tour) => ({ name: tour.title, url: `/tour/${tour.slug}` })),
-            HOME_PAGE.popularTours.title
+            featured.map((tour) => ({ name: tour.title, url: getPath('tourDetail', lang, { slug: tour.slug }) })),
+            HOME_PAGE.popularTours.title,
+            lang
           ),
         ]}
       />
 
       {/* HERO */}
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden">
-        <img src={IMG.duneSunset} alt="Sahara desert at sunset in Morocco" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={IMG.duneSunset}
+          {...getImageAttrs(IMG.duneSunset, lang)}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative mx-auto grid w-full max-w-[90rem] gap-10 px-5 pt-28 pb-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-8">
           <div>
@@ -139,7 +149,14 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-ink text-white">
         <div className="mx-auto grid max-w-[90rem] gap-0 lg:grid-cols-2">
           <div className="relative min-h-[380px]">
-            <img src={IMG.luxCamp} alt="Luxury desert camp in Morocco" className="absolute inset-0 h-full w-full object-cover" />
+            <img
+              src={IMG.luxCamp}
+              {...getImageAttrs(IMG.luxCamp, lang)}
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
           </div>
           <div className="px-6 py-16 lg:px-14 lg:py-24">
             <Reveal><Eyebrow>{HOME_PAGE.luxury.eyebrow}</Eyebrow></Reveal>
@@ -179,7 +196,13 @@ export default function HomePage() {
             </div>
           </div>
           <Reveal delay={100} className="relative">
-            <img src={IMG.guide} alt="Local Moroccan tour guide" width={1024} height={1024} className="rounded-3xl shadow-2xl" loading="lazy" decoding="async" />
+            <img
+              src={IMG.guide}
+              {...getImageAttrs(IMG.guide, lang)}
+              className="rounded-3xl shadow-2xl"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="absolute -bottom-6 -left-4 hidden rounded-2xl bg-card p-5 shadow-xl ring-1 ring-border sm:block">
               <Stars />
               <p className="mt-2 max-w-[14rem] text-sm font-medium">“{HOME_PAGE.whyChooseUs.quote.text}”</p>
@@ -271,7 +294,14 @@ export default function HomePage() {
 
       {/* LEAD CAPTURE */}
       <section className="relative overflow-hidden py-20">
-        <img src={IMG.riad} alt="Luxury riad courtyard" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={IMG.riad}
+          {...getImageAttrs(IMG.riad, lang)}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-ink/80" />
         <div className="relative mx-auto grid max-w-[90rem] items-center gap-10 px-5 lg:grid-cols-2 lg:px-8">
           <div className="text-white">

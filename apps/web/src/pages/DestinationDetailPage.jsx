@@ -10,6 +10,7 @@ import { getToursForDestination } from '@/data/tours/index';
 import { getPath, getRoutePaths } from '@/data/route-config';
 import { SITE_BRAND } from '@/data/site-config';
 import { buildFaqSchema, buildImageObjectSchema, buildTouristDestinationSchema } from '@/seo/schemas';
+import { getBreadcrumbLabel } from '@/seo/breadcrumbs';
 import { useLocale } from '@/i18n/LocaleContext';
 import { Stars } from '@/components/site/Typography';
 import { Gallery } from '@/components/site/Gallery';
@@ -17,11 +18,43 @@ import { TourCard } from '@/components/tours/TourCard';
 import { buildGoogleMapsEmbedUrl } from '@/lib/maps';
 import { Page } from './page-shell';
 
+const COPY = {
+	en: {
+		thingsToDo: (name) => `Things to do in ${name}`,
+		inPictures: (name) => `${name} in pictures`,
+		whereIs: (name) => `Where is ${name}?`,
+		bestToursTo: (name) => `Best tours to ${name}`,
+		bestTimeToVisit: 'Best time to visit',
+		airportTransferFrom: (name) => `Airport transfer from ${name}`,
+		bookPrivateDriverFor: (name) => `Book a private driver for ${name}`,
+		whatTravellersSay: 'What travellers say',
+		readMoreAbout: (name) => `Read more about ${name}`,
+		faqHeading: 'Frequently asked questions',
+		nearbyDestinations: 'Nearby destinations',
+		backToDestinations: 'Back to destinations',
+	},
+	fr: {
+		thingsToDo: (name) => `Que faire à ${name}`,
+		inPictures: (name) => `${name} en images`,
+		whereIs: (name) => `Où se trouve ${name} ?`,
+		bestToursTo: (name) => `Meilleurs circuits vers ${name}`,
+		bestTimeToVisit: 'Meilleure période pour visiter',
+		airportTransferFrom: (name) => `Transfert aéroport depuis ${name}`,
+		bookPrivateDriverFor: (name) => `Réserver un chauffeur privé pour ${name}`,
+		whatTravellersSay: 'Ce que disent les voyageurs',
+		readMoreAbout: (name) => `En savoir plus sur ${name}`,
+		faqHeading: 'Questions fréquentes',
+		nearbyDestinations: 'Destinations à proximité',
+		backToDestinations: 'Retour aux destinations',
+	},
+};
+
 export default function DestinationDetailPage() {
 	const { slug } = useParams();
 	const lang = useLocale();
 	const destination = getDestinationBySlug(slug, lang);
 	const P = getRoutePaths(lang);
+	const copy = COPY[lang] || COPY.en;
 
 	if (!destination) return <Navigate to={P.destinations} replace />;
 
@@ -51,18 +84,19 @@ export default function DestinationDetailPage() {
 			title={destination.name}
 			subtitle={destination.summary}
 			image={destination.image}
-			crumb="Destinations"
+			imageAlt={destination.name}
+			crumb={getBreadcrumbLabel('destinations', lang)}
 			pageType="TouristDestination"
 			structuredData={[
-				buildTouristDestinationSchema(destination, destinationPath),
+				buildTouristDestinationSchema(destination, destinationPath, lang),
 				buildFaqSchema(generalFaqs),
 				buildImageObjectSchema({ url: destination.image, caption: destination.name }),
 			]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[
-				{ name: 'Home', url: P.home },
-				{ name: 'Destinations', url: P.destinations },
-				{ name: destination.name, url: destinationPath },
+				{ routeKey: 'home' },
+				{ routeKey: 'destinations' },
+				{ name: destination.name, path: destinationPath },
 			]}
 		>
 			<section className="mx-auto max-w-[72rem] px-5 py-16 lg:px-8">
@@ -72,7 +106,7 @@ export default function DestinationDetailPage() {
 				{/* Things to do */}
 				{destination.thingsToDo && (
 					<div className="mt-10">
-						<h2 className="font-display text-2xl font-semibold">Things to do in {destination.name}</h2>
+						<h2 className="font-display text-2xl font-semibold">{copy.thingsToDo(destination.name)}</h2>
 						<ul className="mt-4 grid gap-3 sm:grid-cols-2">
 							{destination.thingsToDo.map((item) => (
 								<li key={item} className="flex items-start gap-2 rounded-lg border border-border px-4 py-3 text-sm">
@@ -87,7 +121,7 @@ export default function DestinationDetailPage() {
 				{/* Gallery */}
 				{destination.gallery && destination.gallery.length > 0 && (
 					<div className="mt-14">
-						<h2 className="font-display text-2xl font-semibold">{destination.name} in pictures</h2>
+						<h2 className="font-display text-2xl font-semibold">{copy.inPictures(destination.name)}</h2>
 						<div className="mt-5">
 							<Gallery images={destination.gallery} altPrefix={destination.name} />
 						</div>
@@ -97,7 +131,7 @@ export default function DestinationDetailPage() {
 				{/* Compact map */}
 				{mapEmbedUrl && (
 					<div className="mt-14">
-						<h2 className="font-display text-2xl font-semibold">Where is {destination.name}?</h2>
+						<h2 className="font-display text-2xl font-semibold">{copy.whereIs(destination.name)}</h2>
 						<div className="mt-5 overflow-hidden rounded-2xl border border-border">
 							<iframe
 								src={mapEmbedUrl}
@@ -115,7 +149,7 @@ export default function DestinationDetailPage() {
 				{/* Best tours here */}
 				{relatedTours.length > 0 && (
 					<div className="mt-14">
-						<h2 className="font-display text-2xl font-semibold">Best tours to {destination.name}</h2>
+						<h2 className="font-display text-2xl font-semibold">{copy.bestToursTo(destination.name)}</h2>
 						<div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 							{relatedTours.slice(0, 3).map((tour, index) => (
 								<TourCard key={tour.slug} tour={tour} delay={index * 60} />
@@ -128,7 +162,7 @@ export default function DestinationDetailPage() {
 				{destination.bestTimeToVisit && (
 					<div className="mt-14 rounded-2xl border border-border bg-secondary/40 p-6">
 						<p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-							<Calendar className="h-4 w-4" /> Best time to visit
+							<Calendar className="h-4 w-4" /> {copy.bestTimeToVisit}
 						</p>
 						<p className="mt-2 text-muted-foreground">{destination.bestTimeToVisit}</p>
 					</div>
@@ -142,7 +176,7 @@ export default function DestinationDetailPage() {
 							className="group flex items-center justify-between rounded-xl border border-border p-5 transition hover:border-primary/40"
 						>
 							<span className="inline-flex items-center gap-2 font-medium">
-								<Plane className="h-4 w-4 text-primary" /> Airport transfer from {nearestAirport.name}
+								<Plane className="h-4 w-4 text-primary" /> {copy.airportTransferFrom(nearestAirport.name)}
 							</span>
 							<ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
 						</Link>
@@ -151,7 +185,7 @@ export default function DestinationDetailPage() {
 						to={P.privateDrivers}
 						className="group flex items-center justify-between rounded-xl border border-border p-5 transition hover:border-primary/40"
 					>
-						<span className="font-medium">Book a private driver for {destination.name}</span>
+						<span className="font-medium">{copy.bookPrivateDriverFor(destination.name)}</span>
 						<ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
 					</Link>
 				</div>
@@ -159,7 +193,7 @@ export default function DestinationDetailPage() {
 				{/* Reviews specific to this destination, when we have them */}
 				{relatedReviews.length > 0 && (
 					<div className="mt-14">
-						<h2 className="font-display text-2xl font-semibold">What travellers say</h2>
+						<h2 className="font-display text-2xl font-semibold">{copy.whatTravellersSay}</h2>
 						<div className="mt-5 grid gap-5 sm:grid-cols-3">
 							{relatedReviews.map((review) => (
 								<div key={review.name} className="rounded-2xl bg-card p-5 shadow-sm ring-1 ring-border">
@@ -175,7 +209,7 @@ export default function DestinationDetailPage() {
 				{/* Related articles */}
 				{relatedArticles.length > 0 && (
 					<div className="mt-14">
-						<h2 className="font-display text-2xl font-semibold">Read more about {destination.name}</h2>
+						<h2 className="font-display text-2xl font-semibold">{copy.readMoreAbout(destination.name)}</h2>
 						<div className="mt-5 grid gap-4 sm:grid-cols-2">
 							{relatedArticles.map((post) => (
 								<Link
@@ -193,7 +227,7 @@ export default function DestinationDetailPage() {
 
 				{/* FAQ */}
 				<div className="mt-14">
-					<h2 className="font-display text-2xl font-semibold">Frequently asked questions</h2>
+					<h2 className="font-display text-2xl font-semibold">{copy.faqHeading}</h2>
 					<div className="mt-5 space-y-4">
 						{generalFaqs.map(([question, answer]) => (
 							<div key={question} className="rounded-xl border border-border p-5">
@@ -207,7 +241,7 @@ export default function DestinationDetailPage() {
 				{/* Nearby attractions */}
 				{nearbyDestinations.length > 0 && (
 					<div className="mt-14">
-						<h2 className="font-display text-2xl font-semibold">Nearby destinations</h2>
+						<h2 className="font-display text-2xl font-semibold">{copy.nearbyDestinations}</h2>
 						<div className="mt-5 grid gap-4 sm:grid-cols-2">
 							{nearbyDestinations.map((nearby) => (
 								<Link
@@ -233,7 +267,7 @@ export default function DestinationDetailPage() {
 				</div>
 
 				<Link to={P.destinations} className="mt-8 inline-flex items-center gap-2 font-semibold text-primary">
-					<ArrowLeft className="h-4 w-4" /> Back to destinations
+					<ArrowLeft className="h-4 w-4" /> {copy.backToDestinations}
 				</Link>
 			</section>
 		</Page>

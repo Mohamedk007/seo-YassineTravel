@@ -9,6 +9,12 @@ function normalizeStructuredData(data) {
 	return [data];
 }
 
+// `<` is escaped so a title or description inside the payload can never close
+// the script tag early.
+function serialize(entry) {
+	return JSON.stringify(entry).replace(/</g, '\u003c');
+}
+
 export function StructuredData({ data }) {
 	const entries = normalizeStructuredData(data);
 	if (!entries || entries.length === 0) return null;
@@ -16,11 +22,13 @@ export function StructuredData({ data }) {
 	return (
 		<Helmet>
 			{entries.map((entry, index) => (
-				<script
-					key={index}
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
-				/>
+				// The payload must be passed as a plain string child: react-helmet-async
+				// keys script tags on `src`/`innerHTML` only and silently drops any
+				// script carrying `dangerouslySetInnerHTML`, which left the site with
+				// no JSON-LD at all.
+				<script key={index} type="application/ld+json">
+					{serialize(entry)}
+				</script>
 			))}
 		</Helmet>
 	);

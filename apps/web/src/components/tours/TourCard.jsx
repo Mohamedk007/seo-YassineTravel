@@ -1,20 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Clock, Users } from 'lucide-react';
 import { Reveal } from '@/components/site/Reveal';
-import { IMG } from '@/data/images';
+import { IMG, getImageAttrs } from '@/data/images';
 import { getPath } from '@/data/route-config';
 import { useLocale } from '@/i18n/LocaleContext';
 
 export function TourCard({ tour, delay = 0 }) {
 	const lang = useLocale();
+	const { t } = useTranslation();
+	const badge = getImageAttrs(IMG.tripaBadge2026, lang);
 	return (
 		<Reveal delay={delay} className="group overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-xl">
 			<Link to={getPath('tourDetail', lang, { slug: tour.slug })} className="block">
 				<div className="relative aspect-[4/3] overflow-hidden">
 					<img
 						src={tour.image}
-						alt={tour.title}
+						{...getImageAttrs(tour.image, lang, tour.title)}
 						className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
 						loading="lazy"
 						decoding="async"
@@ -23,13 +26,14 @@ export function TourCard({ tour, delay = 0 }) {
 					<span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">{tour.category}</span>
 					<img
 						src={IMG.tripaBadge2026}
-						alt="TripAdvisor Travelers' Choice 2026"
+						alt={badge.alt}
 						width={36}
 						height={46}
 						className="absolute bottom-3 left-3"
 						loading="lazy"
+						decoding="async"
 					/>
-					<span className="absolute bottom-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">from EUR{tour.price.toLocaleString()}</span>
+					<span className="absolute bottom-3 right-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-medium text-white backdrop-blur">{t('common.from')} €{tour.price.toLocaleString()}</span>
 				</div>
 				<div className="p-6">
 					<div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
@@ -38,7 +42,7 @@ export function TourCard({ tour, delay = 0 }) {
 					</div>
 					<h3 className="mt-2 font-display text-xl font-semibold leading-snug transition group-hover:text-primary">{tour.title}</h3>
 					<p className="mt-2 text-sm text-muted-foreground line-clamp-2">{tour.tagline}</p>
-					<span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">View details <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+					<span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">{t('common.viewDetails')} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
 				</div>
 			</Link>
 		</Reveal>

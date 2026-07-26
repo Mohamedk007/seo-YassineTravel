@@ -1,57 +1,10 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
-
-const ROUTE_PATHS_EN = {
-	home: '/',
-	about: '/about',
-	tours: '/tours',
-	luxuryTours: '/luxury-tours',
-	privateTours: '/private-tours',
-	desertTours: '/desert-tours',
-	dayTrips: '/day-trips',
-	customTours: '/custom-tours',
-	destinations: '/destinations',
-	destinationDetail: '/destinations/:slug',
-	blog: '/blog',
-	blogArticle: '/blog/:slug',
-	travelGuide: '/travel-guide',
-	reviews: '/reviews',
-	gallery: '/gallery',
-	faq: '/faq',
-	contact: '/contact',
-	airportTransfers: '/airport-transfers',
-	airportTransferDetail: '/airport-transfers/:slug',
-	privateDrivers: '/private-drivers',
-	tourDetail: '/tour/:slug',
-};
-
-const ROUTE_PATHS_FR = {
-	home: '/',
-	about: '/a-propos',
-	tours: '/circuits',
-	luxuryTours: '/circuits-de-luxe',
-	privateTours: '/circuits-prives',
-	desertTours: '/circuits-desert',
-	dayTrips: '/excursions-a-la-journee',
-	customTours: '/circuits-sur-mesure',
-	destinations: '/destinations',
-	destinationDetail: '/destinations/:slug',
-	blog: '/blog',
-	blogArticle: '/blog/:slug',
-	travelGuide: '/guide-de-voyage',
-	reviews: '/avis',
-	gallery: '/galerie',
-	faq: '/faq',
-	contact: '/contact',
-	airportTransfers: '/transferts-aeroport',
-	airportTransferDetail: '/transferts-aeroport/:slug',
-	privateDrivers: '/chauffeurs-prives',
-	tourDetail: '/circuit/:slug',
-};
-
-const ROUTE_PATHS_BY_LANG = { en: ROUTE_PATHS_EN, fr: ROUTE_PATHS_FR };
+// The localized route table lives in @/seo/sitemap because the build-time
+// sitemap generator needs it too, and it must stay dependency-free for Node.
+import { ROUTE_PATHS_BY_LANG, getRoutePathTable } from '@/seo/sitemap';
 
 export function getRoutePaths(lang = DEFAULT_LANGUAGE) {
-	return ROUTE_PATHS_BY_LANG[lang] || ROUTE_PATHS_BY_LANG[DEFAULT_LANGUAGE];
+	return getRoutePathTable(lang);
 }
 
 // Builds a path for `routeKey` in `lang`, substituting `:slug` with params.slug
@@ -63,7 +16,7 @@ export function getPath(routeKey, lang = DEFAULT_LANGUAGE, params = {}) {
 }
 
 // Kept for call sites that haven't been made locale-aware yet; always English.
-export const ROUTE_PATHS = ROUTE_PATHS_EN;
+export const ROUTE_PATHS = ROUTE_PATHS_BY_LANG[DEFAULT_LANGUAGE];
 
 // `labelKey` points into src/i18n/locales/{lang}/common.json; `label` is the
 // English fallback used until every string has a matching translation key.

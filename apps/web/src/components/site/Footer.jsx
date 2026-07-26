@@ -5,7 +5,7 @@ import { Award, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Star } 
 import { CONTACT, waLink } from '@/data/contact';
 import { getAwards } from '@/data/content';
 import { getFooterCompanyLinks, getFooterTourLinks } from '@/data/route-config';
-import { FOOTER_CONFIG, SITE_BRAND } from '@/data/site-config';
+import { SITE_BRAND, getFooterConfig, getSiteCopy } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { Newsletter } from './LeadForm';
 
@@ -32,6 +32,8 @@ export function Footer() {
 	const AWARDS = getAwards(lang);
 	const FOOTER_TOUR_LINKS = getFooterTourLinks(lang);
 	const FOOTER_COMPANY_LINKS = getFooterCompanyLinks(lang);
+	const FOOTER_CONFIG = getFooterConfig(lang);
+	const SITE_COPY = getSiteCopy(lang);
 	return (
 		<footer className="bg-ink text-white/80">
 			<div className="border-b border-white/10">
@@ -48,10 +50,10 @@ export function Footer() {
 					<span className="font-display text-xl font-semibold text-white">
 						{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
 					</span>
-					<p className="mt-3 text-sm text-white/60">{SITE_BRAND.footerDescription}</p>
+					<p className="mt-3 text-sm text-white/60">{SITE_COPY.footerDescription}</p>
 					<div className="mt-4 flex gap-3">
 						<Star className="h-5 w-5 fill-gold text-gold" strokeWidth={0} />
-						<span className="text-sm text-white/70">{SITE_BRAND.reviewSummaryCompact}</span>
+						<span className="text-sm text-white/70">{SITE_COPY.reviewSummaryCompact}</span>
 					</div>
 					<div className="mt-4 flex gap-3">
 						<a href={FOOTER_CONFIG.socialLinks.instagram} aria-label="Instagram" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
