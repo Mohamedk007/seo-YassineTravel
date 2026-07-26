@@ -248,7 +248,7 @@ export default function AirportTransferDetailPage() {
 			</AirportPageSection>
 
 			{/* AIRPORT OVERVIEW */}
-			<AirportPageSection title={copy.sections.overview(airport.name)} className="bg-secondary/40 rounded-2xl border border-border p-6">
+			<AirportPageSection title={copy.sections.overview(airport)} className="bg-secondary/40 rounded-2xl border border-border p-6">
 				<p className="text-muted-foreground">{content.overview.description}</p>
 			</AirportPageSection>
 
