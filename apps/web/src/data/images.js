@@ -26,6 +26,14 @@ export const IMG = {
 	Driver: images.Driver,
 	tripaBadge2026: images.tripaBadge2026,
 	Tripadvisor: images.Tripadvisor,
+	aitBenhaddouVillage: images.aitBenhaddouVillage,
+	agafayEvening: images.agafayEvening,
+	ouzoud: images.ouzoud,
+	ourika: images.ourika,
+	imlil: images.imlil,
+	casablancaDayTrip: images.casablancaDayTrip,
+	agadir: images.agadir,
+	ouirgane: images.ouirgane,
 };
 
 /**
@@ -211,6 +219,70 @@ export const IMG_META = {
 		alt: {
 			en: 'Morocco Trip Holidays reviews on TripAdvisor',
 			fr: 'Avis sur Morocco Trip Holidays sur TripAdvisor',
+		},
+	},
+	aitBenhaddouVillage: {
+		width: 900,
+		height: 600,
+		alt: {
+			en: 'Ait Ben Haddou kasbah village on a Marrakech day trip',
+			fr: 'Village-kasbah d’Aït Ben Haddou lors d’une excursion depuis Marrakech',
+		},
+	},
+	agafayEvening: {
+		width: 1280,
+		height: 703,
+		alt: {
+			en: 'Sunset camel ride and desert camp in the Agafay Desert',
+			fr: 'Balade à dos de dromadaire au coucher du soleil dans le désert d’Agafay',
+		},
+	},
+	ouzoud: {
+		width: 960,
+		height: 640,
+		alt: {
+			en: 'Ouzoud Waterfalls cascading through the Moroccan countryside',
+			fr: 'Cascades d’Ouzoud dans la campagne marocaine',
+		},
+	},
+	ourika: {
+		width: 1600,
+		height: 1068,
+		alt: {
+			en: 'Ourika Valley in the High Atlas Mountains',
+			fr: 'Vallée de l’Ourika dans le Haut Atlas',
+		},
+	},
+	imlil: {
+		width: 870,
+		height: 555,
+		alt: {
+			en: 'Imlil village in the High Atlas Mountains',
+			fr: 'Village d’Imlil dans le Haut Atlas',
+		},
+	},
+	casablancaDayTrip: {
+		width: 910,
+		height: 607,
+		alt: {
+			en: 'Hassan II Mosque on the Casablanca coastline',
+			fr: 'Mosquée Hassan II sur le littoral de Casablanca',
+		},
+	},
+	agadir: {
+		width: 1280,
+		height: 677,
+		alt: {
+			en: 'Agadir beach and coastline in southern Morocco',
+			fr: 'Plage et littoral d’Agadir dans le sud du Maroc',
+		},
+	},
+	ouirgane: {
+		width: 1043,
+		height: 756,
+		alt: {
+			en: 'Ouirgane Valley in the foothills of the Atlas Mountains',
+			fr: 'Vallée d’Ouirgane au pied des montagnes de l’Atlas',
 		},
 	},
 };

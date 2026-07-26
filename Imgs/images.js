@@ -23,6 +23,14 @@ import RBT_SLE from './rabat-sale-airport.webp';
 import Driver from './morocco-private-driver-luggage-assistance.webp';
 import tripaBadge2026 from './tripadvisor-travellers-choice-2026-badge.svg';
 import Tripadvisor from './tripadvisor-reviews-morocco-trip-holidays.png';
+import aitBenhaddouVillage from './ait-benhaddou-village-day-trip.jpg';
+import agafayEvening from './agafay-desert-sunset-evening.jpeg';
+import ouzoud from './ouzoud-waterfalls-morocco.jpg';
+import ourika from './ourika-valley-atlas-mountains.jpg';
+import imlil from './imlil-atlas-mountains-village.webp';
+import casablancaDayTrip from './casablanca-hassan-ii-mosque-coast.jpg';
+import agadir from './agadir-beach-morocco.jpg';
+import ouirgane from './ouirgane-valley-atlas-mountains.jpg';
 
 
 export const images = {
@@ -48,4 +56,12 @@ export const images = {
 	Driver,
 	tripaBadge2026,
 	Tripadvisor,
+	aitBenhaddouVillage,
+	agafayEvening,
+	ouzoud,
+	ourika,
+	imlil,
+	casablancaDayTrip,
+	agadir,
+	ouirgane,
 };
