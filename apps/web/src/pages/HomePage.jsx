@@ -9,7 +9,7 @@ import { Layout } from '@/components/site/Layout';
 import { Reveal } from '@/components/site/Reveal';
 import { Seo } from '@/components/site/Seo';
 import { Eyebrow, Stars } from '@/components/site/Typography';
-import { CONTACT, waLink } from '@/data/contact';
+import { CONTACT, GOOGLE_BUSINESS_MAP_EMBED_URL, waLink } from '@/data/contact';
 import { getAwards, getFaqs, getReviews } from '@/data/content';
 import { getHomeBenefits, getHomeBookingSteps, getHomePage, getHomeWhyPoints } from '@/data/home';
 import { IMG, getImageAttrs } from '@/data/images';
@@ -277,8 +277,14 @@ export default function HomePage() {
       <section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2">
           <Reveal className="overflow-hidden rounded-3xl shadow-sm ring-1 ring-border">
-            <iframe title="Morocco map" className="h-full min-h-[320px] w-full" loading="lazy"
-              src="https://www.google.com/maps?q=Marrakech,Morocco&output=embed" />
+            <iframe
+              title="Morocco Trip Holidays on Google Maps"
+              className="h-full min-h-[320px] w-full"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              src={GOOGLE_BUSINESS_MAP_EMBED_URL}
+            />
           </Reveal>
           <Reveal delay={80} className="flex flex-col justify-center rounded-3xl bg-[#128C7E] p-10 text-white">
             <MessageCircle className="h-12 w-12" />

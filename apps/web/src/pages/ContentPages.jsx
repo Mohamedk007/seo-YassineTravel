@@ -6,7 +6,7 @@ import { LeadForm } from '@/components/site/LeadForm';
 import { Reveal } from '@/components/site/Reveal';
 import { Stars } from '@/components/site/Typography';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { CONTACT, waLink } from '@/data/contact';
+import { CONTACT, GOOGLE_BUSINESS_MAP_EMBED_URL, waLink } from '@/data/contact';
 import { getFaqs, getReviews } from '@/data/content';
 import { getDestinationHighlights, getDestinations } from '@/data/destinations';
 import { IMG, getImageAlt, getImageAttrs } from '@/data/images';
@@ -323,8 +323,8 @@ export function TravelGuide() {
 }
 
 const CONTACT_COPY = {
-	en: { callUs: 'Call us', visitOrWrite: 'Visit / write', officeMap: 'Office map' },
-	fr: { callUs: 'Appelez-nous', visitOrWrite: 'Nous rendre visite / écrire', officeMap: 'Carte du bureau' },
+	en: { callUs: 'Call us', visitOrWrite: 'Visit / write', officeMap: 'Morocco Trip Holidays on Google Maps' },
+	fr: { callUs: 'Appelez-nous', visitOrWrite: 'Nous rendre visite / écrire', officeMap: 'Morocco Trip Holidays sur Google Maps' },
 };
 
 export function Contact() {
@@ -359,7 +359,14 @@ export function Contact() {
 						</a>
 					</div>
 					<div className="mt-6 overflow-hidden rounded-2xl border border-border">
-						<iframe title={copy.officeMap} className="h-64 w-full" loading="lazy" src="https://www.google.com/maps?q=Marrakech,Morocco&output=embed" />
+						<iframe
+							title={copy.officeMap}
+							className="h-64 w-full"
+							style={{ border: 0 }}
+							loading="lazy"
+							referrerPolicy="strict-origin-when-cross-origin"
+							src={GOOGLE_BUSINESS_MAP_EMBED_URL}
+						/>
 					</div>
 				</div>
 				<LeadForm title={CONTACT_PAGE.formTitle} subtitle={CONTACT_PAGE.formSubtitle} />
