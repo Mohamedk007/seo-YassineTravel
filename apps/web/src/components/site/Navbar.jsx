@@ -31,6 +31,7 @@ export function Navbar() {
 	}, [location.pathname]);
 
 	return (
+		<>
 		<header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${transparent ? 'bg-transparent py-4' : 'bg-background/95 border-b border-border py-2 shadow-sm backdrop-blur'}`}>
 			<nav className="mx-auto flex max-w-[90rem] items-center justify-between px-5 lg:px-8" aria-label="Main navigation">
 				<Link to="/" className="flex shrink-0 items-center gap-2">
@@ -99,39 +100,48 @@ export function Navbar() {
 					<Menu className="h-6 w-6" />
 				</button>
 			</nav>
-
-			{open && (
-				<div id="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation" className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-sm lg:hidden">
-					<div className="flex items-center justify-between px-5 py-5">
-						<span className="font-display text-lg font-semibold text-white">
-							{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
-						</span>
-						<button type="button" onClick={() => setOpen(false)} className="text-white" aria-label="Close menu">
-							<X className="h-7 w-7" />
-						</button>
-					</div>
-					<ul className="max-h-[80vh] overflow-y-auto px-5 pt-2">
-						{NAV.flatMap((item) => (item.children ? item.children : [item])).map((child) => (
-							<li key={child.to}>
-								<Link to={child.to} className="block border-b border-white/10 py-3 text-lg text-white/90">
-									{t(child.labelKey, child.label)}
-								</Link>
-							</li>
-						))}
-					</ul>
-					<div className="px-5 pt-6">
-						<LanguageSwitcher className="mb-4 justify-center text-white/80" />
-						<a
-							href={waLink()}
-							target="_blank"
-							rel="noreferrer"
-							className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-4 font-semibold text-primary-foreground"
-						>
-							<MessageCircle className="h-5 w-5" /> {NAVBAR_CONFIG.mobileCtaLabel}
-						</a>
-					</div>
-				</div>
-			)}
 		</header>
+
+		{/* Rendered as a sibling of <header>, not a child: <header> gets
+		    `backdrop-blur` when not transparent, and per the CSS Filter Effects
+		    spec, backdrop-filter on an ancestor creates a new containing block
+		    for `position: fixed` descendants. Nested inside <header>, this
+		    drawer's `fixed inset-0` was sizing against the header's own ~56px
+		    box instead of the viewport, so only a thin strip had the dark
+		    background and the rest of the menu rendered with no background at
+		    all, right over the page content. */}
+		{open && (
+			<div id="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation" className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-sm lg:hidden">
+				<div className="flex items-center justify-between px-5 py-5">
+					<span className="font-display text-lg font-semibold text-white">
+						{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
+					</span>
+					<button type="button" onClick={() => setOpen(false)} className="text-white" aria-label="Close menu">
+						<X className="h-7 w-7" />
+					</button>
+				</div>
+				<ul className="max-h-[80vh] overflow-y-auto px-5 pt-2">
+					{NAV.flatMap((item) => (item.children ? item.children : [item])).map((child) => (
+						<li key={child.to}>
+							<Link to={child.to} className="block border-b border-white/10 py-3 text-lg text-white/90">
+								{t(child.labelKey, child.label)}
+							</Link>
+						</li>
+					))}
+				</ul>
+				<div className="px-5 pt-6">
+					<LanguageSwitcher className="mb-4 justify-center text-white/80" />
+					<a
+						href={waLink()}
+						target="_blank"
+						rel="noreferrer"
+						className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-4 font-semibold text-primary-foreground"
+					>
+						<MessageCircle className="h-5 w-5" /> {NAVBAR_CONFIG.mobileCtaLabel}
+					</a>
+				</div>
+			</div>
+		)}
+		</>
 	);
 }
