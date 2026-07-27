@@ -554,7 +554,7 @@ export const TOURS = [
 			['Day 2', 'Dades → Merzouga', 'Todra Gorge en route, camel trek into the dunes, desert camp overnight.'],
 			['Day 3', 'Return to Marrakech', 'Sunrise over the dunes, scenic drive back to Marrakech.'],
 		],
-		gallery: [IMG.luxCamp, IMG.kasbah, IMG.duneSunset],
+		gallery: [IMG.luxCamp, IMG.dadesGorges, IMG.kasbah, IMG.duneSunset],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Hotel pickup and drop-off in Marrakech',
@@ -679,7 +679,7 @@ export const TOURS = [
 			['Day 7', 'Ouarzazate → Marrakech', "Cross the High Atlas, free time in Marrakech's medina."],
 			['Day 8', 'Return to Casablanca', 'Scenic drive back to Casablanca, departure.'],
 		],
-		gallery: [IMG.duneSunset, IMG.meknes, IMG.casablancaDayTrip],
+		gallery: [IMG.duneSunset, IMG.meknes, IMG.aitBenhaddouVillage, IMG.casablancaDayTrip],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Airport meet & greet in Casablanca',
@@ -721,7 +721,7 @@ export const TOURS = [
 			['Days 10-11', 'Marrakech', 'Cross the High Atlas, explore the medina and gardens.'],
 			['Day 12', 'Return to Casablanca', 'Scenic drive back to Casablanca, departure.'],
 		],
-		gallery: [IMG.fesDoor, IMG.meknes, IMG.chefchaouen],
+		gallery: [IMG.meknes, IMG.aitBenhaddouVillage, IMG.casablancaDayTrip],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Airport meet & greet in Casablanca',
@@ -838,7 +838,7 @@ export const TOURS = [
 			['Day 7', 'Merzouga → Marrakech', 'Dades Valley and Ait Benhaddou en route to Marrakech.'],
 			['Day 8', 'Marrakech', 'Explore the medina and Jemaa el-Fna, departure.'],
 		],
-		gallery: [IMG.duneSunset, IMG.tangierCity, IMG.fesDoor],
+		gallery: [IMG.duneSunset, IMG.meknes, IMG.dadesGorges],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Hotel pickup and drop-off in Tangier',
@@ -878,7 +878,7 @@ export const TOURS = [
 			['Days 9-10', 'Ait Benhaddou & Ouarzazate', 'Taourirt and Ait Benhaddou kasbahs.'],
 			['Days 11-12', 'Marrakech', 'Cross the High Atlas, explore the medina, departure.'],
 		],
-		gallery: [IMG.kasbah, IMG.chefchaouenStaircase, IMG.duneSunset],
+		gallery: [IMG.aitBenhaddouVillage, IMG.dadesGorges, IMG.duneSunset],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Hotel pickup and drop-off in Tangier',
@@ -920,7 +920,7 @@ export const TOURS = [
 			['Day 11', 'Essaouira', 'Day trip to the Atlantic coast.'],
 			['Day 12', 'Return to Casablanca', 'Departure.'],
 		],
-		gallery: [IMG.dadesGorges, IMG.chefchaouenStaircase, IMG.Essaouira1],
+		gallery: [IMG.dadesGorges, IMG.casablancaDayTrip, IMG.Essaouira1],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Airport meet & greet in Casablanca',
@@ -957,7 +957,7 @@ export const TOURS = [
 			['Mid-Morning', 'Quad Biking', 'Guided quad bike ride through the Jbilet desert trails.'],
 			['Midday', 'Return', 'Transfer back to your Marrakech hotel.'],
 		],
-		gallery: [IMG.hotAirBalloon, IMG.duneSunset],
+		gallery: [IMG.hotAirBalloon, IMG.quadBiking],
 		included: [
 			'Hotel pickup and drop-off in Marrakech',
 			'Hot air balloon flight with certified pilot',
@@ -994,7 +994,7 @@ export const TOURS = [
 			['Midday', 'Zip Line & Lunch', 'Tree climbing and zip line course, traditional Berber lunch.'],
 			['Afternoon', 'Imlil & Return', 'Visit the artisanal area and Imlil village, return to Marrakech.'],
 		],
-		gallery: [IMG.zipline, IMG.imlil],
+		gallery: [IMG.zipline, IMG.ziplineTreeCourse, IMG.imlil],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Hotel pickup and drop-off in Marrakech',
@@ -1031,7 +1031,7 @@ export const TOURS = [
 			['Midday', 'Artisan Quarters', 'Visit the Chouara tanneries and the coppersmiths of Seffarine Square.'],
 			['Afternoon', 'Souks & Return', 'Free time in the souks, return to your hotel.'],
 		],
-		gallery: [IMG.fesGuidedTour, IMG.fesDoor],
+		gallery: [IMG.fesGuidedTour, IMG.fesArtisanWorkshop],
 		included: [
 			'Licensed local guide for the full day',
 			'Hotel pickup and drop-off in Fes',
@@ -1067,7 +1067,7 @@ export const TOURS = [
 			['Midday', 'Souks', 'Explore the souks and local artisan workshops.'],
 			['Afternoon', 'Jemaa el-Fna', 'Free time at the iconic square before returning to your hotel.'],
 		],
-		gallery: [IMG.marrakechSouk, IMG.marrakech],
+		gallery: [IMG.marrakechSouk, IMG.koutoubiaMosque],
 		included: [
 			'Licensed local guide for the full day',
 			'Hotel pickup and drop-off in Marrakech',
@@ -1102,7 +1102,7 @@ export const TOURS = [
 			['Dinner & Show', 'Dinner and Entertainment', 'Moroccan dinner with live music and performances.'],
 			['Late Evening', 'Return', 'Transfer back to your hotel.'],
 		],
-		gallery: [IMG.marrakechByNight, IMG.tagine],
+		gallery: [IMG.marrakechByNight, IMG.marrakechNightShow],
 		included: [
 			'Hotel pickup and drop-off',
 			'Dinner with live entertainment',
@@ -1138,7 +1138,7 @@ export const TOURS = [
 			['Midday', 'Majorelle Gardens', 'Discover the exotic plants and Berber Museum.'],
 			['Afternoon', 'Bahia Palace', 'Visit the 19th-century palace and its gardens.'],
 		],
-		gallery: [IMG.jardinSecret, IMG.marrakech],
+		gallery: [IMG.jardinSecret, IMG.bahiaPalace],
 		included: [
 			'Private guide for the half-day tour',
 			'Hotel pickup and drop-off in Marrakech',

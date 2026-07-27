@@ -44,6 +44,12 @@ export const IMG = {
 	marrakechSouk: images.marrakechSouk,
 	marrakechByNight: images.marrakechByNight,
 	jardinSecret: images.jardinSecret,
+	quadBiking: images.quadBiking,
+	ziplineTreeCourse: images.ziplineTreeCourse,
+	fesArtisanWorkshop: images.fesArtisanWorkshop,
+	koutoubiaMosque: images.koutoubiaMosque,
+	marrakechNightShow: images.marrakechNightShow,
+	bahiaPalace: images.bahiaPalace,
 };
 
 /**
@@ -373,6 +379,54 @@ export const IMG_META = {
 		alt: {
 			en: 'Le Jardin Secret, a restored palace garden in Marrakech',
 			fr: 'Le Jardin Secret, un jardin de palais restauré à Marrakech',
+		},
+	},
+	quadBiking: {
+		width: 1024,
+		height: 768,
+		alt: {
+			en: 'Quad biking through the Jbilet desert near Marrakech',
+			fr: 'Balade en quad dans le désert de Jbilet près de Marrakech',
+		},
+	},
+	ziplineTreeCourse: {
+		width: 756,
+		height: 1008,
+		alt: {
+			en: 'Zip line and tree-climbing course at Les Terres d’Amanar',
+			fr: 'Parcours de tyrolienne et d’accrobranche aux Terres d’Amanar',
+		},
+	},
+	fesArtisanWorkshop: {
+		width: 610,
+		height: 407,
+		alt: {
+			en: 'Artisan workshop in the Fes medina',
+			fr: 'Atelier d’artisan dans la médina de Fès',
+		},
+	},
+	koutoubiaMosque: {
+		width: 1200,
+		height: 900,
+		alt: {
+			en: 'The Koutoubia Mosque seen from its garden in Marrakech',
+			fr: 'La mosquée Koutoubia vue depuis son jardin à Marrakech',
+		},
+	},
+	marrakechNightShow: {
+		width: 1024,
+		height: 683,
+		alt: {
+			en: 'Live entertainment at a Marrakech dinner show',
+			fr: 'Spectacle live lors d’un dîner-spectacle à Marrakech',
+		},
+	},
+	bahiaPalace: {
+		width: 1600,
+		height: 1068,
+		alt: {
+			en: 'Bahia Palace courtyard in Marrakech',
+			fr: 'Cour du Palais de la Bahia à Marrakech',
 		},
 	},
 };

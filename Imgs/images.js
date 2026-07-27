@@ -41,6 +41,12 @@ import fesGuidedTour from './fes-guided-tour-medina.jpg';
 import marrakechSouk from './marrakech-souk-semmarine.jpg';
 import marrakechByNight from './marrakech-medina-by-night.jpeg';
 import jardinSecret from './jardin-secret-marrakech.png';
+import quadBiking from './quad-biking-jbilet-desert-marrakech.jpg';
+import ziplineTreeCourse from './zipline-amanar-tree-course.jpg';
+import fesArtisanWorkshop from './fes-medina-artisan-workshop.jpg';
+import koutoubiaMosque from './marrakech-koutoubia-mosque-garden.jpg';
+import marrakechNightShow from './marrakech-night-show-dinner.jpeg';
+import bahiaPalace from './bahia-palace-marrakech.jpg';
 
 
 export const images = {
@@ -84,4 +90,10 @@ export const images = {
 	marrakechSouk,
 	marrakechByNight,
 	jardinSecret,
+	quadBiking,
+	ziplineTreeCourse,
+	fesArtisanWorkshop,
+	koutoubiaMosque,
+	marrakechNightShow,
+	bahiaPalace,
 };
