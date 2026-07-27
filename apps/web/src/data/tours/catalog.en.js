@@ -577,7 +577,7 @@ export const TOURS = [
 		category: 'Desert Tours',
 		duration: '6 Days / 5 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 750,
 		image: IMG.meknes,
 		tagline: 'Six days from Casablanca through the imperial cities of Rabat and Meknes, finishing with a night among the Sahara dunes.',
 		highlights: [
@@ -618,7 +618,7 @@ export const TOURS = [
 		category: 'Private Tours',
 		duration: '7 Days / 6 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 900,
 		image: IMG.dadesGorges,
 		tagline: 'A private 7-day circuit linking Casablanca, Rabat and Meknes with the Dades Gorges and Ait Benhaddou.',
 		highlights: [
@@ -660,7 +660,7 @@ export const TOURS = [
 		category: 'Desert Tours',
 		duration: '8 Days / 7 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 1050,
 		image: IMG.duneSunset,
 		tagline: "Eight days from Casablanca deep into the Sahara, crossing the Dades Gorges and Ait Benhaddou's kasbah.",
 		highlights: [
@@ -703,7 +703,7 @@ export const TOURS = [
 		category: 'Luxury Tours',
 		duration: '12 Days / 11 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 1650,
 		image: IMG.fesDoor,
 		tagline: 'All four imperial cities and a night in the Sahara, in one sweeping 12-day circuit from Casablanca.',
 		highlights: [
@@ -745,7 +745,7 @@ export const TOURS = [
 		category: 'Private Tours',
 		duration: '2 Days / 1 Night',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 250,
 		image: IMG.chefchaouenStaircase,
 		tagline: 'A short private escape from Tangier to the blue-washed alleys of Chefchaouen.',
 		highlights: [
@@ -781,7 +781,7 @@ export const TOURS = [
 		category: 'Luxury Tours',
 		duration: '4 Days / 3 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 500,
 		image: IMG.tangierCity,
 		tagline: 'From the port of Tangier to the Fes medina, by way of Chefchaouen and Meknes, in a private 4-day circuit.',
 		highlights: [
@@ -819,7 +819,7 @@ export const TOURS = [
 		category: 'Private Tours',
 		duration: '8 Days / 7 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 1050,
 		image: IMG.duneSunset,
 		tagline: "Eight private days from Tangier's medina to Marrakech's souks, crossing Fes and a night beneath the Sahara stars.",
 		highlights: [
@@ -861,7 +861,7 @@ export const TOURS = [
 		category: 'Luxury Tours',
 		duration: '12 Days / 11 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 1650,
 		image: IMG.kasbah,
 		tagline: 'Twelve days from the port of Tangier to Marrakech, linking every imperial city with a night among the Sahara dunes.',
 		highlights: [
@@ -901,7 +901,7 @@ export const TOURS = [
 		category: 'Luxury Tours',
 		duration: '12 Days / 11 Nights',
 		group: 'Private, up to 6',
-		price: 200,
+		price: 1650,
 		image: IMG.dadesGorges,
 		tagline: "A grand loop through Morocco's four corners — Casablanca, Tangier, Fes, the Sahara and Essaouira — in twelve days.",
 		highlights: [

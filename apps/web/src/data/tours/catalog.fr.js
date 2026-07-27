@@ -578,7 +578,7 @@ export const TOURS = [
 		category: 'Circuits désert',
 		duration: '6 jours / 5 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 750,
 		image: IMG.meknes,
 		tagline: 'Six jours au départ de Casablanca à travers les villes impériales de Rabat et Meknès, jusqu\'à une nuit dans les dunes du Sahara.',
 		highlights: [
@@ -619,7 +619,7 @@ export const TOURS = [
 		category: 'Circuits privés',
 		duration: '7 jours / 6 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 900,
 		image: IMG.dadesGorges,
 		tagline: 'Un circuit privé de 7 jours reliant Casablanca, Rabat et Meknès aux gorges du Dadès et à Aït Benhaddou.',
 		highlights: [
@@ -661,7 +661,7 @@ export const TOURS = [
 		category: 'Circuits désert',
 		duration: '8 jours / 7 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 1050,
 		image: IMG.duneSunset,
 		tagline: 'Huit jours au départ de Casablanca, au cœur du Sahara, en traversant les gorges du Dadès et le ksar d\'Aït Benhaddou.',
 		highlights: [
@@ -704,7 +704,7 @@ export const TOURS = [
 		category: 'Circuits de luxe',
 		duration: '12 jours / 11 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 1650,
 		image: IMG.fesDoor,
 		tagline: 'Les quatre villes impériales et une nuit dans le Sahara, dans un grand circuit de 12 jours au départ de Casablanca.',
 		highlights: [
@@ -746,7 +746,7 @@ export const TOURS = [
 		category: 'Circuits privés',
 		duration: '2 jours / 1 nuit',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 250,
 		image: IMG.chefchaouenStaircase,
 		tagline: 'Une courte escapade privée depuis Tanger vers les ruelles bleues de Chefchaouen.',
 		highlights: [
@@ -782,7 +782,7 @@ export const TOURS = [
 		category: 'Circuits de luxe',
 		duration: '4 jours / 3 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 500,
 		image: IMG.tangierCity,
 		tagline: 'Du port de Tanger à la médina de Fès, en passant par Chefchaouen et Meknès, dans un circuit privé de 4 jours.',
 		highlights: [
@@ -820,7 +820,7 @@ export const TOURS = [
 		category: 'Circuits privés',
 		duration: '8 jours / 7 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 1050,
 		image: IMG.duneSunset,
 		tagline: 'Huit jours privés de la médina de Tanger aux souks de Marrakech, en passant par Fès et une nuit sous les étoiles du Sahara.',
 		highlights: [
@@ -862,7 +862,7 @@ export const TOURS = [
 		category: 'Circuits de luxe',
 		duration: '12 jours / 11 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 1650,
 		image: IMG.kasbah,
 		tagline: 'Douze jours du port de Tanger à Marrakech, reliant chaque ville impériale à une nuit dans les dunes du Sahara.',
 		highlights: [
@@ -902,7 +902,7 @@ export const TOURS = [
 		category: 'Circuits de luxe',
 		duration: '12 jours / 11 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
-		price: 200,
+		price: 1650,
 		image: IMG.dadesGorges,
 		tagline: 'Une grande boucle à travers les quatre coins du Maroc — Casablanca, Tanger, Fès, le Sahara et Essaouira — en douze jours.',
 		highlights: [
