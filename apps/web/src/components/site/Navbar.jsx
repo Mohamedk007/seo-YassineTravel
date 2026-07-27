@@ -49,9 +49,15 @@ export function Navbar() {
 							className="relative"
 							onMouseEnter={() => setOpenMenu(item.label)}
 							onMouseLeave={() => setOpenMenu(null)}
+							onFocus={() => item.children && setOpenMenu(item.label)}
+							onBlur={(e) => {
+								if (!e.currentTarget.contains(e.relatedTarget)) setOpenMenu(null);
+							}}
 						>
 							<NavLink
 								to={item.to}
+								aria-haspopup={item.children ? 'true' : undefined}
+								aria-expanded={item.children ? openMenu === item.label : undefined}
 								className={({ isActive }) => `flex items-center gap-1 rounded px-3 py-2 text-sm font-medium transition-colors ${transparent ? 'text-white/90 hover:text-white' : 'text-foreground/80 hover:text-primary'} ${isActive ? '!text-gold' : ''}`}
 							>
 								{t(item.labelKey, item.label)}
