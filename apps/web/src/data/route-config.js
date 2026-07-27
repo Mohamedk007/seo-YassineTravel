@@ -28,6 +28,8 @@ export function getTourRouteLinks(lang = DEFAULT_LANGUAGE) {
 		{ label: 'Private Tours', labelKey: 'nav.privateTours', to: P.privateTours },
 		{ label: 'Desert Tours', labelKey: 'nav.desertTours', to: P.desertTours },
 		{ label: 'Day Trips', labelKey: 'nav.dayTrips', to: P.dayTrips },
+		{ label: 'Adventure Excursions', labelKey: 'nav.excursions', to: P.excursions },
+		{ label: 'Guided City Tours', labelKey: 'nav.guidedTours', to: P.guidedTours },
 		{ label: 'Custom Tours', labelKey: 'nav.customTours', to: P.customTours },
 	];
 }
@@ -72,6 +74,8 @@ export function getFooterTourLinks(lang = DEFAULT_LANGUAGE) {
 		['Private Tours', P.privateTours, 'nav.privateTours'],
 		['Desert Tours', P.desertTours, 'nav.desertTours'],
 		['Day Trips', P.dayTrips, 'nav.dayTrips'],
+		['Adventure Excursions', P.excursions, 'nav.excursions'],
+		['Guided City Tours', P.guidedTours, 'nav.guidedTours'],
 		['Custom Tours', P.customTours, 'nav.customTours'],
 	];
 }

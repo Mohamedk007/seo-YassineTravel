@@ -99,6 +99,34 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/day-trips" />
   </url>
   <url>
+    <loc>https://moroccotripholidays.com/en/excursions</loc>
+    <lastmod>2026-07-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/excursions" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/activites-et-excursions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/excursions" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/activites-et-excursions</loc>
+    <lastmod>2026-07-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/excursions" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/activites-et-excursions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/excursions" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/en/guided-tours</loc>
+    <lastmod>2026-07-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/guided-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/visites-guidees" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/guided-tours" />
+  </url>
+  <url>
+    <loc>https://moroccotripholidays.com/fr/visites-guidees</loc>
+    <lastmod>2026-07-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/guided-tours" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moroccotripholidays.com/fr/visites-guidees" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://moroccotripholidays.com/en/guided-tours" />
+  </url>
+  <url>
     <loc>https://moroccotripholidays.com/en/custom-tours</loc>
     <lastmod>2026-07-26</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://moroccotripholidays.com/en/custom-tours" />

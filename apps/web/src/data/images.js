@@ -34,6 +34,16 @@ export const IMG = {
 	casablancaDayTrip: images.casablancaDayTrip,
 	agadir: images.agadir,
 	ouirgane: images.ouirgane,
+	meknes: images.meknes,
+	dadesGorges: images.dadesGorges,
+	chefchaouenStaircase: images.chefchaouenStaircase,
+	tangierCity: images.tangierCity,
+	hotAirBalloon: images.hotAirBalloon,
+	zipline: images.zipline,
+	fesGuidedTour: images.fesGuidedTour,
+	marrakechSouk: images.marrakechSouk,
+	marrakechByNight: images.marrakechByNight,
+	jardinSecret: images.jardinSecret,
 };
 
 /**
@@ -283,6 +293,86 @@ export const IMG_META = {
 		alt: {
 			en: 'Ouirgane Valley in the foothills of the Atlas Mountains',
 			fr: 'Vallée d’Ouirgane au pied des montagnes de l’Atlas',
+		},
+	},
+	meknes: {
+		width: 960,
+		height: 643,
+		alt: {
+			en: 'Meknes imperial city in Morocco',
+			fr: 'La ville impériale de Meknès au Maroc',
+		},
+	},
+	dadesGorges: {
+		width: 1597,
+		height: 1080,
+		alt: {
+			en: 'The Dades Gorges in the Moroccan Atlas Mountains',
+			fr: 'Les gorges du Dadès dans l’Atlas marocain',
+		},
+	},
+	chefchaouenStaircase: {
+		width: 600,
+		height: 401,
+		alt: {
+			en: 'Blue-painted staircase alley in Chefchaouen',
+			fr: 'Ruelle et escalier bleus à Chefchaouen',
+		},
+	},
+	tangierCity: {
+		width: 612,
+		height: 408,
+		alt: {
+			en: 'Tangier cityscape on the Moroccan coast',
+			fr: 'Vue de la ville de Tanger sur le littoral marocain',
+		},
+	},
+	hotAirBalloon: {
+		width: 1600,
+		height: 1200,
+		alt: {
+			en: 'Hot air balloon flight over the Marrakech countryside',
+			fr: 'Vol en montgolfière au-dessus de la campagne de Marrakech',
+		},
+	},
+	zipline: {
+		width: 960,
+		height: 720,
+		alt: {
+			en: 'Zip line adventure through the Atlas Mountains foothills',
+			fr: 'Tyrolienne dans les contreforts de l’Atlas',
+		},
+	},
+	fesGuidedTour: {
+		width: 900,
+		height: 598,
+		alt: {
+			en: 'Guided walking tour through the Fes medina',
+			fr: 'Visite guidée à pied dans la médina de Fès',
+		},
+	},
+	marrakechSouk: {
+		width: 710,
+		height: 485,
+		alt: {
+			en: 'Souk Semmarine in the Marrakech medina',
+			fr: 'Souk Semmarine dans la médina de Marrakech',
+		},
+	},
+	marrakechByNight: {
+		width: 1024,
+		height: 683,
+		alt: {
+			en: 'Marrakech dinner and show experience by night',
+			fr: 'Dîner-spectacle nocturne à Marrakech',
+		},
+	},
+	jardinSecret: {
+		width: 1148,
+		height: 764,
+		alt: {
+			en: 'Le Jardin Secret, a restored palace garden in Marrakech',
+			fr: 'Le Jardin Secret, un jardin de palais restauré à Marrakech',
 		},
 	},
 };

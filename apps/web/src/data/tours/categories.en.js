@@ -40,4 +40,20 @@ export const TOUR_COLLECTIONS = [
 		image: IMG.atlas,
 		intro: 'Perfect additions to your city stay, all with private transport and expert guides.',
 	},
+	{
+		routeKey: 'excursions',
+		categoryKey: 'excursions',
+		title: 'Morocco Adventure Excursions',
+		subtitle: 'Hot air balloons, quad bikes and zip lines above the Marrakech countryside.',
+		image: IMG.hotAirBalloon,
+		intro: 'Add an adrenaline rush to your trip with these guided outdoor adventures near Marrakech.',
+	},
+	{
+		routeKey: 'guidedTours',
+		categoryKey: 'guided-tours',
+		title: 'Morocco Guided City Tours',
+		subtitle: 'Half-day and evening tours led by an expert local guide, on foot in the medina.',
+		image: IMG.guide,
+		intro: 'A local storyteller at your side through the souks, palaces and hidden corners of the medina.',
+	},
 ];

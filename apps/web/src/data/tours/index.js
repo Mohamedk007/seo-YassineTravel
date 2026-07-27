@@ -23,8 +23,17 @@ export function getToursForDestination(destinationId, lang = DEFAULT_LANGUAGE) {
 	return getTours(lang).filter((tour) => tour.destinationIds?.includes(destinationId));
 }
 
+// Same-category tours first (e.g. viewing a day trip surfaces other day
+// trips), topped up with tours from other categories only if there aren't
+// enough to fill `limit`.
 export function getRelatedTours(slug, lang = DEFAULT_LANGUAGE, limit = 3) {
-	return getTours(lang)
-		.filter((entry) => entry.slug !== slug)
-		.slice(0, limit);
+	const tours = getTours(lang);
+	const current = tours.find((entry) => entry.slug === slug);
+	const others = tours.filter((entry) => entry.slug !== slug);
+
+	if (!current) return others.slice(0, limit);
+
+	const sameCategory = others.filter((entry) => entry.categoryKey === current.categoryKey);
+	const rest = others.filter((entry) => entry.categoryKey !== current.categoryKey);
+	return [...sameCategory, ...rest].slice(0, limit);
 }

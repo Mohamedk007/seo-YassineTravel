@@ -31,6 +31,16 @@ import imlil from './imlil-atlas-mountains-village.webp';
 import casablancaDayTrip from './casablanca-hassan-ii-mosque-coast.jpg';
 import agadir from './agadir-beach-morocco.jpg';
 import ouirgane from './ouirgane-valley-atlas-mountains.jpg';
+import meknes from './meknes-imperial-city-morocco.jpg';
+import dadesGorges from './dades-gorges-morocco.jpg';
+import chefchaouenStaircase from './chefchaouen-blue-staircase-alley.webp';
+import tangierCity from './tangier-morocco-cityscape.jpg';
+import hotAirBalloon from './hot-air-balloon-marrakech.jpg';
+import zipline from './zipline-adventure-atlas-mountains.jpg';
+import fesGuidedTour from './fes-guided-tour-medina.jpg';
+import marrakechSouk from './marrakech-souk-semmarine.jpg';
+import marrakechByNight from './marrakech-medina-by-night.jpeg';
+import jardinSecret from './jardin-secret-marrakech.png';
 
 
 export const images = {
@@ -64,4 +74,14 @@ export const images = {
 	casablancaDayTrip,
 	agadir,
 	ouirgane,
+	meknes,
+	dadesGorges,
+	chefchaouenStaircase,
+	tangierCity,
+	hotAirBalloon,
+	zipline,
+	fesGuidedTour,
+	marrakechSouk,
+	marrakechByNight,
+	jardinSecret,
 };

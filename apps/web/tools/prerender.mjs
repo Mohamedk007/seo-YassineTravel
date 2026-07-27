@@ -50,7 +50,7 @@ const CONTENT_PAGE_DEFS = {
 	privateDrivers: { source: 'services', exportName: 'PRIVATE_DRIVER_PAGE', pageType: 'Service' },
 };
 
-const TOUR_COLLECTION_ROUTE_KEYS = ['tours', 'luxuryTours', 'privateTours', 'desertTours', 'dayTrips'];
+const TOUR_COLLECTION_ROUTE_KEYS = ['tours', 'luxuryTours', 'privateTours', 'desertTours', 'dayTrips', 'excursions', 'guidedTours'];
 
 // Kept in sync with the same title template in AirportTransferDetailPage.jsx
 // (every airport's `name` already ends in "Airport", so "airport transfer"
