@@ -10,7 +10,7 @@ export const SITE_BRAND = {
 	name: 'Yassine Travel',
 	namePrimary: 'Yassine',
 	nameAccent: 'Travel',
-	origin: 'https://yassine.travel',
+	origin: 'https://yassinetravel.com',
 	seoTitle: 'Yassine Travel - Luxury Private Morocco Tours',
 	seoDescription:
 		'Bespoke luxury private tours of Morocco - Sahara desert, imperial cities, five-star riads. Trusted by travellers from the US, UK, Canada & Australia.',

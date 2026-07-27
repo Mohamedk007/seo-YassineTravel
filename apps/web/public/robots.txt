@@ -21,4 +21,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://moroccotripholidays.com/sitemap-index.xml
+Sitemap: https://yassinetravel.com/sitemap-index.xml

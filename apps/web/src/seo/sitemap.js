@@ -7,7 +7,7 @@
  * `tools/generate-sitemap.mjs` can import it directly under plain Node.
  */
 
-export const SITE_ORIGIN = 'https://moroccotripholidays.com';
+export const SITE_ORIGIN = 'https://yassinetravel.com';
 
 export const SUPPORTED_LANGUAGES = ['en', 'fr'];
 export const DEFAULT_LANGUAGE = 'en';

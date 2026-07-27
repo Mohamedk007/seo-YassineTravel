@@ -54,8 +54,8 @@ const CASES = [
 		props: { breadcrumbItems: [{ routeKey: 'home' }] },
 		expect: [
 			'<title data-rh="true">Yassine Travel - Luxury Private Morocco Tours</title>',
-			'rel="canonical" href="https://moroccotripholidays.com/en"',
-			'hrefLang="fr" href="https://moroccotripholidays.com/fr"',
+			'rel="canonical" href="https://yassinetravel.com/en"',
+			'hrefLang="fr" href="https://yassinetravel.com/fr"',
 			'"@type":"BreadcrumbList"',
 			'"name":"Home"',
 		],
@@ -66,13 +66,13 @@ const CASES = [
 		path: '/a-propos',
 		props: { title: 'Une famille de conteurs marocains', breadcrumbItems: [{ routeKey: 'home' }, { routeKey: 'about' }] },
 		expect: [
-			'rel="canonical" href="https://moroccotripholidays.com/fr/a-propos"',
+			'rel="canonical" href="https://yassinetravel.com/fr/a-propos"',
 			// The English alternate must be /en/about, never /en/a-propos.
-			'hrefLang="en" href="https://moroccotripholidays.com/en/about"',
-			'hrefLang="x-default" href="https://moroccotripholidays.com/en/about"',
+			'hrefLang="en" href="https://yassinetravel.com/en/about"',
+			'hrefLang="x-default" href="https://yassinetravel.com/en/about"',
 			'property="og:locale" content="fr_FR"',
 			'"name":"Accueil"',
-			'"item":"https://moroccotripholidays.com/fr/a-propos"',
+			'"item":"https://yassinetravel.com/fr/a-propos"',
 		],
 		reject: ['/en/a-propos'],
 	},
@@ -94,10 +94,10 @@ const CASES = [
 			),
 		},
 		expect: [
-			`hrefLang="en" href="https://moroccotripholidays.com${'/en'}${TOUR_EN}"`,
+			`hrefLang="en" href="https://yassinetravel.com${'/en'}${TOUR_EN}"`,
 			'property="og:type" content="article"',
 			'"@type":"Offer"',
-			'"item":"https://moroccotripholidays.com/fr/circuits"',
+			'"item":"https://yassinetravel.com/fr/circuits"',
 		],
 	},
 	{
