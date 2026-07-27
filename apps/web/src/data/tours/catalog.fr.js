@@ -247,7 +247,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 100,
 		image: IMG.aitBenhaddouVillage,
-		tagline: 'Explorez le ksar classé UNESCO d\'Aït Ben Haddou lors d\'une excursion panoramique à travers le Haut Atlas.',
+		tagline: 'Explorez le ksar classé UNESCO d\'Aït Ben Haddou lors d\'une excursion privée au départ de Marrakech, à travers le Haut Atlas.',
 		highlights: [
 			'Visite guidée du ksar historique d\'Aït Ben Haddou',
 			'Route panoramique par le col du Tizi n\'Tichka dans le Haut Atlas',
@@ -284,7 +284,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 40,
 		image: IMG.agafayEvening,
-		tagline: 'Balade à dos de chameau au coucher du soleil et dîner 3 services sous les étoiles, à 40 minutes de Marrakech.',
+		tagline: 'Profitez d\'une balade à dos de chameau au coucher du soleil et d\'un dîner 3 services dans le désert d\'Agafay, à 40 minutes de Marrakech.',
 		highlights: [
 			'Prise en charge privée depuis votre hôtel à Marrakech',
 			'Balade à dos de chameau au coucher du soleil dans les collines d\'Agafay',
@@ -321,7 +321,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 70,
 		image: IMG.ouzoud,
-		tagline: 'Libérez votre esprit face aux plus hautes cascades du Maroc, entourées d\'oliveraies et de singes magots.',
+		tagline: 'Découvrez les cascades d\'Ouzoud, les plus hautes du Maroc, lors d\'une excursion panoramique depuis Marrakech.',
 		highlights: [
 			'Découverte des cascades d\'Ouzoud',
 			'Passage par le village de Setti Fatma en chemin',
@@ -358,7 +358,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 75,
 		image: IMG.ourika,
-		tagline: 'Échangez la médina contre des terrasses verdoyantes, des cascades de montagne et des villages berbères du Haut Atlas.',
+		tagline: 'Découvrez les terrasses verdoyantes, cascades et villages berbères de la vallée de l\'Ourika lors d\'une excursion depuis Marrakech.',
 		highlights: [
 			'Route panoramique à travers la vallée de l\'Ourika',
 			'Visite des cascades de l\'Ourika et des villages berbères environnants',
@@ -395,7 +395,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 85,
 		image: IMG.imlil,
-		tagline: 'Une escapade dans le Haut Atlas au pied du Mont Toubkal, entre sentiers muletiers et villages berbères.',
+		tagline: 'Découvrez Imlil, village du Haut Atlas au pied du Mont Toubkal, lors d\'une excursion depuis Marrakech.',
 		highlights: [
 			'Route panoramique à travers le Haut Atlas',
 			'Découverte des villages berbères et marchés locaux d\'Imlil',
@@ -432,7 +432,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 90,
 		image: IMG.casablancaDayTrip,
-		tagline: 'Découvrez le hub moderne du Maroc, de la mosquée Hassan II à la Corniche atlantique.',
+		tagline: 'Découvrez la mosquée Hassan II et la Corniche atlantique lors d\'une excursion à Casablanca depuis Marrakech.',
 		highlights: [
 			'Visite de l\'emblématique mosquée Hassan II',
 			'Balade le long de la Corniche et ses vues sur l\'Atlantique',
@@ -469,7 +469,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 100,
 		image: IMG.agadir,
-		tagline: 'Échangez la médina contre des plages dorées et une vue sur l\'Atlantique lors d\'une escapade côtière.',
+		tagline: 'Échangez la médina contre les plages dorées d\'Agadir lors d\'une excursion côtière depuis Marrakech.',
 		highlights: [
 			'Route panoramique à travers les contreforts de l\'Atlas jusqu\'à la côte',
 			'Détente sur les plages dorées d\'Agadir',
@@ -506,7 +506,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 85,
 		image: IMG.ouirgane,
-		tagline: 'Une vallée paisible du Haut Atlas, entre champs en terrasses, oliveraies et villages berbères traditionnels.',
+		tagline: 'Découvrez les champs en terrasses et villages berbères de la vallée d\'Ouirgane lors d\'une excursion depuis Marrakech.',
 		highlights: [
 			'Route de montagne panoramique à travers la vallée d\'Ouirgane',
 			'Visite de villages berbères traditionnels',

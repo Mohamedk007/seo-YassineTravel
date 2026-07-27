@@ -246,7 +246,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 100,
 		image: IMG.aitBenhaddouVillage,
-		tagline: 'Explore the UNESCO-listed kasbah of Ait Ben Haddou on a scenic day trip across the High Atlas.',
+		tagline: 'Explore the UNESCO-listed Ait Ben Haddou kasbah on a private day trip from Marrakech across the High Atlas.',
 		highlights: [
 			'Guided tour of the historic Ait Ben Haddou kasbah',
 			"Scenic drive over the Tizi n'Tichka pass in the High Atlas",
@@ -283,7 +283,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 40,
 		image: IMG.agafayEvening,
-		tagline: 'A camel ride at sunset and a 3-course dinner under the stars, just 40 minutes from Marrakech.',
+		tagline: 'Enjoy a sunset camel ride and a 3-course dinner in the Agafay Desert, just 40 minutes from Marrakech.',
 		highlights: [
 			'Private pickup from your Marrakech hotel',
 			'Sunset camel ride over the Agafay Desert hills',
@@ -320,7 +320,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 70,
 		image: IMG.ouzoud,
-		tagline: "Free your mind at Morocco's tallest waterfalls, framed by olive groves and playful macaques.",
+		tagline: "Discover the Ouzoud Waterfalls, Morocco's tallest, on a scenic day trip from Marrakech.",
 		highlights: [
 			'Discover the cascading Ouzoud Waterfalls',
 			'Wander through the village of Setti Fatma en route',
@@ -357,7 +357,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 75,
 		image: IMG.ourika,
-		tagline: 'Trade the medina for green terraces, mountain waterfalls and Berber villages in the High Atlas.',
+		tagline: "Discover the Ourika Valley's green terraces, mountain waterfalls and Berber villages on a day trip from Marrakech.",
 		highlights: [
 			'Scenic drive through the Ourika Valley',
 			'Visit the Ourika waterfalls and surrounding Berber villages',
@@ -394,7 +394,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 85,
 		image: IMG.imlil,
-		tagline: 'A High Atlas escape at the foot of Mount Toubkal, with mule trails and Berber mountain villages.',
+		tagline: 'Discover Imlil, a High Atlas village at the foot of Mount Toubkal, on a day trip from Marrakech.',
 		highlights: [
 			'Scenic drive across the High Atlas Mountains',
 			"Explore Imlil's Berber villages and local markets",
@@ -431,7 +431,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 90,
 		image: IMG.casablancaDayTrip,
-		tagline: "Discover Morocco's modern hub, from the Hassan II Mosque to the Atlantic Corniche.",
+		tagline: 'Discover the Hassan II Mosque and Atlantic Corniche on a day trip to Casablanca from Marrakech.',
 		highlights: [
 			'Visit the iconic Hassan II Mosque',
 			'Stroll along the Corniche and its Atlantic views',
@@ -468,7 +468,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 100,
 		image: IMG.agadir,
-		tagline: "Swap the medina for golden beaches and Atlantic views on a relaxed coastal escape.",
+		tagline: "Swap the medina for Agadir's golden beaches on a relaxed coastal day trip from Marrakech.",
 		highlights: [
 			'Scenic drive through the Atlas foothills to the coast',
 			"Relax on Agadir's golden beaches",
@@ -505,7 +505,7 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 85,
 		image: IMG.ouirgane,
-		tagline: 'A quiet High Atlas valley of terraced fields, olive groves and traditional Berber villages.',
+		tagline: "Discover the Ouirgane Valley's terraced fields and Berber villages on a day trip from Marrakech.",
 		highlights: [
 			'Scenic mountain drive through the Ouirgane Valley',
 			'Visit traditional Berber villages',
