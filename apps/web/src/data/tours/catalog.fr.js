@@ -220,7 +220,7 @@ export const TOURS = [
 		group: 'Privé, jusqu\'à 10 personnes',
 		price: 420,
 		image: IMG.luxCamp,
-		tagline: 'Un camp de luxe dans le désert rocailleux, à seulement 40 minutes de Marrakech.',
+		tagline: 'Un camp de luxe pour une nuit dans le désert d\'Agafay, à seulement 40 minutes de Marrakech.',
 		highlights: [
 			'Suite de tente de luxe privée avec salle de bain attenante',
 			'Dîner au coucher du soleil avec musique gnaoua live',
@@ -506,7 +506,7 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 85,
 		image: IMG.ouirgane,
-		tagline: 'Découvrez les champs en terrasses et villages berbères de la vallée d\'Ouirgane lors d\'une excursion depuis Marrakech.',
+		tagline: 'Randonnée à travers les oliveraies et hameaux authentiques de la vallée d\'Ouirgane, une échappée tranquille au pied de l\'Atlas.',
 		highlights: [
 			'Route de montagne panoramique à travers la vallée d\'Ouirgane',
 			'Visite de villages berbères traditionnels',

@@ -55,8 +55,16 @@ export function parseBlocks(source) {
 	return source.split(/\n\t\{/).slice(1);
 }
 
+// Handles both quote styles a field can be written with — e.g. tagline copy
+// containing an apostrophe (Morocco's, the Valley's) is written double-quoted
+// rather than escaped, and this previously only matched single-quoted values,
+// silently returning undefined for those fields.
 export function extractField(block, name) {
-	return block.match(new RegExp(`${name}:\\s*'((?:[^'\\\\]|\\\\.)*)'`))?.[1]?.replace(/\\'/g, "'");
+	const singleQuoted = block.match(new RegExp(`${name}:\\s*'((?:[^'\\\\]|\\\\.)*)'`));
+	if (singleQuoted) return singleQuoted[1].replace(/\\'/g, "'");
+	const doubleQuoted = block.match(new RegExp(`${name}:\\s*"((?:[^"\\\\]|\\\\.)*)"`));
+	if (doubleQuoted) return doubleQuoted[1].replace(/\\"/g, '"');
+	return undefined;
 }
 
 export function extractImgKey(block) {

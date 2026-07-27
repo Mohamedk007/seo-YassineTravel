@@ -219,7 +219,7 @@ export const TOURS = [
 		group: 'Private, up to 10',
 		price: 420,
 		image: IMG.luxCamp,
-		tagline: 'A stone-desert luxury camp just 40 minutes from Marrakech.',
+		tagline: 'A luxury overnight camp in the Agafay Desert, just 40 minutes from Marrakech.',
 		highlights: [
 			'Private luxury tented suite with ensuite bathroom',
 			'Sunset dinner with live Gnaoua music',
