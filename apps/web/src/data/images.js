@@ -50,6 +50,7 @@ export const IMG = {
 	koutoubiaMosque: images.koutoubiaMosque,
 	marrakechNightShow: images.marrakechNightShow,
 	bahiaPalace: images.bahiaPalace,
+	logo: images.logo,
 };
 
 /**

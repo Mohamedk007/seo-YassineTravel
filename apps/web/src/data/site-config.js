@@ -7,14 +7,14 @@ import { DEFAULT_LANGUAGE } from '../seo/sitemap.js';
 // name stays the same across languages, and seoTitle/seoDescription here are
 // only the English defaults consumed by src/seo/seo.config.js.
 export const SITE_BRAND = {
-	name: 'Morocco Trip Holidays',
-	namePrimary: 'Morocco Trip',
-	nameAccent: 'Holidays',
-	origin: 'https://moroccotripholidays.com',
-	seoTitle: 'Morocco Trip Holidays - Luxury Private Morocco Tours',
+	name: 'Yassine Travel',
+	namePrimary: 'Yassine',
+	nameAccent: 'Travel',
+	origin: 'https://yassine.travel',
+	seoTitle: 'Yassine Travel - Luxury Private Morocco Tours',
 	seoDescription:
 		'Bespoke luxury private tours of Morocco - Sahara desert, imperial cities, five-star riads. Trusted by travellers from the US, UK, Canada & Australia.',
-	seoTitleSuffix: 'Morocco Trip Holidays',
+	seoTitleSuffix: 'Yassine Travel',
 	locale: 'en_US',
 };
 

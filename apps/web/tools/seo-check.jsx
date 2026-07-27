@@ -53,7 +53,7 @@ const CASES = [
 		path: '/',
 		props: { breadcrumbItems: [{ routeKey: 'home' }] },
 		expect: [
-			'<title data-rh="true">Morocco Trip Holidays - Luxury Private Morocco Tours</title>',
+			'<title data-rh="true">Yassine Travel - Luxury Private Morocco Tours</title>',
 			'rel="canonical" href="https://moroccotripholidays.com/en"',
 			'hrefLang="fr" href="https://moroccotripholidays.com/fr"',
 			'"@type":"BreadcrumbList"',

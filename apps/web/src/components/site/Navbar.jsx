@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, Menu, MessageCircle, X } from 'lucide-react';
 import { CONTACT, waLink } from '@/data/contact';
+import { IMG } from '@/data/images';
 import { getNav } from '@/data/route-config';
 import { SITE_BRAND, getNavbarConfig } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
@@ -35,6 +36,7 @@ export function Navbar() {
 		<header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${transparent ? 'bg-transparent py-4' : 'bg-background/95 border-b border-border py-2 shadow-sm backdrop-blur'}`}>
 			<nav className="mx-auto flex max-w-[90rem] items-center justify-between px-5 lg:px-8" aria-label="Main navigation">
 				<Link to="/" className="flex shrink-0 items-center gap-2">
+					<img src={IMG.logo} alt="" className="h-9 w-9 rounded-md object-contain" width={36} height={36} />
 					<span className={`font-display text-xl font-semibold leading-none ${transparent ? 'text-white' : 'text-foreground'}`}>
 						{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
 					</span>
@@ -113,8 +115,11 @@ export function Navbar() {
 		{open && (
 			<div id="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation" className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-sm lg:hidden">
 				<div className="flex items-center justify-between px-5 py-5">
-					<span className="font-display text-lg font-semibold text-white">
-						{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
+					<span className="flex items-center gap-2">
+						<img src={IMG.logo} alt="" className="h-8 w-8 rounded-md object-contain" width={32} height={32} />
+						<span className="font-display text-lg font-semibold text-white">
+							{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
+						</span>
 					</span>
 					<button type="button" onClick={() => setOpen(false)} className="text-white" aria-label="Close menu">
 						<X className="h-7 w-7" />

@@ -47,6 +47,7 @@ import fesArtisanWorkshop from './fes-medina-artisan-workshop.jpg';
 import koutoubiaMosque from './marrakech-koutoubia-mosque-garden.jpg';
 import marrakechNightShow from './marrakech-night-show-dinner.jpeg';
 import bahiaPalace from './bahia-palace-marrakech.jpg';
+import logo from './yassine-travel-logo.jpg';
 
 
 export const images = {
@@ -96,4 +97,5 @@ export const images = {
 	koutoubiaMosque,
 	marrakechNightShow,
 	bahiaPalace,
+	logo,
 };

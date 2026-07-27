@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Award, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import { CONTACT, waLink } from '@/data/contact';
 import { getAwards } from '@/data/content';
+import { IMG } from '@/data/images';
 import { getFooterCompanyLinks, getFooterTourLinks } from '@/data/route-config';
 import { SITE_BRAND, getFooterConfig, getSiteCopy } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
@@ -47,8 +48,11 @@ export function Footer() {
 			</div>
 			<div className="mx-auto grid max-w-[90rem] gap-10 px-5 py-14 lg:grid-cols-4 lg:px-8">
 				<div>
-					<span className="font-display text-xl font-semibold text-white">
-						{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
+					<span className="flex items-center gap-2">
+						<img src={IMG.logo} alt="" className="h-9 w-9 rounded-md object-contain" width={36} height={36} />
+						<span className="font-display text-xl font-semibold text-white">
+							{SITE_BRAND.namePrimary} <span className="text-gold">{SITE_BRAND.nameAccent}</span>
+						</span>
 					</span>
 					<p className="mt-3 text-sm text-white/60">{SITE_COPY.footerDescription}</p>
 					<div className="mt-4 flex gap-3">
