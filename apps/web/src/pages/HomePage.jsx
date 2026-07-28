@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheck, Award, HeartHandshake, Sparkles, MapPin, MessageCircle,
-  Phone, ArrowRight, Check, Users, Clock, Compass, Star, Quote,
+  Phone, ArrowRight, Check, Users, Clock, Compass, Quote,
 } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
 import { Layout } from '@/components/site/Layout';
 import { Reveal } from '@/components/site/Reveal';
 import { Seo } from '@/components/site/Seo';
 import { Eyebrow, Stars } from '@/components/site/Typography';
+import { TripAdvisorRatingBadge } from '@/components/site/TripAdvisorRatingBadge';
 import { CONTACT, GOOGLE_BUSINESS_MAP_EMBED_URL, waLink } from '@/data/contact';
 import { getAwards, getFaqs, getReviews } from '@/data/content';
 import { getHomeBenefits, getHomeBookingSteps, getHomePage, getHomeWhyPoints } from '@/data/home';
@@ -69,7 +70,7 @@ export default function HomePage() {
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative mx-auto grid w-full max-w-[90rem] gap-10 px-5 pt-28 pb-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-8">
           <div>
-            <Reveal><span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur"><Star className="h-3.5 w-3.5 fill-current" strokeWidth={0} /> {HOME_PAGE.hero.reviewBadge}</span></Reveal>
+            <Reveal><TripAdvisorRatingBadge /></Reveal>
             <Reveal delay={80}>
               <h1 className="mt-5 max-w-3xl font-display text-5xl font-semibold leading-[1.02] text-white text-balance sm:text-6xl md:text-7xl">
                 {HOME_PAGE.hero.title.split(HOME_PAGE.hero.highlight)[0]}<span className="text-gold">{HOME_PAGE.hero.highlight}</span>{HOME_PAGE.hero.title.split(HOME_PAGE.hero.highlight)[1]}
