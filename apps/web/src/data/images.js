@@ -14,6 +14,17 @@ export const IMG = {
 	marrakech: images.marrakech,
 	couple: images.couple,
 	guide: images.guide,
+	// Full-res source is still what most images use, but these four are the
+	// ones actually flagged by a PageSpeed "no srcset" audit (TourCard's two
+	// most common hero images, plus the two large single-use HomePage
+	// photos) — see the `srcset` field on their IMG_META entries below.
+	fesDoor480: images.fesdoor480,
+	camel480: images.camel480,
+	camel900: images.camel900,
+	luxCamp480: images.luxcamp480,
+	luxCamp900: images.luxcamp900,
+	guide480: images.guide480,
+	guide900: images.guide900,
 	kasbah: images.kasbah,
 	atlas: images.atlas,
 	Essaouira1: images.Essaouira,
@@ -77,6 +88,10 @@ export const IMG_META = {
 			en: 'Luxury desert camp under the stars in the Moroccan Sahara',
 			fr: 'Campement de luxe sous les étoiles dans le Sahara marocain',
 		},
+		srcset: [
+			{ src: images.luxcamp480, width: 480 },
+			{ src: images.luxcamp900, width: 900 },
+		],
 	},
 	fesDoor: {
 		width: 896,
@@ -85,6 +100,9 @@ export const IMG_META = {
 			en: 'Ornate carved door in the medina of Fes, Morocco',
 			fr: 'Porte sculptée ornée dans la médina de Fès, au Maroc',
 		},
+		// No 900w variant: at 896px native width, one already exists — the
+		// full-size source itself.
+		srcset: [{ src: images.fesdoor480, width: 480 }],
 	},
 	camel: {
 		width: 1216,
@@ -93,6 +111,10 @@ export const IMG_META = {
 			en: 'Camel caravan crossing the Erg Chebbi dunes in Morocco',
 			fr: 'Caravane de dromadaires traversant les dunes de l’Erg Chebbi au Maroc',
 		},
+		srcset: [
+			{ src: images.camel480, width: 480 },
+			{ src: images.camel900, width: 900 },
+		],
 	},
 	riad: {
 		width: 1216,
@@ -138,9 +160,13 @@ export const IMG_META = {
 		width: 1024,
 		height: 1024,
 		alt: {
-			en: 'Local Moroccan driver-guide welcoming travellers',
-			fr: 'Chauffeur-guide marocain accueillant des voyageurs',
+			en: 'Yassine with happy travellers in the Atlas Mountains',
+			fr: 'Yassine avec des voyageurs ravis dans les montagnes de l’Atlas',
 		},
+		srcset: [
+			{ src: images.guide480, width: 480 },
+			{ src: images.guide900, width: 900 },
+		],
 	},
 	kasbah: {
 		width: 1344,
@@ -453,6 +479,13 @@ export function getImageAttrs(src, lang = DEFAULT_LANGUAGE, fallbackAlt = '') {
 		alt: meta.alt[lang] || meta.alt[DEFAULT_LANGUAGE] || fallbackAlt,
 		width: meta.width,
 		height: meta.height,
+		// Without this, the browser always downloads the full-size source
+		// regardless of how small `sizes` says the image actually renders —
+		// a `sizes` attribute with no matching `srcset` does nothing on its
+		// own. Only a handful of images have pre-generated smaller variants
+		// (see the `srcset` field in IMG_META above) so this is undefined,
+		// and therefore omitted from the spread, for everything else.
+		srcSet: meta.srcset && [...meta.srcset.map((v) => `${v.src} ${v.width}w`), `${src} ${meta.width}w`].join(', '),
 	};
 }
 

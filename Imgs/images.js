@@ -2,8 +2,13 @@
 // /public/images for the image sitemap, the filename is the last SEO signal
 // the file itself carries.
 import fesdoor from './fes-medina-carved-door.webp';
+import fesdoor480 from './fes-medina-carved-door-480w.jpg';
 import camel from './camel-caravan-erg-chebbi-dunes.webp';
+import camel480 from './camel-caravan-erg-chebbi-dunes-480w.jpg';
+import camel900 from './camel-caravan-erg-chebbi-dunes-900w.jpg';
 import luxcamp from './luxury-desert-camp-morocco.webp';
+import luxcamp480 from './luxury-desert-camp-morocco-480w.jpg';
+import luxcamp900 from './luxury-desert-camp-morocco-900w.jpg';
 import duneSunset from './sahara-desert-dunes-sunset-morocco.webp';
 import riad from './luxury-riad-courtyard-marrakech.webp';
 import tagine from './traditional-moroccan-tagine.webp';
@@ -11,6 +16,8 @@ import chefchaouen from './chefchaouen-blue-city-morocco.webp';
 import marrakech from './marrakech-medina-rooftops.webp';
 import couple from './couple-private-morocco-tour.webp';
 import guide from './moroccan-local-driver-guide.webp';
+import guide480 from './moroccan-local-driver-guide-480w.jpg';
+import guide900 from './moroccan-local-driver-guide-900w.jpg';
 import kasbah from './ait-ben-haddou-kasbah-morocco.webp';
 import atlas from './atlas-mountains-morocco.webp';
 import Essaouira from './essaouira-harbour-ramparts.webp';
@@ -52,8 +59,13 @@ import logo from './yassine-travel-logo.jpg';
 
 export const images = {
 	fesdoor,
+	fesdoor480,
 	camel,
+	camel480,
+	camel900,
 	luxcamp,
+	luxcamp480,
+	luxcamp900,
 	duneSunset,
 	riad,
 	tagine,
@@ -61,6 +73,8 @@ export const images = {
 	marrakech,
 	couple,
 	guide,
+	guide480,
+	guide900,
 	kasbah,
 	atlas,
 	Essaouira,
