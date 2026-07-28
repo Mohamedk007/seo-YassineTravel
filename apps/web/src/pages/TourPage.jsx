@@ -41,6 +41,7 @@ const COPY = {
 			`Discover the very best of Morocco on this ${tour.duration.toLowerCase()} private journey. ${tour.tagline} Travelling with your own driver-guide, you will move at your own pace, staying in handpicked luxury accommodation and enjoying privileged access to Morocco's most iconic sights and hidden gems.`,
 		highlights: 'Highlights',
 		itinerary: 'Detailed itinerary',
+		googleMaps: 'Google Maps',
 		openRouteInMaps: 'Open this route in Google Maps',
 		gallery: 'Gallery',
 		pricing: 'Pricing',
@@ -69,6 +70,7 @@ const COPY = {
 			`Découvrez le meilleur du Maroc lors de ce voyage privé de ${tour.duration.toLowerCase()}. ${tour.tagline} En voyageant avec votre propre chauffeur-guide, vous avancerez à votre rythme, logerez dans des hébergements de luxe triés sur le volet et profiterez d'un accès privilégié aux sites les plus emblématiques du Maroc comme à ses trésors cachés.`,
 		highlights: 'Points forts',
 		itinerary: 'Itinéraire détaillé',
+		googleMaps: 'Google Maps',
 		openRouteInMaps: 'Ouvrir cet itinéraire dans Google Maps',
 		gallery: 'Galerie',
 		pricing: 'Tarifs',
@@ -169,10 +171,7 @@ export function TourDetail() {
 			</div>
 
 			<section className="mx-auto max-w-[70rem] px-5 py-16 lg:px-8">
-				<h2 className="font-display text-3xl font-semibold">{copy.overview}</h2>
-				<p className="mt-3 text-muted-foreground">{copy.overviewText(tour)}</p>
-
-				<h2 className="mt-10 font-display text-3xl font-semibold">{copy.highlights}</h2>
+				<h2 className="font-display text-3xl font-semibold">{copy.highlights}</h2>
 				<ul className="mt-4 grid gap-3 sm:grid-cols-2">
 					{tour.highlights.map((highlight) => (
 						<li key={highlight} className="flex gap-2 text-sm">
@@ -185,7 +184,10 @@ export function TourDetail() {
 			<MiniReviews />
 
 			<section className="mx-auto max-w-[70rem] px-5 py-16 lg:px-8">
-				<h2 className="font-display text-3xl font-semibold">{copy.itinerary}</h2>
+				<h2 className="font-display text-3xl font-semibold">{copy.overview}</h2>
+				<p className="mt-3 text-muted-foreground">{copy.overviewText(tour)}</p>
+
+				<h2 className="mt-10 font-display text-3xl font-semibold">{copy.itinerary}</h2>
 				<div className="mt-5 space-y-4">
 					{tour.itinerary.map(([day, title, description]) => (
 						<div key={day} className="flex gap-4">
@@ -199,17 +201,20 @@ export function TourDetail() {
 				</div>
 
 				{routeEmbedUrl ? (
-					<div className="mt-4 overflow-hidden rounded-2xl border border-border">
-						<iframe
-							src={routeEmbedUrl}
-							title={`Route map for ${tour.title}`}
-							width="100%"
-							height="360"
-							loading="lazy"
-							style={{ border: 0 }}
-							referrerPolicy="no-referrer-when-downgrade"
-						/>
-					</div>
+					<>
+						<h2 className="mt-10 font-display text-3xl font-semibold">{copy.googleMaps}</h2>
+						<div className="mt-4 overflow-hidden rounded-2xl border border-border">
+							<iframe
+								src={routeEmbedUrl}
+								title={`Route map for ${tour.title}`}
+								width="100%"
+								height="360"
+								loading="lazy"
+								style={{ border: 0 }}
+								referrerPolicy="no-referrer-when-downgrade"
+							/>
+						</div>
+					</>
 				) : null}
 
 				{routeMapUrl && (
@@ -243,72 +248,69 @@ export function TourDetail() {
 				</Accordion>
 			</section>
 
-			{/* Booking form — pricing and inclusions sit right beside it since
-			    that's exactly the information someone needs at the point of booking. */}
-			<section className="bg-secondary/40 py-16">
-				<div className="mx-auto grid max-w-[90rem] gap-10 px-5 lg:grid-cols-[1fr_0.9fr] lg:px-8">
-					<div>
-						<h2 className="font-display text-3xl font-semibold">{copy.pricing}</h2>
-						<div className="mt-4 overflow-hidden rounded-xl border border-border bg-card">
-							<table className="w-full text-sm">
-								<thead className="bg-secondary text-left">
-									<tr>
-										<th className="p-4 font-semibold">{copy.groupSize}</th>
-										<th className="p-4 font-semibold">{copy.price}</th>
-									</tr>
-								</thead>
-								<tbody>
-									{priceRows.map((row) => (
-										<tr key={row[0]} className="border-t border-border">
-											<td className="p-4">{row[0]}</td>
-											<td className="p-4 font-semibold text-primary">{row[1]}</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
-						</div>
+			{/* Pricing & inclusions, then the booking form as its own step right after. */}
+			<section className="mx-auto max-w-[70rem] px-5 py-16 lg:px-8">
+				<h2 className="font-display text-3xl font-semibold">{copy.pricing}</h2>
+				<div className="mt-4 overflow-hidden rounded-xl border border-border bg-card">
+					<table className="w-full text-sm">
+						<thead className="bg-secondary text-left">
+							<tr>
+								<th className="p-4 font-semibold">{copy.groupSize}</th>
+								<th className="p-4 font-semibold">{copy.price}</th>
+							</tr>
+						</thead>
+						<tbody>
+							{priceRows.map((row) => (
+								<tr key={row[0]} className="border-t border-border">
+									<td className="p-4">{row[0]}</td>
+									<td className="p-4 font-semibold text-primary">{row[1]}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 
-						<div className="mt-6 grid gap-6 sm:grid-cols-2">
-							<div className="rounded-xl border border-border bg-card p-6">
-								<h3 className="font-display text-xl font-semibold text-primary">{copy.included}</h3>
-								<ul className="mt-4 space-y-2">
-									{INCLUDED.map((item) => (
-										<li key={item} className="flex gap-2 text-sm">
-											<Check className="h-4 w-4 shrink-0 text-primary" /> {item}
-										</li>
-									))}
-								</ul>
-							</div>
-							<div className="rounded-xl border border-border bg-card p-6">
-								<h3 className="font-display text-xl font-semibold text-muted-foreground">{copy.notIncluded}</h3>
-								<ul className="mt-4 space-y-2">
-									{EXCLUDED.map((item) => (
-										<li key={item} className="flex gap-2 text-sm text-muted-foreground">
-											<X className="h-4 w-4 shrink-0" /> {item}
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
+				<div className="mt-6 grid gap-6 sm:grid-cols-2">
+					<div className="rounded-xl border border-border bg-card p-6">
+						<h3 className="font-display text-xl font-semibold text-primary">{copy.included}</h3>
+						<ul className="mt-4 space-y-2">
+							{INCLUDED.map((item) => (
+								<li key={item} className="flex gap-2 text-sm">
+									<Check className="h-4 w-4 shrink-0 text-primary" /> {item}
+								</li>
+							))}
+						</ul>
 					</div>
+					<div className="rounded-xl border border-border bg-card p-6">
+						<h3 className="font-display text-xl font-semibold text-muted-foreground">{copy.notIncluded}</h3>
+						<ul className="mt-4 space-y-2">
+							{EXCLUDED.map((item) => (
+								<li key={item} className="flex gap-2 text-sm text-muted-foreground">
+									<X className="h-4 w-4 shrink-0" /> {item}
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			</section>
 
-					<div>
-						<div className="rounded-2xl bg-card p-6 shadow-lg ring-1 ring-border">
-							<div className="flex items-baseline gap-2">
-								<span className="text-sm text-muted-foreground">{copy.from}</span>
-								<span className="font-display text-4xl font-semibold text-primary">€{tour.price.toLocaleString()}</span>
-							</div>
-							<p className="text-sm text-muted-foreground">{copy.perPerson} · {tour.duration}</p>
-							<a href={waLink(copy.waMessage(tour))} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-semibold text-white">
-								<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
-							</a>
-							<a href={CONTACT.phoneHref} className="mt-3 flex items-center justify-center gap-2 rounded-full border border-border py-3.5 font-semibold">
-								<Phone className="h-5 w-5" /> {copy.callToBook}
-							</a>
+			<section className="bg-secondary/40 py-16">
+				<div className="mx-auto max-w-[40rem] px-5 lg:px-8">
+					<div className="rounded-2xl bg-card p-6 shadow-lg ring-1 ring-border">
+						<div className="flex items-baseline gap-2">
+							<span className="text-sm text-muted-foreground">{copy.from}</span>
+							<span className="font-display text-4xl font-semibold text-primary">€{tour.price.toLocaleString()}</span>
 						</div>
-						<div className="mt-6">
-							<LeadForm compact title={copy.enquireTitle} subtitle={copy.enquireSubtitle} />
-						</div>
+						<p className="text-sm text-muted-foreground">{copy.perPerson} · {tour.duration}</p>
+						<a href={waLink(copy.waMessage(tour))} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-semibold text-white">
+							<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
+						</a>
+						<a href={CONTACT.phoneHref} className="mt-3 flex items-center justify-center gap-2 rounded-full border border-border py-3.5 font-semibold">
+							<Phone className="h-5 w-5" /> {copy.callToBook}
+						</a>
+					</div>
+					<div className="mt-6">
+						<LeadForm compact title={copy.enquireTitle} subtitle={copy.enquireSubtitle} />
 					</div>
 				</div>
 			</section>
