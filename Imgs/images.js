@@ -3,6 +3,8 @@
 // the file itself carries.
 import fesdoor from './fes-medina-carved-door.webp';
 import fesdoor480 from './fes-medina-carved-door-480w.jpg';
+import fesdoor720 from './fes-medina-carved-door-720w.jpg';
+import fesdoor896 from './fes-medina-carved-door-896w.jpg';
 import camel from './camel-caravan-erg-chebbi-dunes.webp';
 import camel480 from './camel-caravan-erg-chebbi-dunes-480w.jpg';
 import camel900 from './camel-caravan-erg-chebbi-dunes-900w.jpg';
@@ -60,6 +62,8 @@ import logo from './yassine-travel-logo.jpg';
 export const images = {
 	fesdoor,
 	fesdoor480,
+	fesdoor720,
+	fesdoor896,
 	camel,
 	camel480,
 	camel900,

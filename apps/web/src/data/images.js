@@ -19,6 +19,8 @@ export const IMG = {
 	// most common hero images, plus the two large single-use HomePage
 	// photos) — see the `srcset` field on their IMG_META entries below.
 	fesDoor480: images.fesdoor480,
+	fesDoor720: images.fesdoor720,
+	fesDoor896: images.fesdoor896,
 	camel480: images.camel480,
 	camel900: images.camel900,
 	luxCamp480: images.luxcamp480,
@@ -100,9 +102,20 @@ export const IMG_META = {
 			en: 'Ornate carved door in the medina of Fes, Morocco',
 			fr: 'Porte sculptée ornée dans la médina de Fès, au Maroc',
 		},
-		// No 900w variant: at 896px native width, one already exists — the
-		// full-size source itself.
-		srcset: [{ src: images.fesdoor480, width: 480 }],
+		// A 480w-only srcset left too big a gap to the 896w original: on
+		// mobile, `sizes="100vw"` combined with a typical 2-3x device pixel
+		// ratio needs ~750-1200px, well past 480w, so phones fell all the
+		// way back to the full-size original — 258KB, bigger than desktop's
+		// pick, which only needs ~475px at 33vw on a non-retina monitor.
+		// The 896w entry re-encodes that same top tier at a tighter JPEG
+		// quality (200KB, no visible difference) instead of falling back to
+		// the plain webp `src`, so even the "needs full resolution" case is
+		// ~22% smaller than before.
+		srcset: [
+			{ src: images.fesdoor480, width: 480 },
+			{ src: images.fesdoor720, width: 720 },
+			{ src: images.fesdoor896, width: 896 },
+		],
 	},
 	camel: {
 		width: 1216,
@@ -485,7 +498,13 @@ export function getImageAttrs(src, lang = DEFAULT_LANGUAGE, fallbackAlt = '') {
 		// own. Only a handful of images have pre-generated smaller variants
 		// (see the `srcset` field in IMG_META above) so this is undefined,
 		// and therefore omitted from the spread, for everything else.
-		srcSet: meta.srcset && [...meta.srcset.map((v) => `${v.src} ${v.width}w`), `${src} ${meta.width}w`].join(', '),
+		// The plain `src` is only appended as the full-size candidate when
+		// srcset doesn't already have an entry at (or above) that width —
+		// otherwise a device that needs full resolution would see two
+		// same-width candidates (the raw src and a better-compressed one).
+		srcSet:
+			meta.srcset &&
+			[...meta.srcset.map((v) => `${v.src} ${v.width}w`), ...(meta.srcset.some((v) => v.width >= meta.width) ? [] : [`${src} ${meta.width}w`])].join(', '),
 	};
 }
 
