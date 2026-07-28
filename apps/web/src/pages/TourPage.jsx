@@ -148,148 +148,170 @@ export function TourDetail() {
 			/>
 			<PageHero title={tour.title} subtitle={tour.tagline} image={tour.image} crumb={tour.category} imageAlt={tour.title} />
 
-			<section className="mx-auto grid max-w-[90rem] gap-12 px-5 py-16 lg:grid-cols-[1.6fr_1fr] lg:px-8">
-				<div>
-					<div className="flex flex-wrap gap-4 text-sm">
+			{/* WhatsApp CTA — placed right after the hero so it's reachable in one
+			    click before anyone has to scroll through the full page. */}
+			<div className="border-b border-border bg-secondary/40">
+				<div className="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-4 px-5 py-5 lg:px-8">
+					<div className="flex flex-wrap items-center gap-4 text-sm">
 						<Badge icon={Clock}>{tour.duration}</Badge>
 						<Badge icon={Users}>{tour.group}</Badge>
 						<Badge icon={Star}>4.9 ({copy.verified})</Badge>
 					</div>
-
-					<h2 className="mt-8 font-display text-3xl font-semibold">{copy.overview}</h2>
-					<p className="mt-3 text-muted-foreground">{copy.overviewText(tour)}</p>
-
-					<h2 className="mt-10 font-display text-3xl font-semibold">{copy.highlights}</h2>
-					<ul className="mt-4 grid gap-3 sm:grid-cols-2">
-						{tour.highlights.map((highlight) => (
-							<li key={highlight} className="flex gap-2 text-sm">
-								<Star className="mt-0.5 h-4 w-4 shrink-0 fill-gold text-gold" strokeWidth={0} /> {highlight}
-							</li>
-						))}
-					</ul>
-
-                    <h2 className="mt-10 font-display text-3xl font-semibold">{copy.itinerary}</h2>
-					<div className="mt-5 space-y-4">
-						{tour.itinerary.map(([day, title, description]) => (
-							<div key={day} className="flex gap-4">
-								<div className="flex h-fit shrink-0 items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">{day}</div>
-								<div>
-									<h3 className="font-semibold">{title}</h3>
-									<p className="mt-1 text-sm text-muted-foreground">{description}</p>
-								</div>
-							</div>
-						))}
-					</div>
-					
-					{routeEmbedUrl ? (
-						<div className="mt-4 overflow-hidden rounded-2xl border border-border">
-							<iframe
-								src={routeEmbedUrl}
-								title={`Route map for ${tour.title}`}
-								width="100%"
-								height="360"
-								loading="lazy"
-								style={{ border: 0 }}
-								referrerPolicy="no-referrer-when-downgrade"
-							/>
-						</div>
-					) : null}
-					
-					{routeMapUrl && (
-						<a
-							href={routeMapUrl}
-							target="_blank"
-							rel="noreferrer"
-							className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-						>
-							{copy.openRouteInMaps}
-						</a>
-					)}
-
-					{tourGallery.length > 0 && (
-						<>
-							<h2 className="mt-10 font-display text-3xl font-semibold">{copy.gallery}</h2>
-							<div className="mt-5">
-								<Gallery images={tourGallery} altPrefix={tour.title} />
-							</div>
-						</>
-					)}
-
-					<h2 className="mt-10 font-display text-3xl font-semibold">{copy.pricing}</h2>
-					<div className="mt-4 overflow-hidden rounded-xl border border-border">
-						<table className="w-full text-sm">
-							<thead className="bg-secondary text-left">
-								<tr>
-									<th className="p-4 font-semibold">{copy.groupSize}</th>
-									<th className="p-4 font-semibold">{copy.price}</th>
-								</tr>
-							</thead>
-							<tbody>
-								{priceRows.map((row) => (
-									<tr key={row[0]} className="border-t border-border">
-										<td className="p-4">{row[0]}</td>
-										<td className="p-4 font-semibold text-primary">{row[1]}</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
-
-					<div className="mt-10 grid gap-6 sm:grid-cols-2">
-						<div className="rounded-xl border border-border bg-card p-6">
-							<h3 className="font-display text-xl font-semibold text-primary">{copy.included}</h3>
-							<ul className="mt-4 space-y-2">
-								{INCLUDED.map((item) => (
-									<li key={item} className="flex gap-2 text-sm">
-										<Check className="h-4 w-4 shrink-0 text-primary" /> {item}
-									</li>
-								))}
-							</ul>
-						</div>
-						<div className="rounded-xl border border-border bg-card p-6">
-							<h3 className="font-display text-xl font-semibold text-muted-foreground">{copy.notIncluded}</h3>
-							<ul className="mt-4 space-y-2">
-								{EXCLUDED.map((item) => (
-									<li key={item} className="flex gap-2 text-sm text-muted-foreground">
-										<X className="h-4 w-4 shrink-0" /> {item}
-									</li>
-								))}
-							</ul>
-						</div>
-					</div>
-
-					<h2 className="mt-10 font-display text-3xl font-semibold">{copy.tourFaqs}</h2>
-					<Accordion type="single" collapsible className="mt-4">
-						{FAQS.slice(0, 4).map(([question, answer], index) => (
-							<AccordionItem key={index} value={`t${index}`} className="border-b border-border">
-								<AccordionTrigger className="text-left font-medium">{question}</AccordionTrigger>
-								<AccordionContent className="text-muted-foreground">{answer}</AccordionContent>
-							</AccordionItem>
-						))}
-					</Accordion>
+					<a
+						href={waLink(copy.waMessage(tour))}
+						target="_blank"
+						rel="noreferrer"
+						className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 font-semibold text-white"
+					>
+						<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
+					</a>
 				</div>
+			</div>
 
-				<aside className="lg:sticky lg:top-24 lg:self-start">
-					<div className="rounded-2xl bg-card p-6 shadow-lg ring-1 ring-border">
-						<div className="flex items-baseline gap-2">
-							<span className="text-sm text-muted-foreground">{copy.from}</span>
-							<span className="font-display text-4xl font-semibold text-primary">€{tour.price.toLocaleString()}</span>
-						</div>
-						<p className="text-sm text-muted-foreground">{copy.perPerson} · {tour.duration}</p>
-						<a href={waLink(copy.waMessage(tour))} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-semibold text-white">
-							<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
-						</a>
-						<a href={CONTACT.phoneHref} className="mt-3 flex items-center justify-center gap-2 rounded-full border border-border py-3.5 font-semibold">
-							<Phone className="h-5 w-5" /> {copy.callToBook}
-						</a>
-					</div>
-					<div className="mt-6">
-						<LeadForm compact title={copy.enquireTitle} subtitle={copy.enquireSubtitle} />
-					</div>
-				</aside>
+			<section className="mx-auto max-w-[70rem] px-5 py-16 lg:px-8">
+				<h2 className="font-display text-3xl font-semibold">{copy.overview}</h2>
+				<p className="mt-3 text-muted-foreground">{copy.overviewText(tour)}</p>
+
+				<h2 className="mt-10 font-display text-3xl font-semibold">{copy.highlights}</h2>
+				<ul className="mt-4 grid gap-3 sm:grid-cols-2">
+					{tour.highlights.map((highlight) => (
+						<li key={highlight} className="flex gap-2 text-sm">
+							<Star className="mt-0.5 h-4 w-4 shrink-0 fill-gold text-gold" strokeWidth={0} /> {highlight}
+						</li>
+					))}
+				</ul>
 			</section>
 
 			<MiniReviews />
+
+			<section className="mx-auto max-w-[70rem] px-5 py-16 lg:px-8">
+				<h2 className="font-display text-3xl font-semibold">{copy.itinerary}</h2>
+				<div className="mt-5 space-y-4">
+					{tour.itinerary.map(([day, title, description]) => (
+						<div key={day} className="flex gap-4">
+							<div className="flex h-fit shrink-0 items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">{day}</div>
+							<div>
+								<h3 className="font-semibold">{title}</h3>
+								<p className="mt-1 text-sm text-muted-foreground">{description}</p>
+							</div>
+						</div>
+					))}
+				</div>
+
+				{routeEmbedUrl ? (
+					<div className="mt-4 overflow-hidden rounded-2xl border border-border">
+						<iframe
+							src={routeEmbedUrl}
+							title={`Route map for ${tour.title}`}
+							width="100%"
+							height="360"
+							loading="lazy"
+							style={{ border: 0 }}
+							referrerPolicy="no-referrer-when-downgrade"
+						/>
+					</div>
+				) : null}
+
+				{routeMapUrl && (
+					<a
+						href={routeMapUrl}
+						target="_blank"
+						rel="noreferrer"
+						className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+					>
+						{copy.openRouteInMaps}
+					</a>
+				)}
+
+				{tourGallery.length > 0 && (
+					<>
+						<h2 className="mt-10 font-display text-3xl font-semibold">{copy.gallery}</h2>
+						<div className="mt-5">
+							<Gallery images={tourGallery} altPrefix={tour.title} />
+						</div>
+					</>
+				)}
+
+				<h2 className="mt-10 font-display text-3xl font-semibold">{copy.tourFaqs}</h2>
+				<Accordion type="single" collapsible className="mt-4">
+					{FAQS.slice(0, 4).map(([question, answer], index) => (
+						<AccordionItem key={index} value={`t${index}`} className="border-b border-border">
+							<AccordionTrigger className="text-left font-medium">{question}</AccordionTrigger>
+							<AccordionContent className="text-muted-foreground">{answer}</AccordionContent>
+						</AccordionItem>
+					))}
+				</Accordion>
+			</section>
+
+			{/* Booking form — pricing and inclusions sit right beside it since
+			    that's exactly the information someone needs at the point of booking. */}
+			<section className="bg-secondary/40 py-16">
+				<div className="mx-auto grid max-w-[90rem] gap-10 px-5 lg:grid-cols-[1fr_0.9fr] lg:px-8">
+					<div>
+						<h2 className="font-display text-3xl font-semibold">{copy.pricing}</h2>
+						<div className="mt-4 overflow-hidden rounded-xl border border-border bg-card">
+							<table className="w-full text-sm">
+								<thead className="bg-secondary text-left">
+									<tr>
+										<th className="p-4 font-semibold">{copy.groupSize}</th>
+										<th className="p-4 font-semibold">{copy.price}</th>
+									</tr>
+								</thead>
+								<tbody>
+									{priceRows.map((row) => (
+										<tr key={row[0]} className="border-t border-border">
+											<td className="p-4">{row[0]}</td>
+											<td className="p-4 font-semibold text-primary">{row[1]}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+
+						<div className="mt-6 grid gap-6 sm:grid-cols-2">
+							<div className="rounded-xl border border-border bg-card p-6">
+								<h3 className="font-display text-xl font-semibold text-primary">{copy.included}</h3>
+								<ul className="mt-4 space-y-2">
+									{INCLUDED.map((item) => (
+										<li key={item} className="flex gap-2 text-sm">
+											<Check className="h-4 w-4 shrink-0 text-primary" /> {item}
+										</li>
+									))}
+								</ul>
+							</div>
+							<div className="rounded-xl border border-border bg-card p-6">
+								<h3 className="font-display text-xl font-semibold text-muted-foreground">{copy.notIncluded}</h3>
+								<ul className="mt-4 space-y-2">
+									{EXCLUDED.map((item) => (
+										<li key={item} className="flex gap-2 text-sm text-muted-foreground">
+											<X className="h-4 w-4 shrink-0" /> {item}
+										</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<div className="rounded-2xl bg-card p-6 shadow-lg ring-1 ring-border">
+							<div className="flex items-baseline gap-2">
+								<span className="text-sm text-muted-foreground">{copy.from}</span>
+								<span className="font-display text-4xl font-semibold text-primary">€{tour.price.toLocaleString()}</span>
+							</div>
+							<p className="text-sm text-muted-foreground">{copy.perPerson} · {tour.duration}</p>
+							<a href={waLink(copy.waMessage(tour))} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-semibold text-white">
+								<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
+							</a>
+							<a href={CONTACT.phoneHref} className="mt-3 flex items-center justify-center gap-2 rounded-full border border-border py-3.5 font-semibold">
+								<Phone className="h-5 w-5" /> {copy.callToBook}
+							</a>
+						</div>
+						<div className="mt-6">
+							<LeadForm compact title={copy.enquireTitle} subtitle={copy.enquireSubtitle} />
+						</div>
+					</div>
+				</div>
+			</section>
 
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<h2 className="font-display text-3xl font-semibold md:text-4xl">{copy.relatedTours}</h2>
