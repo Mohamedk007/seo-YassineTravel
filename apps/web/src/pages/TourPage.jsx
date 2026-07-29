@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
-import { ArrowRight, BadgeCheck, Check, Clock, MapPin, MessageCircle, Phone, ShieldCheck, Star, Undo2, Users, X, Zap } from 'lucide-react';
+import { AlertCircle, ArrowRight, BadgeCheck, Check, Clock, MapPin, MessageCircle, Phone, ShieldCheck, Star, Undo2, Users, X, Zap } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
 import { Layout } from '@/components/site/Layout';
 import { PageHero } from '@/components/site/PageHero';
@@ -9,6 +9,7 @@ import { Gallery } from '@/components/site/Gallery';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs } from '@/data/content';
+import { IMG, getImageAttrs } from '@/data/images';
 import { getTourInternalLinks } from '@/data/internal-links';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '../data/route-config';
@@ -86,9 +87,11 @@ const COPY = {
 			licensedAgency: 'Licensed Moroccan Travel Agency',
 			secureBooking: 'Secure Booking',
 			responseTime: 'Response within 15 Minutes',
-			noHiddenFees: 'No Hidden Fees',
-			rated: 'Rated 4.9/5',
 			whyBookWithUs: 'Why book with us',
+			yearsExperience: '18+ Years Experience',
+			happyTravelers: 'Thousands of Happy Travelers',
+			expertDrivers: 'Local Expert Drivers',
+			flexibleTours: 'Flexible Private Tours',
 		},
 		midCta: {
 			title: 'Ready to Experience This Journey?',
@@ -96,8 +99,10 @@ const COPY = {
 			requestQuote: 'Request a Quote',
 		},
 		bookingCard: {
-			heading: 'Ready to Book?',
-			subtitle: 'Secure your preferred travel date today.',
+			heading: 'Ready to Book Your Adventure?',
+			subtitle: 'Secure your preferred travel date today with our local travel experts.',
+			whyBookHeading: 'Why Book With Us?',
+			availability: 'Private tours have limited daily availability. Contact us to reserve your preferred date.',
 		},
 	},
 	fr: {
@@ -134,9 +139,11 @@ const COPY = {
 			licensedAgency: 'Agence de voyage marocaine agréée',
 			secureBooking: 'Réservation sécurisée',
 			responseTime: 'Réponse sous 15 minutes',
-			noHiddenFees: 'Aucun frais caché',
-			rated: 'Noté 4,9/5',
 			whyBookWithUs: 'Pourquoi réserver avec nous',
+			yearsExperience: '18 ans et plus d\'expérience',
+			happyTravelers: 'Des milliers de voyageurs conquis',
+			expertDrivers: 'Chauffeurs experts locaux',
+			flexibleTours: 'Circuits privés flexibles',
 		},
 		midCta: {
 			title: 'Prêt à vivre cette aventure ?',
@@ -144,8 +151,10 @@ const COPY = {
 			requestQuote: 'Demander un devis',
 		},
 		bookingCard: {
-			heading: 'Prêt à réserver ?',
-			subtitle: 'Sécurisez dès aujourd\'hui la date de votre choix.',
+			heading: 'Prêt à vivre votre aventure ?',
+			subtitle: 'Sécurisez dès aujourd\'hui la date de votre choix avec nos experts locaux du voyage.',
+			whyBookHeading: 'Pourquoi réserver avec nous ?',
+			availability: 'Les circuits privés ont une disponibilité quotidienne limitée. Contactez-nous pour réserver votre date préférée.',
 		},
 	},
 };
@@ -400,8 +409,19 @@ export function TourDetail() {
 					    instead of being pinned to its own (short) content height. */}
 					<div>
 						<div className="lg:sticky lg:top-24">
-							<div className="rounded-2xl bg-card p-6 shadow-lg ring-1 ring-border">
-								<h2 className="font-display text-2xl font-semibold">{copy.bookingCard.heading}</h2>
+							<div className="rounded-2xl bg-card p-7 shadow-xl ring-2 ring-primary/20">
+								<div className="flex items-start justify-between gap-3">
+									<h2 className="font-display text-2xl font-semibold">{copy.bookingCard.heading}</h2>
+									<img
+										src={IMG.Tripadvisor}
+										{...getImageAttrs(IMG.Tripadvisor, lang)}
+										width={56}
+										height={35}
+										className="mt-1 shrink-0"
+										loading="lazy"
+										decoding="async"
+									/>
+								</div>
 								<p className="mt-1 text-sm text-muted-foreground">{copy.bookingCard.subtitle}</p>
 
 								<div className="mt-5 flex items-baseline gap-2">
@@ -410,14 +430,16 @@ export function TourDetail() {
 								</div>
 								<p className="text-sm text-muted-foreground">{copy.perPerson} · {tour.duration}</p>
 
-								<div className="mt-5 space-y-1.5 border-y border-border py-4 text-xs text-muted-foreground">
-									<div className="flex items-center gap-1.5 text-sm font-medium text-foreground">
-										<span className="flex text-gold" aria-hidden="true">★★★★★</span> {copy.trust.rated}
+								<div className="mt-5 border-y border-border py-4">
+									<h3 className="text-sm font-semibold">{copy.bookingCard.whyBookHeading}</h3>
+									<div className="mt-2.5 space-y-1.5 text-xs text-muted-foreground">
+										<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.licensedAgency}</div>
+										<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.yearsExperience}</div>
+										<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.happyTravelers}</div>
+										<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.expertDrivers}</div>
+										<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.flexibleTours}</div>
+										<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.secureBooking}</div>
 									</div>
-									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.licensedAgency}</div>
-									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.noHiddenFees}</div>
-									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.secureBooking}</div>
-									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.freeCancellation}</div>
 								</div>
 
 								<a
@@ -436,6 +458,10 @@ export function TourDetail() {
 								>
 									<Phone className="h-5 w-5" /> {copy.callToBook}
 								</a>
+
+								<p className="mt-4 flex items-start gap-1.5 text-xs text-muted-foreground">
+									<AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" /> {copy.bookingCard.availability}
+								</p>
 							</div>
 						</div>
 					</div>
