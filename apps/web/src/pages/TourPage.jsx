@@ -104,6 +104,10 @@ const COPY = {
 			whyBookHeading: 'Why Book With Us?',
 			availability: 'Private tours have limited daily availability. Contact us to reserve your preferred date.',
 		},
+		mobileBar: {
+			whatsapp: 'WhatsApp',
+			requestQuote: 'Request Quote',
+		},
 	},
 	fr: {
 		verified: 'vérifié',
@@ -156,6 +160,10 @@ const COPY = {
 			whyBookHeading: 'Pourquoi réserver avec nous ?',
 			availability: 'Les circuits privés ont une disponibilité quotidienne limitée. Contactez-nous pour réserver votre date préférée.',
 		},
+		mobileBar: {
+			whatsapp: 'WhatsApp',
+			requestQuote: 'Demander un devis',
+		},
 	},
 };
 
@@ -192,7 +200,7 @@ export function TourDetail() {
 	];
 
 	return (
-		<Layout>
+		<Layout hideWhatsAppOnMobile>
 			<Seo
 				title={tour.title}
 				description={tour.tagline}
@@ -495,6 +503,35 @@ export function TourDetail() {
 				</div>
 			</section>
 			<CTA />
+
+			{/* Fixed mobile-only CTA bar: the desktop booking card is sticky, but
+			    below 1024px it isn't, so mobile visitors otherwise have no
+			    persistent way to act while scrolling this long page. Suppresses
+			    the site-wide floating WhatsApp bubble on mobile via
+			    hideWhatsAppOnMobile above, since this bar's own WhatsApp button
+			    replaces it. The spacer div keeps this bar from covering the
+			    footer's last few pixels. */}
+			<div
+				className="fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-border bg-background/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden"
+			>
+				<a
+					href={waLink(copy.waMessage(tour))}
+					target="_blank"
+					rel="noreferrer"
+					aria-label={copy.bookOnWhatsApp}
+					className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 text-sm font-semibold text-white"
+				>
+					<MessageCircle className="h-4 w-4" /> {copy.mobileBar.whatsapp}
+				</a>
+				<a
+					href="#book"
+					aria-label={copy.midCta.requestQuote}
+					className="flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card py-3 text-sm font-semibold"
+				>
+					{copy.mobileBar.requestQuote}
+				</a>
+			</div>
+			<div className="h-20 lg:hidden" aria-hidden="true" />
 		</Layout>
 	);
 }
