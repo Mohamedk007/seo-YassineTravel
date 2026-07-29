@@ -60,24 +60,6 @@ export function LeadForm({ compact = false, title, subtitle }) {
 				<Field label={CONFIG.fieldLabels.phone} name="phone" placeholder={CONFIG.placeholders.phone} />
 				<Field label={CONFIG.fieldLabels.dates} name="dates" placeholder={CONFIG.placeholders.dates} />
 			</div>
-			<div className="mt-4 grid gap-4 sm:grid-cols-2">
-				<label className="block">
-					<span className="mb-1.5 block text-sm font-medium">{CONFIG.fieldLabels.interest}</span>
-					<select name="interest" className="w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ring">
-						{CONFIG.interestOptions.map((option) => (
-							<option key={option}>{option}</option>
-						))}
-					</select>
-				</label>
-				<label className="block">
-					<span className="mb-1.5 block text-sm font-medium">{CONFIG.fieldLabels.travellers}</span>
-					<select name="pax" className="w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ring">
-						{CONFIG.travellerOptions.map((option) => (
-							<option key={option}>{option}</option>
-						))}
-					</select>
-				</label>
-			</div>
 			<label className="mt-4 block">
 				<span className="mb-1.5 block text-sm font-medium">{CONFIG.fieldLabels.message}</span>
 				<textarea name="message" rows={3} placeholder={CONFIG.placeholders.message} className="w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ring" />
