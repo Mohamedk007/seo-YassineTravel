@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
-import { ArrowRight, Check, Clock, MapPin, MessageCircle, Phone, Star, Users, X } from 'lucide-react';
+import { ArrowRight, BadgeCheck, Check, Clock, MapPin, MessageCircle, Phone, ShieldCheck, Star, Undo2, Users, X, Zap } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
 import { Layout } from '@/components/site/Layout';
 import { PageHero } from '@/components/site/PageHero';
@@ -26,6 +26,24 @@ function Badge({ icon: Icon, children }) {
 		<span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 font-medium">
 			<Icon className="h-4 w-4 text-primary" /> {children}
 		</span>
+	);
+}
+
+// Compact trust-badge row, placed right before the booking step. Reuses the
+// same tinted-band treatment as the WhatsApp bar under the hero, so it reads
+// as part of the existing visual language rather than a new UI pattern.
+function TrustStrip({ heading, items }) {
+	return (
+		<section className="border-y border-border bg-secondary/40 py-5">
+			<h2 className="sr-only">{heading}</h2>
+			<div className="mx-auto flex max-w-[70rem] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 lg:px-8">
+				{items.map(([Icon, label]) => (
+					<span key={label} className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80">
+						<Icon className="h-4 w-4 shrink-0 text-primary" /> {label}
+					</span>
+				))}
+			</div>
+		</section>
 	);
 }
 
@@ -62,6 +80,25 @@ const COPY = {
 		waMessage: (tour) => `Hi! I'm interested in the "${tour.title}" tour.`,
 		relatedTours: 'Related tours',
 		continuePlanning: 'Continue planning your trip',
+		trust: {
+			freeCancellation: 'Free Cancellation',
+			instantConfirmation: 'Instant Confirmation',
+			licensedAgency: 'Licensed Moroccan Travel Agency',
+			secureBooking: 'Secure Booking',
+			responseTime: 'Response within 15 Minutes',
+			noHiddenFees: 'No Hidden Fees',
+			rated: 'Rated 4.9/5',
+			whyBookWithUs: 'Why book with us',
+		},
+		midCta: {
+			title: 'Ready to Experience This Journey?',
+			subtitle: 'Our local travel experts are available now to help you plan your perfect trip.',
+			requestQuote: 'Request a Quote',
+		},
+		bookingCard: {
+			heading: 'Ready to Book?',
+			subtitle: 'Secure your preferred travel date today.',
+		},
 	},
 	fr: {
 		verified: 'vérifié',
@@ -91,6 +128,25 @@ const COPY = {
 		waMessage: (tour) => `Bonjour ! Je suis intéressé(e) par le circuit "${tour.title}".`,
 		relatedTours: 'Circuits similaires',
 		continuePlanning: 'Poursuivez la préparation de votre voyage',
+		trust: {
+			freeCancellation: 'Annulation gratuite',
+			instantConfirmation: 'Confirmation instantanée',
+			licensedAgency: 'Agence de voyage marocaine agréée',
+			secureBooking: 'Réservation sécurisée',
+			responseTime: 'Réponse sous 15 minutes',
+			noHiddenFees: 'Aucun frais caché',
+			rated: 'Noté 4,9/5',
+			whyBookWithUs: 'Pourquoi réserver avec nous',
+		},
+		midCta: {
+			title: 'Prêt à vivre cette aventure ?',
+			subtitle: 'Nos experts locaux du voyage sont disponibles dès maintenant pour vous aider à planifier votre voyage idéal.',
+			requestQuote: 'Demander un devis',
+		},
+		bookingCard: {
+			heading: 'Prêt à réserver ?',
+			subtitle: 'Sécurisez dès aujourd\'hui la date de votre choix.',
+		},
 	},
 };
 
@@ -199,10 +255,41 @@ export function TourDetail() {
 						</div>
 					))}
 				</div>
+			</section>
 
+			{/* Mid-page conversion nudge: placed right after the itinerary, since
+			    that's the point a visitor has just seen the full day-by-day plan
+			    and is best primed to act, rather than waiting until the very
+			    bottom of the page. */}
+			<section className="bg-secondary/40 py-14">
+				<div className="mx-auto max-w-[40rem] px-5 text-center lg:px-8">
+					<h2 className="font-display text-3xl font-semibold">{copy.midCta.title}</h2>
+					<p className="mt-3 text-muted-foreground">{copy.midCta.subtitle}</p>
+					<div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+						<a
+							href={waLink(copy.waMessage(tour))}
+							target="_blank"
+							rel="noreferrer"
+							aria-label={copy.bookOnWhatsApp}
+							className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 font-semibold text-white sm:w-auto"
+						>
+							<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
+						</a>
+						<a
+							href="#book"
+							aria-label={copy.midCta.requestQuote}
+							className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-7 py-3.5 font-semibold sm:w-auto"
+						>
+							{copy.midCta.requestQuote}
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section className="mx-auto max-w-[70rem] px-5 py-16 lg:px-8">
 				{routeEmbedUrl ? (
 					<>
-						<h2 className="mt-10 font-display text-3xl font-semibold">{copy.googleMaps}</h2>
+						<h2 className="font-display text-3xl font-semibold">{copy.googleMaps}</h2>
 						<div className="mt-4 overflow-hidden rounded-2xl border border-border">
 							<iframe
 								src={routeEmbedUrl}
@@ -294,22 +381,65 @@ export function TourDetail() {
 				</div>
 			</section>
 
-			<section className="bg-secondary/40 py-16">
-				<div className="mx-auto max-w-[40rem] px-5 lg:px-8">
-					<div className="rounded-2xl bg-card p-6 shadow-lg ring-1 ring-border">
-						<div className="flex items-baseline gap-2">
-							<span className="text-sm text-muted-foreground">{copy.from}</span>
-							<span className="font-display text-4xl font-semibold text-primary">€{tour.price.toLocaleString()}</span>
+			<TrustStrip
+				heading={copy.trust.whyBookWithUs}
+				items={[
+					[Undo2, copy.trust.freeCancellation],
+					[Zap, copy.trust.instantConfirmation],
+					[BadgeCheck, copy.trust.licensedAgency],
+					[ShieldCheck, copy.trust.secureBooking],
+					[Clock, copy.trust.responseTime],
+				]}
+			/>
+
+			<section id="book" className="scroll-mt-24 bg-secondary/40 py-16">
+				<div className="mx-auto grid max-w-[64rem] gap-6 px-5 lg:grid-cols-2 lg:px-8">
+					{/* This outer div is the grid item — it stretches to match the
+					    LeadForm column's height (grid's default align-items: stretch),
+					    which gives the inner sticky wrapper room to actually stick
+					    instead of being pinned to its own (short) content height. */}
+					<div>
+						<div className="lg:sticky lg:top-24">
+							<div className="rounded-2xl bg-card p-6 shadow-lg ring-1 ring-border">
+								<h2 className="font-display text-2xl font-semibold">{copy.bookingCard.heading}</h2>
+								<p className="mt-1 text-sm text-muted-foreground">{copy.bookingCard.subtitle}</p>
+
+								<div className="mt-5 flex items-baseline gap-2">
+									<span className="text-sm text-muted-foreground">{copy.from}</span>
+									<span className="font-display text-4xl font-semibold text-primary">€{tour.price.toLocaleString()}</span>
+								</div>
+								<p className="text-sm text-muted-foreground">{copy.perPerson} · {tour.duration}</p>
+
+								<div className="mt-5 space-y-1.5 border-y border-border py-4 text-xs text-muted-foreground">
+									<div className="flex items-center gap-1.5 text-sm font-medium text-foreground">
+										<span className="flex text-gold" aria-hidden="true">★★★★★</span> {copy.trust.rated}
+									</div>
+									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.licensedAgency}</div>
+									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.noHiddenFees}</div>
+									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.secureBooking}</div>
+									<div className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 shrink-0 text-primary" /> {copy.trust.freeCancellation}</div>
+								</div>
+
+								<a
+									href={waLink(copy.waMessage(tour))}
+									target="_blank"
+									rel="noreferrer"
+									aria-label={copy.bookOnWhatsApp}
+									className="mt-5 flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-semibold text-white"
+								>
+									<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
+								</a>
+								<a
+									href={CONTACT.phoneHref}
+									aria-label={copy.callToBook}
+									className="mt-3 flex items-center justify-center gap-2 rounded-full border border-border py-3.5 font-semibold"
+								>
+									<Phone className="h-5 w-5" /> {copy.callToBook}
+								</a>
+							</div>
 						</div>
-						<p className="text-sm text-muted-foreground">{copy.perPerson} · {tour.duration}</p>
-						<a href={waLink(copy.waMessage(tour))} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-semibold text-white">
-							<MessageCircle className="h-5 w-5" /> {copy.bookOnWhatsApp}
-						</a>
-						<a href={CONTACT.phoneHref} className="mt-3 flex items-center justify-center gap-2 rounded-full border border-border py-3.5 font-semibold">
-							<Phone className="h-5 w-5" /> {copy.callToBook}
-						</a>
 					</div>
-					<div className="mt-6">
+					<div>
 						<LeadForm compact title={copy.enquireTitle} subtitle={copy.enquireSubtitle} />
 					</div>
 				</div>
