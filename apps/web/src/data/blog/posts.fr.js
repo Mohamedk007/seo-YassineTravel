@@ -420,4 +420,73 @@ export const BLOG_PAGE_POSTS = [
 			},
 		],
 	},
+	{
+		id: 'terres-amanar-zipline-marrakech-guide',
+		destinationId: 'atlas-mountains',
+		slug: 'tyrolienne-marrakech-terres-amanar-guide',
+		image: IMG.zipline,
+		title: "Tyrolienne à Marrakech : le guide des Terres d'Amanar",
+		category: 'Aventure',
+		summary: "Ce qu'il faut savoir avant une excursion aux Terres d'Amanar — le parc d'aventure dans les contreforts de l'Atlas près de Marrakech.",
+		quickAnswer: "Les Terres d'Amanar est un parc d'aventure dans les contreforts de l'Atlas, à 30-45 minutes de Marrakech près du village de Tahnaout. Le domaine est connu pour l'un des plus grands parcours de tyrolienne d'Afrique, avec aussi de l'accrobranche, du VTT, de l'équitation et des ponts suspendus — généralement en excursion à la journée avec déjeuner inclus, même si un séjour sur place est aussi possible.",
+		datePublished: '2026-06-02',
+		dateModified: '2026-07-29',
+		readTime: 'Lecture 6 min',
+		author: {
+			name: 'Youssef El Amrani',
+			role: 'Responsable des opérations désert, Morocco Trip Holidays',
+		},
+		content: [
+			{
+				paragraphs: [
+					"La plupart des visiteurs de Marrakech ne réalisent pas que les montagnes de l'Atlas commencent à peine une demi-heure hors de la ville. Les Terres d'Amanar se trouvent exactement à cette limite — un parc d'aventure construit dans les forêts de pins et les canyons de terre rouge des contreforts, et l'une des escapades d'une demi-journée les plus populaires pour qui veut quelque chose de plus actif qu'une balade dans les souks.",
+				],
+			},
+			{
+				heading: "Que sont les Terres d'Amanar",
+				paragraphs: [
+					"Les Terres d'Amanar est un domaine d'aventure de 120 hectares près du village de Tahnaout, en bordure du parc national du Toubkal, à environ 1 200 mètres d'altitude. Le domaine s'est construit autour de l'un des plus grands parcours de tyroliennes aériennes d'Afrique — plusieurs lignes tendues au-dessus d'un canyon, la plus longue s'étirant sur plusieurs centaines de mètres — complété par un parcours accrobranche, des ponts suspendus et des sentiers de randonnée.",
+					"C'est un domaine privé géré comme un site d'écotourisme plutôt qu'une attraction publique, ce qui explique qu'on y accède via des opérateurs et guides plutôt qu'un guichet classique.",
+				],
+			},
+			{
+				heading: 'Tyrolienne et activités',
+				paragraphs: [
+					"Le parcours de tyrolienne est l'attraction phare : plusieurs lignes de longueur et hauteur variables, en harnais, avec un instructeur certifié qui gère chaque départ et chaque arrivée. Le parcours convient à des niveaux de confiance très différents — les plus hésitants ont des lignes courtes et basses, tandis que la plus longue offre un vrai moment d'adrénaline avec le canyon qui s'ouvre sous les pieds.",
+					"Au-delà de la tyrolienne, le domaine propose un parcours accrobranche à plusieurs niveaux de difficulté, des sentiers de VTT dans la forêt de pins, des balades à cheval ou à dos de mulet, du tir à l'arc, et une traversée de pont suspendu. La plupart des visites à la journée combinent deux ou trois de ces activités plutôt que de vouloir tout faire en une fois.",
+				],
+			},
+			{
+				heading: "Y accéder et à quoi s'attendre",
+				paragraphs: [
+					"Depuis Marrakech, comptez environ 30-45 minutes de route vers les contreforts près de Tahnaout — la route se rétrécit sur la fin, ce qui explique pourquoi la plupart des visiteurs viennent avec un chauffeur plutôt qu'une voiture de location. Une journée type comprend un briefing sécurité à l'arrivée, 2-3 heures entre tyrolienne et accrobranche, et un déjeuner marocain sur place — souvent un tajine avec salade et pain frais, avec vue panoramique sur la vallée.",
+					"Certains itinéraires ajoutent un arrêt dans une coopérative d'huile d'argan en chemin, où des femmes berbères font la démonstration du procédé d'extraction traditionnel — un bon complément à l'activité physique, souvent associé aux circuits au départ de Marrakech.",
+				],
+			},
+			{
+				heading: 'À qui ça convient, et quand y aller',
+				paragraphs: [
+					"Les Terres d'Amanar conviennent bien aux familles (les parcours enfants sont plus bas et plus courts), aux couples en quête d'une journée active, et aux petits groupes. Le domaine est ouvert toute l'année, même si le printemps et l'automne offrent les températures les plus confortables pour plusieurs heures en extérieur ; les après-midis d'été dans le canyon peuvent être chauds malgré l'altitude.",
+					"Il est aussi possible de passer la nuit dans l'éco-lodge du domaine plutôt que de faire ça en excursion à la journée depuis Marrakech, si vous préférez passer deux jours complets en montagne sans le trajet retour quotidien.",
+				],
+			},
+		],
+		internalLinks: [
+			{
+				label: "Tyrolienne aux Terres d'Amanar",
+				description: 'Notre excursion privée à la journée avec le parcours de tyrolienne, le déjeuner sur place, et un arrêt au village d\'Imlil.',
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'tyrolienne-terres-d-amanar')}`,
+			},
+			{
+				label: "Guide de la destination Montagnes de l'Atlas",
+				description: "D'autres façons de passer une journée dans les contreforts de l'Atlas près de Marrakech.",
+				to: `${ROUTE_PATHS.destinationDetail.replace(':slug', 'montagnes-atlas')}`,
+			},
+			{
+				label: 'Collection d\'excursions à la journée depuis Marrakech',
+				description: 'Comparez toutes les options d\'une demi-journée ou d\'une journée complète au départ de Marrakech.',
+				to: ROUTE_PATHS.dayTrips,
+			},
+		],
+	},
 ];

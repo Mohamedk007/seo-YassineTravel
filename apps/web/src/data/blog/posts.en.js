@@ -418,4 +418,73 @@ export const BLOG_PAGE_POSTS = [
 			},
 		],
 	},
+	{
+		id: 'terres-amanar-zipline-marrakech-guide',
+		destinationId: 'atlas-mountains',
+		slug: 'terres-amanar-marrakech-zipline-activities-guide',
+		image: IMG.zipline,
+		title: "Terres d'Amanar near Marrakech: zipline, activities and what to expect",
+		category: 'Adventure',
+		summary: "What to know before a day trip to Terres d'Amanar — the zipline park in the Atlas foothills near Marrakech.",
+		quickAnswer: "Terres d'Amanar is an adventure park in the Atlas Mountains foothills, about 30-45 minutes from Marrakech near the village of Tahnaout. It's known for one of the longest zipline courses in Africa, plus tree-climbing (accrobranche), mountain biking, horse riding and suspension bridges — usually done as a day trip with lunch included, though overnight stays are possible too.",
+		datePublished: '2026-06-02',
+		dateModified: '2026-07-29',
+		readTime: '6 min read',
+		author: {
+			name: 'Youssef El Amrani',
+			role: 'Desert Operations Lead, Morocco Trip Holidays',
+		},
+		content: [
+			{
+				paragraphs: [
+					"Most first-time visitors to Marrakech don't realise the Atlas Mountains start barely half an hour outside the city. Terres d'Amanar sits right at that edge — a working adventure park built into the pine forests and red-earth canyons of the foothills, and one of the most popular half-day escapes for anyone who wants something more active than a souk stroll.",
+				],
+			},
+			{
+				heading: "What is Terres d'Amanar",
+				paragraphs: [
+					"Terres d'Amanar is a 120-hectare adventure estate near the village of Tahnaout, bordering Toubkal National Park at around 1,200 metres of altitude. It was built around one of the largest aerial zipline courses in Africa — several lines strung across a canyon, with the longest run stretching several hundred metres — plus a wider park of tree-to-tree courses, suspension bridges and mountain trails.",
+					"It's privately run as an eco-tourism estate rather than a public attraction, which is why it books through tour operators and guides rather than a walk-up ticket counter.",
+				],
+			},
+			{
+				heading: "Zipline and activities",
+				paragraphs: [
+					"The zipline course is the headline draw: multiple lines of varying length and height, glided in a harness with a certified instructor managing each launch and landing. It suits a wide range of confidence levels — nervous first-timers get the shorter, lower lines, while the longest run is a genuine adrenaline moment with the canyon opening up beneath you.",
+					"Beyond the zipline, the estate runs an accrobranche (tree-climbing) course at several difficulty levels, mountain biking trails through the pine forest, horse and mule rides, archery, and a suspension rope bridge crossing. Most day visits combine two or three of these rather than trying to do everything in one trip.",
+				],
+			},
+			{
+				heading: 'Getting there and what to expect',
+				paragraphs: [
+					"From Marrakech, it's roughly a 30-45 minute drive into the foothills near Tahnaout — the road narrows toward the end, which is one reason most visitors come with a driver rather than a rental car. A typical day trip includes a safety briefing on arrival, 2-3 hours across the zipline and tree-climbing courses, and a Moroccan lunch on site — often a tagine with salad and fresh bread, eaten with a panoramic view over the valley.",
+					"Some itineraries add a stop at a local Argan oil cooperative on the way, where Berber women demonstrate the traditional extraction process — a good complement to the physical activity, and a common pairing on tours from Marrakech.",
+				],
+			},
+			{
+				heading: 'Who it suits, and when to go',
+				paragraphs: [
+					"Terres d'Amanar works well for families (children's courses are lower and shorter), couples wanting an active day out, and small groups. It runs year-round, though spring and autumn give the most comfortable temperatures for a few hours outdoors; summer afternoons in the canyon can get warm despite the altitude.",
+					"It's also possible to stay overnight at the estate's eco-lodge rather than doing it as a single day trip from Marrakech, if you'd rather spend a full two days in the mountains without the return drive each day.",
+				],
+			},
+		],
+		internalLinks: [
+			{
+				label: "Zip Line Adventure at Les Terres d'Amanar",
+				description: "Our private day trip covering the zipline course, lunch on site, and a stop in Imlil village.",
+				to: `${ROUTE_PATHS.tourDetail.replace(':slug', 'zipline-adventure-terres-damanar')}`,
+			},
+			{
+				label: 'Atlas Mountains Destination Guide',
+				description: 'Other ways to spend a day in the Atlas foothills near Marrakech.',
+				to: `${ROUTE_PATHS.destinationDetail.replace(':slug', 'atlas-mountains')}`,
+			},
+			{
+				label: 'Marrakech Day Trips Collection',
+				description: 'Compare every half-day and full-day option from Marrakech.',
+				to: ROUTE_PATHS.dayTrips,
+			},
+		],
+	},
 ];
