@@ -324,7 +324,7 @@ export const TOURS = [
 		tagline: 'Découvrez les cascades d\'Ouzoud, les plus hautes du Maroc, lors d\'une excursion panoramique depuis Marrakech.',
 		highlights: [
 			'Découverte des cascades d\'Ouzoud',
-			'Passage par le village de Setti Fatma en chemin',
+			'Passage par le village de Tanaghmeilt, en haut des chutes',
 			'Observation des singes magots sauvages dans les oliveraies environnantes',
 			'Balade en barque optionnelle jusqu\'au pied des chutes',
 		],

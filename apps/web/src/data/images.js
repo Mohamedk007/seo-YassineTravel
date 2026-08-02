@@ -87,8 +87,8 @@ export const IMG_META = {
 		width: 1216,
 		height: 896,
 		alt: {
-			en: 'Luxury desert camp under the stars in the Moroccan Sahara',
-			fr: 'Campement de luxe sous les étoiles dans le Sahara marocain',
+			en: 'Luxury desert camp under a starry Moroccan sky',
+			fr: 'Campement de luxe sous un ciel étoilé marocain',
 		},
 		srcset: [
 			{ src: images.luxcamp480, width: 480 },

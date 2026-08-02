@@ -323,7 +323,7 @@ export const TOURS = [
 		tagline: "Discover the Ouzoud Waterfalls, Morocco's tallest, on a scenic day trip from Marrakech.",
 		highlights: [
 			'Discover the cascading Ouzoud Waterfalls',
-			'Wander through the village of Setti Fatma en route',
+			'Wander through the village of Tanaghmeilt at the top of the falls',
 			'Spot wild Barbary macaques in the surrounding olive groves',
 			'Optional boat ride to the base of the falls',
 		],
