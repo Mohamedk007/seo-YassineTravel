@@ -54,8 +54,8 @@ export function MiniReviews() {
 							<img
 								src={IMG.Tripadvisor}
 								alt={tripadvisor.alt}
-								width={80}
-								height={50}
+								width={56}
+								height={56}
 								className="absolute bottom-3 right-3"
 								loading="lazy"
 								decoding="async"
