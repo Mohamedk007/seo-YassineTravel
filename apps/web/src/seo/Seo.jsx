@@ -35,6 +35,10 @@ export function Seo(props) {
 					<link key={link.hrefLang} rel="alternate" hrefLang={link.hrefLang} href={link.href} />
 				))}
 				{props.preloadImage && assetUrl(head.shareImage) ? <link rel="preload" as="image" href={head.shareImage} /> : null}
+				{/* Only on pages that actually embed a Google Maps iframe (Home,
+				    Contact, tour/destination detail) — every other page paid for
+				    this connection setup with no matching request to use it. */}
+				{props.preconnectMaps ? <link rel="preconnect" href="https://www.google.com" /> : null}
 				{head.openGraphTags.map((tag) => (
 					<meta key={`${tag.property}:${tag.content}`} property={tag.property} content={tag.content} />
 				))}

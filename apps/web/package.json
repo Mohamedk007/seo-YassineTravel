@@ -13,6 +13,7 @@
 		"airport:check": "vite build --ssr tools/airport-page-check.jsx -c tools/seo-check.vite.config.js --logLevel error && node ../../dist/seo-check/airport-page-check.js",
 		"tours:check": "node ./tools/tour-description-check.mjs",
 		"related-tours:check": "vite build --ssr tools/related-tours-check.mjs -c tools/seo-check.vite.config.js --logLevel error && node ../../dist/seo-check/related-tours-check.js",
+		"indexnow": "node ./tools/submit-indexnow.mjs",
 		"lint": "eslint . --quiet",
 		"lint:warn": "eslint ."
 	},

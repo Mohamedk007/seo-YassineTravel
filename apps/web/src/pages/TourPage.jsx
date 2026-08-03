@@ -211,6 +211,7 @@ export function TourDetail() {
 				type="article"
 				pageType="TouristTrip"
 				preloadImage
+				preconnectMaps
 				breadcrumbItems={[
 					{ routeKey: 'home' },
 					{ routeKey: 'tours' },
@@ -515,7 +516,9 @@ export function TourDetail() {
 			    footer's last few pixels — its height must track the bar's own
 			    padding (including the iOS safe-area inset) via calc(), not a
 			    fixed h-20, or a taller safe-area inset (e.g. iPhone home
-			    indicator) makes the bar taller than a fixed spacer accounts for. */}
+			    indicator) makes the bar taller than a fixed spacer accounts for.
+			    3.75rem = 0.75rem top padding (p-3) + 3rem button height (min-h-12,
+			    the 48px tap-target minimum) — keep in sync if either changes. */}
 			<div
 				className="fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-border bg-background/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden"
 			>
@@ -524,19 +527,19 @@ export function TourDetail() {
 					target="_blank"
 					rel="noreferrer"
 					aria-label={copy.bookOnWhatsApp}
-					className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 text-sm font-semibold text-white"
+					className="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 text-sm font-semibold text-white"
 				>
 					<MessageCircle className="h-4 w-4" /> {copy.mobileBar.whatsapp}
 				</a>
 				<a
 					href="#book"
 					aria-label={copy.midCta.requestQuote}
-					className="flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card py-3 text-sm font-semibold"
+					className="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full border border-border bg-card py-3 text-sm font-semibold"
 				>
 					{copy.mobileBar.requestQuote}
 				</a>
 			</div>
-			<div className="h-[calc(3.5rem+max(0.75rem,env(safe-area-inset-bottom)))] lg:hidden" aria-hidden="true" />
+			<div className="h-[calc(3.75rem+max(0.75rem,env(safe-area-inset-bottom)))] lg:hidden" aria-hidden="true" />
 		</Layout>
 	);
 }

@@ -97,7 +97,7 @@ export function Navbar() {
 
 				<button
 					type="button"
-					className={`inline-flex h-10 w-10 items-center justify-center rounded-full lg:hidden ${
+					className={`inline-flex h-12 w-12 items-center justify-center rounded-full lg:hidden ${
 						transparent ? 'bg-black/25 text-white backdrop-blur-sm' : 'bg-secondary text-foreground'
 					}`}
 					onClick={() => setOpen(true)}

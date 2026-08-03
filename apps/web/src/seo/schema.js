@@ -191,18 +191,30 @@ export function buildFaqSchema(faqPairs) {
 export function buildTourSchema(tour, path, lang = DEFAULT_LANGUAGE) {
 	if (!tour) return null;
 
+	const tourUrl = absoluteUrl(path || `/tour/${tour.slug}`, lang);
+
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'TouristTrip',
 		name: tour.title,
 		description: tour.tagline,
-		url: absoluteUrl(path || `/tour/${tour.slug}`, lang),
+		url: tourUrl,
 		inLanguage: resolveLanguage(lang),
 		image: assetUrl(tour.image) || undefined,
 		offers: {
 			'@type': 'Offer',
 			price: tour.price,
 			priceCurrency: 'EUR',
+			url: tourUrl,
+			// Made-to-order private tours have no fixed inventory/booking
+			// calendar to report a real stock state from — InStock is the
+			// standard, honest default for this business model (every date is
+			// available until a specific inquiry says otherwise). No
+			// priceValidUntil: there's no real pricing-review cadence to cite,
+			// and inventing one would be the same kind of fabrication already
+			// avoided elsewhere (see the review-count fix).
+			availability: 'https://schema.org/InStock',
+			provider: { '@id': `${SITE_ORIGIN}/#localbusiness` },
 		},
 	};
 }

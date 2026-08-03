@@ -79,6 +79,7 @@ export function Page({
 	pageType = 'WebPage',
 	breadcrumbItems,
 	alternateUrls,
+	preconnectMaps = false,
 }) {
 	const location = useLocation();
 	// Breadcrumb labels come from @/seo/breadcrumbs (localized), so the trail on a
@@ -100,6 +101,7 @@ export function Page({
 				breadcrumbItems={resolvedBreadcrumbItems}
 				alternateUrls={alternateUrls}
 				preloadImage
+				preconnectMaps={preconnectMaps}
 			/>
 			<PageHero title={title} subtitle={subtitle} image={image} crumb={crumb} />
 			{children}

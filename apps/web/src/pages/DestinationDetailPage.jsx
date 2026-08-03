@@ -98,6 +98,7 @@ export default function DestinationDetailPage() {
 				{ routeKey: 'destinations' },
 				{ name: destination.name, path: destinationPath },
 			]}
+			preconnectMaps
 		>
 			<section className="mx-auto max-w-[72rem] px-5 py-16 lg:px-8">
 				{/* Overview */}

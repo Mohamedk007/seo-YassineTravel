@@ -1,0 +1,70 @@
+# Yassine Travel
+
+> Bespoke luxury private tours of Morocco - Sahara desert, imperial cities, five-star riads. Trusted by travellers from the US, UK, Canada & Australia.
+
+Bilingual site (English/French) — French versions of every page below are linked from the page itself via the language switcher, at the equivalent /fr/ path.
+
+## Tours
+
+- [10-Day Imperial Cities & Sahara Luxury](https://yassinetravel.com/en/tour/imperial-cities-sahara)
+- [4-Day Marrakech to Merzouga Desert](https://yassinetravel.com/en/tour/marrakech-merzouga-desert)
+- [Private Fes Cultural Discovery](https://yassinetravel.com/en/tour/private-fes-city)
+- [Marrakech Day Trips Collection](https://yassinetravel.com/en/tour/marrakech-day-trips)
+- [Day Trip to Essaouira from Marrakech](https://yassinetravel.com/en/tour/day-Trip-to-Essaouira-from-Marrakech)
+- [14-Day Grand Tour of Morocco](https://yassinetravel.com/en/tour/grand-tour-morocco)
+- [Agafay Luxury Desert Camp — Overnight from Marrakech](https://yassinetravel.com/en/tour/agafay-luxury-camp)
+- [Day Trip to Ait Ben Haddou from Marrakech](https://yassinetravel.com/en/tour/ait-benhaddou-day-trip)
+- [Agafay Desert Sunset & Dinner Evening](https://yassinetravel.com/en/tour/agafay-sunset-evening-trip)
+- [Day Trip to Ouzoud Waterfalls from Marrakech](https://yassinetravel.com/en/tour/ouzoud-waterfalls-day-trip)
+- [Ourika Valley & Kasbah Bab Ourika Day Trip from Marrakech](https://yassinetravel.com/en/tour/ourika-valley-day-trip)
+- [Day Trip to Imlil from Marrakech](https://yassinetravel.com/en/tour/imlil-day-trip)
+- [Day Trip to Casablanca from Marrakech](https://yassinetravel.com/en/tour/casablanca-day-trip)
+- [Day Trip to Agadir from Marrakech](https://yassinetravel.com/en/tour/agadir-day-trip)
+- [Day Trip to Ouirgane Valley from Marrakech](https://yassinetravel.com/en/tour/ouirgane-day-trip)
+- [3-Day Marrakech to Merzouga Desert Express](https://yassinetravel.com/en/tour/marrakech-desert-3-days)
+- [6-Day Casablanca to Sahara Desert Tour](https://yassinetravel.com/en/tour/casablanca-desert-6-days)
+- [7-Day Private Casablanca & Imperial Cities Tour](https://yassinetravel.com/en/tour/casablanca-private-7-days)
+- [8-Day Casablanca to Sahara Desert Tour](https://yassinetravel.com/en/tour/casablanca-sahara-8-days)
+- [12-Day Casablanca Imperial Cities & Sahara Tour](https://yassinetravel.com/en/tour/casablanca-imperial-cities-12-days)
+- [2-Day Tangier & Chefchaouen Tour](https://yassinetravel.com/en/tour/tangier-2-days)
+- [4-Day Tangier & Imperial Cities Tour](https://yassinetravel.com/en/tour/tangier-imperial-cities-4-days)
+- [8-Day Tangier to Marrakech Private City Tour](https://yassinetravel.com/en/tour/tangier-private-cities-8-days)
+- [12-Day Grand Tour from Tangier](https://yassinetravel.com/en/tour/tangier-grand-tour-12-days)
+- [12-Day Journey from Vibrant Cities to the Sahara](https://yassinetravel.com/en/tour/vibrant-cities-to-the-sahara-12-days)
+- [Hot Air Balloon & Quad Biking Adventure](https://yassinetravel.com/en/tour/hot-air-balloon-quad-biking-marrakech)
+- [Zip Line Adventure at Les Terres d'Amanar](https://yassinetravel.com/en/tour/zipline-adventure-terres-damanar)
+- [Fes Guided Tour Full Day](https://yassinetravel.com/en/tour/fes-guided-tour-full-day)
+- [Marrakech Medina Guided Tour](https://yassinetravel.com/en/tour/marrakech-medina-guided-tour)
+- [Marrakech by Night: Dinner & Show](https://yassinetravel.com/en/tour/marrakech-medina-by-night)
+- [Marrakech Gardens Private Tour](https://yassinetravel.com/en/tour/marrakech-gardens-private-tour)
+
+## Destinations
+
+- [Marrakech](https://yassinetravel.com/en/destinations/marrakech)
+- [Fes](https://yassinetravel.com/en/destinations/fes)
+- [Merzouga Sahara](https://yassinetravel.com/en/destinations/merzouga-sahara)
+- [Chefchaouen](https://yassinetravel.com/en/destinations/chefchaouen)
+- [Ait Benhaddou](https://yassinetravel.com/en/destinations/ait-benhaddou)
+- [Atlas Mountains](https://yassinetravel.com/en/destinations/atlas-mountains)
+- [Essaouira](https://yassinetravel.com/en/destinations/essaouira)
+- [Agafay Desert](https://yassinetravel.com/en/destinations/agafay-desert)
+
+## Airport Transfers
+
+- [Agadir Al Massira Airport transfer](https://yassinetravel.com/en/airport-transfers/agadir-aga)
+- [Mohammed V International Airport transfer](https://yassinetravel.com/en/airport-transfers/casablanca-cmn)
+- [Fes-Saiss Airport transfer](https://yassinetravel.com/en/airport-transfers/fes-fez)
+- [Marrakech Menara Airport transfer](https://yassinetravel.com/en/airport-transfers/marrakech-rak)
+- [Rabat-Sale Airport transfer](https://yassinetravel.com/en/airport-transfers/rabat-rba)
+- [Tangier Ibn Battouta Airport transfer](https://yassinetravel.com/en/airport-transfers/tangier-tng)
+
+## Blog
+
+- [The ultimate guide to a luxury Sahara desert night](https://yassinetravel.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night)
+- [3 perfect days in Marrakech](https://yassinetravel.com/en/blog/3-perfect-days-in-marrakech)
+- [A food lover's journey through Morocco](https://yassinetravel.com/en/blog/a-food-lovers-journey-through-morocco)
+- [Why Chefchaouen belongs on your itinerary](https://yassinetravel.com/en/blog/why-chefchaouen-belongs-on-your-itinerary)
+- [Best time to visit Morocco](https://yassinetravel.com/en/blog/best-time-to-visit-morocco)
+- [How to choose the perfect riad](https://yassinetravel.com/en/blog/how-to-choose-the-perfect-riad)
+- [Terres d'Amanar near Marrakech: zipline, activities and what to expect](https://yassinetravel.com/en/blog/terres-amanar-marrakech-zipline-activities-guide)
+

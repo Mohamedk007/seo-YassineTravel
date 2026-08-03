@@ -339,6 +339,7 @@ export function Contact() {
 			crumb={CONTACT_PAGE.crumb}
 			pageType="ContactPage"
 			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'contact' }]}
+			preconnectMaps
 		>
 			<section className="mx-auto grid max-w-[90rem] gap-10 px-5 py-16 lg:grid-cols-2 lg:px-8">
 				<div>
