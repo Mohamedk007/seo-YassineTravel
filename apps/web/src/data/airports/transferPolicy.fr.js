@@ -122,7 +122,7 @@ export const TRANSFER_POLICY = {
 	},
 	trust: [
 		{ icon: 'ShieldCheck', title: 'Entreprise touristique agréée', body: 'Un voyagiste marocain enregistré, pas un arrangement de taxi informel.' },
-		{ icon: 'Award', title: 'Depuis 2011', body: 'Plus de dix ans à organiser des transferts privés et des circuits à travers le Maroc.' },
+		{ icon: 'Award', title: 'Depuis 2008', body: 'Plus de 18 ans à organiser des transferts privés et des circuits à travers le Maroc.' },
 		{ icon: 'Users', title: 'Équipe locale, familiale', body: 'Des fondateurs marocains nés et élevés au pays, qui connaissent personnellement ces routes et ces aéroports.' },
 		{ icon: 'HeartHandshake', title: 'Assurance commerciale', body: 'Une couverture responsabilité passagers sur chaque réservation, au-delà de l’assurance véhicule standard.' },
 		{ icon: 'Clock', title: 'Assistance 24/7', body: 'Une vraie personne joignable à toute heure, avant, pendant et après votre transfert.' },

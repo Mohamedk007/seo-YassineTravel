@@ -4,6 +4,14 @@ export const CONTACT = {
 	whatsapp: '212645945717',
 	email: 'contact@yassinetravel.com',
 	address: '3 RES CHAMS AL MADINA IMM 7, Marrakech, Morocco',
+	// Split out for structured data (schema.org PostalAddress expects
+	// street/city as separate fields, not one crammed string).
+	streetAddress: '3 RES CHAMS AL MADINA IMM 7',
+	city: 'Marrakech',
+	// From the verified Google Business Profile map pin embedded on the
+	// Contact/Home pages (see GOOGLE_BUSINESS_MAP_EMBED_URL below) — not an
+	// approximate city-centre lookup.
+	geo: { latitude: 32.58048444451917, longitude: -9.093250888068443 },
 };
 
 export const waLink = (msg = "Hello! I'd like to plan a Morocco trip.") =>

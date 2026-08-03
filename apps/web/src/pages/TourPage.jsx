@@ -169,10 +169,12 @@ const COPY = {
 
 export function TourDetail() {
 	const lang = useLocale();
-	const FAQS = getFaqs(lang);
 
 	const { slug } = useParams();
 	const tour = getTourBySlug(slug, lang);
+	// Falls back to the generic sitewide FAQs only for a tour that hasn't been
+	// given its own yet — every tour should carry tour-specific `faqs`.
+	const FAQS = tour?.faqs || getFaqs(lang);
 	const P = getRoutePaths(lang);
 	const copy = COPY[lang] || COPY.en;
 

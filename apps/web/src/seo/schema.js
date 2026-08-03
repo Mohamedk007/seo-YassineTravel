@@ -45,6 +45,7 @@ export function buildTravelAgencySchema(lang = DEFAULT_LANGUAGE) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'TravelAgency',
+		'@id': `${SITE_ORIGIN}/#localbusiness`,
 		name: SITE_BRAND.name,
 		url: SITE_ORIGIN,
 		description: getSeoDefaults(lang).description,
@@ -113,14 +114,21 @@ export function buildLocalBusinessSchema() {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'LocalBusiness',
+		'@id': `${SITE_ORIGIN}/#localbusiness`,
 		name: SITE_BRAND.name,
 		url: SITE_ORIGIN,
 		telephone: CONTACT.phone,
 		email: CONTACT.email,
 		address: {
 			'@type': 'PostalAddress',
-			streetAddress: CONTACT.address,
+			streetAddress: CONTACT.streetAddress,
+			addressLocality: CONTACT.city,
 			addressCountry: 'MA',
+		},
+		geo: {
+			'@type': 'GeoCoordinates',
+			latitude: CONTACT.geo.latitude,
+			longitude: CONTACT.geo.longitude,
 		},
 	};
 }

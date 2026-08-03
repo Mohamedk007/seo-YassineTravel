@@ -122,7 +122,7 @@ export const TRANSFER_POLICY = {
 	},
 	trust: [
 		{ icon: 'ShieldCheck', title: 'Licensed tourism company', body: 'A registered Moroccan tour operator, not an informal taxi arrangement.' },
-		{ icon: 'Award', title: 'Since 2011', body: 'Over a decade organising private transfers and tours across Morocco.' },
+		{ icon: 'Award', title: 'Since 2008', body: 'Over 18 years organising private transfers and tours across Morocco.' },
 		{ icon: 'Users', title: 'Local, family-run team', body: 'Born-and-raised Moroccan founders who know these roads and airports personally.' },
 		{ icon: 'HeartHandshake', title: 'Commercial insurance', body: 'Passenger liability cover on every booking, not just standard vehicle insurance.' },
 		{ icon: 'Clock', title: '24/7 support', body: 'A real person reachable at any hour before, during and after your transfer.' },

@@ -32,13 +32,13 @@ const SITE_COPY_BY_LANG = {
 	en: {
 		reviewSummary: `${TRIPADVISOR.rating.toFixed(1)}/5 · ${TRIPADVISOR.reviewCount} reviews`,
 		reviewSummaryCompact: `${TRIPADVISOR.rating.toFixed(1)}/5 · ${TRIPADVISOR.reviewCount} reviews`,
-		footerDescription: 'Bespoke luxury private tours crafted by local experts. Trusted by discerning travellers worldwide since 2011.',
+		footerDescription: 'Bespoke luxury private tours crafted by local experts. Trusted by discerning travellers worldwide since 2008.',
 		footerLegal: 'All rights reserved. · Licensed Moroccan tour operator.',
 	},
 	fr: {
 		reviewSummary: `${TRIPADVISOR.rating.toFixed(1).replace('.', ',')}/5 · ${TRIPADVISOR.reviewCount} avis`,
 		reviewSummaryCompact: `${TRIPADVISOR.rating.toFixed(1).replace('.', ',')}/5 · ${TRIPADVISOR.reviewCount} avis`,
-		footerDescription: 'Circuits privés de luxe conçus par des experts locaux. La confiance des voyageurs exigeants du monde entier depuis 2011.',
+		footerDescription: 'Circuits privés de luxe conçus par des experts locaux. La confiance des voyageurs exigeants du monde entier depuis 2008.',
 		footerLegal: 'Tous droits réservés. · Voyagiste marocain agréé.',
 	},
 };

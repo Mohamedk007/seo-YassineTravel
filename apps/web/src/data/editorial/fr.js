@@ -2,12 +2,12 @@ import { IMG } from '../images';
 
 export const ABOUT_PAGE = {
 	title: 'Une famille de conteurs marocains',
-	subtitle: 'Des experts locaux qui conçoivent des voyages extraordinaires depuis 2011.',
+	subtitle: 'Des experts locaux qui conçoivent des voyages extraordinaires depuis 2008.',
 	image: IMG.guide,
 	crumb: 'À propos',
 	paragraphs: [
 		"Morocco Trip Holidays a été fondée par une famille de Marocains nés et élevés au pays, avec une conviction simple : la meilleure façon de découvrir notre pays, c'est en privé, en toute authenticité et dans un confort total.",
-		"Depuis plus de treize ans, nous accueillons des voyageurs venus des États-Unis, du Royaume-Uni, du Canada, d'Australie et de toute l'Europe — en concevant des voyages sur mesure qui allient le luxe cinq étoiles à la chaleur authentique de l'hospitalité marocaine. Nos guides ne sont pas de simples chauffeurs ; ce sont des historiens, des traducteurs et des amis qui ouvrent des portes que les touristes ordinaires ne voient jamais.",
+		"Depuis plus de 18 ans, nous accueillons des voyageurs venus des États-Unis, du Royaume-Uni, du Canada, d'Australie et de toute l'Europe — en concevant des voyages sur mesure qui allient le luxe cinq étoiles à la chaleur authentique de l'hospitalité marocaine. Nos guides ne sont pas de simples chauffeurs ; ce sont des historiens, des traducteurs et des amis qui ouvrent des portes que les touristes ordinaires ne voient jamais.",
 		"Des dunes dorées du Sahara aux médinas labyrinthiques de Fès et Marrakech, chaque itinéraire est conçu sur mesure rien que pour vous. Nous nous occupons de chaque détail — riads de luxe, transferts privés, guides experts et conciergerie 24/7 — pour que vous n'ayez plus qu'à tomber amoureux du Maroc.",
 	],
 	highlights: [

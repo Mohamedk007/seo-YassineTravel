@@ -1,28 +1,9 @@
 import { IMG } from '../images';
 
-// Shared for every tour for now (real content, not placeholder text) — each
-// tour object below has its own `included`/`excluded` field pointing at these,
-// so a specific tour can later get its own bespoke list just by replacing
-// that one field, with no change needed to how the page renders it.
-export const INCLUDED = [
-	'Private air-conditioned vehicle & fuel',
-	'Professional English-speaking driver-guide',
-	'Accommodation as specified (luxury riads & camps)',
-	'Daily breakfast and select dinners',
-	'Camel trek and desert camp experience',
-	'All entrance fees to monuments listed',
-	'Bottled water throughout the journey',
-	'24/7 on-trip concierge support',
-];
-
-export const EXCLUDED = [
-	'International flights',
-	'Travel insurance',
-	'Lunches and drinks not specified',
-	'Personal expenses and gratuities',
-	'Optional activities (quad, hot-air balloon)',
-];
-
+// Every tour below has its own `included`/`excluded` array, grounded in what
+// that specific tour actually provides — no shared/generic list, since a
+// shared list drifts inaccurate the moment tours differ in duration or type
+// (e.g. a day trip has no accommodation to include).
 export const TOURS = [
 	{
 		id: 'imperial-cities-sahara',
@@ -57,8 +38,28 @@ export const TOURS = [
 			['Day 10', 'Departure', 'Private transfer to the airport at your leisure.'],
 		],
 		gallery: [IMG.luxCamp, IMG.kasbah, IMG.fesDoor, IMG.chefchaouen, IMG.marrakech],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & English-speaking driver-guide',
+			'9 nights in five-star riads and a luxury desert camp',
+			'Daily breakfast and welcome/farewell dinners',
+			'Sunset camel trek and desert camp experience at Erg Chebbi',
+			'Skip-the-line entrance fees to palaces, medinas and UNESCO sites',
+			'Bottled water throughout the journey',
+			'24/7 on-trip concierge support',
+		],
+		excluded: [
+			'International flights',
+			'Travel insurance',
+			'Lunches and drinks not specified',
+			'Personal expenses and gratuities',
+			'Optional activities (quad, hot-air balloon)',
+		],
+		faqs: [
+			['How many nights are spent in the desert on this 10-day tour?', 'Two nights at the Erg Chebbi desert camp — one on Day 4/5 for sunset and sunrise over the dunes, with a second night to enjoy the camp before continuing to Fes.'],
+			['Is this tour suitable for a first visit to Morocco?', 'Yes — it covers the country\'s core highlights (Marrakech, the Sahara, Fes and Chefchaouen) in one circuit, so it works well as a single comprehensive first trip.'],
+			['What is the accommodation standard on this trip?', 'Five-star riads in Marrakech and Fes, plus a luxury desert camp with private butler service for the two Sahara nights — all handpicked, not generic hotel chains.'],
+			['Can the Chefchaouen day trip be swapped for something else?', 'Yes — every itinerary on this circuit is tailor-made, so Day 8 can be adjusted with your trip designer before departure.'],
+		],
 	},
 	{
 		id: 'marrakech-merzouga-desert',
@@ -86,8 +87,27 @@ export const TOURS = [
 			['Day 4', 'Return to Marrakech', 'Scenic return transfer.'],
 		],
 		gallery: [IMG.duneSunset, IMG.kasbah, IMG.luxCamp, IMG.atlas],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & professional driver-guide',
+			'3 nights\' accommodation, including a luxury desert camp at Erg Chebbi',
+			'Daily breakfast',
+			'Camel trek at sunset and sunrise',
+			'Bottled water throughout the journey',
+			'24/7 on-trip concierge support',
+		],
+		excluded: [
+			'International flights',
+			'Travel insurance',
+			'Lunches and drinks not specified',
+			'Personal expenses and gratuities',
+			'Optional activities (quad, hot-air balloon)',
+		],
+		faqs: [
+			['Do we sleep in the desert on this 4-day tour?', 'Yes — one night at a luxury desert camp at Erg Chebbi on Day 2, with a sunset and sunrise camel trek either side of it.'],
+			['How many people can join this tour?', 'It\'s fully private for up to 8 travellers in one vehicle — not a shared group tour with strangers.'],
+			['What happens on Day 3 — do we return to Marrakech or continue to Fes?', 'Both options exist: Day 3 can end in Fes if you\'re continuing north, or loop back to Marrakech — your trip designer sets this based on your onward plans.'],
+			['Is the Tizi n\'Tichka pass crossing safe in winter?', 'The pass is generally kept open and our driver-guides are experienced on this route year-round, though winter can bring snow at altitude — ask your trip designer about the forecast for your dates.'],
+		],
 	},
 	{
 		id: 'private-fes-city',
@@ -114,8 +134,26 @@ export const TOURS = [
 			['Day 3', 'Volubilis & Meknes', 'UNESCO Roman ruins and imperial Meknes, departure.'],
 		],
 		gallery: [IMG.guide, IMG.riad, IMG.tagine],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & English-speaking driver-guide',
+			'2 nights in a boutique riad with rooftop dining',
+			'Daily breakfast',
+			'Private historian guide through the Fes medina',
+			'Entrance fees to Volubilis and the artisan workshops visited',
+			'24/7 on-trip concierge support',
+		],
+		excluded: [
+			'International flights',
+			'Travel insurance',
+			'Lunches and drinks not specified',
+			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Why book a private historian instead of a standard city guide?', 'The Fes medina has no street signs and over 9,000 alleyways — a historian guide who knows its madrasas and artisan quarters gets you past the surface-level souvenir stops most visitors only see.'],
+			['Is Volubilis included, and how far is it from Fes?', 'Yes, on Day 3 — the Roman ruins at Volubilis are about an hour\'s drive from Fes and are visited together with imperial Meknes before departure.'],
+			['What kind of riad do we stay in?', 'A boutique riad with rooftop dining, for both nights of the trip — walkable to the medina rather than a large hotel outside it.'],
+			['Can this be extended into a longer Morocco trip?', 'Yes — this 3-day Fes circuit is often combined with a Sahara extension or a Marrakech stay; tell your trip designer if you\'d like to add days.'],
+		],
 	},
 	{
 		id: 'marrakech-day-trips',
@@ -142,8 +180,23 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.marrakech, IMG.couple, IMG.kasbah],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & professional driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided experience at your chosen destination',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Entrance fees at your chosen destination',
+			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Which destination should I choose for this day trip?', 'Atlas Mountains suits hikers and mountain scenery, Essaouira suits coastal/Atlantic lovers, and Agafay suits those wanting a desert-style landscape without the long drive to the Sahara — tell us your preference when booking.'],
+			['What time does the day start and end?', 'Pickup is in the morning and you\'re back at your Marrakech hotel by evening — the exact times depend on which destination you choose.'],
+			['Is lunch included?', 'No — lunch is at your own expense during the midday stop, giving you the freedom to choose where to eat.'],
+			['Can this be a private tour for just my group?', 'Yes, private is available; a small-group option also exists at a lower price if you\'re travelling solo or as a couple and want to share the vehicle.'],
+		],
 	},
 	{
 		id: 'essaouira-day-trip',
@@ -174,8 +227,23 @@ export const TOURS = [
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
 		gallery: [IMG.Essaouira1, IMG.marrakech],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & professional driver-guide',
+			'Hotel pickup and drop-off in Marrakech',
+			'Guided walking tour of the Essaouira medina',
+			'Camel or horse ride on the beach',
+			'Bottled water on board',
+		],
+		excluded: [
+			'Lunch and drinks',
+			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['How long is the drive from Marrakech to Essaouira?', 'About 2.5 hours each way, through argan tree groves — the drive itself is part of the experience, with stops possible to see the tree-climbing goats.'],
+			['Is the camel or horse ride really free?', 'Yes, it\'s included in the price, not an upsell — you can choose between a camel or horse ride along the beach.'],
+			['Is Essaouira busy with tourists?', 'It\'s a working fishing port and UNESCO medina, so it has visitors, but it\'s far less crowded than Marrakech — the Skala du Port and harbour areas still feel authentic.'],
+			['What should I wear for this day trip?', 'Comfortable walking shoes for the medina\'s cobblestones, and a light jacket — Essaouira\'s Atlantic coast is noticeably breezier than Marrakech.'],
+		],
 	},
 	{
 		id: 'grand-tour-morocco',
@@ -204,8 +272,28 @@ export const TOURS = [
 			['Day 12-14', 'Essaouira & departure', 'Atlantic coast, return to Marrakech.'],
 		],
 		gallery: [IMG.duneSunset, IMG.fesDoor, IMG.chefchaouen, IMG.Essaouira1, IMG.marrakech],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & dedicated trip designer',
+			'13 nights in five-star riads, boutique kasbahs and a luxury desert camp',
+			'Daily breakfast and select dinners',
+			'Cooking class and spa hammam session',
+			'Camel trek and desert camp experience at Erg Chebbi',
+			'Skip-the-line entrance fees to monuments listed',
+			'24/7 on-trip concierge support',
+		],
+		excluded: [
+			'International flights',
+			'Travel insurance',
+			'Lunches and drinks not specified',
+			'Personal expenses and gratuities',
+			'Optional activities (quad, hot-air balloon)',
+		],
+		faqs: [
+			['Is 14 days enough to see all of Morocco?', 'This circuit covers the country\'s major regions — imperial cities, the Sahara, the blue city of Chefchaouen and the Atlantic coast at Essaouira — without feeling rushed, since each stop gets 2-3 days rather than a single overnight.'],
+			['What\'s included that isn\'t on the shorter tours?', 'A cooking class and a spa hammam session are both part of this circuit, plus a dedicated trip designer for pre-trip planning, on top of the usual private driver-guide and desert camp.'],
+			['How many nights are spent in the Sahara?', 'The itinerary allocates Days 4-6 to the Sahara region, including camel trekking and a luxury desert camp stay at Erg Chebbi.'],
+			['Can the pace be adjusted if we want more time in one region?', 'Yes — at 14 days this is the most flexible itinerary on the site; your trip designer can rebalance nights between regions based on your interests.'],
+		],
 	},
 	{
 		id: 'agafay-luxury-camp',
@@ -231,8 +319,24 @@ export const TOURS = [
 			['Day 2', 'Sunrise & return', 'Breakfast, pool time, return to Marrakech.'],
 		],
 		gallery: [IMG.camel, IMG.marrakech, IMG.couple],
-		included: INCLUDED,
-		excluded: EXCLUDED,
+		included: [
+			'Private air-conditioned vehicle & driver-guide',
+			'1 night in a private luxury tented suite with ensuite bathroom',
+			'Camel ride and sunset dinner with live Gnaoua music',
+			'Breakfast and access to the infinity pool',
+			'Hotel pickup and drop-off in Marrakech',
+		],
+		excluded: [
+			'Quad biking (optional add-on)',
+			'Lunch and drinks not specified',
+			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['How far is Agafay from Marrakech?', 'Around 40 minutes by private vehicle — close enough to fit a genuine overnight desert experience into a short trip or as an add-on to a longer Marrakech stay.'],
+			['Is Agafay the same as the Sahara?', 'No — Agafay is a rocky "stone desert" in the Atlas foothills, distinct from the Sahara\'s sand dunes near Merzouga, which is a multi-day drive away. Agafay is chosen specifically for its proximity to Marrakech.'],
+			['What\'s the tented suite like?', 'A private luxury tent with its own ensuite bathroom — not a shared or basic camping setup.'],
+			['Can we do quad biking here?', 'Yes, it\'s available as an optional add-on alongside the included camel ride.'],
+		],
 	},
 	{
 		id: 'ait-benhaddou-day-trip',
@@ -269,6 +373,12 @@ export const TOURS = [
 			'Lunch and drinks',
 			'Entrance fees to individual kasbah houses/museums',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['How long does the drive take each way?', 'About 2-2.5 hours each way over the Tizi n\'Tichka pass, so plan for a fairly full day including time at the kasbah itself.'],
+			['Is Ait Ben Haddou worth visiting if I\'m also doing a longer desert tour that passes through it?', 'If your main tour already stops at Ait Ben Haddou, this standalone day trip is redundant — it exists for travellers based in Marrakech who aren\'t doing a multi-day desert circuit.'],
+			['Are the individual kasbah houses/museums worth the entrance fee?', 'Several are privately run small museums inside the kasbah walls; they\'re optional and not required to appreciate the site\'s UNESCO-listed architecture from the outside and main walkways.'],
+			['Is the High Atlas crossing safe for those uncomfortable with mountain roads?', 'The Tizi n\'Tichka pass is a well-maintained, sealed road used daily by our driver-guides — winding but not off-road.'],
 		],
 	},
 	{
@@ -307,6 +417,12 @@ export const TOURS = [
 			'Optional quad biking',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['How long does this evening trip last?', 'It\'s a half-day/evening experience — pickup in the afternoon, sunset camel ride, dinner, and return to Marrakech the same night.'],
+			['Is dinner suitable for vegetarians?', 'The 3-course traditional Moroccan dinner can be adapted for dietary requirements — let us know when booking.'],
+			['Is this the same as the overnight Agafay camp tour?', 'No — this is a same-day evening trip with no overnight stay; the separate Agafay Luxury Desert Camp tour includes a night in a private tented suite.'],
+			['What should I wear for the camel ride?', 'Comfortable closed shoes and layers — Agafay evenings cool down quickly once the sun sets.'],
+		],
 	},
 	{
 		id: 'ouzoud-waterfalls-day-trip',
@@ -343,6 +459,12 @@ export const TOURS = [
 			'Lunch and drinks',
 			'Optional boat ride to the base of the falls',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['How tall are the Ouzoud Waterfalls?', 'They\'re Morocco\'s tallest waterfalls, dropping around 110 metres in tiers — the guided walk takes you down to viewpoints along the cascade.'],
+			['Will we see the Barbary macaques?', 'They\'re wild and live in the olive groves around the falls, so sightings aren\'t guaranteed, but they\'re regularly spotted along the walking paths.'],
+			['Is the walk down to the falls difficult?', 'It\'s a moderate walk on uneven paths with some steps — comfortable shoes are recommended, but no technical hiking experience is needed.'],
+			['Is the boat ride to the base worth adding?', 'It\'s optional and gets you close to the main cascade for photos; it\'s weather and water-level dependent, so ask your guide on the day.'],
 		],
 	},
 	{
@@ -381,6 +503,12 @@ export const TOURS = [
 			'Entrance fee to Kasbah Bab Ourika',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['What makes Kasbah Bab Ourika worth the stop?', 'It\'s a hilltop viewpoint over the whole Ourika Valley — one of the best panoramic outlooks near Marrakech, reached as part of this day trip.'],
+			['Is lunch included?', 'Yes — a traditional Moroccan lunch with valley views is included, unlike most of our other Marrakech day trips.'],
+			['How is this different from the Imlil day trip?', 'Ourika focuses on the valley\'s waterfalls, Berber villages and the Kasbah Bab Ourika viewpoint, while Imlil goes higher into the Atlas toward Toubkal — both depart from Marrakech but visit different valleys.'],
+			['Is this trip suitable for families with children?', 'Yes — the walking is gentle and the pace is flexible, making it one of our easier day trips.'],
+		],
 	},
 	{
 		id: 'imlil-day-trip',
@@ -417,6 +545,12 @@ export const TOURS = [
 			'Lunch and drinks',
 			'Optional mule ride',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Can we hike up to see Mount Toubkal itself?', 'This day trip explores Imlil village and surrounding valleys at its base — actually climbing Toubkal (North Africa\'s highest peak) requires a dedicated multi-day trekking trip, not part of this itinerary.'],
+			['What is the mule ride option?', 'Mules are the traditional way to move goods and people into the surrounding valleys from Imlil; an optional short ride can be arranged locally on the day.'],
+			['How high up does this trip go?', 'Imlil village sits at around 1,740m — noticeably cooler than Marrakech, so bring a layer even in warmer months.'],
+			['Is this trip physically demanding?', 'No technical trekking is involved — it\'s a village and valley visit with optional walking, suitable for most fitness levels.'],
 		],
 	},
 	{
@@ -455,6 +589,12 @@ export const TOURS = [
 			'Hassan II Mosque interior entrance ticket',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['How long is the drive from Marrakech to Casablanca?', 'Around 2.5-3 hours each way, so this makes for a full day out of Marrakech rather than a quick half-day excursion.'],
+			['Can we go inside the Hassan II Mosque?', 'The exterior visit is included; the interior requires a separate guided tour ticket (one of the only mosques in Morocco open to non-Muslim visitors), available as an add-on.'],
+			['Is Casablanca worth a day trip if I\'m only in Morocco briefly?', 'It suits travellers curious about Morocco\'s modern economic capital and its Art Deco architecture — if your time is limited, Marrakech\'s own sights may be a higher priority.'],
+			['Do we see the Royal Palace up close?', 'The Royal Palace is viewed from the outside only, as is standard — it\'s not open to public entry.'],
+		],
 	},
 	{
 		id: 'agadir-day-trip',
@@ -491,6 +631,12 @@ export const TOURS = [
 			'Lunch and drinks',
 			'Beach or water activities',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['How far is Agadir from Marrakech?', 'Around 2.5-3 hours by private vehicle, crossing the Atlas foothills en route to the Atlantic coast.'],
+			['Is this a beach day or a sightseeing day?', 'Both — you get free time on Agadir\'s beaches plus visits to the Marina and the Kasbah viewpoint above the city.'],
+			['Are water sports included?', 'No — beach and water activities are available locally at your own cost, not part of the included package.'],
+			['What makes Agadir different from Essaouira as a coastal day trip?', 'Agadir is a modern resort-style beach city with long sandy beaches, while Essaouira is a historic walled medina with a working fishing port — pick based on whether you want beach time or old-town character.'],
 		],
 	},
 	{
@@ -529,6 +675,12 @@ export const TOURS = [
 			'Optional hiking guide fee',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['What\'s distinctive about the Ouirgane Valley compared to other Atlas day trips?', 'It\'s known for terraced fields, olive groves and a quieter, less-visited pace than Imlil or Ourika — a good pick if you want Atlas Mountain scenery without the busier trailheads.'],
+			['Is the hike guided?', 'A local hiking guide is available as an optional add-on if you want to explore the terraced fields and olive groves in more depth; the core day trip includes village visits without a dedicated hiking guide.'],
+			['Is lunch included?', 'No — lunch is at your own expense, giving flexibility to choose a local spot in the valley.'],
+			['How does the price compare to other day trips in this area?', 'It\'s in the same range as our other Atlas Mountain excursions (Imlil, Ourika) — pricing reflects distance and duration rather than any premium content.'],
+		],
 	},
 	{
 		id: 'marrakech-desert-3days',
@@ -565,6 +717,12 @@ export const TOURS = [
 			'Lunches and drinks not specified',
 			'Optional activities (quad, hot-air balloon)',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Is 3 days enough time to properly see the Sahara?', 'This is a fast-paced express version with one desert camp night — for more time at the dunes and a second desert night, the 4-Day Marrakech to Merzouga Desert tour covers the same route at a more relaxed pace.'],
+			['How much driving is involved each day?', 'This is a driving-intensive itinerary — expect 6-8 hours on the road on Days 1 and 2 to cover the distance in 3 days, with stops at Ait Benhaddou and the Todra Gorge along the way.'],
+			['Do we stay overnight in the Dades Valley?', 'Yes, on Day 1, before continuing to Merzouga and the desert camp on Day 2.'],
+			['Is this suitable if I get carsick on winding mountain roads?', 'The Tizi n\'Tichka crossing involves switchbacks — if that\'s a concern, consider the more gradual 4-day version instead, which spreads the same driving over an extra day.'],
 		],
 	},
 	{
@@ -607,6 +765,12 @@ export const TOURS = [
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['Why start in Casablanca instead of Marrakech?', 'Casablanca is Morocco\'s main international airport hub, so this route suits travellers flying directly there rather than into Marrakech.'],
+			['How many imperial cities does this tour cover?', 'Two of the four — Rabat and Meknes — plus a night in the Sahara; travellers wanting all four imperial cities should look at the 12-Day Casablanca Imperial Cities & Sahara Tour instead.'],
+			['Is Fes included in this itinerary?', 'No — this 6-day route goes Casablanca, Rabat, Meknes, then directly into the Sahara without stopping in Fes. Fes-inclusive circuits are available separately.'],
+			['Is one night in the desert enough?', 'It gives you a genuine sunset-to-sunrise desert camp experience within a tighter 6-day timeframe — travellers wanting more desert time should consider a dedicated desert-focused tour.'],
+		],
 	},
 	{
 		id: 'casablanca-private-7days',
@@ -648,6 +812,12 @@ export const TOURS = [
 			'Travel insurance',
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Does this tour include a desert stay?', 'No — this 7-day circuit stays with the imperial cities and Ait Benhaddou, without a Sahara extension; desert-inclusive options starting from Casablanca exist separately if that\'s a priority.'],
+			['What\'s the difference between this and the 6-day Casablanca desert tour?', 'This one trades the desert night for an extra day exploring Rabat, Meknes and Ait Benhaddou in more depth — pick based on whether the Sahara or the imperial cities matter more to you.'],
+			['Is Marrakech included in this itinerary?', 'Yes — Day 6 crosses the High Atlas into Marrakech before the return to Casablanca on Day 7.'],
+			['How many nights are spent in each city?', 'One night each in most stops, reflecting the circuit\'s city-hopping pace rather than extended stays in any single location.'],
 		],
 	},
 	{
@@ -692,6 +862,12 @@ export const TOURS = [
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['Does this 8-day tour include Fes?', 'No — this route goes Casablanca, Rabat, Meknes, straight into the Sahara, then Ait Benhaddou and Marrakech; for Fes plus the Sahara from Casablanca, see the 12-Day Casablanca Imperial Cities & Sahara Tour.'],
+			['How many nights in the desert camp?', 'One night at Erg Chebbi on Day 5, with sunrise over the dunes the next morning before continuing to Ouarzazate.'],
+			['Is this more relaxed than the 6-day version?', 'Yes — the extra two days let the same core route (Casablanca, Rabat, Meknes, Sahara, Marrakech) unfold with more time in Ait Benhaddou and less back-to-back driving.'],
+			['Do we end the trip in Marrakech or back in Casablanca?', 'The circuit returns to Casablanca on Day 8 for departure, with free time in Marrakech\'s medina on Day 7 en route.'],
+		],
 	},
 	{
 		id: 'casablanca-imperial-cities-12days',
@@ -734,6 +910,12 @@ export const TOURS = [
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['Does this 12-day tour cover all four imperial cities and the Sahara?', 'Yes — Rabat, Meknes, Fes and Marrakech are all included, plus one night in a desert camp at Erg Chebbi, making it the most complete circuit starting from Casablanca.'],
+			['How is this different from the 8-day Casablanca Sahara tour?', 'The extra 4 days add Fes to the route and allow more time at each stop — the 8-day version skips Fes to keep the trip shorter.'],
+			['What are the Skoura palm groves?', 'A historic oasis area near Ouarzazate, visited en route between the desert and Ait Benhaddou — a scenic stop rather than a separate overnight destination.'],
+			['Can we add extra nights in Marrakech at the end?', 'Yes — since this is a private, tailor-made itinerary, extra nights in Marrakech (or anywhere else on the route) can be added before booking.'],
+		],
 	},
 	{
 		id: 'tangier-2days',
@@ -769,6 +951,12 @@ export const TOURS = [
 			'Travel insurance',
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Is Tangier a good starting point for a Morocco trip?', 'Yes — it\'s a major port city with ferry links to Spain and its own international airport, making it a practical entry point if you\'re not flying into Casablanca or Marrakech.'],
+			['How far is Chefchaouen from Tangier?', 'About 2 hours by private vehicle, making it an easy day trip within this 2-day itinerary.'],
+			['Is one night enough for this trip?', 'This is designed as a short taster of the north — for a deeper look at Chefchaouen plus the imperial cities, see the 4-Day Tangier & Imperial Cities Tour.'],
+			['Do we get to see the Strait of Gibraltar?', 'Yes — Tangier\'s hilltop Kasbah area offers views across the Strait toward Spain, included in the medina walking portion of Day 1.'],
 		],
 	},
 	{
@@ -807,6 +995,12 @@ export const TOURS = [
 			'Travel insurance',
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Does this tour reach the Sahara?', 'No — this 4-day route stays with the northern imperial cities (Chefchaouen, Meknes, Fes); for a Tangier-to-Sahara circuit, see the 8-Day Tangier to Marrakech Private City Tour instead.'],
+			['How many nights are spent in Fes?', 'One night, on Day 3/4, with a full day dedicated to the medina before departure — travellers wanting more time in Fes should extend via their trip designer.'],
+			['Is this itinerary flexible on pacing?', 'Yes — the tagline describes it as customisable, meaning nights per stop can be adjusted before booking.'],
+			['What\'s the road like between Chefchaouen and Meknes?', 'It passes through the Rif foothills with a stop at the Volubilis Roman ruins en route — a scenic rather than strenuous drive.'],
 		],
 	},
 	{
@@ -850,6 +1044,12 @@ export const TOURS = [
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['Does this tour end in Marrakech or return to Tangier?', 'It ends in Marrakech on Day 8 — this is a one-way itinerary, so plan your return flight from Marrakech rather than Tangier.'],
+			['How many nights are spent in the Sahara?', 'One night at Erg Chebbi on Day 6, with a sunset camel trek before the overnight desert camp stay.'],
+			['Is this the most complete route between Tangier and Marrakech?', 'It\'s our standard 8-day version; the 12-Day Grand Tour from Tangier covers the same start and end points with more stops (including Rabat) if you have extra time.'],
+			['What\'s covered on Day 4 in Fes?', 'A full-day guided tour of the Fes medina, following the Volubilis and Meknes stops earlier in the trip.'],
+		],
 	},
 	{
 		id: 'tangier-grand-tour-12days',
@@ -889,6 +1089,12 @@ export const TOURS = [
 			'Travel insurance',
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['What does this 12-day tour add over the standard 8-day Tangier route?', 'An extra stop in Rabat, Morocco\'s imperial capital, plus more time overall at each destination — the 8-day version omits Rabat to keep the trip shorter.'],
+			['Are Ait Benhaddou and Taourirt both visited?', 'Yes, on Days 9-10 — both are UNESCO-listed kasbahs near Ouarzazate, visited on the same stretch of the route.'],
+			['How many nights in the Sahara desert camp?', 'One night at Erg Chebbi, on Days 7-8, following the Dades Gorges crossing.'],
+			['Does the trip end in Marrakech?', 'Yes — like the 8-day version, this is a one-way circuit ending in Marrakech, not a return loop to Tangier.'],
 		],
 	},
 	{
@@ -932,6 +1138,12 @@ export const TOURS = [
 			'Lunches and drinks not specified',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['Is this a loop or a one-way trip?', 'One-way, starting in Casablanca and ending in Marrakech — plan your international flights accordingly (arrive Casablanca, depart Marrakech, or vice versa).'],
+			['Do we stay in a desert camp or a Berber tent?', 'A Berber tent in the Sahara, on Days 6-7 — a slightly different style of overnight stay from the "luxury desert camp" wording used on our other Sahara tours, though both are in the Erg Chebbi/Merzouga dune region.'],
+			['Is Essaouira a full day or just a stop?', 'It\'s a dedicated day trip from Marrakech on Day 11, near the end of the circuit, rather than an overnight stay.'],
+			['How many cities does this cover overall?', 'Casablanca, Rabat, Tangier, Chefchaouen, Fes and Marrakech, plus Ait Benhaddou and the Sahara — one of the widest-reaching itineraries on the site.'],
+		],
 	},
 	{
 		id: 'hot-air-balloon-quad-biking',
@@ -968,6 +1180,12 @@ export const TOURS = [
 			'Photos/videos of the flight (unless pre-booked)',
 			'Personal expenses and gratuities',
 			'Travel insurance',
+		],
+		faqs: [
+			['What time does the balloon flight start?', 'Pre-dawn — hotel pickup happens before sunrise so the balloon launches at first light, when winds are calmest and views are best.'],
+			['Is the flight ever cancelled?', 'Hot air ballooning is weather-dependent; flights can be postponed for high winds, which is standard practice for balloon operators anywhere, not specific to this tour.'],
+			['How long is the actual balloon flight?', 'Around an hour in the air, followed by a 2-hour guided quad bike ride through the Jbilet desert afterward.'],
+			['Is quad biking suitable for beginners?', 'Yes — it\'s a guided ride with safety equipment provided, suitable for first-time riders.'],
 		],
 	},
 	{
@@ -1006,6 +1224,12 @@ export const TOURS = [
 			'Travel insurance',
 			'Additional activities on site',
 		],
+		faqs: [
+			['How far is Les Terres d\'Amanar from Marrakech?', 'Around an hour\'s drive into the Atlas foothills near Tahnaout, making it feasible as a single-day trip.'],
+			['Do I need prior zip-lining experience?', 'No — a guided safety briefing and tree-climbing course are included before the zip lines, suitable for first-timers.'],
+			['Is lunch included?', 'Yes — a traditional Berber lunch on site is part of the package, unlike most of our other day trips.'],
+			['What else is there to do at Les Terres d\'Amanar besides the zip lines?', 'The site also has an artisanal crafts area, visited in the afternoon along with nearby Imlil village before the return to Marrakech.'],
+		],
 	},
 	{
 		id: 'fes-guided-tour-full-day',
@@ -1042,6 +1266,12 @@ export const TOURS = [
 			'Entrance fees to museums and monuments',
 			'Personal expenses and gratuities',
 		],
+		faqs: [
+			['Why does Fes need a full day when other city tours are shorter?', 'The Fes medina is the world\'s largest living medieval city with over 9,000 alleyways — a full day covers the highlights properly without rushing between the tanneries, Seffarine Square and the historic quarters.'],
+			['Can we go inside the madrasas and mosques mentioned?', 'They\'re viewed from the outside on this tour, as several are not open to non-Muslim visitors — this is standard across Fes, not specific to this itinerary.'],
+			['Is this a walking tour?', 'Yes — the medina\'s narrow alleys aren\'t accessible by vehicle, so expect a full day on foot with your guide.'],
+			['Is this the same guide as our multi-day Fes tours?', 'It\'s a standalone full-day guided tour rather than part of a longer package — suited to travellers already staying in Fes independently.'],
+		],
 	},
 	{
 		id: 'marrakech-medina-guided-tour',
@@ -1076,6 +1306,12 @@ export const TOURS = [
 			'Lunch and drinks',
 			'Entrance fees to palaces and monuments',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['Is this tour on foot, and how long does it last?', 'Yes, it\'s a full-day guided walk through the historic medina, souks and Jemaa el-Fna square — comfortable shoes recommended.'],
+			['What architecture will we see?', '12th-century Islamic architecture alongside 19th-century palaces, spanning the medina\'s different historical layers.'],
+			['Is Jemaa el-Fna included, or just the surrounding souks?', 'Both — the tour includes free time at the square itself in the afternoon, plus the souks and artisan workshops leading up to it.'],
+			['Why is this priced lower than other Marrakech tours?', 'It\'s a walking-only guided tour without a private vehicle, hence the lower price compared to our vehicle-based day trips outside the city.'],
 		],
 	},
 	{
@@ -1113,6 +1349,12 @@ export const TOURS = [
 			'Personal expenses and gratuities',
 			'Travel insurance',
 		],
+		faqs: [
+			['Can we choose the venue?', 'Yes — you choose from a curated selection of venues across Marrakech, rather than being assigned a fixed location.'],
+			['What menu options are available?', 'Traditional Moroccan, fusion or vegetarian menus are all offered — let us know your preference and any dietary needs when booking.'],
+			['What kind of entertainment is included?', 'Live performances such as dancers, musicians, fire shows and DJs, depending on the venue chosen.'],
+			['Is alcohol served?', 'Alcoholic beverages are excluded from the package price and available to purchase separately depending on the venue.'],
+		],
 	},
 	{
 		id: 'marrakech-gardens-tour',
@@ -1148,6 +1390,12 @@ export const TOURS = [
 			'Majorelle Gardens and Berber Museum entrance ticket',
 			'Bahia Palace entrance ticket',
 			'Personal expenses and gratuities',
+		],
+		faqs: [
+			['What is Le Jardin Secret?', 'A restored Saadian-era palace garden in the heart of the medina — its entrance fee is included in this tour, unlike the Majorelle Gardens and Bahia Palace stops.'],
+			['Why aren\'t the Majorelle Gardens and Bahia Palace tickets included?', 'Both charge their own separate entrance fees set by their operators; the tour includes the guide and transport to reach all three sites, with tickets purchased on-site.'],
+			['Is this tour mostly outdoors?', 'Yes — it focuses on gardens and palace courtyards, so it\'s best enjoyed in comfortable walking shoes and sun protection.'],
+			['How long does the full half-day tour take?', 'A typical half-day covering all three sites — Le Jardin Secret in the morning, Majorelle Gardens at midday, and Bahia Palace in the afternoon.'],
 		],
 	},
 ];

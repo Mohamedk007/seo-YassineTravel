@@ -25,7 +25,7 @@ export const HOME_WHY_POINTS = [
 	['Itinéraires sur mesure', 'Chaque voyage est conçu selon vos centres d\'intérêt, votre rythme et votre budget — jamais standardisé.'],
 	['Tarification transparente et juste', 'Aucun frais caché. Devis clairs de 600€ à 3 500€+ avec un excellent rapport qualité-luxe.'],
 	['Réponses rapides sur WhatsApp', 'De vraies personnes, de vraies réponses — généralement en moins d\'une heure, avant et pendant votre voyage.'],
-	['Plus de 13 ans d\'expertise', 'Des milliers de voyageurs heureux venus des États-Unis, du Royaume-Uni, du Canada, d\'Australie et d\'Europe.'],
+	['Plus de 18 ans d\'expertise', 'Des milliers de voyageurs heureux venus des États-Unis, du Royaume-Uni, du Canada, d\'Australie et d\'Europe.'],
 ];
 
 export const HOME_BOOKING_STEPS = [
@@ -70,9 +70,9 @@ export const HOME_PAGE = {
 	whyChooseUs: {
 		eyebrow: 'Pourquoi les voyageurs nous choisissent',
 		title: 'Racines locales. Standards mondiaux.',
-		description: 'Nous sommes une entreprise marocaine familiale avec plus d\'une décennie d\'expérience, transformant les visiteurs de passage en amis pour la vie et en voyageurs fidèles.',
+		description: 'Nous sommes une entreprise marocaine familiale avec plus de 18 ans d\'expérience, transformant les visiteurs de passage en amis pour la vie et en voyageurs fidèles.',
 		stats: [
-			['13+', 'Années d\'expérience'],
+			['18+', 'Années d\'expérience'],
 			['12k+', 'Voyageurs satisfaits'],
 			['5,0', 'Note moyenne'],
 		],

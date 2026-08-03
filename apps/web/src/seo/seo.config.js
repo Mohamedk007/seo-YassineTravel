@@ -23,7 +23,7 @@ export const SEO_DEFAULTS_BY_LANG = {
 		title: 'Morocco Trip Holidays - Circuits privés de luxe au Maroc',
 		titleSuffix: SITE_BRAND.seoTitleSuffix,
 		description:
-			'Circuits privés de luxe sur mesure au Maroc - désert du Sahara, villes impériales, riads cinq étoiles. La confiance des voyageurs francophones depuis 2011.',
+			'Circuits privés de luxe sur mesure au Maroc - désert du Sahara, villes impériales, riads cinq étoiles. La confiance des voyageurs francophones depuis 2008.',
 		imageAlt: 'Dunes du Sahara au coucher du soleil lors d’un circuit privé au Maroc',
 	},
 };

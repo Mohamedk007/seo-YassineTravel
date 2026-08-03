@@ -10,8 +10,40 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// Behind Apache/LiteSpeed on Hostinger, which terminates TLS and proxies
+// plain HTTP to this Passenger-managed Node process — without this, Express
+// can't see the real scheme via X-Forwarded-Proto, so req.protocol would
+// always report "http" and the www redirect below would downgrade to HTTP.
+app.set("trust proxy", true);
+
 const dist = path.join(__dirname, "dist/apps/web");
 const template = readFileSync(path.join(dist, "index.html"), "utf8");
+
+// Baseline security headers on every response (200s, redirects, and 404s
+// alike) — the site is HTTPS-only in production (TLS terminated upstream by
+// Apache/LiteSpeed), so HSTS is safe to set unconditionally here.
+app.use((req, res, next) => {
+  res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  next();
+});
+
+// www.yassinetravel.com previously served a full live duplicate of the site
+// with no redirect to the apex — canonical tags alone don't stop crawl
+// budget/link equity from splitting across both hosts. Runs before static
+// serving so a www request never gets an asset served under the wrong host.
+app.use((req, res, next) => {
+  const host = req.hostname;
+  if (host && host.startsWith("www.")) {
+    const apexHost = host.slice(4);
+    res.redirect(301, `${req.protocol}://${apexHost}${req.originalUrl}`);
+    return;
+  }
+  next();
+});
 
 // Never let static serving return the SPA shell for a directory-style
 // request before the SSR handler below gets a chance — only real asset

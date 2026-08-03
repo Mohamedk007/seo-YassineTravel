@@ -25,7 +25,7 @@ export const HOME_WHY_POINTS = [
 	['Tailor-made itineraries', 'Every trip is designed around your interests, pace and budget - never off-the-shelf.'],
 	['Transparent, fair pricing', 'No hidden fees. Clear quotes from EUR600 to EUR3,500+ with best-value luxury.'],
 	['Fast WhatsApp replies', 'Real humans, real answers - usually within the hour, before and during your trip.'],
-	['13+ years of expertise', 'Thousands of happy travellers from the US, UK, Canada, Australia and Europe.'],
+	['18+ years of expertise', 'Thousands of happy travellers from the US, UK, Canada, Australia and Europe.'],
 ];
 
 export const HOME_BOOKING_STEPS = [
@@ -70,9 +70,9 @@ export const HOME_PAGE = {
 	whyChooseUs: {
 		eyebrow: 'Why Travellers Choose Us',
 		title: 'Local roots. World-class standards.',
-		description: 'We are a family-run Moroccan company with over a decade of experience turning first-time visitors into lifelong friends and repeat travellers.',
+		description: 'We are a family-run Moroccan company with over 18 years of experience turning first-time visitors into lifelong friends and repeat travellers.',
 		stats: [
-			['13+', 'Years experience'],
+			['18+', 'Years experience'],
 			['12k+', 'Happy travellers'],
 			['5.0', 'Average rating'],
 		],
