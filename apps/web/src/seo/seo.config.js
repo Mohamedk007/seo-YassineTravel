@@ -20,7 +20,7 @@ export const SEO_DEFAULTS_BY_LANG = {
 	fr: {
 		htmlLang: 'fr',
 		ogLocale: 'fr_FR',
-		title: 'Morocco Trip Holidays - Circuits privés de luxe au Maroc',
+		title: `${SITE_BRAND.name} - Circuits privés de luxe au Maroc`,
 		titleSuffix: SITE_BRAND.seoTitleSuffix,
 		description:
 			'Circuits privés de luxe sur mesure au Maroc - désert du Sahara, villes impériales, riads cinq étoiles. La confiance des voyageurs francophones depuis 2008.',

@@ -273,8 +273,8 @@ export const IMG_META = {
 		width: 120,
 		height: 120,
 		alt: {
-			en: 'Morocco Trip Holidays reviews on TripAdvisor',
-			fr: 'Avis sur Morocco Trip Holidays sur TripAdvisor',
+			en: 'Yassine Travel reviews on TripAdvisor',
+			fr: 'Avis sur Yassine Travel sur TripAdvisor',
 		},
 	},
 	aitBenhaddouVillage: {

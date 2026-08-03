@@ -281,7 +281,7 @@ export default function HomePage() {
         <div className="grid gap-8 lg:grid-cols-2">
           <Reveal className="overflow-hidden rounded-3xl shadow-sm ring-1 ring-border">
             <iframe
-              title="Morocco Trip Holidays on Google Maps"
+              title="Yassine Travel on Google Maps"
               className="h-full min-h-[320px] w-full"
               style={{ border: 0 }}
               loading="lazy"

@@ -16,7 +16,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: '9 min read',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Desert Operations Lead, Morocco Trip Holidays',
+			role: 'Desert Operations Lead, Yassine Travel',
 		},
 		content: [
 			{
@@ -108,7 +108,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: '7 min read',
 		author: {
 			name: 'Sofia Bennani',
-			role: 'Marrakech Destination Specialist, Morocco Trip Holidays',
+			role: 'Marrakech Destination Specialist, Yassine Travel',
 		},
 		content: [
 			{
@@ -180,7 +180,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: '6 min read',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Desert Operations Lead, Morocco Trip Holidays',
+			role: 'Desert Operations Lead, Yassine Travel',
 		},
 		content: [
 			{
@@ -240,7 +240,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: '6 min read',
 		author: {
 			name: 'Sofia Bennani',
-			role: 'Marrakech Destination Specialist, Morocco Trip Holidays',
+			role: 'Marrakech Destination Specialist, Yassine Travel',
 		},
 		content: [
 			{
@@ -299,7 +299,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: '7 min read',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Desert Operations Lead, Morocco Trip Holidays',
+			role: 'Desert Operations Lead, Yassine Travel',
 		},
 		content: [
 			{
@@ -367,7 +367,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: '6 min read',
 		author: {
 			name: 'Sofia Bennani',
-			role: 'Marrakech Destination Specialist, Morocco Trip Holidays',
+			role: 'Marrakech Destination Specialist, Yassine Travel',
 		},
 		content: [
 			{
@@ -432,7 +432,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: '6 min read',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Desert Operations Lead, Morocco Trip Holidays',
+			role: 'Desert Operations Lead, Yassine Travel',
 		},
 		content: [
 			{

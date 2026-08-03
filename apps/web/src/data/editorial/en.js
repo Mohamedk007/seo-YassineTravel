@@ -6,7 +6,7 @@ export const ABOUT_PAGE = {
 	image: IMG.guide,
 	crumb: 'About Us',
 	paragraphs: [
-		'Morocco Trip Holidays was founded by a family of born-and-raised Moroccans with a simple belief: that the finest way to experience our country is privately, authentically, and in complete comfort.',
+		'Yassine Travel was founded by a family of born-and-raised Moroccans with a simple belief: that the finest way to experience our country is privately, authentically, and in complete comfort.',
 		'For over 18 years we have welcomed travellers from the United States, United Kingdom, Canada, Australia and across Europe — designing bespoke journeys that blend five-star luxury with the genuine warmth of Moroccan hospitality. Our guides are not just drivers; they are historians, translators and friends who open doors ordinary tourists never see.',
 		'From the golden dunes of the Sahara to the labyrinthine medinas of Fes and Marrakech, every itinerary is handcrafted around you. We handle every detail — luxury riads, private transfers, expert guides and 24/7 concierge support — so all you have to do is fall in love with Morocco.',
 	],

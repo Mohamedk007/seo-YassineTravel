@@ -8,13 +8,13 @@ export const REVIEWS = [
   {
     name: "djkellyg",
     country: "TripAdvisor",
-    text: "Yassine a transformé notre voyage d'anniversaire en une expérience inoubliable. Il nous a fait découvrir des trésors cachés, des artisans locaux et la culture marocaine authentique. Morocco Trip Holidays n'a pas seulement organisé notre voyage — ils ont créé des souvenirs que nous chérirons pour toujours.",
+    text: "Yassine a transformé notre voyage d'anniversaire en une expérience inoubliable. Il nous a fait découvrir des trésors cachés, des artisans locaux et la culture marocaine authentique. Yassine Travel n'a pas seulement organisé notre voyage — ils ont créé des souvenirs que nous chérirons pour toujours.",
     tour: "Expérience privée à Marrakech",
   },
   {
     name: "Rene R",
     country: "TripAdvisor",
-    text: "Yassine a été le meilleur chauffeur et guide qu'on pouvait espérer. Compétent, respectueux et incroyablement serviable tout au long de notre voyage à travers le Maroc. Nous lui donnons, ainsi qu'à Morocco Trip Holidays, un 100/100 parfait.",
+    text: "Yassine a été le meilleur chauffeur et guide qu'on pouvait espérer. Compétent, respectueux et incroyablement serviable tout au long de notre voyage à travers le Maroc. Nous lui donnons, ainsi qu'à Yassine Travel, un 100/100 parfait.",
     tour: "Grand tour du Maroc",
   },
   {

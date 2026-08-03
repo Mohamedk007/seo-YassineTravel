@@ -18,7 +18,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: 'Lecture 9 min',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Responsable des opérations désert, Morocco Trip Holidays',
+			role: 'Responsable des opérations désert, Yassine Travel',
 		},
 		content: [
 			{
@@ -110,7 +110,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: 'Lecture 7 min',
 		author: {
 			name: 'Sofia Bennani',
-			role: 'Spécialiste destination Marrakech, Morocco Trip Holidays',
+			role: 'Spécialiste destination Marrakech, Yassine Travel',
 		},
 		content: [
 			{
@@ -182,7 +182,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: 'Lecture 6 min',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Responsable des opérations désert, Morocco Trip Holidays',
+			role: 'Responsable des opérations désert, Yassine Travel',
 		},
 		content: [
 			{
@@ -242,7 +242,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: 'Lecture 6 min',
 		author: {
 			name: 'Sofia Bennani',
-			role: 'Spécialiste destination Marrakech, Morocco Trip Holidays',
+			role: 'Spécialiste destination Marrakech, Yassine Travel',
 		},
 		content: [
 			{
@@ -301,7 +301,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: 'Lecture 7 min',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Responsable des opérations désert, Morocco Trip Holidays',
+			role: 'Responsable des opérations désert, Yassine Travel',
 		},
 		content: [
 			{
@@ -369,7 +369,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: 'Lecture 6 min',
 		author: {
 			name: 'Sofia Bennani',
-			role: 'Spécialiste destination Marrakech, Morocco Trip Holidays',
+			role: 'Spécialiste destination Marrakech, Yassine Travel',
 		},
 		content: [
 			{
@@ -434,7 +434,7 @@ export const BLOG_PAGE_POSTS = [
 		readTime: 'Lecture 6 min',
 		author: {
 			name: 'Youssef El Amrani',
-			role: 'Responsable des opérations désert, Morocco Trip Holidays',
+			role: 'Responsable des opérations désert, Yassine Travel',
 		},
 		content: [
 			{

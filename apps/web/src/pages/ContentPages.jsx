@@ -323,8 +323,8 @@ export function TravelGuide() {
 }
 
 const CONTACT_COPY = {
-	en: { callUs: 'Call us', visitOrWrite: 'Visit / write', officeMap: 'Morocco Trip Holidays on Google Maps' },
-	fr: { callUs: 'Appelez-nous', visitOrWrite: 'Nous rendre visite / écrire', officeMap: 'Morocco Trip Holidays sur Google Maps' },
+	en: { callUs: 'Call us', visitOrWrite: 'Visit / write', officeMap: 'Yassine Travel on Google Maps' },
+	fr: { callUs: 'Appelez-nous', visitOrWrite: 'Nous rendre visite / écrire', officeMap: 'Yassine Travel sur Google Maps' },
 };
 
 export function Contact() {
