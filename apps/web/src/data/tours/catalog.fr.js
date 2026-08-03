@@ -149,7 +149,7 @@ export const TOURS = [
 	{
 		id: 'essaouira-day-trip',
 		mapStops: ['Marrakech, Morocco', 'Essaouira, Morocco'],
-		destinationIds: ['marrakech'],
+		destinationIds: ['essaouira'],
 		slug: 'excursion-a-essaouira-depuis-marrakech',
 		categoryKey: 'day-trips',
 		title: 'Excursion à Essaouira depuis Marrakech',
@@ -211,7 +211,7 @@ export const TOURS = [
 	{
 		id: 'agafay-luxury-camp',
 		mapStops: ['Marrakech, Morocco', 'Agafay Desert, Morocco'],
-		destinationIds: ['marrakech'],
+		destinationIds: ['agafay'],
 		slug: 'nuit-de-luxe-desert-agafay',
 		categoryKey: 'desert-tours',
 		title: 'Camp de luxe désert Agafay — Nuit depuis Marrakech',
@@ -275,7 +275,7 @@ export const TOURS = [
 	{
 		id: 'agafay-sunset-evening',
 		mapStops: ['Marrakech, Morocco', 'Agafay Desert, Morocco'],
-		destinationIds: ['marrakech'],
+		destinationIds: ['agafay'],
 		slug: 'soiree-coucher-de-soleil-desert-agafay',
 		categoryKey: 'day-trips',
 		title: 'Soirée coucher de soleil & dîner dans le désert d\'Agafay',

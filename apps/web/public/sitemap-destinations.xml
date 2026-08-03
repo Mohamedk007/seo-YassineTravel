@@ -84,4 +84,32 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/montagnes-atlas" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/atlas-mountains" />
   </url>
+  <url>
+    <loc>https://yassinetravel.com/en/destinations/essaouira</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/essaouira" />
+  </url>
+  <url>
+    <loc>https://yassinetravel.com/fr/destinations/essaouira</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/essaouira" />
+  </url>
+  <url>
+    <loc>https://yassinetravel.com/en/destinations/agafay-desert</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/desert-agafay" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+  </url>
+  <url>
+    <loc>https://yassinetravel.com/fr/destinations/desert-agafay</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/desert-agafay" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+  </url>
 </urlset>

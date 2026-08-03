@@ -815,6 +815,50 @@
     </image:image>
   </url>
   <url>
+    <loc>https://yassinetravel.com/en/destinations/essaouira</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/essaouira" />
+    <image:image>
+      <image:loc>https://yassinetravel.com/images/essaouira-harbour-ramparts.webp</image:loc>
+      <image:caption>Essaouira</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://yassinetravel.com/fr/destinations/essaouira</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/essaouira" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/essaouira" />
+    <image:image>
+      <image:loc>https://yassinetravel.com/images/essaouira-harbour-ramparts.webp</image:loc>
+      <image:caption>Essaouira</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://yassinetravel.com/en/destinations/agafay-desert</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/desert-agafay" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+    <image:image>
+      <image:loc>https://yassinetravel.com/images/luxury-desert-camp-morocco.webp</image:loc>
+      <image:caption>Agafay Desert</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://yassinetravel.com/fr/destinations/desert-agafay</loc>
+    <lastmod>2026-07-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yassinetravel.com/fr/destinations/desert-agafay" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yassinetravel.com/en/destinations/agafay-desert" />
+    <image:image>
+      <image:loc>https://yassinetravel.com/images/luxury-desert-camp-morocco.webp</image:loc>
+      <image:caption>Agafay Desert</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://yassinetravel.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night</loc>
     <lastmod>2026-07-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yassinetravel.com/en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night" />
