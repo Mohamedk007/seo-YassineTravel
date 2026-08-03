@@ -8,16 +8,23 @@ import fr from './locales/fr/common.json';
 // generator agree on one language list.
 export { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES };
 
-i18next.use(initReactI18next).init({
-	resources: {
-		en: { translation: en },
-		fr: { translation: fr },
-	},
-	lng: DEFAULT_LANGUAGE,
-	fallbackLng: DEFAULT_LANGUAGE,
-	interpolation: { escapeValue: false },
-	// Resources are bundled at build time (small site), so no Suspense/loading state is needed.
-	react: { useSuspense: false },
-});
+const RESOURCES = {
+	en: { translation: en },
+	fr: { translation: fr },
+};
 
-export default i18next;
+// A fresh instance per render (one per request on the server, one per page
+// load on the client) — a shared module-level singleton mutated via
+// `changeLanguage()` would race across concurrent SSR requests for different
+// languages. Resources are already-bundled JSON, so init is synchronous.
+export function createI18nInstance(lang = DEFAULT_LANGUAGE) {
+	const instance = i18next.createInstance();
+	instance.use(initReactI18next).init({
+		resources: RESOURCES,
+		lng: lang,
+		fallbackLng: DEFAULT_LANGUAGE,
+		interpolation: { escapeValue: false },
+		react: { useSuspense: false },
+	});
+	return instance;
+}

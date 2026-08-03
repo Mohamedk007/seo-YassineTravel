@@ -17,7 +17,7 @@ export const HOME_BENEFITS = [
 	{
 		icon: 'Award',
 		title: 'Award-Winning Service',
-		text: "TripAdvisor Travellers' Choice, 4.9/5 across 1,200+ verified reviews.",
+		text: "TripAdvisor Travellers' Choice, 5.0/5 across 43 verified reviews.",
 	},
 ];
 
@@ -37,7 +37,7 @@ export const HOME_BOOKING_STEPS = [
 
 export const HOME_PAGE = {
 	hero: {
-		reviewBadge: '4.9/5 - 1,200+ Reviews',
+		reviewBadge: '5.0/5 - 43 Reviews',
 		title: 'Morocco, reimagined in pure luxury',
 		highlight: 'reimagined',
 		description: 'Bespoke private tours across the Sahara, imperial cities and Atlas Mountains - crafted by local experts, delivered with five-star care.',
@@ -74,7 +74,7 @@ export const HOME_PAGE = {
 		stats: [
 			['13+', 'Years experience'],
 			['12k+', 'Happy travellers'],
-			['4.9', 'Average rating'],
+			['5.0', 'Average rating'],
 		],
 		quote: {
 			text: 'Felt like family by day two.',
@@ -87,9 +87,9 @@ export const HOME_PAGE = {
 		featuredCount: 6,
 	},
 	trustSummary: {
-		rating: '4.9',
-		description: 'Google & TripAdvisor',
-		subdescription: '1,200+ verified reviews',
+		rating: '5.0',
+		description: 'TripAdvisor',
+		subdescription: '43 verified reviews',
 	},
 	bookingProcess: {
 		eyebrow: 'How It Works',

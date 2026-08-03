@@ -2,6 +2,7 @@
 // dependency path (via seo.config.js), which tools/prerender.mjs runs directly
 // under plain Node without a bundler to resolve `@/`.
 import { DEFAULT_LANGUAGE } from '../seo/sitemap.js';
+import { TRIPADVISOR } from './tripadvisor.js';
 
 // Brand identity: name, origin, locale. These are not translated — a brand
 // name stays the same across languages, and seoTitle/seoDescription here are
@@ -29,14 +30,14 @@ function resolve(dict, lang) {
 
 const SITE_COPY_BY_LANG = {
 	en: {
-		reviewSummary: '4.9/5 · 1,200+ reviews',
-		reviewSummaryCompact: '4.9/5 · 1,200+ reviews',
+		reviewSummary: `${TRIPADVISOR.rating.toFixed(1)}/5 · ${TRIPADVISOR.reviewCount} reviews`,
+		reviewSummaryCompact: `${TRIPADVISOR.rating.toFixed(1)}/5 · ${TRIPADVISOR.reviewCount} reviews`,
 		footerDescription: 'Bespoke luxury private tours crafted by local experts. Trusted by discerning travellers worldwide since 2011.',
 		footerLegal: 'All rights reserved. · Licensed Moroccan tour operator.',
 	},
 	fr: {
-		reviewSummary: '4,9/5 · plus de 1 200 avis',
-		reviewSummaryCompact: '4,9/5 · plus de 1 200 avis',
+		reviewSummary: `${TRIPADVISOR.rating.toFixed(1).replace('.', ',')}/5 · ${TRIPADVISOR.reviewCount} avis`,
+		reviewSummaryCompact: `${TRIPADVISOR.rating.toFixed(1).replace('.', ',')}/5 · ${TRIPADVISOR.reviewCount} avis`,
 		footerDescription: 'Circuits privés de luxe conçus par des experts locaux. La confiance des voyageurs exigeants du monde entier depuis 2011.',
 		footerLegal: 'Tous droits réservés. · Voyagiste marocain agréé.',
 	},

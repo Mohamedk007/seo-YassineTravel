@@ -230,7 +230,7 @@ export function TourDetail() {
 					<div className="flex flex-wrap items-center gap-4 text-sm">
 						<Badge icon={Clock}>{tour.duration}</Badge>
 						<Badge icon={Users}>{tour.group}</Badge>
-						<Badge icon={Star}>4.9 ({copy.verified})</Badge>
+						<Badge icon={Star}>5.0 ({copy.verified})</Badge>
 					</div>
 					<a
 						href={waLink(copy.waMessage(tour))}

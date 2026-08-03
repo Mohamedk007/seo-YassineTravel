@@ -2,6 +2,7 @@
 // buildSeoHead()'s dependency path, run directly under plain Node.
 import { CONTACT } from '../data/contact.js';
 import { SITE_BRAND } from '../data/site-config.js';
+import { TRIPADVISOR } from '../data/tripadvisor.js';
 import { SEO_CONFIG, getSeoDefaults } from './seo.config.js';
 import { DEFAULT_LANGUAGE, SITE_ORIGIN, absoluteUrl, assetUrl, resolveLanguage } from './utils.js';
 
@@ -53,10 +54,14 @@ export function buildTravelAgencySchema(lang = DEFAULT_LANGUAGE) {
 	};
 }
 
-// Site-wide rating (4.9/5, 1,200+ reviews) is the one figure we can stand behind —
-// it's not split out per tour anywhere in the data, so it is only ever attached
-// to the Organization/TravelAgency, never fabricated per individual tour.
-export function buildAggregateRatingSchema({ ratingValue = '4.9', reviewCount = 1200, bestRating = '5' } = {}) {
+// Sourced from the real TripAdvisor listing (see data/tripadvisor.js) — not
+// split out per tour anywhere in the data, so it is only ever attached to the
+// Organization/TravelAgency, never fabricated per individual tour.
+export function buildAggregateRatingSchema({
+	ratingValue = String(TRIPADVISOR.rating),
+	reviewCount = TRIPADVISOR.reviewCount,
+	bestRating = '5',
+} = {}) {
 	return {
 		'@type': 'AggregateRating',
 		ratingValue,

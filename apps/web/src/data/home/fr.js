@@ -17,7 +17,7 @@ export const HOME_BENEFITS = [
 	{
 		icon: 'Award',
 		title: 'Service primé',
-		text: "TripAdvisor Travellers' Choice, 4,9/5 sur plus de 1 200 avis vérifiés.",
+		text: "TripAdvisor Travellers' Choice, 5,0/5 sur 43 avis vérifiés.",
 	},
 ];
 
@@ -37,7 +37,7 @@ export const HOME_BOOKING_STEPS = [
 
 export const HOME_PAGE = {
 	hero: {
-		reviewBadge: '4,9/5 - plus de 1 200 avis',
+		reviewBadge: '5,0/5 - 43 avis',
 		title: 'Le Maroc, réinventé dans un luxe pur',
 		highlight: 'réinventé',
 		description: 'Circuits privés sur mesure à travers le Sahara, les villes impériales et les montagnes de l\'Atlas — conçus par des experts locaux, livrés avec un soin cinq étoiles.',
@@ -74,7 +74,7 @@ export const HOME_PAGE = {
 		stats: [
 			['13+', 'Années d\'expérience'],
 			['12k+', 'Voyageurs satisfaits'],
-			['4.9', 'Note moyenne'],
+			['5,0', 'Note moyenne'],
 		],
 		quote: {
 			text: 'On s\'est senti comme en famille dès le deuxième jour.',
@@ -87,9 +87,9 @@ export const HOME_PAGE = {
 		featuredCount: 6,
 	},
 	trustSummary: {
-		rating: '4.9',
-		description: 'Google & TripAdvisor',
-		subdescription: 'Plus de 1 200 avis vérifiés',
+		rating: '5,0',
+		description: 'TripAdvisor',
+		subdescription: '43 avis vérifiés',
 	},
 	bookingProcess: {
 		eyebrow: 'Comment ça marche',

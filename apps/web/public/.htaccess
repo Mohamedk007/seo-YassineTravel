@@ -6,3 +6,13 @@
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
 </IfModule>
+
+RewriteRule ^\.builds - [F,L]
+PassengerAppRoot /home/u196699945/domains/yassinetravel.com/nodejs
+PassengerAppType node
+PassengerNodejs /opt/alt/alt-nodejs22/root/bin/node
+PassengerStartupFile server.js
+PassengerBaseURI /
+PassengerRestartDir /home/u196699945/domains/yassinetravel.com/nodejs/tmp
+SetEnv NODE_OPTIONS "--require /home/u196699945/domains/yassinetravel.com/.builds/config/preload-timestamp.js"
+SetEnv LSNODE_CONSOLE_LOG console.log

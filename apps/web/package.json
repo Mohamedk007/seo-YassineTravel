@@ -5,7 +5,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite --host :: --port 3000",
-		"build": "node ./tools/run-optional-generate-llms.mjs && node ./tools/generate-sitemap.mjs && vite build --outDir ../../dist/apps/web && node ./tools/prerender.mjs",
+		"build:client": "vite build --outDir ../../dist/apps/web",
+		"build:ssr": "vite build -c vite.config.ssr.js",
+		"build": "node ./tools/run-optional-generate-llms.mjs && node ./tools/generate-sitemap.mjs && npm run build:client && npm run build:ssr",
 		"start": "vite preview --outDir ../../dist/apps/web --host :: --port 3000",
 		"seo:check": "vite build --ssr tools/seo-check.jsx -c tools/seo-check.vite.config.js --logLevel error && node ../../dist/seo-check/seo-check.js",
 		"airport:check": "vite build --ssr tools/airport-page-check.jsx -c tools/seo-check.vite.config.js --logLevel error && node ../../dist/seo-check/airport-page-check.js",

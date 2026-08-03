@@ -10,7 +10,9 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { I18nextProvider } from 'react-i18next';
 import { LocaleProvider } from '@/i18n/LocaleContext';
+import { createI18nInstance } from '@/i18n/config';
 import { AIRPORTS } from '@/data/airports';
 import { getPath } from '@/data/route-config';
 import AirportTransferDetailPage from '@/pages/AirportTransferDetailPage';
@@ -26,13 +28,15 @@ function renderAirportPage(lang, slug) {
 	const path = getPath('airportTransferDetail', lang, { slug });
 	const html = renderToString(
 		<HelmetProvider context={helmetContext}>
-			<LocaleProvider lang={lang}>
-				<MemoryRouter initialEntries={[path]}>
-					<Routes>
-						<Route path={path.replace(slug, ':slug')} element={<AirportTransferDetailPage />} />
-					</Routes>
-				</MemoryRouter>
-			</LocaleProvider>
+			<I18nextProvider i18n={createI18nInstance(lang)}>
+				<LocaleProvider lang={lang}>
+					<MemoryRouter initialEntries={[path]}>
+						<Routes>
+							<Route path={path.replace(slug, ':slug')} element={<AirportTransferDetailPage />} />
+						</Routes>
+					</MemoryRouter>
+				</LocaleProvider>
+			</I18nextProvider>
 		</HelmetProvider>
 	);
 	// prioritizeSeoTags (set by <Seo>) moves canonical/OG/robots/JSON-LD into

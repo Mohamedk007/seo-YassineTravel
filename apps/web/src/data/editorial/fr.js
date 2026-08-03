@@ -34,7 +34,7 @@ export const GALLERY_PAGE = {
 
 export const REVIEWS_PAGE = {
 	title: 'La confiance des voyageurs du monde entier',
-	subtitle: '4,9/5 sur plus de 1 200 avis vérifiés sur Google et TripAdvisor.',
+	subtitle: '5,0/5 sur 43 avis vérifiés sur TripAdvisor.',
 	image: IMG.couple,
 	crumb: 'Avis',
 };
