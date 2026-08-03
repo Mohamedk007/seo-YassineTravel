@@ -89,6 +89,12 @@ function isKnownRoute(lang, basenameRelativePath) {
 
 function injectHead(html, helmet) {
   return html
+    // Strip HTML comments first — index.html's dev-facing comment mentions
+    // "<title>" in prose, which the naive <title>...</title> regex below
+    // would otherwise match into, swallowing everything up to the real
+    // </title> (including the <script>/<link rel="stylesheet"> tags in
+    // between) and leaving them inside an unclosed comment in the response.
+    .replace(/<!--[\s\S]*?-->\s*/g, "")
     .replace(/<html lang="[^"]*"[^>]*>/, `<html ${helmet.htmlAttributes.toString()}>`)
     .replace(/<title>[\s\S]*?<\/title>\s*/, `${helmet.title.toString()}\n\t\t`)
     .replace(/<meta\s+name="description"[\s\S]*?\/>\s*/, "")
