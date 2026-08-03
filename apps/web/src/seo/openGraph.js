@@ -21,9 +21,13 @@ export function buildOpenGraphTags({ title, description, url, image, type = 'web
 	];
 
 	if (resolvedImage) {
+		// Falls back to the page's own title, not the sitewide default image's
+		// alt text — a page with its own `image` but no explicit `imageAlt`
+		// would otherwise silently describe an unrelated stock photo (e.g.
+		// every tour page claiming "Sahara desert dunes at sunset").
 		tags.push(
 			{ property: 'og:image', content: resolvedImage },
-			{ property: 'og:image:alt', content: imageAlt || defaults.imageAlt }
+			{ property: 'og:image:alt', content: imageAlt || title || defaults.imageAlt }
 		);
 	}
 

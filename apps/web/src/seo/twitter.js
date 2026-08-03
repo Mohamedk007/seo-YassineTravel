@@ -19,9 +19,11 @@ export function buildTwitterTags({ title, description, image, lang, imageAlt, ca
 	];
 
 	if (resolvedImage) {
+		// Same reasoning as buildOpenGraphTags: fall back to the page's own
+		// title rather than the sitewide default image's alt text.
 		tags.push(
 			{ name: 'twitter:image', content: resolvedImage },
-			{ name: 'twitter:image:alt', content: imageAlt || defaults.imageAlt }
+			{ name: 'twitter:image:alt', content: imageAlt || title || defaults.imageAlt }
 		);
 	}
 

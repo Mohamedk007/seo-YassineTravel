@@ -48,6 +48,21 @@ app.use((req, res, next) => {
 // Never let static serving return the SPA shell for a directory-style
 // request before the SSR handler below gets a chance — only real asset
 // files (hashed JS/CSS, images, etc.) should be served statically.
+//
+// /assets/* is Vite's content-hashed build output (e.g. Home-Bp7g1mrn.js) —
+// the filename itself changes whenever the content does, so it's safe to
+// cache forever. Everything else under dist (index.html, robots.txt,
+// sitemap-*.xml, and /images/* which is public/images copied as-is with
+// stable, unhashed filenames) must not get that treatment, or a content
+// change could stay stale in a visitor's cache for up to a year.
+app.use(
+  "/assets",
+  express.static(path.join(dist, "assets"), {
+    index: false,
+    immutable: true,
+    maxAge: "1y",
+  })
+);
 app.use(express.static(dist, { index: false }));
 
 // Route tables (by lang) used only to detect a true 404 before rendering, so
@@ -91,6 +106,19 @@ app.get("/{*any}", (req, res) => {
     const restPath = rest === "/" ? "" : rest;
     const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
     res.redirect(302, `/${defaultLanguage()}${restPath}${query}`);
+    return;
+  }
+
+  // Canonical URLs (sitemap, <link rel="canonical">) never carry a trailing
+  // slash — redirect the slash form to match, so the two never live as two
+  // separately-200-ing URLs for the same content. Checked against the raw
+  // req.path, not `rest`: resolveLang() already strips trailing slashes
+  // internally (splits on "/" and filters empty segments), so `rest` alone
+  // can never reveal that the original request had one. "/en/" and "/fr/"
+  // (the bare language root) are exempt — that single slash is correct.
+  if (req.path.length > `/${lang}/`.length && req.path.endsWith("/")) {
+    const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+    res.redirect(301, `${req.path.slice(0, -1)}${query}`);
     return;
   }
 

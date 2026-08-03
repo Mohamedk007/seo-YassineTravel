@@ -512,7 +512,10 @@ export function TourDetail() {
 			    the site-wide floating WhatsApp bubble on mobile via
 			    hideWhatsAppOnMobile above, since this bar's own WhatsApp button
 			    replaces it. The spacer div keeps this bar from covering the
-			    footer's last few pixels. */}
+			    footer's last few pixels — its height must track the bar's own
+			    padding (including the iOS safe-area inset) via calc(), not a
+			    fixed h-20, or a taller safe-area inset (e.g. iPhone home
+			    indicator) makes the bar taller than a fixed spacer accounts for. */}
 			<div
 				className="fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-border bg-background/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden"
 			>
@@ -533,7 +536,7 @@ export function TourDetail() {
 					{copy.mobileBar.requestQuote}
 				</a>
 			</div>
-			<div className="h-20 lg:hidden" aria-hidden="true" />
+			<div className="h-[calc(3.5rem+max(0.75rem,env(safe-area-inset-bottom)))] lg:hidden" aria-hidden="true" />
 		</Layout>
 	);
 }
