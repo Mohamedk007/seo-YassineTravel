@@ -1,8 +1,9 @@
 import React from 'react';
 import { getImageAttrs } from '@/data/images';
 import { useLocale } from '@/i18n/LocaleContext';
+import { TripAdvisorRatingBadge } from '@/components/site/TripAdvisorRatingBadge';
 
-export function PageHero({ title, subtitle, image, crumb, imageAlt }) {
+export function PageHero({ title, subtitle, image, crumb, imageAlt, showTripAdvisorBadge }) {
 	const lang = useLocale();
 	// Falls back to the page title only when the image isn't one of the shared,
 	// individually described assets.
@@ -24,6 +25,7 @@ export function PageHero({ title, subtitle, image, crumb, imageAlt }) {
 			<div className="absolute inset-0 hero-gradient" />
 			<div className="relative mx-auto w-full max-w-[72rem] px-5 pb-12 lg:px-8">
 				{crumb && <p className="mb-3 text-sm font-medium uppercase tracking-widest text-gold">{crumb}</p>}
+				{showTripAdvisorBadge && <TripAdvisorRatingBadge className="mb-4" />}
 				<h1 className="max-w-3xl font-display text-4xl font-semibold text-white text-balance sm:text-5xl md:text-6xl">{title}</h1>
 				{subtitle && <p className="mt-4 max-w-2xl text-lg text-white/85">{subtitle}</p>}
 			</div>

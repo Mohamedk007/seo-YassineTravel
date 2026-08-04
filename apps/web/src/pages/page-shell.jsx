@@ -70,7 +70,14 @@ export function MiniReviews() {
 
 export function Page({
 	title,
+	// Optional: lets the <title>/meta tag differ from the on-page H1 (e.g. a
+	// longer, keyword-complete SEO title vs. a punchier H1). Falls back to
+	// `title` so every existing call site is unaffected.
+	seoTitle,
 	subtitle,
+	// Optional: lets the meta description differ from the on-page hero
+	// subtitle, same fallback pattern as seoTitle.
+	seoDescription,
 	image,
 	imageAlt,
 	crumb,
@@ -92,8 +99,8 @@ export function Page({
 	return (
 		<Layout>
 			<Seo
-				title={title}
-				description={subtitle}
+				title={seoTitle || title}
+				description={seoDescription || subtitle}
 				image={image}
 				imageAlt={imageAlt || title}
 				structuredData={structuredData}

@@ -39,12 +39,14 @@ export const AIRPORT_TRANSFER_PAGE = {
 };
 
 export const PRIVATE_DRIVER_PAGE = {
-	title: 'Your personal driver-guide in Morocco',
-	subtitle: 'Explore at your own pace with a trusted local at the wheel.',
+	title: 'Private Driver in Morocco',
+	subtitle:
+		'Hire a private driver in Morocco with a fluent English-speaking guide. Flexible daily hire, modern AC vehicles, fixed pricing. Free quote in 24h.',
 	image: IMG.guide,
 	crumb: 'Services',
-	heading: 'More than a driver — a local friend',
-	description: 'Our English-speaking driver-guides know every road, every viewpoint and every hidden gem. Enjoy total flexibility: stop where you like, linger where you love, and travel with complete peace of mind.',
+	heading: 'Why hire a private driver in Morocco instead of a taxi or bus',
+	description:
+		'A private driver in Morocco isn\'t just transport — it\'s a local expert who handles navigation, language, haggling and logistics so you don\'t have to. Unlike a taxi, your driver is booked for the full day (or your full trip) at a fixed price agreed in advance, with no meter and no surprise detours. Unlike a group bus tour, there\'s no fixed departure time, no waiting on other passengers, and no generic script — stops are chosen around your pace and interests. Every private driver in Morocco with Yassine Travel is fully licensed, insured, and fluent in English, with deep local knowledge of the route between Marrakech, the Atlas Mountains, the Sahara and the imperial cities.',
 	imageSecondary: IMG.kasbah,
 	imageAlt: 'Private driver tour Morocco',
 	ctaLabel: 'Hire a driver',

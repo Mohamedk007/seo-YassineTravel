@@ -548,7 +548,7 @@ export function ToursListing({ routeKey }) {
 	const location = useLocation();
 	const lang = useLocale();
 	const collection = getTourCollectionByRouteKey(routeKey, lang) || {};
-	const { title, subtitle, image, intro, categoryKey } = collection;
+	const { title, subtitle, image, intro, categoryKey, showTripAdvisorBadge } = collection;
 	const list = getToursByCategory(categoryKey, lang);
 	const shown = list.length ? list : getTours(lang);
 
@@ -572,7 +572,13 @@ export function ToursListing({ routeKey }) {
 					lang
 				)}
 			/>
-			<PageHero title={title} subtitle={subtitle} image={image} crumb={getBreadcrumbLabel('tours', lang)} />
+			<PageHero
+				title={title}
+				subtitle={subtitle}
+				image={image}
+				crumb={getBreadcrumbLabel('tours', lang)}
+				showTripAdvisorBadge={showTripAdvisorBadge}
+			/>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				{intro && <p className="mx-auto mb-10 max-w-3xl text-center text-lg text-muted-foreground">{intro}</p>}
 				<div className="grid gap-7 md:grid-cols-3">

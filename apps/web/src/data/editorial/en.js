@@ -1,14 +1,16 @@
 import { IMG } from '../images';
 
 export const ABOUT_PAGE = {
-	title: 'A family of Moroccan storytellers',
-	subtitle: 'Local experts crafting extraordinary journeys since 2008.',
+	title: 'A Family-Run Morocco Tours Company',
+	seoTitle: 'Morocco Tours Company Since 2008',
+	subtitle: 'A Morocco tours company built by local experts, crafting extraordinary private journeys since 2008.',
 	image: IMG.guide,
 	crumb: 'About Us',
 	paragraphs: [
-		'Yassine Travel was founded by a family of born-and-raised Moroccans with a simple belief: that the finest way to experience our country is privately, authentically, and in complete comfort.',
+		'Yassine Travel is a Morocco tours company founded by a family of born-and-raised Moroccans with a simple belief: that the finest way to experience our country is privately, authentically, and in complete comfort.',
 		'For over 18 years we have welcomed travellers from the United States, United Kingdom, Canada, Australia and across Europe — designing bespoke journeys that blend five-star luxury with the genuine warmth of Moroccan hospitality. Our guides are not just drivers; they are historians, translators and friends who open doors ordinary tourists never see.',
 		'From the golden dunes of the Sahara to the labyrinthine medinas of Fes and Marrakech, every itinerary is handcrafted around you. We handle every detail — luxury riads, private transfers, expert guides and 24/7 concierge support — so all you have to do is fall in love with Morocco.',
+		'Founded in 2008, Yassine Travel has spent over 18 years building relationships with the riads, drivers and guides that make a private Morocco tour actually feel private — not a rebadged group product. We\'re a licensed Moroccan tour operator, rated 5.0/5 on TripAdvisor across 43 verified reviews, and every itinerary is designed in-house by our own trip designers rather than resold from a third-party operator.',
 	],
 	highlights: [
 		{ image: IMG.riad, caption: 'Handpicked stays' },

@@ -17,7 +17,8 @@ export const TOURS = [
 		group: 'Private, up to 6',
 		price: 2890,
 		image: IMG.duneSunset,
-		tagline: 'Marrakech, Fes, the Sahara & Atlas Mountains — five-star riads throughout.',
+		tagline:
+			'A luxury Sahara desert tour through Marrakech, Fes and the Atlas Mountains — five-star riads and a private desert camp with butler service throughout.',
 		highlights: [
 			'Two nights in a luxury Sahara desert camp with private butler',
 			'Handpicked five-star riads in Marrakech and Fes',
@@ -67,13 +68,14 @@ export const TOURS = [
 		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
 		slug: 'marrakech-merzouga-desert',
 		categoryKey: 'desert-tours',
-		title: '4-Day Marrakech to Merzouga Desert',
+		title: '4-Day Marrakech to Merzouga Desert Tour',
 		category: 'Desert Tours',
 		duration: '4 Days / 3 Nights',
 		group: 'Private, up to 8',
 		price: 890,
 		image: IMG.camel,
-		tagline: 'The classic Sahara adventure with a luxury desert camp finale.',
+		tagline:
+			'Our classic 4-day Marrakech Sahara desert tour to Merzouga: Ait Benhaddou, Dades Gorges, camel trek and a luxury desert camp at Erg Chebbi. Private tour.',
 		highlights: [
 			'Overnight in a premium desert camp at Erg Chebbi',
 			'Camel trek at sunset and sunrise',
@@ -104,9 +106,9 @@ export const TOURS = [
 		],
 		faqs: [
 			['Do we sleep in the desert on this 4-day tour?', 'Yes — one night at a luxury desert camp at Erg Chebbi on Day 2, with a sunset and sunrise camel trek either side of it.'],
+			['Is there a 3-day version of this desert tour?', 'Yes — our 3-Day Marrakech to Merzouga Desert Tour covers the same route at a faster pace, with one night at the desert camp instead of two full days at the dunes. It\'s a good fit if you\'re short on time; this 4-day version is better if you\'d rather not do 6-8 hours of driving on back-to-back days.'],
 			['How many people can join this tour?', 'It\'s fully private for up to 8 travellers in one vehicle — not a shared group tour with strangers.'],
 			['What happens on Day 3 — do we return to Marrakech or continue to Fes?', 'Both options exist: Day 3 can end in Fes if you\'re continuing north, or loop back to Marrakech — your trip designer sets this based on your onward plans.'],
-			['Is the Tizi n\'Tichka pass crossing safe in winter?', 'The pass is generally kept open and our driver-guides are experienced on this route year-round, though winter can bring snow at altitude — ask your trip designer about the forecast for your dates.'],
 		],
 	},
 	{
@@ -202,15 +204,16 @@ export const TOURS = [
 		id: 'essaouira-day-trip',
 		mapStops: ['Marrakech, Morocco', 'Essaouira, Morocco'],
 		destinationIds: ['essaouira'],
-		slug: 'day-Trip-to-Essaouira-from-Marrakech',
+		slug: 'day-trip-to-essaouira-from-marrakech',
 		categoryKey: 'day-trips',
-		title: 'Day Trip to Essaouira from Marrakech',
+		title: 'Essaouira Day Trip from Marrakech',
 		category: 'Day Trips',
 		duration: '1 Day',
 		group: 'Private or small group',
 		price: 80,
 		image: IMG.Essaouira1,
-		tagline: 'A day trip to Essaouira from Marrakech: argan groves, the UNESCO medina, Skala du Port and the Atlantic coast.',
+		tagline:
+			'A private Essaouira day trip from Marrakech: argan groves, the UNESCO medina, Skala du Port and the Atlantic coast. Free camel or horse ride included.',
 		highlights: [
 			'Scenic drive through argan tree groves and spotting tree-climbing goats',
 			'Explore the charming Medina of Essaouira (UNESCO World Heritage site)',
@@ -242,7 +245,7 @@ export const TOURS = [
 			['How long is the drive from Marrakech to Essaouira?', 'About 2.5 hours each way, through argan tree groves — the drive itself is part of the experience, with stops possible to see the tree-climbing goats.'],
 			['Is the camel or horse ride really free?', 'Yes, it\'s included in the price, not an upsell — you can choose between a camel or horse ride along the beach.'],
 			['Is Essaouira busy with tourists?', 'It\'s a working fishing port and UNESCO medina, so it has visitors, but it\'s far less crowded than Marrakech — the Skala du Port and harbour areas still feel authentic.'],
-			['What should I wear for this day trip?', 'Comfortable walking shoes for the medina\'s cobblestones, and a light jacket — Essaouira\'s Atlantic coast is noticeably breezier than Marrakech.'],
+			['Is this the same as a Marrakech to Essaouira day trip booked elsewhere?', 'The route and highlights are the same — Essaouira\'s medina, Skala du Port and the Atlantic coast — but this is a private day trip with your own vehicle and driver-guide, not a shared group bus.'],
 		],
 	},
 	{
@@ -307,7 +310,8 @@ export const TOURS = [
 		group: 'Private, up to 10',
 		price: 420,
 		image: IMG.luxCamp,
-		tagline: 'A luxury desert camp in Agafay, just 40 minutes from Marrakech, with a private tented suite and sunset dinner.',
+		tagline:
+			'Overnight in a luxury desert camp in Agafay, 40 minutes from Marrakech — private tented suite, sunset dinner, infinity pool. The desert day trip with a night included.',
 		highlights: [
 			'Private luxury tented suite with ensuite bathroom',
 			'Sunset dinner with live Gnaoua music',
@@ -393,7 +397,8 @@ export const TOURS = [
 		group: 'Private or small group',
 		price: 40,
 		image: IMG.agafayEvening,
-		tagline: 'Enjoy a sunset camel ride and a 3-course dinner in the Agafay Desert, just 40 minutes from Marrakech.',
+		tagline:
+			'A short desert day trip from Marrakech: sunset camel ride in Agafay and a 3-course dinner under the stars. Half-day, no overnight stay. From €40.',
 		highlights: [
 			'Private pickup from your Marrakech hotel',
 			'Sunset camel ride over the Agafay Desert hills',
@@ -688,14 +693,16 @@ export const TOURS = [
 		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
 		slug: 'marrakech-desert-3-days',
 		categoryKey: 'desert-tours',
-		title: '3-Day Marrakech to Merzouga Desert Express',
+		title: '3-Day Marrakech to Merzouga Desert Tour',
 		category: 'Desert Tours',
 		duration: '3 Days / 2 Nights',
 		group: 'Private, up to 6',
 		price: 350,
 		image: IMG.luxCamp,
-		tagline: 'A fast-paced 3-day dash from Marrakech to the Merzouga dunes, with one night in a desert camp.',
+		tagline:
+			'A 3-day trip from Marrakech to Merzouga: cross the High Atlas, visit Ait Benhaddou, and spend a night at a Sahara desert camp with a sunset camel trek.',
 		highlights: [
+			'Our fastest desert route — a full Sahara camp night with camel trek and sunset views, without the extra days',
 			'Overnight in a desert camp at Erg Chebbi',
 			'Ait Benhaddou kasbah and the Dades Valley en route',
 			'Camel trek at sunset',
@@ -719,9 +726,9 @@ export const TOURS = [
 			'Personal expenses and gratuities',
 		],
 		faqs: [
-			['Is 3 days enough time to properly see the Sahara?', 'This is a fast-paced express version with one desert camp night — for more time at the dunes and a second desert night, the 4-Day Marrakech to Merzouga Desert tour covers the same route at a more relaxed pace.'],
+			['What does a 3-day trip from Marrakech to Merzouga include?', 'This 3-day trip from Marrakech to Merzouga includes a private air-conditioned vehicle and driver-guide, hotel pickup and drop-off, one night in a desert camp at Erg Chebbi, and a sunset camel trek into the dunes. Stops at the Ait Benhaddou kasbah and Dades Valley are included en route on Day 1.'],
+			['Is 3 days enough time to properly see the Sahara?', 'This is a fast-paced express version with one desert camp night — for more time at the dunes and a second desert night, the 4-Day Marrakech to Merzouga Desert Tour covers the same route at a more relaxed pace.'],
 			['How much driving is involved each day?', 'This is a driving-intensive itinerary — expect 6-8 hours on the road on Days 1 and 2 to cover the distance in 3 days, with stops at Ait Benhaddou and the Todra Gorge along the way.'],
-			['Do we stay overnight in the Dades Valley?', 'Yes, on Day 1, before continuing to Merzouga and the desert camp on Day 2.'],
 			['Is this suitable if I get carsick on winding mountain roads?', 'The Tizi n\'Tichka crossing involves switchbacks — if that\'s a concern, consider the more gradual 4-day version instead, which spreads the same driving over an extra day.'],
 		],
 	},
@@ -1151,17 +1158,18 @@ export const TOURS = [
 		destinationIds: ['marrakech'],
 		slug: 'hot-air-balloon-quad-biking-marrakech',
 		categoryKey: 'excursions',
-		title: 'Hot Air Balloon & Quad Biking Adventure',
+		title: 'Hot Air Balloon Marrakech',
 		category: 'Excursions',
 		duration: 'Half Day',
 		group: 'Private or small group',
 		price: 175,
 		image: IMG.hotAirBalloon,
-		tagline: 'A sunrise hot air balloon flight over Marrakech, followed by a quad bike ride through the Jbilet desert.',
+		tagline:
+			'A sunrise hot air balloon flight over Marrakech, Morocco, followed by guided quad biking in the Jbilet desert. Hotel pickup included. Book today.',
 		highlights: [
 			'Sunrise hot air balloon flight over the Marrakech palm grove',
 			'Panoramic views of the Atlas Mountains',
-			'2-hour guided quad bike ride through the Jbilet desert',
+			'Quad biking in the Jbilet desert — a 2-hour guided ride included in the same half-day excursion',
 			'Flight certificate to commemorate the experience',
 		],
 		itinerary: [

@@ -72,7 +72,11 @@ export default function DestinationDetailPage() {
 	const relatedTours = getToursForDestination(destination.id, lang);
 	const relatedArticles = getBlogPostsForDestination(destination.id, lang);
 	const relatedReviews = getReviewsForDestination(destination.name, lang).slice(0, 3);
-	const generalFaqs = getFaqs(lang).slice(0, 4);
+	// Prefer the destination's own FAQs when it has them (real, keyword-targeted
+	// Q&A written for that specific place) — fall back to the generic sitewide
+	// set for destinations that haven't been given their own yet, so nothing
+	// breaks for the ones not covered by this pass.
+	const destinationFaqs = destination.faqs && destination.faqs.length > 0 ? destination.faqs : getFaqs(lang).slice(0, 4);
 	const nearestAirport = destination.nearestAirportSlug ? getAirportBySlug(destination.nearestAirportSlug) : null;
 	const nearbyDestinations = (destination.nearbyDestinationIds || [])
 		.map((id) => getDestinations(lang).find((entry) => entry.id === id))
@@ -81,15 +85,17 @@ export default function DestinationDetailPage() {
 
 	return (
 		<Page
-			title={destination.name}
+			title={destination.h1 || destination.name}
+			seoTitle={destination.seoTitle}
 			subtitle={destination.summary}
+			seoDescription={destination.seoDescription}
 			image={destination.image}
 			imageAlt={destination.name}
 			crumb={getBreadcrumbLabel('destinations', lang)}
 			pageType="TouristDestination"
 			structuredData={[
 				buildTouristDestinationSchema(destination, destinationPath, lang),
-				buildFaqSchema(generalFaqs),
+				buildFaqSchema(destinationFaqs),
 				buildImageObjectSchema({ url: destination.image, caption: destination.name }),
 			]}
 			alternateUrls={alternateUrls}
@@ -101,8 +107,28 @@ export default function DestinationDetailPage() {
 			preconnectMaps
 		>
 			<section className="mx-auto max-w-[72rem] px-5 py-16 lg:px-8">
-				{/* Overview */}
-				<p className="text-lg text-muted-foreground">{destination.summary}</p>
+				{/* Overview — a longer, keyword-complete lead paragraph when a
+				    destination has one; otherwise the short summary already used in
+				    the hero, so this section never renders empty. */}
+				<p className="text-lg text-muted-foreground">{destination.overview || destination.summary}</p>
+
+				{/* Long-form guide sections (e.g. "How to Get Here", "What Makes It
+				    Luxury", history/UNESCO context) — optional, only present on
+				    destinations that have been given dedicated SEO content. */}
+				{destination.guideSections && destination.guideSections.length > 0 && (
+					<div className="mt-10 space-y-8">
+						{destination.guideSections.map((section) => (
+							<div key={section.heading}>
+								<h2 className="font-display text-2xl font-semibold">{section.heading}</h2>
+								<div className="prose-slate mt-3 max-w-none space-y-3 text-muted-foreground">
+									{section.body.map((paragraph, index) => (
+										<p key={index}>{paragraph}</p>
+									))}
+								</div>
+							</div>
+						))}
+					</div>
+				)}
 
 				{/* Things to do */}
 				{destination.thingsToDo && (
@@ -230,7 +256,7 @@ export default function DestinationDetailPage() {
 				<div className="mt-14">
 					<h2 className="font-display text-2xl font-semibold">{copy.faqHeading}</h2>
 					<div className="mt-5 space-y-4">
-						{generalFaqs.map(([question, answer]) => (
+						{destinationFaqs.map(([question, answer]) => (
 							<div key={question} className="rounded-xl border border-border p-5">
 								<p className="font-semibold">{question}</p>
 								<p className="mt-1.5 text-sm text-muted-foreground">{answer}</p>

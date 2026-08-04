@@ -23,7 +23,29 @@ export function buildOrganizationSchema(lang = DEFAULT_LANGUAGE) {
 		email: CONTACT.email,
 		telephone: CONTACT.phone,
 		description: getSeoDefaults(lang).description,
-		logo: assetUrl(SEO_CONFIG.defaultImage),
+		logo: {
+			'@type': 'ImageObject',
+			url: assetUrl(SEO_CONFIG.defaultImage),
+		},
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: CONTACT.streetAddress,
+			addressLocality: CONTACT.city,
+			addressCountry: 'MA',
+		},
+		contactPoint: {
+			'@type': 'ContactPoint',
+			telephone: CONTACT.phone,
+			email: CONTACT.email,
+			contactType: 'customer service',
+			availableLanguage: ['en', 'fr', 'ar'],
+		},
+		// Only the TripAdvisor profile is a real, verified URL — the social
+		// links in site-config.js's FOOTER_CONFIG are still placeholder '#'
+		// values, and adding those to sameAs would point crawlers at a broken
+		// link and misrepresent a real trust signal, so they're deliberately
+		// left out until they point somewhere real.
+		sameAs: [TRIPADVISOR.profileUrl],
 	};
 }
 

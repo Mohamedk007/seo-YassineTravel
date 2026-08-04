@@ -18,7 +18,8 @@ export const TOURS = [
 		group: 'Privé, jusqu\'à 6 personnes',
 		price: 2890,
 		image: IMG.duneSunset,
-		tagline: 'Marrakech, Fès, le Sahara et l\'Atlas — des riads cinq étoiles tout au long du voyage.',
+		tagline:
+			'Un voyage Maroc luxe à travers Marrakech, Fès et l\'Atlas — riads cinq étoiles et camp de désert privé avec service de majordome tout au long du séjour.',
 		highlights: [
 			'Deux nuits dans un camp de luxe du Sahara avec majordome privé',
 			'Riads cinq étoiles soigneusement sélectionnés à Marrakech et Fès',
@@ -68,13 +69,14 @@ export const TOURS = [
 		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
 		slug: 'marrakech-merzouga-4-jours-desert',
 		categoryKey: 'desert-tours',
-		title: 'Marrakech - Merzouga : 4 jours dans le désert',
+		title: 'Marrakech - Merzouga : Circuit Désert 4 Jours',
 		category: 'Circuits désert',
 		duration: '4 jours / 3 nuits',
 		group: 'Privé, jusqu\'à 8 personnes',
 		price: 890,
 		image: IMG.camel,
-		tagline: 'L\'aventure saharienne classique, couronnée par un camp de désert de luxe.',
+		tagline:
+			'Notre circuit désert Sahara classique de 4 jours vers Merzouga : Aït Benhaddou, gorges du Dadès, balade à dos de chameau et camp de désert de luxe à Erg Chebbi.',
 		highlights: [
 			'Nuit dans un camp de désert haut de gamme à Erg Chebbi',
 			'Balade à dos de chameau au coucher et au lever du soleil',
@@ -105,9 +107,9 @@ export const TOURS = [
 		],
 		faqs: [
 			['Dort-on dans le désert sur ce circuit de 4 jours ?', 'Oui — une nuit dans un camp de désert de luxe à Erg Chebbi le Jour 2, avec une balade à dos de chameau au coucher et au lever du soleil de part et d\'autre.'],
+			['Existe-t-il une version de ce circuit désert en 3 jours ?', 'Oui — notre Circuit Désert Express Marrakech 3 Jours couvre le même itinéraire à un rythme plus soutenu, avec une nuit au camp de désert au lieu de deux journées complètes aux dunes. C\'est une bonne option si vous manquez de temps ; cette version de 4 jours convient mieux si vous préférez éviter 6 à 8 heures de route sur deux jours consécutifs.'],
 			['Combien de personnes peuvent participer à ce circuit ?', 'Il est entièrement privé pour jusqu\'à 8 voyageurs dans un même véhicule — pas un circuit de groupe partagé avec des inconnus.'],
 			['Que se passe-t-il le Jour 3 — retourne-t-on à Marrakech ou continue-t-on vers Fès ?', 'Les deux options existent : le Jour 3 peut se terminer à Fès si vous poursuivez vers le nord, ou revenir à Marrakech — votre concepteur de voyage organise cela selon vos plans.'],
-			['La traversée du col du Tizi n\'Tichka est-elle sûre en hiver ?', 'Le col reste généralement ouvert et nos chauffeurs-guides connaissent bien cette route toute l\'année, bien que l\'hiver puisse apporter de la neige en altitude — demandez à votre concepteur de voyage les prévisions pour vos dates.'],
 		],
 	},
 	{
@@ -211,7 +213,8 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 80,
 		image: IMG.Essaouira1,
-		tagline: 'Excursion à Essaouira depuis Marrakech : arganeraies, médina classée UNESCO, Skala du Port et littoral atlantique.',
+		tagline:
+			'Une excursion privée à Essaouira depuis Marrakech : arganeraies, médina classée UNESCO, Skala du Port et littoral atlantique. Balade à dos de chameau ou de cheval offerte.',
 		highlights: [
 			'Route panoramique à travers les arganeraies, avec ses chèvres grimpant aux arbres',
 			'Découverte de la charmante médina d\'Essaouira (classée au patrimoine mondial de l\'UNESCO)',
@@ -308,7 +311,8 @@ export const TOURS = [
 		group: 'Privé, jusqu\'à 10 personnes',
 		price: 420,
 		image: IMG.luxCamp,
-		tagline: 'Un camp de luxe dans le désert d\'Agafay, à seulement 40 minutes de Marrakech, avec suite de tente privée et dîner au coucher du soleil.',
+		tagline:
+			'Une nuit dans un camp de luxe du désert d\'Agafay, à 40 minutes de Marrakech — suite de tente privée, dîner au coucher du soleil, piscine à débordement. L\'excursion désert avec une nuit incluse.',
 		highlights: [
 			'Suite de tente de luxe privée avec salle de bain attenante',
 			'Dîner au coucher du soleil avec musique gnaoua live',
@@ -394,7 +398,8 @@ export const TOURS = [
 		group: 'Privé ou petit groupe',
 		price: 40,
 		image: IMG.agafayEvening,
-		tagline: 'Profitez d\'une balade à dos de chameau au coucher du soleil et d\'un dîner 3 services dans le désert d\'Agafay, à 40 minutes de Marrakech.',
+		tagline:
+			'Une courte excursion désert depuis Marrakech : balade à dos de chameau au coucher du soleil à Agafay et dîner 3 services sous les étoiles. Demi-journée, sans nuitée. Dès 40€.',
 		highlights: [
 			'Prise en charge privée depuis votre hôtel à Marrakech',
 			'Balade à dos de chameau au coucher du soleil dans les collines d\'Agafay',
@@ -689,14 +694,16 @@ export const TOURS = [
 		destinationIds: ['marrakech', 'atlas-mountains', 'ait-benhaddou', 'merzouga-sahara'],
 		slug: 'desert-express-marrakech-3-jours',
 		categoryKey: 'desert-tours',
-		title: '3 Jours Express Marrakech - Désert de Merzouga',
+		title: 'Marrakech - Merzouga : Circuit Désert 3 Jours',
 		category: 'Circuits désert',
 		duration: '3 jours / 2 nuits',
 		group: 'Privé, jusqu\'à 6 personnes',
 		price: 350,
 		image: IMG.luxCamp,
-		tagline: 'Une escapade rapide de 3 jours entre Marrakech et les dunes de Merzouga, avec une nuit dans un camp de désert.',
+		tagline:
+			'Un circuit désert de 3 jours entre Marrakech et Merzouga : traversée du Haut Atlas, visite d\'Aït Benhaddou, et une nuit dans un camp de désert saharien avec balade à dos de chameau au coucher du soleil.',
 		highlights: [
+			'Notre itinéraire désert le plus rapide — une véritable nuit au camp saharien avec balade à dos de chameau et coucher de soleil, sans les jours supplémentaires',
 			'Nuit dans un camp de désert à Erg Chebbi',
 			'Le ksar d\'Aït Benhaddou et la vallée du Dadès en chemin',
 			'Balade à dos de chameau au coucher du soleil',
@@ -720,9 +727,9 @@ export const TOURS = [
 			'Dépenses personnelles et pourboires',
 		],
 		faqs: [
-			['3 jours suffisent-ils pour bien voir le Sahara ?', 'Il s\'agit d\'une version express avec une nuit au camp du désert — pour plus de temps sur les dunes et une seconde nuit dans le désert, le circuit de 4 jours Marrakech-Désert de Merzouga suit le même trajet à un rythme plus détendu.'],
+			['Que comprend ce circuit désert de 3 jours entre Marrakech et Merzouga ?', 'Ce circuit désert de 3 jours entre Marrakech et Merzouga comprend un véhicule privé climatisé et un chauffeur-guide, la prise en charge et le retour à l\'hôtel, une nuit dans un camp de désert à Erg Chebbi, et une balade à dos de chameau au coucher du soleil dans les dunes. Les arrêts au ksar d\'Aït Benhaddou et dans la vallée du Dadès sont inclus en chemin le Jour 1.'],
+			['3 jours suffisent-ils pour bien voir le Sahara ?', 'Il s\'agit d\'une version express avec une nuit au camp du désert — pour plus de temps sur les dunes et une seconde nuit dans le désert, le Circuit Désert 4 Jours Marrakech - Merzouga suit le même trajet à un rythme plus détendu.'],
 			['Combien de temps de route chaque jour ?', 'C\'est un itinéraire avec beaucoup de route — comptez 6 à 8 heures de trajet les Jours 1 et 2 pour couvrir la distance en 3 jours, avec des arrêts à Aït Benhaddou et aux gorges du Todra en chemin.'],
-			['Passe-t-on une nuit dans la vallée du Dadès ?', 'Oui, le Jour 1, avant de poursuivre vers Merzouga et le camp du désert le Jour 2.'],
 			['Ce circuit convient-il si j\'ai le mal des transports sur les routes de montagne sinueuses ?', 'La traversée du Tizi n\'Tichka comporte des lacets — si cela vous préoccupe, envisagez plutôt la version de 4 jours, qui étale le même trajet sur un jour supplémentaire.'],
 		],
 	},
@@ -1152,17 +1159,18 @@ export const TOURS = [
 		destinationIds: ['marrakech'],
 		slug: 'montgolfiere-et-quad-marrakech',
 		categoryKey: 'excursions',
-		title: 'Montgolfière & Quad, Aventure à Marrakech',
+		title: 'Montgolfière Marrakech',
 		category: 'Excursions',
 		duration: 'Demi-journée',
 		group: 'Privé ou petit groupe',
 		price: 175,
 		image: IMG.hotAirBalloon,
-		tagline: 'Un vol en montgolfière au lever du soleil au-dessus de Marrakech, suivi d\'une balade en quad dans le désert de Jbilet.',
+		tagline:
+			'Un vol en montgolfière au lever du soleil au-dessus de Marrakech, suivi d\'une balade en quad guidée dans le désert de Jbilet. Prise en charge à l\'hôtel incluse.',
 		highlights: [
 			'Vol en montgolfière au lever du soleil au-dessus de la palmeraie de Marrakech',
 			'Vue panoramique sur les montagnes de l\'Atlas',
-			'Balade guidée de 2 heures en quad dans le désert de Jbilet',
+			'Balade en quad dans le désert de Jbilet — 2 heures guidées, incluses dans la même excursion demi-journée',
 			'Certificat de vol en souvenir de l\'expérience',
 		],
 		itinerary: [

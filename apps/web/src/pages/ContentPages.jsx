@@ -24,6 +24,7 @@ export function About() {
 	return (
 		<Page
 			title={ABOUT_PAGE.title}
+			seoTitle={ABOUT_PAGE.seoTitle}
 			subtitle={ABOUT_PAGE.subtitle}
 			image={ABOUT_PAGE.image}
 			crumb={ABOUT_PAGE.crumb}

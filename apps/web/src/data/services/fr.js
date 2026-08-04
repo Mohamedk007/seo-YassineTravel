@@ -39,12 +39,14 @@ export const AIRPORT_TRANSFER_PAGE = {
 };
 
 export const PRIVATE_DRIVER_PAGE = {
-	title: 'Votre chauffeur-guide personnel au Maroc',
-	subtitle: 'Explorez à votre rythme avec un local de confiance au volant.',
+	title: 'Chauffeur Privé au Maroc',
+	subtitle:
+		'Engagez un chauffeur privé au Maroc avec un guide anglophone. Location flexible à la journée, véhicules climatisés modernes, tarifs fixes. Devis gratuit sous 24h.',
 	image: IMG.guide,
 	crumb: 'Services',
-	heading: "Bien plus qu'un chauffeur — un ami local",
-	description: "Nos chauffeurs-guides anglophones connaissent chaque route, chaque point de vue et chaque trésor caché. Profitez d'une flexibilité totale : arrêtez-vous où vous voulez, prenez votre temps où vous aimez, et voyagez l'esprit tranquille.",
+	heading: "Pourquoi engager un chauffeur privé au Maroc plutôt qu'un taxi ou un bus",
+	description:
+		"Un chauffeur privé au Maroc n'est pas qu'un simple transport — c'est un expert local qui gère la navigation, la langue, la négociation et la logistique à votre place. Contrairement à un taxi, votre chauffeur est réservé pour la journée entière (ou tout votre séjour) à un tarif fixe convenu à l'avance, sans compteur ni détour surprise. Contrairement à un circuit de groupe en bus, il n'y a pas d'horaire de départ fixe, pas d'attente pour les autres passagers, et pas de script générique — les arrêts sont choisis selon votre rythme et vos centres d'intérêt. Tous nos chauffeurs privés au Maroc sont entièrement agréés, assurés et parlent couramment anglais, avec une connaissance approfondie des routes entre Marrakech, l'Atlas, le Sahara et les villes impériales.",
 	imageSecondary: IMG.kasbah,
 	imageAlt: 'Circuit avec chauffeur privé au Maroc',
 	ctaLabel: 'Engager un chauffeur',
