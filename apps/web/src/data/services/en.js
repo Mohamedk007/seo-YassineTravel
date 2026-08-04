@@ -26,12 +26,16 @@ export const CUSTOM_TOUR_STEPS = [
 ];
 
 export const AIRPORT_TRANSFER_PAGE = {
-	title: 'Private airport transfers across Morocco',
-	subtitle: 'Fixed-price, meet-and-greet transfers in comfort and safety.',
+	title: 'Morocco Airport Transfers',
+	// Kept separate from `title` (and short, brand-name-free) because
+	// resolveTitle() auto-appends "| Yassine Travel" and hard-truncates at 65
+	// chars — see seoTitleSuffix in seo.config.js.
+	seoTitle: 'Private Morocco Airport Transfers',
+	subtitle: 'Private, fixed-price airport transfers across Morocco — Marrakech, Casablanca, Agadir, Tangier, Fes and Rabat. Meet-and-greet, flight tracking, 24/7.',
 	image: IMG.RBT_SLE,
 	crumb: 'Services',
 	heading: 'Arrive relaxed, not stressed',
-	description: 'Skip the taxi queues and haggling. Your professional driver will be waiting at arrivals with a name board, ready to whisk you to your riad or hotel in a spotless, air-conditioned vehicle.',
+	description: 'Morocco airport transfers with a fixed price agreed before you fly — skip the taxi queues and haggling. Your professional driver will be waiting at arrivals with a name board, ready to whisk you to your riad or hotel in a spotless, air-conditioned vehicle.',
 	imageSecondary: IMG.Driver,
 	imageAlt: 'Private driver in Morocco',
 	ctaLabel: 'Book a transfer',

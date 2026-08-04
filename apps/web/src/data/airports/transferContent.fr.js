@@ -7,7 +7,7 @@
 export const AIRPORT_CONTENT = {
 	'casablanca-cmn': {
 		intro:
-			'L’aéroport international Mohammed V (CMN) est la porte d’entrée la plus fréquentée du Maroc et, pour de nombreux visiteurs, le premier contact avec le pays. Il se trouve bien à l’extérieur de Casablanca, donc arriver sans transfert réservé à l’avance signifie souvent soit une longue négociation de taxi, soit une correspondance en train plus lente avec des bagages. Un transfert privé depuis l’aéroport Mohammed V signifie que votre chauffeur vous attend dès la sortie des douanes, quelle que soit l’heure d’atterrissage de votre vol.',
+			'L’aéroport international Mohammed V (CMN) est la porte d’entrée la plus fréquentée du Maroc et, pour de nombreux visiteurs, le premier contact avec le pays. Il se trouve bien à l’extérieur de Casablanca, donc arriver sans navette aéroport Casablanca réservée à l’avance signifie souvent soit une longue négociation de taxi, soit une correspondance en train plus lente avec des bagages. Un transfert aéroport Casablanca privé signifie que votre chauffeur vous attend dès la sortie des douanes, quelle que soit l’heure d’atterrissage de votre vol — à prix fixe, sans compteur ni attente sur le parking taxis.',
 		overview: {
 			terminalCount: 2,
 			description:
@@ -61,6 +61,8 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['Combien coûte un transfert depuis l’aéroport Mohammed V de Casablanca ?', 'Les transferts privés depuis l’aéroport Mohammed V commencent à environ 25 € pour une berline vers le centre de Casablanca, selon le point de dépose, la taille du véhicule et le nombre de passagers — vous obtenez toujours un prix fixe avant de voyager, jamais au compteur.'],
+			['Existe-t-il une navette aéroport Casablanca vers le centre-ville ?', 'Un train direct (la navette « Al Bidaoui ») relie l’aéroport à la gare de Casablanca-Voyageurs, mais un transfert privé reste plus rapide porte-à-porte et évite de gérer vos bagages entre deux correspondances.'],
+			['Quelle est la différence entre une navette et un transfert privé aéroport Casablanca ?', 'Une navette ou un bus partagé suit un horaire fixe avec plusieurs arrêts, tandis qu’un transfert privé vous emmène directement à votre hôtel, à l’heure de votre choix, dans votre propre véhicule.'],
 			['Combien de temps dure le transfert depuis l’aéroport de Casablanca ?', 'Comptez 35 à 50 minutes vers le centre de Casablanca en dehors des heures de pointe. Le trafic du matin et de fin d’après-midi en semaine peut allonger ce délai jusqu’à environ 75 minutes, ce que votre chauffeur anticipe déjà en planifiant votre prise en charge.'],
 			['Où mon chauffeur m’attendra-t-il à l’aéroport Mohammed V ?', 'Votre chauffeur vous attend à l’intérieur du hall d’arrivée public, juste après la sortie douane, avec une pancarte à votre nom — que vous atterrissiez au Terminal 1 ou au Terminal 2.'],
 			['Puis-je payer en espèces pour mon transfert depuis Casablanca ?', 'Oui, les espèces en dirhams marocains ou en euros sont acceptées directement par votre chauffeur à la fin du trajet.'],
@@ -81,6 +83,7 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'Combien coûte un transfert depuis l’aéroport de Casablanca ?', answer: 'Les transferts privés depuis l’aéroport Mohammed V commencent à environ 25 € pour une berline, prix fixé à l’avance.' },
+			{ question: 'Existe-t-il une navette aéroport Casablanca ?', answer: 'Un train direct relie l’aéroport à la gare Casablanca-Voyageurs ; un transfert privé reste plus rapide et direct jusqu’à votre hôtel.' },
 			{ question: 'Combien de temps faut-il de l’aéroport de Casablanca au centre-ville ?', answer: 'Généralement 35 à 50 minutes vers le centre de Casablanca, plus long aux heures de pointe en semaine.' },
 			{ question: 'Le transfert privé est-il préférable au taxi à l’aéroport de Casablanca ?', answer: 'Oui pour la prévisibilité — le prix est fixé à l’avance et votre vol est suivi, contrairement à un taxi au compteur.' },
 			{ question: 'Peut-on payer en espèces à l’aéroport de Casablanca ?', answer: 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.' },
@@ -95,7 +98,7 @@ export const AIRPORT_CONTENT = {
 
 	'marrakech-rak': {
 		intro:
-			'L’aéroport Marrakech-Ménara (RAK) est l’un des aéroports les plus proches d’un centre-ville dans tout le Maroc — la Médina et Jemaa el-Fna ne sont qu’à quelques kilomètres. C’est justement cette faible distance qui rend un transfert privé réservé à l’avance si utile : les ruelles de la médina de Marrakech sont largement fermées aux voitures, et le dernier tronçon jusqu’à votre riad nécessite un chauffeur qui sait déjà exactement où retrouver le porteur.',
+			'L’aéroport Marrakech-Ménara (RAK) est l’un des aéroports les plus proches d’un centre-ville dans tout le Maroc — la Médina et Jemaa el-Fna ne sont qu’à quelques kilomètres. C’est justement cette faible distance qui rend un taxi aéroport ou un transfert privé réservé à l’avance si utile face à un taxi de rang non réservé : les ruelles de la médina de Marrakech sont largement fermées aux voitures, et rejoindre le centre-ville depuis l’aéroport de Marrakech nécessite un chauffeur qui sait déjà exactement où retrouver le porteur. Un transfert privé aéroport-centre-ville est à prix fixe et réservé à l’avance — pas de file d’attente, pas de compteur, pas d’arrêts de navette en chemin.',
 		overview: {
 			terminalCount: 1,
 			description:
@@ -148,6 +151,9 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['Combien coûte un transfert depuis l’aéroport de Marrakech-Ménara ?', 'Les transferts privés depuis l’aéroport de Marrakech commencent à environ 15 € pour une berline vers la médina ou Guéliz, prix fixé à l’avance quel que soit le trafic ou le point de dépose exact.'],
+			['Combien coûte un taxi à l’aéroport de Marrakech par rapport à un transfert privé ?', 'Un taxi de rang à l’aéroport de Marrakech est théoriquement au compteur et son prix peut varier avec le trafic ou la négociation, tandis qu’un transfert privé réservé à l’avance est un prix unique et fixe convenu avant votre vol — généralement comparable, voire moins cher, une fois la négociation et les frais imprévus écartés.'],
+			['Comment rejoindre le centre-ville depuis l’aéroport de Marrakech ?', 'Le moyen le plus rapide depuis l’aéroport de Marrakech vers le centre-ville est un transfert privé réservé à l’avance, en 15 à 20 minutes directement jusqu’à Jemaa el-Fna ou Guéliz — un taxi de rang ou le bus public suivent le même trajet mais avec plus d’attente et moins de certitude sur le prix.'],
+			['Existe-t-il une navette de l’aéroport de Marrakech vers la médina ?', 'Un bus public relie l’aéroport à Jemaa el-Fna, mais avec des départs et un espace bagages limités ; la plupart des voyageurs avec bagages préfèrent un transfert privé pour une dépose directe au point le plus proche accessible.'],
 			['Combien de temps dure le transfert depuis l’aéroport de Marrakech ?', 'Généralement 15 à 25 minutes, l’aéroport de Ménara étant à seulement quelques kilomètres de la médina — ajoutez 10 à 15 minutes si votre riad se trouve au cœur des ruelles piétonnes.'],
 			['Où mon chauffeur m’attendra-t-il à l’aéroport de Marrakech ?', 'Votre chauffeur vous attend juste après la sortie des arrivées dans le terminal unique de Ménara, avec une pancarte à votre nom.'],
 			['Puis-je payer en espèces pour mon transfert depuis Marrakech ?', 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.'],
@@ -171,6 +177,9 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'Combien coûte un transfert depuis l’aéroport de Marrakech ?', answer: 'Les transferts privés commencent à environ 15 € pour une berline vers la médina, prix fixé à l’avance.' },
+			{ question: 'Combien coûte un taxi à l’aéroport de Marrakech ?', answer: 'Un taxi de rang est théoriquement au compteur et son prix peut varier ; un transfert privé réservé à l’avance est à prix fixe.' },
+			{ question: 'Comment rejoindre le centre-ville depuis l’aéroport de Marrakech ?', answer: 'Un transfert privé rejoint Jemaa el-Fna ou Guéliz en 15 à 20 minutes, la solution la plus directe.' },
+			{ question: 'Existe-t-il une navette de l’aéroport de Marrakech vers la médina ?', answer: 'Un bus public limité dessert Jemaa el-Fna ; la plupart des voyageurs avec bagages préfèrent un transfert privé.' },
 			{ question: 'Combien de temps faut-il de l’aéroport de Marrakech à la médina ?', answer: 'Généralement 15 à 25 minutes, l’aéroport n’étant qu’à quelques kilomètres.' },
 			{ question: 'Le transfert privé est-il préférable au taxi à l’aéroport de Marrakech ?', answer: 'Oui — le prix est fixe et votre chauffeur connaît déjà le point d’accès le plus proche de votre riad.' },
 			{ question: 'Peut-on payer en espèces à l’aéroport de Marrakech ?', answer: 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.' },
@@ -237,6 +246,7 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['Combien coûte un transfert depuis l’aéroport Fès-Saïss ?', 'Les transferts privés depuis l’aéroport Fès-Saïss commencent à environ 18–20 € pour une berline vers la ville, prix fixé à l’avance, que vous alliez à Fès el-Bali ou à la Ville Nouvelle.'],
+			['Existe-t-il un taxi ou une navette aéroport Fes vers la ville ?', 'Un service de bus local relie l’aéroport à Fès, mais avec des horaires limités et peu d’espace pour les bagages ; un taxi aéroport Fes ou un transfert privé réservé à l’avance reste l’option la plus directe et la plus fiable pour rejoindre votre riad.'],
 			['Combien de temps dure le transfert depuis l’aéroport de Fès ?', 'Généralement 25 à 35 minutes vers Fès el-Bali ou la Ville Nouvelle, selon le trafic et votre point de dépose exact.'],
 			['Où mon chauffeur m’attendra-t-il à l’aéroport de Fès ?', 'Votre chauffeur vous attend juste après la sortie des arrivées dans le terminal unique, avec une pancarte à votre nom.'],
 			['Puis-je payer en espèces pour mon transfert depuis Fès ?', 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.'],
@@ -259,6 +269,7 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'Combien coûte un transfert depuis l’aéroport de Fès ?', answer: 'Les transferts privés commencent à environ 18–20 € pour une berline vers la ville, prix fixé à l’avance.' },
+			{ question: 'Y a-t-il un taxi aéroport Fes disponible ?', answer: 'Oui, mais un transfert privé réservé à l’avance offre un prix fixe et un chauffeur qui connaît déjà votre porte de médina.' },
 			{ question: 'Combien de temps faut-il de l’aéroport de Fès à la médina ?', answer: 'Généralement 25 à 35 minutes vers Fès el-Bali ou la Ville Nouvelle.' },
 			{ question: 'Le transfert privé est-il préférable au taxi à l’aéroport de Fès ?', answer: 'Oui — votre chauffeur connaît déjà la bonne porte de médina pour votre riad.' },
 			{ question: 'Peut-on payer en espèces à l’aéroport de Fès ?', answer: 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.' },
@@ -273,7 +284,7 @@ export const AIRPORT_CONTENT = {
 
 	'rabat-rba': {
 		intro:
-			'L’aéroport Rabat-Salé (RBA) dessert la capitale politique du Maroc, une ville plus calme et ordonnée que Casablanca ou Marrakech mais tout aussi intéressante à découvrir, avec sa propre histoire impériale, sa kasbah face à la mer et ses sites classés à l’UNESCO. De nombreux visiteurs combinent Rabat avec un voyage d’affaires ou l’utilisent comme point de départ plus tranquille pour un itinéraire marocain plus large — dans les deux cas, un transfert privé évite la partie la moins prévisible d’une première arrivée : trouver un moyen de transport dans un aéroport comptant moins de taxis et moins d’infrastructures pour visiteurs étrangers que les grands hubs touristiques du pays.',
+			'L’aéroport Rabat-Salé (RBA) dessert la capitale politique du Maroc, une ville plus calme et ordonnée que Casablanca ou Marrakech mais tout aussi intéressante à découvrir, avec sa propre histoire impériale, sa kasbah face à la mer et ses sites classés à l’UNESCO. De nombreux visiteurs combinent Rabat avec un voyage d’affaires ou l’utilisent comme point de départ plus tranquille pour un itinéraire marocain plus large — dans les deux cas, une navette aéroport Rabat ou un transfert privé réservé à l’avance évite la partie la moins prévisible d’une première arrivée : trouver un moyen de transport dans un aéroport comptant moins de taxis et moins d’infrastructures pour visiteurs étrangers que les grands hubs touristiques du pays. Un taxi aéroport Rabat classique reste une option, mais sans prix fixé à l’avance ni suivi de vol.',
 		overview: {
 			terminalCount: 1,
 			description: 'Rabat-Salé dispose d’un terminal unique et relativement compact desservant les vols intérieurs et un plus petit nombre de vols internationaux, ce qui en fait l’un des aéroports marocains les plus rapides à traverser à l’arrivée.',
@@ -324,6 +335,8 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['Combien coûte un transfert depuis l’aéroport Rabat-Salé ?', 'Les transferts privés depuis l’aéroport Rabat-Salé commencent à environ 18 € pour une berline vers le centre de Rabat, prix fixé à l’avance.'],
+			['Existe-t-il une navette aéroport Rabat vers le centre-ville ?', 'Une liaison de bus limitée relie l’aéroport à Rabat, mais avec peu de fréquences ; la plupart des voyageurs avec bagages préfèrent un taxi aéroport Rabat ou un transfert privé réservé à l’avance pour un trajet direct et à prix fixe.'],
+			['Combien coûte un taxi aéroport Rabat ?', 'Un taxi de rang à Rabat-Salé est théoriquement au compteur, tandis qu’un transfert privé réservé à l’avance est à prix fixe, convenu avant votre vol.'],
 			['Combien de temps dure le transfert depuis l’aéroport de Rabat ?', 'Généralement 20 à 30 minutes vers le centre de Rabat ou Salé en dehors des heures de pointe.'],
 			['Où mon chauffeur m’attendra-t-il à l’aéroport de Rabat ?', 'Votre chauffeur vous attend juste après la sortie des arrivées, avec une pancarte à votre nom.'],
 			['Puis-je payer en espèces pour mon transfert depuis Rabat ?', 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.'],
@@ -345,6 +358,8 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'Combien coûte un transfert depuis l’aéroport de Rabat ?', answer: 'Les transferts privés commencent à environ 18 € pour une berline vers le centre de Rabat, prix fixé à l’avance.' },
+			{ question: 'Existe-t-il une navette aéroport Rabat ?', answer: 'Une liaison de bus limitée existe ; un transfert privé réservé à l’avance reste l’option la plus directe et fiable.' },
+			{ question: 'Combien coûte un taxi aéroport Rabat ?', answer: 'Un taxi de rang est au compteur ; un transfert privé réservé à l’avance est à prix fixe.' },
 			{ question: 'Combien de temps faut-il de l’aéroport de Rabat au centre-ville ?', answer: 'Généralement 20 à 30 minutes en dehors des heures de pointe.' },
 			{ question: 'Le transfert privé est-il préférable au taxi à l’aéroport de Rabat ?', answer: 'Oui — le prix est fixe et votre vol est suivi, avec moins de taxis disponibles que dans les aéroports plus fréquentés.' },
 			{ question: 'Peut-on payer en espèces à l’aéroport de Rabat ?', answer: 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.' },
@@ -359,7 +374,7 @@ export const AIRPORT_CONTENT = {
 
 	'tangier-tng': {
 		intro:
-			'L’aéroport Tanger-Ibn Battouta (TNG) se trouve à la pointe nord du Maroc, là où la Méditerranée rencontre l’Atlantique — une porte d’entrée naturelle pour les voyageurs arrivant d’Espagne ou se dirigeant vers les montagnes du Rif et Chefchaouen. Un transfert privé réservé à l’avance est particulièrement utile ici, Tanger étant aussi une ville portuaire de ferry et de croisière très fréquentée, avec une zone d’arrivée animée et étendue, et de nombreux voyageurs jonglent avec une correspondance serrée entre une traversée maritime et un vol de part et d’autre de leur séjour. Tanger elle-même a énormément changé au cours de la dernière décennie, avec un front de mer et une marina modernisés aux côtés de sa Kasbah séculaire.',
+			'L’aéroport Tanger-Ibn Battouta (TNG) se trouve à la pointe nord du Maroc, là où la Méditerranée rencontre l’Atlantique — une porte d’entrée naturelle pour les voyageurs arrivant d’Espagne ou se dirigeant vers les montagnes du Rif et Chefchaouen. Un taxi aéroport Tanger classique reste au compteur, tandis qu’un transfert privé réservé à l’avance est particulièrement utile ici à prix fixe, Tanger étant aussi une ville portuaire de ferry et de croisière très fréquentée, avec une zone d’arrivée animée et étendue, et de nombreux voyageurs jonglent avec une correspondance serrée entre une traversée maritime et un vol de part et d’autre de leur séjour. Tanger elle-même a énormément changé au cours de la dernière décennie, avec un front de mer et une marina modernisés aux côtés de sa Kasbah séculaire.',
 		overview: {
 			terminalCount: 1,
 			description: 'L’aéroport Ibn Battouta dispose d’un terminal unique desservant les vols internationaux et intérieurs, avec un hall d’arrivée compact relié directement à la route menant vers Tanger.',
@@ -410,6 +425,7 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['Combien coûte un transfert depuis l’aéroport Tanger-Ibn Battouta ?', 'Les transferts privés depuis l’aéroport de Tanger commencent à environ 20 € pour une berline vers la Médina ou la Kasbah, prix fixé à l’avance.'],
+			['Combien coûte un taxi aéroport Tanger ?', 'Un taxi de rang à l’aéroport de Tanger est théoriquement au compteur et son prix peut varier, tandis qu’un transfert privé réservé à l’avance est à prix fixe, convenu avant votre vol.'],
 			['Combien de temps dure le transfert depuis l’aéroport de Tanger ?', 'Généralement 20 à 30 minutes vers le centre de Tanger et le quartier de la Médina/Kasbah.'],
 			['Où mon chauffeur m’attendra-t-il à l’aéroport de Tanger ?', 'Votre chauffeur vous attend juste après la sortie des arrivées, avec une pancarte à votre nom.'],
 			['Puis-je payer en espèces pour mon transfert depuis Tanger ?', 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.'],
@@ -431,6 +447,7 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'Combien coûte un transfert depuis l’aéroport de Tanger ?', answer: 'Les transferts privés commencent à environ 20 € pour une berline vers la Médina, prix fixé à l’avance.' },
+			{ question: 'Combien coûte un taxi aéroport Tanger ?', answer: 'Un taxi de rang est théoriquement au compteur ; un transfert privé réservé à l’avance est à prix fixe.' },
 			{ question: 'Combien de temps faut-il de l’aéroport de Tanger à la médina ?', answer: 'Généralement 20 à 30 minutes vers le centre de Tanger.' },
 			{ question: 'Le transfert privé est-il préférable au taxi à l’aéroport de Tanger ?', answer: 'Oui — le prix est fixe et couvre aussi les prises en charge au port de ferry, pas seulement l’aéroport.' },
 			{ question: 'Peut-on payer en espèces à l’aéroport de Tanger ?', answer: 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.' },
@@ -445,7 +462,7 @@ export const AIRPORT_CONTENT = {
 
 	'agadir-aga': {
 		intro:
-			'L’aéroport Agadir Al Massira (AGA) est la principale porte d’entrée de la côte balnéaire atlantique du Maroc, desservant Agadir même ainsi que les villages de surf plus au nord vers Taghazout. Contrairement aux villes impériales, la plupart des visiteurs ici se dirigent directement vers un resort ou un appartement en front de mer, ce qui fait d’un transfert privé climatisé à prix fixe un moyen simple de commencer des vacances détendues plutôt que de négocier un tarif après un long vol. Agadir attire aussi une importante clientèle de visiteurs réguliers et de séjours longs pour le soleil d’hiver, dont beaucoup apprécient de pouvoir réserver un transfert de la même manière, année après année, sans devoir réapprendre l’aéroport à chaque fois.',
+			'L’aéroport Agadir Al Massira (AGA) est la principale porte d’entrée de la côte balnéaire atlantique du Maroc, desservant Agadir même ainsi que les villages de surf plus au nord vers Taghazout. Contrairement aux villes impériales, la plupart des visiteurs ici se dirigent directement vers un resort ou un appartement en front de mer, ce qui fait d’un taxi aéroport Agadir réservé à l’avance ou d’un transfert privé climatisé à prix fixe un moyen simple de commencer des vacances détendues plutôt que de négocier un tarif après un long vol. Un transfert privé depuis l’aéroport d’Agadir est à prix fixe, réservé avant votre vol, sans compteur ni file d’attente. Agadir attire aussi une importante clientèle de visiteurs réguliers et de séjours longs pour le soleil d’hiver, dont beaucoup apprécient de pouvoir réserver un transfert de la même manière, année après année, sans devoir réapprendre l’aéroport à chaque fois.',
 		overview: {
 			terminalCount: 1,
 			description: 'L’aéroport Al Massira dispose d’un terminal unique desservant à la fois les vols charter internationaux et les vols réguliers, reflétant le rôle d’Agadir comme l’une des principales destinations balnéaires du Maroc.',
@@ -498,6 +515,8 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['Combien coûte un transfert depuis l’aéroport Agadir Al Massira ?', 'Les transferts privés depuis l’aéroport d’Agadir commencent à environ 25 € pour une berline vers le centre-ville ou la marina, prix fixé à l’avance.'],
+			['Combien coûte un taxi aéroport Agadir ?', 'Un taxi de rang à l’aéroport d’Agadir est théoriquement au compteur et son prix peut grimper pendant les semaines de forte affluence charter, tandis qu’un transfert privé réservé à l’avance reste à prix fixe quelle que soit la saison.'],
+			['Comment rejoindre le centre-ville depuis l’aéroport d’Agadir ?', 'Le moyen le plus direct est un transfert privé réservé à l’avance, en 30 à 40 minutes jusqu’à votre hôtel en front de mer ou la marina, à un prix fixé avant votre vol.'],
 			['Combien de temps dure le transfert depuis l’aéroport d’Agadir ?', 'Généralement 30 à 40 minutes vers le centre d’Agadir ou la marina ; ajoutez 10 à 15 minutes pour Taghazout.'],
 			['Où mon chauffeur m’attendra-t-il à l’aéroport d’Agadir ?', 'Votre chauffeur vous attend juste après la sortie des arrivées, avec une pancarte à votre nom.'],
 			['Puis-je payer en espèces pour mon transfert depuis Agadir ?', 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.'],
@@ -519,6 +538,8 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'Combien coûte un transfert depuis l’aéroport d’Agadir ?', answer: 'Les transferts privés commencent à environ 25 € pour une berline vers Agadir ville, prix fixé à l’avance.' },
+			{ question: 'Combien coûte un taxi aéroport Agadir ?', answer: 'Un taxi de rang est théoriquement au compteur et peut grimper en haute saison ; un transfert privé réservé à l’avance reste à prix fixe.' },
+			{ question: 'Comment rejoindre le centre-ville depuis l’aéroport d’Agadir ?', answer: 'Un transfert privé rejoint votre hôtel ou la marina en 30 à 40 minutes, à un prix fixé avant votre vol.' },
 			{ question: 'Combien de temps faut-il de l’aéroport d’Agadir à la ville ?', answer: 'Généralement 30 à 40 minutes vers le centre d’Agadir ou la marina.' },
 			{ question: 'Le transfert privé est-il préférable au taxi à l’aéroport d’Agadir ?', answer: 'Oui — le prix reste fixe même pendant les semaines chargées de la saison charter.' },
 			{ question: 'Peut-on payer en espèces à l’aéroport d’Agadir ?', answer: 'Oui, les espèces en dirhams ou en euros sont acceptées directement par votre chauffeur.' },

@@ -6,6 +6,7 @@ import { Layout } from '@/components/site/Layout';
 import { Seo } from '@/components/site/Seo';
 import { WhatsAppCtaButton } from '@/components/site/WhatsAppCtaButton';
 import { AirportPageSection } from '@/components/airport/AirportPageSection';
+import { getImageAttrs } from '@/data/images';
 import { FeatureCard, FeatureGrid } from '@/components/airport/FeatureGrid';
 import { TransferFactsPanel } from '@/components/airport/TransferFactsPanel';
 import { PopularRoutesTable } from '@/components/airport/PopularRoutesTable';
@@ -147,6 +148,7 @@ export default function AirportTransferDetailPage() {
 		fr: getPath('airportTransferDetail', 'fr', { slug: airport.slug }),
 	};
 
+	const heroImage = getImageAttrs(airport.image, lang, `${airport.name} terminal`);
 	const aeoIdPrefix = `aeo-${airport.slug}`;
 	const speakable = buildSpeakableSchema(getAeoAnswerSelectors(content.aeoAnswers, aeoIdPrefix));
 
@@ -238,7 +240,19 @@ export default function AirportTransferDetailPage() {
 							<TransferFactsPanel content={content} lang={lang} />
 						</div>
 					</div>
-					<AirportTransferBookingForm airportName={airport.name} airportCode={airport.code} />
+					<div>
+						<img
+							src={airport.image}
+							alt={heroImage.alt}
+							width={heroImage.width}
+							height={heroImage.height}
+							className="w-full rounded-2xl border border-border object-cover"
+							loading="eager"
+							fetchPriority="high"
+							decoding="async"
+						/>
+						<AirportTransferBookingForm airportName={airport.name} airportCode={airport.code} />
+					</div>
 				</div>
 			</section>
 

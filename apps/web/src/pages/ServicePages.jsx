@@ -19,6 +19,7 @@ export function AirportTransfers() {
 	return (
 		<Page
 			title={AIRPORT_TRANSFER_PAGE.title}
+			seoTitle={AIRPORT_TRANSFER_PAGE.seoTitle}
 			subtitle={AIRPORT_TRANSFER_PAGE.subtitle}
 			image={AIRPORT_TRANSFER_PAGE.image}
 			crumb={AIRPORT_TRANSFER_PAGE.crumb}

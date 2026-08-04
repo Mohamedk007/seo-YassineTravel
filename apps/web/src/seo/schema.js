@@ -141,6 +141,7 @@ export function buildLocalBusinessSchema() {
 		url: SITE_ORIGIN,
 		telephone: CONTACT.phone,
 		email: CONTACT.email,
+		priceRange: '€€',
 		address: {
 			'@type': 'PostalAddress',
 			streetAddress: CONTACT.streetAddress,
@@ -151,6 +152,15 @@ export function buildLocalBusinessSchema() {
 			'@type': 'GeoCoordinates',
 			latitude: CONTACT.geo.latitude,
 			longitude: CONTACT.geo.longitude,
+		},
+		// Every service on the site (transfers, drivers, tours) is booked and
+		// staffed around the clock — matches the "available 24/7" claim already
+		// repeated throughout the FAQ content, not a separate invented claim.
+		openingHoursSpecification: {
+			'@type': 'OpeningHoursSpecification',
+			dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+			opens: '00:00',
+			closes: '23:59',
 		},
 	};
 }

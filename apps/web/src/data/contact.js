@@ -20,6 +20,8 @@ export const waLink = (msg = "Hello! I'd like to plan a Morocco trip.") =>
 // The real Google Business Profile listing embed (from Maps' own "Share ->
 // Embed a map" panel), not a generic place/query search — pins the exact
 // verified business location rather than an arbitrary "Marrakech, Morocco"
-// query. Reused on both the Contact and Home pages.
+// query. Reused on both the Contact and Home pages. Same place ID
+// (0xdafed633b8695c5:0xd54179df4b5e5df0) as before — only the listing's
+// display name changed (was "Morocco Trip Holidays", now "Yassine Travel").
 export const GOOGLE_BUSINESS_MAP_EMBED_URL =
-	'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1338061.6281279377!2d-9.093250888068443!3d32.58048444451917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafed633b8695c5%3A0xd54179df4b5e5df0!2sMorocco%20Trip%20Holidays!5e1!3m2!1sfr!2sma!4v1785088749589!5m2!1sfr!2sma';
+	'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2640.647967373976!2d-8.01188799010417!3d31.633451441440965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafed633b8695c5%3A0xd54179df4b5e5df0!2sYassine%20Travel!5e1!3m2!1sen!2sma!4v1785851964416!5m2!1sen!2sma';

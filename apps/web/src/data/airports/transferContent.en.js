@@ -95,7 +95,7 @@ export const AIRPORT_CONTENT = {
 
 	'marrakech-rak': {
 		intro:
-			'Marrakech Menara Airport (RAK) is one of the closest airports to a city centre anywhere in Morocco — the Medina and Jemaa el-Fnaa are just a few kilometres away. That short distance is exactly why a pre-booked private transfer is worth arranging: Marrakech’s medina streets are largely closed to cars, so the last stretch to your riad needs a driver who already knows exactly where to meet the porter.',
+			'Marrakech Menara Airport (RAK) is one of the closest airports to a city centre anywhere in Morocco — the Medina and Jemaa el-Fnaa are just a few kilometres away. That short distance is exactly why a pre-booked airport taxi or private transfer is worth arranging over an unmetered rank taxi: Marrakech’s medina streets are largely closed to cars, so getting from Marrakech airport to the medina needs a driver who already knows exactly where to meet the porter. A private transfer from Marrakech airport to the city centre is fixed-price and pre-booked — no queueing, no meter, no shuttle stops along the way.',
 		overview: {
 			terminalCount: 1,
 			description:
@@ -148,6 +148,9 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['How much does a Marrakech Menara Airport transfer cost?', 'Private transfers from Marrakech Menara Airport start from around €15 for a sedan into the Medina or Gueliz, fixed in advance regardless of traffic or the exact drop-off point.'],
+			['How much does a Marrakech airport taxi cost compared to a private transfer?', 'An official rank taxi from Marrakech airport is metered by night/day rate and can vary with traffic and negotiation, while a pre-booked private transfer is a single fixed price agreed before you fly — typically comparable to or cheaper than a taxi once you count no haggling and no surprise surcharges.'],
+			['How do I get from Marrakech airport to the city centre?', 'The fastest way from Marrakech airport to the city centre is a pre-booked private transfer, taking 15–20 minutes directly to Jemaa el-Fnaa or Gueliz — a rank taxi or the public bus cover the same route but with more waiting and less certainty on price.'],
+			['Is there an airport shuttle from Marrakech airport to the medina?', 'A public bus runs from the airport toward Jemaa el-Fnaa, but with limited departures and luggage space; most visitors travelling with bags use a private transfer instead for a direct, door-to-nearest-access-point drop-off.'],
 			['How long does the transfer from Marrakech airport take?', 'Usually 15–25 minutes, since Menara Airport sits only a few kilometres from the Medina — add 10–15 minutes if your riad is deep inside the pedestrian streets.'],
 			['Where will my driver be waiting at Marrakech airport?', 'Your driver waits just past the arrivals exit in Menara’s single terminal, holding a name board with your name.'],
 			['Can I pay cash for my Marrakech airport transfer?', 'Yes, cash in dirhams or euros is accepted directly by your driver.'],
@@ -171,6 +174,9 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'How much is a transfer from Marrakech Airport?', answer: 'Private transfers start from around €15 for a sedan into the Medina, fixed in advance.' },
+			{ question: 'How much is a Marrakech airport taxi?', answer: 'A rank taxi is metered and price can vary; a pre-booked private transfer is a fixed price agreed before you fly.' },
+			{ question: 'How do I get from Marrakech airport to the city centre?', answer: 'A private transfer takes 15–20 minutes direct to Jemaa el-Fnaa or Gueliz, the fastest door-to-door option.' },
+			{ question: 'Is there a shuttle from Marrakech airport to the medina?', answer: 'A limited public bus runs to Jemaa el-Fnaa; most travellers with luggage use a private transfer instead.' },
 			{ question: 'How long does it take from Marrakech Airport to the Medina?', answer: 'Typically 15–25 minutes, as the airport is only a few kilometres away.' },
 			{ question: 'Is private transfer better than a taxi at Marrakech Airport?', answer: 'Yes — the price is fixed and your driver already knows your riad’s nearest access point.' },
 			{ question: 'Can I pay cash at Marrakech Airport?', answer: 'Yes, cash in dirhams or euros is accepted directly by your driver.' },
@@ -324,6 +330,7 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['How much does a Rabat-Salé Airport transfer cost?', 'Private transfers from Rabat-Salé Airport start from around €18 for a sedan into central Rabat, fixed in advance.'],
+			['How do I get from Rabat airport to the city centre?', 'The most direct way from Rabat airport to the city centre is a pre-booked private transfer, taking 20–30 minutes straight to central Rabat or the government district — Rabat-Salé has fewer taxis than Morocco’s busier airports, so booking ahead avoids relying on limited availability.'],
 			['How long does the transfer from Rabat airport take?', 'Usually 20–30 minutes to central Rabat or Salé outside peak hours.'],
 			['Where will my driver be waiting at Rabat airport?', 'Your driver waits just past the arrivals exit, holding a name board with your name.'],
 			['Can I pay cash for my Rabat airport transfer?', 'Yes, cash in dirhams or euros is accepted directly by your driver.'],
@@ -345,6 +352,7 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'How much is a transfer from Rabat Airport?', answer: 'Private transfers start from around €18 for a sedan into central Rabat, fixed in advance.' },
+			{ question: 'How do I get from Rabat airport to the city centre?', answer: 'A private transfer takes 20–30 minutes direct to central Rabat, fixed price, no need to find a scarce taxi.' },
 			{ question: 'How long does it take from Rabat Airport to the city?', answer: 'Typically 20–30 minutes outside peak hours.' },
 			{ question: 'Is private transfer better than a taxi at Rabat Airport?', answer: 'Yes — the price is fixed and your flight is tracked, with fewer taxis available than at busier airports.' },
 			{ question: 'Can I pay cash at Rabat Airport?', answer: 'Yes, cash in dirhams or euros is accepted directly by your driver.' },
@@ -410,6 +418,7 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['How much does a Tangier Ibn Battouta Airport transfer cost?', 'Private transfers from Tangier Airport start from around €20 for a sedan into the Medina or Kasbah, fixed in advance.'],
+			['How do I get from Tangier airport to the city centre?', 'The most direct way from Tangier airport to the city centre is a pre-booked private transfer, taking 20–30 minutes straight to the Medina, Kasbah or your hotel — a taxi covers the same route but without a price agreed in advance.'],
 			['How long does the transfer from Tangier airport take?', 'Usually 20–30 minutes to central Tangier and the Medina/Kasbah area.'],
 			['Where will my driver be waiting at Tangier airport?', 'Your driver waits just past the arrivals exit, holding a name board with your name.'],
 			['Can I pay cash for my Tangier airport transfer?', 'Yes, cash in dirhams or euros is accepted directly by your driver.'],
@@ -431,6 +440,7 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'How much is a transfer from Tangier Airport?', answer: 'Private transfers start from around €20 for a sedan into the Medina, fixed in advance.' },
+			{ question: 'How do I get from Tangier airport to the city centre?', answer: 'A private transfer takes 20–30 minutes direct to the Medina or your hotel, at a fixed price.' },
 			{ question: 'How long does it take from Tangier Airport to the Medina?', answer: 'Typically 20–30 minutes to central Tangier.' },
 			{ question: 'Is private transfer better than a taxi at Tangier Airport?', answer: 'Yes — the price is fixed and covers ferry port pickups too, not just the airport.' },
 			{ question: 'Can I pay cash at Tangier Airport?', answer: 'Yes, cash in dirhams or euros is accepted directly by your driver.' },
@@ -445,7 +455,7 @@ export const AIRPORT_CONTENT = {
 
 	'agadir-aga': {
 		intro:
-			'Agadir Al Massira Airport (AGA) is the main gateway to Morocco’s Atlantic beach coast, serving Agadir itself and the surfing villages further up the coast toward Taghazout. Unlike the imperial cities, most visitors here are heading straight to a resort or a beachfront apartment, which makes a fixed-price, air-conditioned private transfer an easy way to start a relaxed holiday rather than negotiating a fare after a long flight. Agadir also draws a large repeat-visitor and long-stay winter-sun crowd, many of whom value a transfer they can book the same way, year after year, without re-learning the airport each time.',
+			'Agadir Al Massira Airport (AGA) is the main gateway to Morocco’s Atlantic beach coast, serving Agadir itself and the surfing villages further up the coast toward Taghazout. Unlike the imperial cities, most visitors here are heading straight to a resort or a beachfront apartment, which makes a fixed-price, air-conditioned private transfer an easy way to start a relaxed holiday rather than negotiating an Agadir airport taxi fare after a long flight. Getting from Agadir airport to the city centre by private transfer takes the same 30–40 minutes as a taxi but at a price agreed before you fly, with no meter and no queue. Agadir also draws a large repeat-visitor and long-stay winter-sun crowd, many of whom value a transfer they can book the same way, year after year, without re-learning the airport each time.',
 		overview: {
 			terminalCount: 1,
 			description: 'Al Massira Airport has a single terminal serving both international charter and scheduled flights, reflecting Agadir’s role as one of Morocco’s main beach-holiday destinations.',
@@ -498,6 +508,8 @@ export const AIRPORT_CONTENT = {
 		],
 		faqs: [
 			['How much does an Agadir Al Massira Airport transfer cost?', 'Private transfers from Agadir Airport start from around €25 for a sedan into the city centre or marina, fixed in advance.'],
+			['How much does an Agadir airport taxi cost compared to a private transfer?', 'An official Agadir airport taxi is metered and can vary with charter-season demand, while a pre-booked private transfer is a single fixed price agreed before you fly — usually a similar or better price once you factor in no negotiation and no peak-season surge.'],
+			['How do I get from Agadir airport to the city centre?', 'The most direct way from Agadir airport to the city centre is a pre-booked private transfer, taking 30–40 minutes straight to your beachfront hotel or the marina — a taxi covers the same route but without a fixed price agreed in advance.'],
 			['How long does the transfer from Agadir airport take?', 'Usually 30–40 minutes to central Agadir or the marina; add 10–15 minutes for Taghazout.'],
 			['Where will my driver be waiting at Agadir airport?', 'Your driver waits just past the arrivals exit, holding a name board with your name.'],
 			['Can I pay cash for my Agadir airport transfer?', 'Yes, cash in dirhams or euros is accepted directly by your driver.'],
@@ -519,6 +531,8 @@ export const AIRPORT_CONTENT = {
 		],
 		aeoAnswers: [
 			{ question: 'How much is a transfer from Agadir Airport?', answer: 'Private transfers start from around €25 for a sedan into Agadir city, fixed in advance.' },
+			{ question: 'How much is an Agadir airport taxi?', answer: 'A metered taxi price can vary with charter-season demand; a pre-booked private transfer is a fixed price agreed before you fly.' },
+			{ question: 'How do I get from Agadir airport to the city centre?', answer: 'A private transfer takes 30–40 minutes direct to your hotel or the marina, at a price fixed in advance.' },
 			{ question: 'How long does it take from Agadir Airport to the city?', answer: 'Typically 30–40 minutes to central Agadir or the marina.' },
 			{ question: 'Is private transfer better than a taxi at Agadir Airport?', answer: 'Yes — the price is fixed even during busy charter-season weeks when taxi demand spikes.' },
 			{ question: 'Can I pay cash at Agadir Airport?', answer: 'Yes, cash in dirhams or euros is accepted directly by your driver.' },
