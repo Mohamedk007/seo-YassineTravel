@@ -40,6 +40,31 @@ export const TOUR_COLLECTIONS = [
 		image: IMG.duneSunset,
 		intro:
 			'Un circuit désert du Sahara depuis Marrakech vous emmène à travers le Haut Atlas jusqu\'aux dunes de l\'Erg Chebbi près de Merzouga, avec une nuit dans un camp de désert privé, des balades à dos de chameau au coucher et au lever du soleil, et des arrêts au ksar d\'Aït Benhaddou et dans les gorges du Dadès en chemin. Nos circuits désert Maroc vont d\'une version express de 3 jours au circuit classique de 4 jours avec deux journées complètes aux dunes — chacun entièrement privé, avec votre propre véhicule et chauffeur-guide.',
+		comparisonHeading: '2, 3 ou 4 Jours — Quel Circuit Désert Vous Convient ?',
+		comparisonIntro:
+			'Tous nos circuits sahariens mènent au même endroit — les dunes de l\'Erg Chebbi près de Merzouga, le plus haut et le plus photographié champ de dunes du Maroc — mais la façon d\'y arriver et la durée du séjour changent le voyage. Voici comment comparer les durées :',
+		comparisonRows: [
+			{
+				duration: '2 Jours / 1 Nuit',
+				bestFor: 'Peu de temps disponible, séjour basé à Marrakech',
+				whatYouSee: 'Le désert rocailleux d\'Agafay (pas le Sahara) — balade à dos de chameau, dîner au coucher du soleil, sans longues journées de route',
+				camp: 'Suite de tente de luxe privée avec salle de bain attenante',
+			},
+			{
+				duration: '3 Jours / 2 Nuits',
+				bestFor: 'Voyageurs voulant voir le Sahara avec peu de jours disponibles',
+				whatYouSee: 'Aït Benhaddou, la vallée du Dadès, les gorges du Todra, une nuit à Erg Chebbi — un rythme plus soutenu avec plus de route par jour',
+				camp: 'Camp de désert à Erg Chebbi, une nuit',
+			},
+			{
+				duration: '4 Jours / 3 Nuits',
+				bestFor: 'Un rythme plus détendu avec le temps de profiter des dunes',
+				whatYouSee: 'Le même itinéraire que la version 3 jours, étalé sur un jour supplémentaire, avec une journée complète pour explorer le camp et les dunes sans se presser',
+				camp: 'Camp de désert à Erg Chebbi, une nuit, moins de route par jour',
+			},
+		],
+		comparisonNote:
+			'Vous hésitez ? Les circuits de 3 et 4 jours suivent le même itinéraire jusqu\'aux mêmes dunes — la différence est le rythme, pas la destination. Si des journées de route de 6 à 8 heures consécutives ne vous conviennent pas, la version 4 jours est le meilleur choix.',
 	},
 	{
 		routeKey: 'dayTrips',

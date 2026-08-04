@@ -3,11 +3,12 @@ import { Car, Check, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LeadForm } from '@/components/site/LeadForm';
 import { WhatsAppCtaButton } from '@/components/site/WhatsAppCtaButton';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { AIRPORTS } from '@/data/airports';
 import { getImageAttrs } from '@/data/images';
 import { getServicesContent } from '@/data/services';
 import { getPath, getRoutePaths } from '@/data/route-config';
-import { buildItemListSchema, buildServiceSchema } from '@/seo/schemas';
+import { buildFaqSchema, buildItemListSchema, buildServiceSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page } from './page-shell';
 
@@ -97,6 +98,9 @@ export function PrivateDrivers() {
 	const lang = useLocale();
 	const PRIVATE_DRIVER_PAGE = getServicesContent('PRIVATE_DRIVER_PAGE', lang);
 	const PRIVATE_DRIVER_FEATURES = getServicesContent('PRIVATE_DRIVER_FEATURES', lang);
+	const PRIVATE_DRIVER_BOOKING_STEPS = getServicesContent('PRIVATE_DRIVER_BOOKING_STEPS', lang);
+	const PRIVATE_DRIVER_PRICE_INCLUDES = getServicesContent('PRIVATE_DRIVER_PRICE_INCLUDES', lang);
+	const PRIVATE_DRIVER_FAQS = getServicesContent('PRIVATE_DRIVER_FAQS', lang);
 	return (
 		<Page
 			title={PRIVATE_DRIVER_PAGE.title}
@@ -105,12 +109,15 @@ export function PrivateDrivers() {
 			crumb={PRIVATE_DRIVER_PAGE.crumb}
 			pageType="Service"
 			breadcrumbItems={[{ routeKey: 'home' }, { routeKey: 'privateDrivers' }]}
-			structuredData={buildServiceSchema({
-				name: PRIVATE_DRIVER_PAGE.title,
-				description: PRIVATE_DRIVER_PAGE.subtitle,
-				path: getRoutePaths(lang).privateDrivers,
-				lang,
-			})}
+			structuredData={[
+				buildServiceSchema({
+					name: PRIVATE_DRIVER_PAGE.title,
+					description: PRIVATE_DRIVER_PAGE.subtitle,
+					path: getRoutePaths(lang).privateDrivers,
+					lang,
+				}),
+				buildFaqSchema(PRIVATE_DRIVER_FAQS),
+			]}
 		>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				<div className="grid gap-10 lg:grid-cols-2 lg:items-center">
@@ -133,6 +140,59 @@ export function PrivateDrivers() {
 							<WhatsAppCtaButton message={PRIVATE_DRIVER_PAGE.ctaMessage}>{PRIVATE_DRIVER_PAGE.ctaLabel}</WhatsAppCtaButton>
 					</div>
 				</div>
+			</section>
+
+			{/* Comparison: private driver vs. self-drive vs. group tour — the
+			    weakest persona in the SXO audit (Comparison Shopper, 37/100)
+			    was blocked by the absence of exactly this framing. */}
+			<section className="bg-secondary/40 py-16">
+				<div className="mx-auto max-w-[56rem] px-5 lg:px-8">
+					<h2 className="font-display text-3xl font-semibold">{PRIVATE_DRIVER_PAGE.comparisonHeading}</h2>
+					<p className="mt-4 text-muted-foreground">{PRIVATE_DRIVER_PAGE.comparisonText}</p>
+				</div>
+			</section>
+
+			{/* How booking works */}
+			<section className="mx-auto max-w-[70rem] px-5 py-16 lg:px-8">
+				<h2 className="font-display text-3xl font-semibold">{PRIVATE_DRIVER_PAGE.bookingHeading}</h2>
+				<div className="mt-8 grid gap-6 sm:grid-cols-2">
+					{PRIVATE_DRIVER_BOOKING_STEPS.map(([title, description], index) => (
+						<div key={title} className="flex gap-4">
+							<div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary font-semibold text-primary-foreground">{index + 1}</div>
+							<div>
+								<h3 className="font-semibold">{title}</h3>
+								<p className="mt-1 text-sm text-muted-foreground">{description}</p>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			{/* What's included in the price */}
+			<section className="bg-secondary/40 py-16">
+				<div className="mx-auto max-w-[56rem] px-5 lg:px-8">
+					<h2 className="font-display text-3xl font-semibold">{PRIVATE_DRIVER_PAGE.priceIncludesHeading}</h2>
+					<ul className="mt-6 space-y-3">
+						{PRIVATE_DRIVER_PRICE_INCLUDES.map((item) => (
+							<li key={item} className="flex items-start gap-2 text-sm">
+								<Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> {item}
+							</li>
+						))}
+					</ul>
+				</div>
+			</section>
+
+			{/* FAQs */}
+			<section className="mx-auto max-w-[56rem] px-5 py-16 lg:px-8">
+				<h2 className="font-display text-3xl font-semibold">{PRIVATE_DRIVER_PAGE.faqsHeading}</h2>
+				<Accordion type="single" collapsible className="mt-6">
+					{PRIVATE_DRIVER_FAQS.map(([question, answer], index) => (
+						<AccordionItem key={index} value={`d${index}`} className="border-b border-border">
+							<AccordionTrigger className="text-left font-medium">{question}</AccordionTrigger>
+							<AccordionContent className="text-muted-foreground">{answer}</AccordionContent>
+						</AccordionItem>
+					))}
+				</Accordion>
 			</section>
 		</Page>
 	);

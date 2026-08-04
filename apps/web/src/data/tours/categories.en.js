@@ -40,6 +40,31 @@ export const TOUR_COLLECTIONS = [
 		image: IMG.duneSunset,
 		intro:
 			'A Sahara desert tour from Marrakech takes you across the High Atlas Mountains to the dunes of Erg Chebbi, with an overnight stay in a private desert camp, sunset and sunrise camel treks, and stops at the Ait Benhaddou kasbah and Dades Gorges along the way. Our desert tours Morocco packages range from a fast-paced 3-day express version to the classic 4-day circuit with two full days at the dunes — every one is private, with your own vehicle and driver-guide throughout.',
+		comparisonHeading: '2, 3 or 4 Days — Which Desert Tour Is Right for You?',
+		comparisonIntro:
+			'Every one of our Sahara circuits ends at the same place — the dunes of Erg Chebbi near Merzouga, Morocco\'s tallest and most photographed dune field — but how you get there and how long you stay changes the trip. Here\'s how the durations compare:',
+		comparisonRows: [
+			{
+				duration: '2 Days / 1 Night',
+				bestFor: 'Short on time, based near Marrakech',
+				whatYouSee: 'The Agafay stone desert (not the Sahara) — camel ride, sunset dinner, no long driving days',
+				camp: 'Private luxury tented suite with ensuite bathroom',
+			},
+			{
+				duration: '3 Days / 2 Nights',
+				bestFor: 'Travellers who want the Sahara but have limited days',
+				whatYouSee: 'Ait Benhaddou, the Dades Valley, Todra Gorge, one night at Erg Chebbi — a faster pace with more driving per day',
+				camp: 'Desert camp at Erg Chebbi, one night',
+			},
+			{
+				duration: '4 Days / 3 Nights',
+				bestFor: 'A more relaxed pace with time to enjoy the dunes',
+				whatYouSee: 'The same route as the 3-day version, spread over an extra day, with a full day to explore the camp and dunes rather than rushing through',
+				camp: 'Desert camp at Erg Chebbi, one night, less driving per day',
+			},
+		],
+		comparisonNote:
+			'Not sure which fits? The 3-day and 4-day tours follow the same route to the same dunes — the difference is pace, not destination. If back-to-back 6-8 hour driving days aren\'t for you, the 4-day version is the better fit.',
 	},
 	{
 		routeKey: 'dayTrips',

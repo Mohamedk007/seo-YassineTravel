@@ -108,6 +108,12 @@ const COPY = {
 			whatsapp: 'WhatsApp',
 			requestQuote: 'Request Quote',
 		},
+		durationComparison: {
+			duration: 'Duration',
+			bestFor: 'Best For',
+			whatYouSee: "What You'll See",
+			camp: 'Camp',
+		},
 	},
 	fr: {
 		verified: 'vérifié',
@@ -163,6 +169,12 @@ const COPY = {
 		mobileBar: {
 			whatsapp: 'WhatsApp',
 			requestQuote: 'Demander un devis',
+		},
+		durationComparison: {
+			duration: 'Durée',
+			bestFor: 'Idéal Pour',
+			whatYouSee: 'Ce Que Vous Verrez',
+			camp: 'Camp',
 		},
 	},
 };
@@ -547,8 +559,9 @@ export function TourDetail() {
 export function ToursListing({ routeKey }) {
 	const location = useLocation();
 	const lang = useLocale();
+	const copy = COPY[lang] || COPY.en;
 	const collection = getTourCollectionByRouteKey(routeKey, lang) || {};
-	const { title, subtitle, image, intro, categoryKey, showTripAdvisorBadge } = collection;
+	const { title, subtitle, image, intro, categoryKey, showTripAdvisorBadge, comparisonHeading, comparisonIntro, comparisonRows, comparisonNote } = collection;
 	const list = getToursByCategory(categoryKey, lang);
 	const shown = list.length ? list : getTours(lang);
 
@@ -581,6 +594,40 @@ export function ToursListing({ routeKey }) {
 			/>
 			<section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
 				{intro && <p className="mx-auto mb-10 max-w-3xl text-center text-lg text-muted-foreground">{intro}</p>}
+
+				{/* Duration/type comparison — only present on categories where
+				    the buying decision itself needs explaining (e.g. desert
+				    tours), not a generic feature of every listing page. */}
+				{comparisonRows && comparisonRows.length > 0 && (
+					<div className="mx-auto mb-14 max-w-4xl">
+						<h2 className="text-center font-display text-2xl font-semibold sm:text-3xl">{comparisonHeading}</h2>
+						{comparisonIntro && <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">{comparisonIntro}</p>}
+						<div className="mt-8 overflow-x-auto">
+							<table className="w-full min-w-[640px] overflow-hidden rounded-xl border border-border text-left text-sm">
+								<thead className="bg-secondary">
+									<tr>
+										<th className="p-4 font-semibold">{copy.durationComparison.duration}</th>
+										<th className="p-4 font-semibold">{copy.durationComparison.bestFor}</th>
+										<th className="p-4 font-semibold">{copy.durationComparison.whatYouSee}</th>
+										<th className="p-4 font-semibold">{copy.durationComparison.camp}</th>
+									</tr>
+								</thead>
+								<tbody className="bg-card">
+									{comparisonRows.map((row) => (
+										<tr key={row.duration} className="border-t border-border align-top">
+											<td className="p-4 font-semibold text-primary">{row.duration}</td>
+											<td className="p-4 text-muted-foreground">{row.bestFor}</td>
+											<td className="p-4 text-muted-foreground">{row.whatYouSee}</td>
+											<td className="p-4 text-muted-foreground">{row.camp}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+						{comparisonNote && <p className="mt-4 text-center text-sm text-muted-foreground">{comparisonNote}</p>}
+					</div>
+				)}
+
 				<div className="grid gap-7 md:grid-cols-3">
 					{shown.map((entry, index) => (
 						<TourCard key={entry.slug} tour={entry} delay={(index % 3) * 80} />

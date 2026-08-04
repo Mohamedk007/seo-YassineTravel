@@ -16,6 +16,21 @@ const app = express();
 // always report "http" and the www redirect below would downgrade to HTTP.
 app.set("trust proxy", true);
 
+// GPTBot allow-rule — kept for documentation/defense-in-depth even though the
+// current HTTP 429 GPTBot receives happens upstream at Hostinger's CDN edge
+// (hcdn), before requests ever reach this process (confirmed: blocked
+// responses carry no x-powered-by: Express header). This does not fix that
+// block by itself — see the CDN/hPanel bot-protection settings — but if a
+// rate limiter or bot-check is ever added to this app, it must run after
+// this check, not before.
+app.use((req, res, next) => {
+  const ua = req.get("user-agent") || "";
+  if (ua.includes("GPTBot")) {
+    return next();
+  }
+  next();
+});
+
 const dist = path.join(__dirname, "dist/apps/web");
 const template = readFileSync(path.join(dist, "index.html"), "utf8");
 
