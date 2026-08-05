@@ -1,0 +1,300 @@
+========================================================================
+YASSINE TRAVEL — GROWTH BLUEPRINT
+Plan d'action : Search Console, Google Business Profile, plateformes,
+contenu et backlinks — basé sur les données réelles collectées le
+2026-08-04/05 (Ubersuggest, Google Search Console, code du site).
+========================================================================
+
+ETAT ACTUEL (chiffres réels, pas des estimations)
+--------------------------------------------------
+- 128 pages soumises à Google via sitemap-index.xml (0 erreur, 0 avertissement)
+- 0 / 57 mots-clés suivis actuellement classés dans le top 100
+- 0 présence sur une plateforme OTA (GetYourGuide, Viator, Booking.com, Klook)
+- TripAdvisor : 5,0 étoiles, 43 avis, #199 sur 2 160 dans "Transport" à Marrakech
+
+
+========================================================================
+01. GOOGLE SEARCH CONSOLE
+========================================================================
+
+Etat confirmé cette session :
+  [FAIT] sitemap-index.xml soumis et lu sans erreur (128 URLs)
+  [FAIT] robots.txt correct, balises canonical présentes, meta robots
+         "index, follow" sur toutes les pages vérifiées
+  - Aucune donnée de recherche (clics/impressions) encore — normal les
+    premiers jours après soumission
+
+A faire :
+
+  [ ] CETTE SEMAINE — Demander l'indexation manuelle des pages prioritaires
+      via l'outil d'inspection d'URL dans GSC :
+        - /en
+        - /en/tours
+        - /en/desert-tours
+        - /en/airport-transfers/marrakech-rak
+        - /en/tour/imperial-cities-sahara
+      Pourquoi : accélère la première indexation au lieu d'attendre le
+      crawl naturel de Google.
+
+  [ ] HEBDOMADAIRE — Vérifier le rapport de couverture chaque semaine.
+      Repérer les pages "Détectée, actuellement non indexée" ou
+      "Exploration en cours" qui traînent plus de 2 semaines.
+
+  [ ] DES SEMAINE 2-3 — Suivre les 57 mots-clés du projet Ubersuggest
+      dans le rapport Performances de GSC dès les premières impressions.
+      Comparer position Ubersuggest (estimée) vs position réelle GSC
+      (mesurée) — ce sont deux sources différentes, pas toujours d'accord.
+
+  [ ] CE MOIS-CI — Vérifier l'absence d'erreurs mobiles / Core Web Vitals
+      dans l'onglet Expérience. Un site lent ou avec des problèmes
+      mobiles freine le classement même une fois indexé.
+
+
+========================================================================
+02. GOOGLE BUSINESS PROFILE (GBP)
+========================================================================
+
+Etat confirmé cette session :
+  [FAIT] Catégorie principale : Airport Shuttle Service
+         (décision documentée : Google a suggéré "Travel Agent" comme
+         remplacement, refusé car les avis clients réels parlent
+         transport/chauffeur, pas agence de voyage)
+  [FAIT] Catégories secondaires : Chauffeur service, Taxi service,
+         Tour operator, Tourist attraction, Sightseeing tour agency
+  [FAIT] Zones de service : les 6 villes aéroport (Marrakech, Casablanca,
+         Fès, Rabat, Tanger, Agadir) + région Casablanca-Settat + Anfa
+
+A faire :
+
+  [ ] CETTE SEMAINE — Coller la description principale déjà rédigée.
+      Version anglaise (564/750 caractères) :
+
+        "Yassine Travel provides private airport transfers, chauffeur
+        services and tailor-made tours across Morocco. Fixed-price
+        transfers to and from Marrakech Menara, Casablanca Mohammed V,
+        Rabat-Salé, Tangier Ibn Battouta, Fes-Saïss and Agadir Al Massira
+        airports, with meet-and-greet, flight tracking and 24/7
+        availability. We also offer private drivers for multi-day trips,
+        Sahara desert tours from Marrakech, and custom itineraries across
+        the imperial cities. Every transfer and tour is private — no
+        shared shuttles, no fixed group schedule. Rated 5.0 on
+        TripAdvisor."
+
+      Version française (667/750 caractères) :
+
+        "Yassine Travel propose des transferts aéroport privés, un
+        service de chauffeur et des circuits sur mesure dans tout le
+        Maroc. Transferts à prix fixe depuis et vers les aéroports de
+        Marrakech-Ménara, Casablanca Mohammed V, Rabat-Salé,
+        Tanger-Ibn Battouta, Fes-Saïss et Agadir Al Massira, avec accueil
+        personnalisé, suivi de vol et disponibilité 24/7. Nous proposons
+        aussi un chauffeur privé pour vos séjours de plusieurs jours, des
+        circuits dans le désert du Sahara depuis Marrakech, et des
+        itinéraires sur mesure à travers les villes impériales. Chaque
+        transfert et circuit est privé — jamais de navette partagée ni
+        d'horaire de groupe fixe. Noté 5,0 sur TripAdvisor."
+
+  [ ] CETTE SEMAINE — Ajouter les 6 entrées dans l'onglet Services, avec
+      les descriptions déjà rédigées cette session (Airport transfer,
+      Chauffeur service, Taxi service, Tour operator, Sightseeing tour
+      agency, Tourist attraction).
+
+  [ ] CE MOIS-CI — Corriger le nom sur TripAdvisor. L'URL du profil
+      contient encore "Morocco_Trip_Holidays" (ancien nom de
+      l'entreprise). Contacter le support TripAdvisor pour renommer en
+      "Yassine Travel" — ne se corrige pas automatiquement, contrairement
+      au site web.
+
+  [ ] CONTINU — Programme de collecte d'avis Google régulier.
+      Objectif réaliste : +2 à 4 avis Google/mois, demandés
+      systématiquement après chaque transfert/circuit terminé (message
+      WhatsApp de suivi avec lien direct vers l'avis).
+
+  [ ] HEBDOMADAIRE — Publier une GBP Post par semaine (offre, nouvelle
+      destination, avis client mis en avant). Signal d'activité que
+      Google favorise dans le pack local.
+
+  [ ] MENSUEL — Ajouter des photos fraîches chaque mois (desert camp,
+      véhicules, clients avec accord). Les fiches actives avec photos
+      récentes sortent mieux dans le pack local.
+
+
+========================================================================
+03. AUTRES PLATEFORMES GÉNÉRATRICES DE LEADS
+========================================================================
+
+CONSTAT PRINCIPAL : aucune présence détectée sur GetYourGuide, Viator,
+Booking.com ou Klook — alors que ces 4 plateformes sont apparues en tête
+de la quasi-totalité des SERP analysés cette session (autorité de domaine
+77 à 94), sur les mots-clés day-trips, transferts et circuits. C'est le
+plus gros écart identifié dans ce blueprint.
+
+GetYourGuide (DA 77 — PRIORITÉ HAUTE)
+  Apparaît en position 1-3 sur la majorité des recherches "day trip"/
+  "tour" analysées cette session (Ouzoud, Essaouira, montgolfière,
+  transferts). Commission ~20-30% mais visibilité immédiate sur des
+  mots-clés où le site n'a aujourd'hui aucune chance de rivaliser
+  organiquement avant plusieurs mois.
+
+Viator — marque TripAdvisor (DA 82 — PRIORITÉ HAUTE)
+  Même logique que GetYourGuide, avec l'avantage direct de relier le
+  profil TripAdvisor déjà existant (5,0 étoiles, 43 avis) — synergie
+  immédiate entre les deux profils.
+
+TripAdvisor Experiences (déjà présent, non exploité comme canal de
+réservation)
+  Le profil existe (5,0 étoiles, #199/2160 Transport à Marrakech) mais
+  sert de vitrine, pas de canal de réservation actif. Activer "Book Now"
+  / Experiences sur le profil transforme les 43 avis existants en preuve
+  sociale directement au point de conversion.
+
+Facebook / Instagram Business + boutique (gratuit, effort modéré)
+  Non vérifié dans le code s'il existe déjà — si non, prioritaire : les
+  recherches "marrakech private driver reviews" ou "is [company] legit"
+  passent souvent par les réseaux sociaux avant réservation, surtout pour
+  les voyageurs US/UK.
+
+Annuaires spécialisés Maroc (effort faible, impact SEO local)
+  Trustpilot, Lonely Planet (soumission de lien), et forums Reddit
+  r/Morocco / r/travel où les questions "how to book a private driver in
+  Morocco" reviennent régulièrement dans les SERP observées cette session
+  (Reddit, DA 92, apparaît systématiquement page 1).
+
+
+========================================================================
+04. CONTENU — BASÉ SUR LES VRAIES QUESTIONS ET MOTS-CLÉS
+========================================================================
+
+Construit à partir des schémas d'intention réels observés dans plus de
+55 SERP analysés cette session — pas des suppositions. Trois familles de
+contenu, selon ce que Google montre déjà en tête de résultats.
+
+--- A. REQUÊTES INFORMATIONNELLES DOMINÉES PAR DES BLOGS ---
+    (votre vraie opportunité de contenu — terrain gagnable)
+
+  Ces mots-clés sont actuellement gagnés par des blogs de voyageurs
+  indépendants (DA 15-25), pas par des agences.
+
+  Sujet                                    Vol/mois   Concurrent actuel
+  ----------------------------------------------------------------------
+  "day trips from marrakech" (comparatif)  5 400      theendofeverywhere.com (DA17)
+    -> Déjà traité : tableau comparatif ajouté sur /day-trips
+
+  "14 day morocco itinerary"               170        neverendingfootsteps.com (DA55)
+    -> A faire : article-guide détaillé jour par jour + CTA vers le
+       circuit 14 jours existant
+
+  "is morocco safe to visit"               forte intention, non isolée
+    -> A faire : article rassurance + preuve sociale (avis TripAdvisor,
+       licence, assurance)
+
+  "ouzoud waterfalls" guide complet        1 900-4 400   journalofnomads.com (DA39)
+    -> A faire : guide pratique (comment y aller, macaques, bateau) + CTA
+       vers le circuit
+
+  "how to visit sahara desert morocco"     forte, non isolée
+    -> A faire : article "tout savoir avant de réserver un circuit désert"
+
+--- B. REQUÊTES TRANSACTIONNELLES DÉJÀ BIEN POSITIONNÉES ---
+    (à défendre, pas à recréer)
+
+  Confirmé cette session : essaouira-day-trip, ouzoud-waterfalls-day-trip
+  et plusieurs pages transferts aéroport sont déjà correctement
+  optimisées. Le travail ici, c'est de la maintenance (avis récents, FAQ
+  à jour), pas de nouveaux articles.
+
+--- C. REQUÊTES DOMINÉES PAR DE GROSSES MARQUES ---
+    (ne pas y consacrer d'effort de contenu direct)
+
+  "morocco tours" générique (6 600/mois), "luxury morocco tours" —
+  dominées par Abercrombie & Kent (DA65), Black Tomato (DA76),
+  gate1travel.com (DA59). Un article de blog ne rivalisera pas ici avant
+  longtemps ; la visibilité sur ces termes passera plutôt par les
+  backlinks (section 05) et le temps.
+
+
+========================================================================
+05. STRATÉGIE DE BACKLINKS
+========================================================================
+
+Réaliste pour un opérateur local sans budget PR — pas de tactiques qui
+prennent des mois à porter leurs fruits sans budget dédié.
+
+  [ ] CE MOIS-CI — Inscription annuaires voyage gratuits : Lonely Planet
+      (soumission "add a listing"), Rough Guides, forums officiels de
+      tourisme marocain (ONMT/Visit Morocco). Faible autorité
+      individuellement mais rapide à obtenir.
+
+  [ ] CE MOIS-CI — Partenariats croisés avec hôtels/riads partenaires.
+      Proposer un lien réciproque avec les riads utilisés dans les
+      circuits (déjà nommés dans le contenu : camps désert Erg Chebbi,
+      riads Marrakech/Fès). Autorité modeste mais très pertinents
+      thématiquement pour Google.
+
+  [ ] CONTINU — Réponses actives sur Reddit r/Morocco et r/travel. Reddit
+      (DA92) apparaît systématiquement en page 1 des recherches "private
+      driver morocco" et similaires observées cette session. Répondre
+      honnêtement aux questions de voyageurs (sans spam de lien)
+      construit la notoriété de marque, qui précède souvent les liens
+      naturels.
+
+  [ ] TRIMESTRE 1 — Guest post ou mention sur 2-3 blogs voyage
+      identifiés. Les blogs qui dominent déjà "day trips from
+      marrakech", "ouzoud waterfalls" (theendofeverywhere.com,
+      journalofnomads.com) sont les cibles les plus pertinentes :
+      contacter pour une collaboration (contenu invité, ou simple
+      mention/lien en échange d'un partenariat transfert/circuit).
+
+  [ ] TRIMESTRE 1 — Presse locale/expat (Maroc). Les sites d'actualité
+      destinés aux expatriés et résidents étrangers au Maroc republient
+      souvent des profils d'entreprises locales avec lien — démarche à
+      froid mais peu coûteuse.
+
+
+========================================================================
+06. CALENDRIER 90 JOURS
+========================================================================
+
+SEMAINES 1-2 — Fondations
+  - Indexation manuelle des pages prioritaires (GSC)
+  - Description + Services GBP collés
+  - Inscription GetYourGuide + Viator lancée
+  - Demande de correction de nom TripAdvisor envoyée
+
+SEMAINES 3-6 — Activation
+  - 1er article de contenu (Ouzoud ou itinéraire 14 jours)
+  - Programme d'avis Google lancé (2-4/mois)
+  - 1 GBP Post/semaine
+  - Premiers partenariats riads/blogs contactés
+
+SEMAINES 7-12 — Mesure & ajustement
+  - 1res données GSC réelles disponibles — comparer aux estimations
+    Ubersuggest
+  - 2e-3e article de contenu publié
+  - Revue des 57 mots-clés suivis : lesquels bougent
+  - Décision GBP catégorie (Travel Agent vs Airport Shuttle) revisitée si
+    le profil de langage des avis a changé
+
+
+========================================================================
+A NE PAS PERDRE DE VUE
+========================================================================
+
+Aucune de ces actions ne fait apparaître le site en position 1 sur
+"morocco tours" en 90 jours — les concurrents en tête ont 20 à 40 points
+d'autorité de domaine d'avance. L'objectif réaliste de ce trimestre est :
+
+  1. Indexation complète du site
+  2. Premiers signaux de position sur les mots-clés à faible concurrence
+     déjà identifiés (ex. "tangier airport to city centre", difficulté 7)
+  3. Une présence multi-plateforme qui capte des leads même sans
+     classement organique n°1
+
+
+------------------------------------------------------------------------
+Sources : Ubersuggest MCP (project_position_info, serp_analysis — 57
+mots-clés suivis, sessions 2026-08-04/05), Google Search Console API
+(sc-domain:yassinetravel.com, connecté 2026-08-05), données GBP et
+TripAdvisor déjà présentes dans le code du site (apps/web/src/data/).
+Dernière mise à jour : 2026-08-05.
+------------------------------------------------------------------------
