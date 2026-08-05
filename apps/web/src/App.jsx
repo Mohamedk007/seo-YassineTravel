@@ -1,5 +1,6 @@
 import React from 'react';
 import ScrollToTop from './components/ScrollToTop';
+import { Analytics } from './components/Analytics';
 import { Toaster } from '@/components/ui/toaster';
 import { AppRoutes } from '@/routes';
 import { LocaleProvider } from '@/i18n/LocaleContext';
@@ -13,6 +14,7 @@ export function AppShell({ lang, routes: Routes = AppRoutes }) {
 	return (
 		<LocaleProvider lang={lang}>
 			<ScrollToTop />
+			<Analytics />
 			<Routes />
 			<Toaster />
 		</LocaleProvider>
