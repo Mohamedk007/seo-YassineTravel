@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { AlertCircle, ArrowRight, BadgeCheck, Check, Clock, MapPin, MessageCircle, Phone, ShieldCheck, Star, Undo2, Users, X, Zap } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
@@ -73,6 +73,8 @@ const COPY = {
 		included: "What's included",
 		notIncluded: 'Not included',
 		tourFaqs: 'Tour FAQs',
+		showMoreFaqs: 'Show more questions',
+		showLessFaqs: 'Show fewer questions',
 		from: 'from',
 		bookOnWhatsApp: 'Book on WhatsApp',
 		callToBook: 'Call to book',
@@ -135,6 +137,8 @@ const COPY = {
 		included: 'Ce qui est inclus',
 		notIncluded: 'Non inclus',
 		tourFaqs: 'Questions fréquentes sur ce circuit',
+		showMoreFaqs: 'Voir plus de questions',
+		showLessFaqs: 'Voir moins de questions',
 		from: 'à partir de',
 		bookOnWhatsApp: 'Réserver sur WhatsApp',
 		callToBook: 'Appeler pour réserver',
@@ -179,6 +183,12 @@ const COPY = {
 	},
 };
 
+// FAQs beyond this count are still in the DOM (and the FAQPage schema) for
+// crawlers and search engines, just visually collapsed behind "show more" —
+// keeps long FAQ lists scannable for visitors without hiding content from
+// Google, which reads the full DOM regardless of CSS visibility.
+const VISIBLE_FAQ_COUNT = 5;
+
 export function TourDetail() {
 	const lang = useLocale();
 
@@ -189,6 +199,7 @@ export function TourDetail() {
 	const FAQS = tour?.faqs || getFaqs(lang);
 	const P = getRoutePaths(lang);
 	const copy = COPY[lang] || COPY.en;
+	const [showAllFaqs, setShowAllFaqs] = useState(false);
 
 	if (!tour) return <Navigate to={P.tours} replace />;
 
@@ -231,7 +242,7 @@ export function TourDetail() {
 				]}
 				structuredData={[
 					buildTourSchema(tour, tourPath, lang),
-					buildFaqSchema(FAQS.slice(0, 4)),
+					buildFaqSchema(FAQS),
 					buildImageObjectSchema({ url: tour.image, caption: tour.title }),
 				]}
 				alternateUrls={alternateUrls}
@@ -358,13 +369,26 @@ export function TourDetail() {
 
 				<h2 className="mt-10 font-display text-3xl font-semibold">{copy.tourFaqs}</h2>
 				<Accordion type="single" collapsible className="mt-4">
-					{FAQS.slice(0, 4).map(([question, answer], index) => (
-						<AccordionItem key={index} value={`t${index}`} className="border-b border-border">
+					{FAQS.map(([question, answer], index) => (
+						<AccordionItem
+							key={index}
+							value={`t${index}`}
+							className={`border-b border-border ${index >= VISIBLE_FAQ_COUNT && !showAllFaqs ? 'hidden' : ''}`}
+						>
 							<AccordionTrigger className="text-left font-medium">{question}</AccordionTrigger>
 							<AccordionContent className="text-muted-foreground">{answer}</AccordionContent>
 						</AccordionItem>
 					))}
 				</Accordion>
+				{FAQS.length > VISIBLE_FAQ_COUNT && (
+					<button
+						type="button"
+						onClick={() => setShowAllFaqs((v) => !v)}
+						className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+					>
+						{showAllFaqs ? copy.showLessFaqs : copy.showMoreFaqs}
+					</button>
+				)}
 			</section>
 
 			{/* Pricing & inclusions, then the booking form as its own step right after. */}

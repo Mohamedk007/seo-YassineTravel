@@ -3,12 +3,12 @@ import { IMG } from '../images';
 export const TOUR_COLLECTIONS = [
 	{
 		routeKey: 'tours',
-		title: 'Morocco & Marrakech Tours Packages',
+		title: 'Morocco Tours & Marrakech Tour Packages',
 		subtitle:
 			'Browse private Morocco tours packages, from Marrakech day trips to Sahara desert circuits. Fully tailor-made, expert local guides, free quote in 24h.',
 		image: IMG.kasbah,
 		intro:
-			"Our Morocco tours packages are 100% private and tailor-made — no joining a bus of strangers. Whether you're planning a short Marrakech city break, a multi-day Sahara desert circuit, or the full imperial cities grand tour, every itinerary below is built around your dates, pace and interests, with a private vehicle, English-speaking driver-guide and 24/7 support throughout. Rated 5.0 on TripAdvisor by travellers from the US, UK, Canada and Australia.",
+			"Looking for the best Morocco tours? Every tour package on this site is 100% private and tailor-made — no joining a bus of strangers. Whether you're planning a short Marrakech city break, a multi-day Sahara desert circuit, or the full imperial cities grand tour, every itinerary below is built around your dates, pace and interests, with a private vehicle, English-speaking driver-guide and 24/7 support throughout. Rated 5.0 on TripAdvisor by travellers from the US, UK, Canada and Australia.",
 		showTripAdvisorBadge: true,
 	},
 	{
@@ -34,12 +34,12 @@ export const TOUR_COLLECTIONS = [
 	{
 		routeKey: 'desertTours',
 		categoryKey: 'desert-tours',
-		title: 'Sahara Desert Tour Morocco from Marrakech',
+		title: 'Morocco Desert Tours from Marrakech',
 		subtitle:
 			'Private Sahara desert tours from Marrakech: camel treks, luxury desert camps and Erg Chebbi dunes. 2 to 4-day options, fully tailor-made. Free quote.',
 		image: IMG.duneSunset,
 		intro:
-			'A Sahara desert tour from Marrakech takes you across the High Atlas Mountains to the dunes of Erg Chebbi, with an overnight stay in a private desert camp, sunset and sunrise camel treks, and stops at the Ait Benhaddou kasbah and Dades Gorges along the way. Our desert tours Morocco packages range from a fast-paced 3-day express version to the classic 4-day circuit with two full days at the dunes — every one is private, with your own vehicle and driver-guide throughout.',
+			'Looking for the best Morocco desert tours? A Sahara desert tour from Marrakech takes you across the High Atlas Mountains to the dunes of Erg Chebbi, with an overnight stay in a private desert camp, sunset and sunrise camel treks, and stops at the Ait Benhaddou kasbah and Dades Gorges along the way. Our desert tours Morocco packages range from a fast-paced 3-day express version to the classic 4-day circuit with two full days at the dunes — every one is private, with your own vehicle and driver-guide throughout.',
 		comparisonHeading: '2, 3 or 4 Days — Which Desert Tour Is Right for You?',
 		comparisonIntro:
 			'Every one of our Sahara circuits ends at the same place — the dunes of Erg Chebbi near Merzouga, Morocco\'s tallest and most photographed dune field — but how you get there and how long you stay changes the trip. Here\'s how the durations compare:',
@@ -101,9 +101,9 @@ export const TOUR_COLLECTIONS = [
 	{
 		routeKey: 'guidedTours',
 		categoryKey: 'guided-tours',
-		title: 'Morocco Guided City Tours',
-		subtitle: 'Half-day and evening tours led by an expert local guide, on foot in the medina.',
+		title: 'Guided Morocco Tours — Marrakech & Fes',
+		subtitle: 'Guided Morocco tours on foot with an expert local guide — half-day and evening walking tours through the medina, souks and palaces.',
 		image: IMG.guide,
-		intro: 'A local storyteller at your side through the souks, palaces and hidden corners of the medina.',
+		intro: 'Looking for guided Morocco tours led by someone who actually knows the city? Every tour below is a local storyteller at your side through the souks, palaces and hidden corners of the medina — on foot, in a small group or fully private, with the pace set by your interests rather than a fixed script.',
 	},
 ];

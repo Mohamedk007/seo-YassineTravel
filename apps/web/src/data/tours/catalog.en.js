@@ -604,6 +604,7 @@ export const TOURS = [
 			['Can we go inside the Hassan II Mosque?', 'The exterior visit is included; the interior requires a separate guided tour ticket (one of the only mosques in Morocco open to non-Muslim visitors), available as an add-on.'],
 			['Is Casablanca worth a day trip if I\'m only in Morocco briefly?', 'It suits travellers curious about Morocco\'s modern economic capital and its Art Deco architecture — if your time is limited, Marrakech\'s own sights may be a higher priority.'],
 			['Do we see the Royal Palace up close?', 'The Royal Palace is viewed from the outside only, as is standard — it\'s not open to public entry.'],
+			['Are there Morocco tours that start in Casablanca instead of just visiting on a day trip?', 'Yes — several of our multi-day circuits (7, 8 and 12 days) depart directly from Casablanca, useful if you\'re flying into Mohammed V Airport rather than Marrakech; this day trip suits travellers already based in Marrakech who just want to see Casablanca itself.'],
 		],
 	},
 	{
