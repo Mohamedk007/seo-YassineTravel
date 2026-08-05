@@ -75,6 +75,18 @@ export const TOUR_COLLECTIONS = [
 		image: IMG.atlas,
 		intro:
 			'À la recherche des meilleures excursions à la journée depuis Marrakech ? Chaque excursion ci-dessous part et revient le jour même, avec transport privé climatisé, prise en charge à l\'hôtel et un guide local expert — pas besoin de faire vos valises. Du ksar doré d\'Aït Ben Haddou aux cascades d\'Ouzoud et au port atlantique d\'Essaouira, voici un guide rapide pour choisir la bonne excursion pour votre séjour à Marrakech.',
+		comparisonHeading: 'Quelle Excursion depuis Marrakech Vous Convient ?',
+		comparisonIntro:
+			'Chaque excursion ci-dessous part et revient le jour même depuis Marrakech — le vrai choix porte sur le paysage et le rythme que vous recherchez. Voici comment comparer les options les plus demandées :',
+		comparisonRows: [
+			{ duration: 'Montagnes de l\'Atlas / Imlil', bestFor: 'Randonneurs et amateurs de paysages de montagne, trajet le plus court du groupe', whatYouSee: 'Villages berbères, randonnées en vallée, sommets enneigés selon la saison', camp: 'Excursion à la journée uniquement, sans nuitée' },
+			{ duration: 'Désert d\'Agafay', bestFor: 'Un paysage désertique sans le long trajet jusqu\'au Sahara', whatYouSee: 'Dunes du désert rocailleux, balade à dos de chameau, vues au coucher du soleil — l\'option "désert" la plus proche de la ville', camp: 'Excursion à la journée uniquement, sans nuitée' },
+			{ duration: 'Essaouira', bestFor: 'Paysage côtier et changement de rythme par rapport à la ville rouge', whatYouSee: 'Remparts atlantiques, port de pêche, médina bleue et blanche', camp: 'Trajet le plus long du groupe (environ 2h30 à 3h aller)' },
+			{ duration: 'Aït Ben Haddou', bestFor: 'Amateurs d\'histoire et de lieux de tournage, trajet modéré', whatYouSee: 'Ksar classé UNESCO, paysages du col du Tizi n\'Tichka', camp: 'Excursion à la journée uniquement, sans nuitée' },
+			{ duration: 'Cascades d\'Ouzoud', bestFor: 'Nature et photographie, paysage plus vert et plus léger', whatYouSee: 'Les plus hautes cascades du Maroc, singes magots sauvages', camp: 'Excursion à la journée uniquement, sans nuitée' },
+		],
+		comparisonNote:
+			'Vous hésitez sur le choix qui convient à votre séjour ? Indiquez vos centres d\'intérêt et votre rythme à votre concepteur de voyage, qui vous recommandera la meilleure option — ou combinera deux arrêts plus courts en une seule journée lorsque l\'itinéraire le permet.',
 	},
 	{
 		routeKey: 'excursions',

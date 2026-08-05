@@ -75,6 +75,18 @@ export const TOUR_COLLECTIONS = [
 		image: IMG.atlas,
 		intro:
 			"Looking for the best day trips from Marrakech? Every excursion below departs and returns the same day, with private air-conditioned transport, hotel pickup and an expert local guide — no need to pack a bag. From the rose-gold kasbah of Ait Ben Haddou to the cascading Ouzoud Waterfalls and the Atlantic port of Essaouira, here's a quick guide to choosing the right day trip for your Marrakech stay.",
+		comparisonHeading: 'Which Marrakech Day Trip Is Right for You?',
+		comparisonIntro:
+			"Every day trip below leaves and returns the same day from Marrakech, so the real choice is what kind of landscape and pace you want. Here's how the most popular options compare:",
+		comparisonRows: [
+			{ duration: 'Atlas Mountains / Imlil', bestFor: 'Hikers and mountain scenery, shortest drive of the group', whatYouSee: 'Berber villages, valley walks, snow-capped peaks in season', camp: 'Day trip only, no overnight' },
+			{ duration: 'Agafay Desert', bestFor: 'A desert landscape without the long drive to the Sahara', whatYouSee: 'Rocky desert dunes, camel ride, sunset views — closest "desert" option to the city', camp: 'Day trip only, no overnight' },
+			{ duration: 'Essaouira', bestFor: 'Coastal scenery and a change of pace from the Red City', whatYouSee: 'Atlantic ramparts, fishing port, blue-and-white medina', camp: 'Longest drive of the group (~2.5–3 hours each way)' },
+			{ duration: 'Ait Ben Haddou', bestFor: 'History and film-location fans, moderate drive', whatYouSee: 'UNESCO kasbah, Tizi n\'Tichka pass scenery', camp: 'Day trip only, no overnight' },
+			{ duration: 'Ouzoud Waterfalls', bestFor: 'Nature and photography, a lighter, greener landscape', whatYouSee: 'Morocco\'s tallest waterfalls, wild Barbary macaques', camp: 'Day trip only, no overnight' },
+		],
+		comparisonNote:
+			'Not sure which fits your stay? Tell your trip designer your interests and pace, and they\'ll recommend the best match — or combine two shorter stops into one day where the route allows it.',
 	},
 	{
 		routeKey: 'excursions',
