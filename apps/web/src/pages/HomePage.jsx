@@ -46,7 +46,6 @@ export default function HomePage() {
       <Seo
         image={IMG.duneSunset}
         preloadImage
-        preconnectMaps
         breadcrumbItems={[{ routeKey: 'home' }]}
         structuredData={[
           buildFaqSchema(FAQS),
