@@ -13,6 +13,8 @@ import luxcamp480 from './luxury-desert-camp-morocco-480w.jpg';
 import luxcamp900 from './luxury-desert-camp-morocco-900w.jpg';
 import duneSunset from './sahara-desert-dunes-sunset-morocco.webp';
 import riad from './luxury-riad-courtyard-marrakech.webp';
+import riad480 from './luxury-riad-courtyard-marrakech-480w.jpg';
+import riad900 from './luxury-riad-courtyard-marrakech-900w.jpg';
 import tagine from './traditional-moroccan-tagine.webp';
 import chefchaouen from './chefchaouen-blue-city-morocco.webp';
 import marrakech from './marrakech-medina-rooftops.webp';
@@ -72,6 +74,8 @@ export const images = {
 	luxcamp900,
 	duneSunset,
 	riad,
+	riad480,
+	riad900,
 	tagine,
 	chefchaouen,
 	marrakech,
