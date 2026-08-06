@@ -7,6 +7,19 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!--
+			Preload the two "latin" body/heading font files (the variants every
+			English-reading visitor's browser actually needs on first paint).
+			Without this, the browser can't discover them until it has fetched
+			and parsed index-*.css, turning HTML -> JS -> CSS -> font into a
+			serial waterfall (flagged as a critical request chain by PageSpeed
+			Insights). Preloading lets the font requests start in parallel with
+			the CSS instead of after it. Vite rewrites these relative hrefs to
+			the hashed build output, same as any other referenced asset.
+		-->
+		<link rel="preload" as="font" type="font/woff2" href="./src/fonts/dm-sans-latin.woff2" crossorigin />
+		<link rel="preload" as="font" type="font/woff2" href="./src/fonts/fraunces-normal-1.woff2" crossorigin />
 		<!--
 			Static fallbacks only. <Seo /> (src/seo/Seo.jsx) replaces the title,
 			description and robots tag on every route via react-helmet-async; these
