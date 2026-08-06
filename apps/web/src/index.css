@@ -101,3 +101,13 @@ body {
   .reveal, .reveal.in-view { opacity: 1 !important; animation: none !important; }
   .animate-marquee { animation: none; }
 }
+
+/* Iubenda's "Your Privacy Choices" widget is injected client-side after
+   its (deferred) script loads. Without this it lands in normal document
+   flow for a moment and pushes surrounding content down, showing up as
+   layout shift (CLS) in PageSpeed Insights. Pinning it out of flow from
+   the moment it appears keeps it from ever affecting layout. */
+.iub__us-widget {
+  position: fixed !important;
+  bottom: 0;
+}
