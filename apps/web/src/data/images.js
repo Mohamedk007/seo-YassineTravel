@@ -27,6 +27,8 @@ export const IMG = {
 	luxCamp900: images.luxcamp900,
 	guide480: images.guide480,
 	guide900: images.guide900,
+	riad480: images.riad480,
+	riad900: images.riad900,
 	kasbah: images.kasbah,
 	atlas: images.atlas,
 	Essaouira1: images.Essaouira,
@@ -136,6 +138,15 @@ export const IMG_META = {
 			en: 'Courtyard of a luxury riad in Marrakech',
 			fr: 'Patio d’un riad de luxe à Marrakech',
 		},
+		// Same dimensions as luxCamp above, same fix: rendered with
+		// sizes="100vw" as a full-bleed section background, so without a
+		// srcset every visitor — including mobile — downloaded the full
+		// 1216w original (141KB) regardless of how small the image actually
+		// renders on their screen.
+		srcset: [
+			{ src: images.riad480, width: 480 },
+			{ src: images.riad900, width: 900 },
+		],
 	},
 	tagine: {
 		width: 1216,
