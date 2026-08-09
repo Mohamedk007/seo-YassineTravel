@@ -1,7 +1,7 @@
 // Relative imports only — see the note in seo.config.js; this file is also on
 // buildSeoHead()'s dependency path, run directly under plain Node.
 import { CONTACT } from '../data/contact.js';
-import { SITE_BRAND } from '../data/site-config.js';
+import { SITE_BRAND, SOCIAL_LINKS } from '../data/site-config.js';
 import { TRIPADVISOR } from '../data/tripadvisor.js';
 import { SEO_CONFIG, getSeoDefaults } from './seo.config.js';
 import { DEFAULT_LANGUAGE, SITE_ORIGIN, absoluteUrl, assetUrl, resolveLanguage } from './utils.js';
@@ -40,12 +40,10 @@ export function buildOrganizationSchema(lang = DEFAULT_LANGUAGE) {
 			contactType: 'customer service',
 			availableLanguage: ['en', 'fr', 'ar'],
 		},
-		// Only the TripAdvisor profile is a real, verified URL — the social
-		// links in site-config.js's FOOTER_CONFIG are still placeholder '#'
-		// values, and adding those to sameAs would point crawlers at a broken
-		// link and misrepresent a real trust signal, so they're deliberately
-		// left out until they point somewhere real.
-		sameAs: [TRIPADVISOR.profileUrl],
+		// Real, verified profile URLs only — TripAdvisor plus the social
+		// accounts confirmed by the client. Never add a placeholder '#' here:
+		// a broken sameAs link misrepresents a real trust signal to crawlers.
+		sameAs: [TRIPADVISOR.profileUrl, SOCIAL_LINKS.instagram, SOCIAL_LINKS.facebook, SOCIAL_LINKS.tiktok],
 	};
 }
 

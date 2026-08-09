@@ -10,6 +10,14 @@ import { SITE_BRAND, getFooterConfig, getSiteCopy } from '@/data/site-config';
 import { useLocale } from '@/i18n/LocaleContext';
 import { Newsletter } from './LeadForm';
 
+function TikTokIcon({ className }) {
+	return (
+		<svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+			<path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" />
+		</svg>
+	);
+}
+
 function FooterCol({ title, links, t }) {
 	return (
 		<div>
@@ -60,11 +68,14 @@ export function Footer() {
 						<span className="text-sm text-white/70">{SITE_COPY.reviewSummaryCompact}</span>
 					</div>
 					<div className="mt-4 flex gap-3">
-						<a href={FOOTER_CONFIG.socialLinks.instagram} aria-label="Instagram" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
+						<a href={FOOTER_CONFIG.socialLinks.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
 							<Instagram className="h-5 w-5" />
 						</a>
-						<a href={FOOTER_CONFIG.socialLinks.facebook} aria-label="Facebook" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
+						<a href={FOOTER_CONFIG.socialLinks.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
 							<Facebook className="h-5 w-5" />
+						</a>
+						<a href={FOOTER_CONFIG.socialLinks.tiktok} target="_blank" rel="noreferrer" aria-label="TikTok" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
+							<TikTokIcon className="h-5 w-5" />
 						</a>
 						<a href={waLink()} aria-label="WhatsApp" className="rounded-full bg-white/10 p-2 hover:bg-white/20">
 							<MessageCircle className="h-5 w-5" />

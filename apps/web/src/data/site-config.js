@@ -65,16 +65,22 @@ const PAGE_SHELL_CONFIG_BY_LANG = {
 	},
 };
 
+export const SOCIAL_LINKS = {
+	instagram: 'https://www.instagram.com/travel.yassine',
+	facebook: 'https://www.facebook.com/share/18yb3wER35/?mibextid=wwXIfr',
+	tiktok: 'https://www.tiktok.com/@yasine.travel',
+};
+
 const FOOTER_CONFIG_BY_LANG = {
 	en: {
 		newsletterTitle: 'Get insider Morocco travel tips',
 		newsletterDescription: 'Seasonal guides, hidden riads and members-only offers.',
-		socialLinks: { instagram: '#', facebook: '#' },
+		socialLinks: SOCIAL_LINKS,
 	},
 	fr: {
 		newsletterTitle: 'Recevez nos conseils de voyage sur le Maroc',
 		newsletterDescription: 'Guides saisonniers, riads secrets et offres réservées aux membres.',
-		socialLinks: { instagram: '#', facebook: '#' },
+		socialLinks: SOCIAL_LINKS,
 	},
 };
 
