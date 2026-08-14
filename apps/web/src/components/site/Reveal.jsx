@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export function Reveal({ children, className = '', delay = 0, as: Tag = 'div' }) {
+export function Reveal({ children, className = '', delay = 0, as: Tag = 'div', variant = 'fade' }) {
 	const ref = useRef(null);
 
 	useEffect(() => {
@@ -21,8 +21,10 @@ export function Reveal({ children, className = '', delay = 0, as: Tag = 'div' })
 		return () => observer.disconnect();
 	}, []);
 
+	const revealClass = variant === 'morph' ? 'reveal-morph' : 'reveal';
+
 	return (
-		<Tag ref={ref} style={{ animationDelay: `${delay}ms` }} className={`reveal ${className}`}>
+		<Tag ref={ref} style={{ animationDelay: `${delay}ms` }} className={`${revealClass} ${className}`}>
 			{children}
 		</Tag>
 	);

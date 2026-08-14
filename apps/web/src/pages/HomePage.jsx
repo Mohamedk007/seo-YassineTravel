@@ -115,19 +115,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BENEFITS */}
-      <section className="mx-auto max-w-[90rem] px-5 py-20 lg:px-8">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {HOME_BENEFITS.map((benefit, i) => {
-            const Icon = HOME_BENEFIT_ICONS[benefit.icon];
-            return (
-            <Reveal key={benefit.title} delay={i * 80} className="rounded-2xl border border-border bg-card p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"><Icon className="h-6 w-6" /></div>
-              <h3 className="mt-4 font-display text-xl font-semibold">{benefit.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{benefit.text}</p>
-            </Reveal>
-            );
-          })}
+      {/* GOOGLE REVIEWS + TRUST BADGES + BENEFITS */}
+      <section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
+        <div className="grid items-center gap-8 rounded-3xl bg-card p-8 shadow-sm ring-1 ring-border md:grid-cols-[auto_1fr] md:p-12">
+          <div className="flex flex-col items-center text-center md:h-full md:justify-center md:border-r md:border-border md:pr-12">
+            <div className="font-display text-6xl font-semibold text-primary">{HOME_PAGE.trustSummary.rating}</div>
+            <Stars className="mt-1 justify-center" />
+            <p className="mt-2 text-sm text-muted-foreground">{HOME_PAGE.trustSummary.description}<br />{HOME_PAGE.trustSummary.subdescription}</p>
+          </div>
+          <div className="space-y-6">
+            {/* Row 1: award badges */}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {AWARDS.map((a) => (
+                <div key={a} className="flex items-center gap-3 rounded-xl border border-border bg-background p-4">
+                  <Award className="h-8 w-8 shrink-0 text-gold" />
+                  <span className="text-sm font-medium">{a}</span>
+                </div>
+              ))}
+            </div>
+            {/* Row 2: benefits */}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {HOME_BENEFITS.map((benefit, i) => {
+                const Icon = HOME_BENEFIT_ICONS[benefit.icon];
+                return (
+                <Reveal key={benefit.title} delay={i * 150} variant="morph" className="rounded-xl border border-border bg-background p-5 transition hover:-translate-y-1 hover:shadow-lg">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Icon className="h-5 w-5" /></div>
+                  <h3 className="mt-3 font-display text-lg font-semibold">{benefit.title}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{benefit.text}</p>
+                </Reveal>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -232,25 +251,6 @@ export default function HomePage() {
                   <div><div className="text-sm font-semibold">{r.name}</div><div className="text-xs text-muted-foreground">{r.country} · {r.tour}</div></div>
                 </div>
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GOOGLE REVIEWS + TRUST BADGES */}
-      <section className="mx-auto max-w-[90rem] px-5 py-16 lg:px-8">
-        <div className="grid items-center gap-8 rounded-3xl bg-card p-8 shadow-sm ring-1 ring-border md:grid-cols-[auto_1fr] md:p-12">
-          <div className="text-center md:border-r md:border-border md:pr-12">
-            <div className="font-display text-6xl font-semibold text-primary">{HOME_PAGE.trustSummary.rating}</div>
-            <Stars className="mt-1 justify-center" />
-            <p className="mt-2 text-sm text-muted-foreground">{HOME_PAGE.trustSummary.description}<br />{HOME_PAGE.trustSummary.subdescription}</p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {AWARDS.map((a) => (
-              <div key={a} className="flex items-center gap-3 rounded-xl border border-border bg-background p-4">
-                <Award className="h-8 w-8 shrink-0 text-gold" />
-                <span className="text-sm font-medium">{a}</span>
-              </div>
             ))}
           </div>
         </div>
