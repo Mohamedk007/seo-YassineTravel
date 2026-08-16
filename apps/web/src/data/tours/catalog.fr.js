@@ -587,7 +587,7 @@ export const TOURS = [
 			['Midi', 'Essentiels de la ville', 'Visite guidée de la mosquée Hassan II, de la Corniche et du quartier Habous.'],
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
-		gallery: [IMG.casablancaDayTrip],
+		gallery: [IMG.casablancaDayTrip, IMG.marrakech],
 		included: [
 			'Véhicule privé climatisé et chauffeur-guide',
 			'Prise en charge et retour à l\'hôtel à Marrakech',
@@ -630,7 +630,7 @@ export const TOURS = [
 			['Midi', 'Agadir', 'Temps libre sur la plage, à la Marina et au point de vue de la Kasbah.'],
 			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
 		],
-		gallery: [IMG.agadir],
+		gallery: [IMG.agadir, IMG.atlas],
 		included: [
 			'Véhicule privé climatisé et chauffeur-guide',
 			'Prise en charge et retour à l\'hôtel à Marrakech',

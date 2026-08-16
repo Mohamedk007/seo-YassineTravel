@@ -587,7 +587,7 @@ export const TOURS = [
 			['Midday', 'City Highlights', 'Guided visit of the Hassan II Mosque, the Corniche and the Habous district.'],
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
-		gallery: [IMG.casablancaDayTrip],
+		gallery: [IMG.casablancaDayTrip, IMG.marrakech],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Hotel pickup and drop-off in Marrakech',
@@ -631,7 +631,7 @@ export const TOURS = [
 			['Midday', 'Agadir', 'Free time on the beach, the Marina and the Kasbah viewpoint.'],
 			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
 		],
-		gallery: [IMG.agadir],
+		gallery: [IMG.agadir, IMG.atlas],
 		included: [
 			'Private air-conditioned vehicle & driver-guide',
 			'Hotel pickup and drop-off in Marrakech',

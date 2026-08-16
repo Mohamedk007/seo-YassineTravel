@@ -25,7 +25,9 @@ export function buildOrganizationSchema(lang = DEFAULT_LANGUAGE) {
 		description: getSeoDefaults(lang).description,
 		logo: {
 			'@type': 'ImageObject',
-			url: assetUrl(SEO_CONFIG.defaultImage),
+			url: assetUrl(SEO_CONFIG.logoImage),
+			width: 128,
+			height: 131,
 		},
 		address: {
 			'@type': 'PostalAddress',
