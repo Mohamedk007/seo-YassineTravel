@@ -40,6 +40,11 @@ export const SEO_CONFIG = {
 	// og:image/twitter:image get cached by crawlers for a long time; pointing at
 	// a hashed client asset would 404 the moment that hash changes on a rebuild.
 	defaultImage: '/images/sahara-desert-dunes-sunset-morocco.webp',
+	// The brand mark itself (not a share photo) — used for Organization.logo in
+	// JSON-LD, which Google surfaces in the Knowledge Panel and search result
+	// branding. A stable, non-hashed copy under /public/images, same reasoning
+	// as defaultImage above.
+	logoImage: '/images/yassine-travel-logo.jpg',
 	// Google truncates well before these; they exist to catch outliers, not to
 	// clip every title.
 	titleMaxLength: 65,
