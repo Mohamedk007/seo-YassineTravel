@@ -172,6 +172,8 @@ export const TOURS = [
 		price: 120,
 		image: IMG.atlas,
 		tagline: 'Pick your destination and book directly — Atlas Mountains, Ouzoud Waterfalls, Essaouira or Agafay Desert, back by evening. See our full day trip comparison guide if you\'re still deciding.',
+		overview:
+			'This page exists to help you choose, not to be a day trip in its own right — every day trip from Marrakech listed below is its own private itinerary, with its own driver-guide, price and route. Use the comparison table to weigh up distance, best-for and what you\'ll actually see, then open the specific trip that matches what you want: mountains and Berber villages, the Atlantic coast, waterfalls, or a desert landscape close to the city.',
 		highlights: [
 			'Choice of Atlas Mountains, Essaouira coast, or Agafay Desert',
 			'Hotel pickup and drop-off included',
@@ -179,9 +181,9 @@ export const TOURS = [
 			'Licensed local guide',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech, scenic route to your chosen destination.'],
-			['Midday', 'Guided Experience', 'Lunch, walking tour, and free time.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Step 1', 'Compare', 'Use the table above to weigh distance, duration and what each trip actually shows you.'],
+			['Step 2', 'Pick your route', 'Open the specific day trip page for full pricing, itinerary and FAQs.'],
+			['Step 3', 'Book directly', 'Confirm your date on WhatsApp or by phone — no third-party booking fees.'],
 		],
 		gallery: [IMG.marrakech, IMG.couple, IMG.kasbah],
 		included: [
@@ -216,6 +218,8 @@ export const TOURS = [
 		image: IMG.Essaouira1,
 		tagline:
 			'A private Essaouira day trip from Marrakech: argan groves, the UNESCO medina, Skala du Port and the Atlantic coast. Free camel or horse ride included.',
+		overview:
+			'Essaouira is the coastal counterpoint to Marrakech\'s inland heat and crowds — a working fishing port with an 18th-century Portuguese-built rampart, a walled medina small enough to explore without a map, and a fraction of the tourist traffic of the Red City. This day trip covers the roughly 2.5-hour drive each way through argan groves (with a stop where semi-wild goats climb the trees for the fruit), a guided walk through the medina and Skala du Port, and free time on the Atlantic beach with a camel or horse ride included, not sold as an add-on.',
 		highlights: [
 			'Scenic drive through argan tree groves and spotting tree-climbing goats',
 			'Explore the charming Medina of Essaouira (UNESCO World Heritage site)',
@@ -227,9 +231,10 @@ export const TOURS = [
 			'Experience Essaouiras unique blue and white architecture',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech, scenic route to your chosen destination.'],
-			['Midday', 'Guided Experience', 'Lunch, walking tour, and free time.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Morning', 'Depart Marrakech', 'Pickup at your riad or hotel, then the drive west through argan groves — a stop for the tree-climbing goats when the herders are out.'],
+			['Midday', 'Skala du Port & Medina', 'Guided walk along the 18th-century sea bastion and through the blue-and-white medina alleys to the fishing harbour.'],
+			['Afternoon', 'Beach & Free Time', 'Camel or horse ride along the Atlantic beach, then free time to browse the art galleries and souks before the drive back.'],
+			['Evening', 'Return to Marrakech', 'Private transfer back to your hotel, arriving in the early evening.'],
 		],
 		gallery: [IMG.Essaouira1, IMG.marrakech],
 		included: [
@@ -359,6 +364,8 @@ export const TOURS = [
 		price: 100,
 		image: IMG.aitBenhaddouVillage,
 		tagline: 'Explore the UNESCO-listed Ait Ben Haddou (Ait Benhaddou) kasbah on a private day trip from Marrakech across the High Atlas.',
+		overview:
+			'Ait Ben Haddou is Morocco\'s best-preserved ksar — a fortified cluster of ochre-red earthen buildings on the old caravan route between the Sahara and Marrakech, and a filming location for Gladiator, Game of Thrones and Lawrence of Arabia. This day trip crosses the Tizi n\'Tichka pass, the highest paved road in the High Atlas, before a guided walk through the kasbah\'s mudbrick alleyways and up to the hilltop granary for the classic panoramic view. It suits travellers based in Marrakech who want to see the kasbah without committing to a multi-day desert circuit that already passes through it.',
 		highlights: [
 			'Guided tour of the historic Ait Ben Haddou kasbah',
 			"Scenic drive over the Tizi n'Tichka pass in the High Atlas",
@@ -366,9 +373,10 @@ export const TOURS = [
 			'Private, air-conditioned vehicle with hotel pickup and drop-off',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', "Depart Marrakech and cross the High Atlas via the Tizi n'Tichka pass."],
-			['Midday', 'Ait Ben Haddou', 'Guided walk through the fortified kasbah and its ochre-coloured alleys.'],
-			['Evening', 'Return', 'Comfortable transfer back to your Marrakech hotel.'],
+			['Morning', 'Depart Marrakech', "Pickup and the drive south, climbing the Tizi n'Tichka pass with stops at viewpoints over the High Atlas."],
+			['Midday', 'Ait Ben Haddou Kasbah', 'Cross the footbridge into the ksar and walk the mudbrick alleys with your guide, ending at the hilltop granary viewpoint.'],
+			['Afternoon', 'Free Time & Shops', 'Browse the small workshops selling local crafts and fossils before starting the drive back over the pass.'],
+			['Evening', 'Return to Marrakech', 'Arrive back at your hotel in the early evening.'],
 		],
 		gallery: [IMG.aitBenhaddouVillage, IMG.kasbah, IMG.atlas],
 		included: [
@@ -447,6 +455,8 @@ export const TOURS = [
 		price: 70,
 		image: IMG.ouzoud,
 		tagline: "Discover the Ouzoud Waterfalls, Morocco's tallest, on a scenic day trip from Marrakech.",
+		overview:
+			'Ouzoud is Morocco\'s tallest waterfall — a roughly 110-metre tiered cascade in the Grand Atlas foothills, where the Berber village of Tanaghmeilt sits at the top and wild Barbary macaques live in the olive groves along the walking paths. This day trip is the greenest and least crowded of the Marrakech excursions: a guided walk down through the terraces to the pools at the base, with the option to take a small boat close to the main cascade for photos.',
 		highlights: [
 			'Discover the cascading Ouzoud Waterfalls',
 			'Wander through the village of Tanaghmeilt at the top of the falls',
@@ -454,9 +464,10 @@ export const TOURS = [
 			'Optional boat ride to the base of the falls',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech, scenic route to Ouzoud.'],
-			['Midday', 'The Waterfalls', 'Guided walk down to the falls, with free time by the pools below.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Morning', 'Depart Marrakech', 'Pickup and the drive north into the Grand Atlas foothills, arriving at Tanaghmeilt village.'],
+			['Midday', 'Down to the Falls', 'Guided walk down the terraced paths past the olive groves — a good stretch for macaque sightings — to the pools at the base.'],
+			['Afternoon', 'Falls & Optional Boat Ride', 'Free time by the water, with an optional boat ride close to the main cascade before the walk back up.'],
+			['Evening', 'Return to Marrakech', 'Transfer back to your hotel.'],
 		],
 		gallery: [IMG.ouzoud, IMG.atlas],
 		included: [
@@ -490,6 +501,8 @@ export const TOURS = [
 		price: 75,
 		image: IMG.ourika,
 		tagline: "Discover the Ourika Valley's waterfalls, Kasbah Bab Ourika viewpoint and Berber villages on a day trip from Marrakech.",
+		overview:
+			'The Ourika Valley is the closest genuine mountain scenery to Marrakech — a green river valley running up into the High Atlas, dotted with Berber villages, roadside argan-oil cooperatives and terraced fields. This day trip includes the walk to the Setti Fatma waterfalls, a stop at the hilltop Kasbah Bab Ourika for one of the best panoramic views near the city, and a traditional Moroccan lunch overlooking the valley — included here, unlike most of the other Marrakech day trips. It\'s a gentler pace than Imlil, making it a solid pick for families.',
 		highlights: [
 			'Scenic drive through the Ourika Valley',
 			'Visit the Ourika waterfalls and surrounding Berber villages',
@@ -497,9 +510,10 @@ export const TOURS = [
 			'Traditional Moroccan lunch with valley views',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech, scenic route into the Ourika Valley.'],
-			['Midday', 'Valley & Waterfalls', 'Walk to the waterfalls and explore the surrounding Berber villages.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Morning', 'Depart Marrakech', 'Pickup and the drive south into the Ourika Valley, following the river road past argan-oil cooperatives.'],
+			['Midday', 'Setti Fatma & Waterfalls', 'Short walk to the Setti Fatma waterfalls, then a stop through the surrounding Berber villages.'],
+			['Afternoon', 'Kasbah Bab Ourika & Lunch', 'Traditional Moroccan lunch with valley views, followed by the panoramic viewpoint at Kasbah Bab Ourika.'],
+			['Evening', 'Return to Marrakech', 'Transfer back to your hotel.'],
 		],
 		gallery: [IMG.ourika, IMG.atlas],
 		included: [
@@ -533,6 +547,8 @@ export const TOURS = [
 		price: 85,
 		image: IMG.imlil,
 		tagline: 'Discover Imlil, a High Atlas village at the foot of Mount Toubkal, on a day trip from Marrakech.',
+		overview:
+			'Imlil sits at around 1,740m in the High Atlas, at the trailhead for Mount Toubkal — North Africa\'s highest peak — and is noticeably cooler than Marrakech even in summer. This day trip doesn\'t attempt the multi-day Toubkal climb; it\'s a village and valley visit, walking through Imlil\'s stone-and-mudbrick lanes and the surrounding Berber hamlets, with an optional mule ride, the traditional way locals still move goods into the higher valleys.',
 		highlights: [
 			'Scenic drive across the High Atlas Mountains',
 			"Explore Imlil's Berber villages and local markets",
@@ -540,9 +556,10 @@ export const TOURS = [
 			'Lunch with mountain views',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech, scenic drive into the High Atlas.'],
-			['Midday', 'Imlil Village', 'Explore Imlil and its surrounding Berber villages, optional mule ride.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Morning', 'Depart Marrakech', 'Pickup and the climb into the High Atlas via Asni, with mountain viewpoints along the way.'],
+			['Midday', 'Imlil Village', 'Walk through Imlil\'s lanes and the walnut groves toward the surrounding Berber hamlets, with an optional mule ride.'],
+			['Afternoon', 'Lunch & Free Time', 'Lunch with mountain views, then free time before the descent back to Marrakech.'],
+			['Evening', 'Return to Marrakech', 'Transfer back to your hotel.'],
 		],
 		gallery: [IMG.imlil, IMG.atlas],
 		included: [
@@ -576,6 +593,8 @@ export const TOURS = [
 		price: 90,
 		image: IMG.casablancaDayTrip,
 		tagline: 'Discover the Hassan II Mosque and Atlantic Corniche on a day trip to Casablanca from Marrakech.',
+		overview:
+			"Casablanca is Morocco's modern economic capital, not a medina town — the draw here is Art Deco-era architecture, the Atlantic Corniche, and the Hassan II Mosque, one of the only mosques in Morocco open to non-Muslim visitors on a guided interior tour. At around 2.5-3 hours each way, this is one of the longer day trips from Marrakech, so it suits travellers specifically curious about the city rather than those with limited time who'd get more from Marrakech's own sights.",
 		highlights: [
 			'Visit the iconic Hassan II Mosque',
 			'Stroll along the Corniche and its Atlantic views',
@@ -583,9 +602,10 @@ export const TOURS = [
 			'See the Royal Palace from the outside',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech for the coastal city of Casablanca.'],
-			['Midday', 'City Highlights', 'Guided visit of the Hassan II Mosque, the Corniche and the Habous district.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Morning', 'Depart Marrakech', 'Early pickup for the drive north to Casablanca.'],
+			['Midday', 'Hassan II Mosque & Corniche', 'Guided exterior visit of the Hassan II Mosque (interior tour available as an add-on), then a walk along the Atlantic Corniche.'],
+			['Afternoon', 'Habous District & Royal Palace', 'Explore the Habous district\'s French-colonial-era medina, then pass the Royal Palace exterior.'],
+			['Evening', 'Return to Marrakech', 'Drive back, arriving in the evening.'],
 		],
 		gallery: [IMG.casablancaDayTrip, IMG.marrakech],
 		included: [
@@ -620,6 +640,8 @@ export const TOURS = [
 		price: 100,
 		image: IMG.agadir,
 		tagline: "Swap the medina for Agadir's golden beaches on a relaxed coastal day trip from Marrakech.",
+		overview:
+			'Agadir is a modern resort-style beach city, rebuilt after the 1960 earthquake, with long sandy beaches and none of the old-medina character of Essaouira — it\'s the pick for travellers who want beach time over old-town wandering. This day trip crosses the Atlas foothills to the coast for free time on the beach, a walk around the Marina, and the Kasbah viewpoint above the city, with fresh seafood available at the harbour if you want to eat locally rather than at your hotel.',
 		highlights: [
 			'Scenic drive through the Atlas foothills to the coast',
 			"Relax on Agadir's golden beaches",
@@ -627,9 +649,10 @@ export const TOURS = [
 			'Fresh seafood at a beachside restaurant',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech, scenic drive to the Atlantic coast.'],
-			['Midday', 'Agadir', 'Free time on the beach, the Marina and the Kasbah viewpoint.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Morning', 'Depart Marrakech', 'Pickup and the drive southwest across the Atlas foothills to the Atlantic coast.'],
+			['Midday', 'Beach & Marina', 'Free time on Agadir\'s beach, then a walk around the Marina.'],
+			['Afternoon', 'Kasbah Viewpoint', 'Drive up to the Kasbah viewpoint above the city for a panoramic view over the bay before heading back.'],
+			['Evening', 'Return to Marrakech', 'Transfer back to your hotel.'],
 		],
 		gallery: [IMG.agadir, IMG.atlas],
 		included: [
@@ -663,6 +686,8 @@ export const TOURS = [
 		price: 85,
 		image: IMG.ouirgane,
 		tagline: "Discover the Ouirgane Valley's terraced fields and Berber villages on a day trip from Marrakech.",
+		overview:
+			'Ouirgane is the quietest of the High Atlas valleys within day-trip range of Marrakech — fewer visitors than Imlil or Ourika, with terraced fields, olive and walnut groves, and Berber villages spread along the valley floor below Toubkal National Park. This day trip is built around that slower pace: village visits, an optional guided hike through the terraces for those who want to go deeper, and lunch in the valley, at your own expense so you can choose a local spot.',
 		highlights: [
 			'Scenic mountain drive through the Ouirgane Valley',
 			'Visit traditional Berber villages',
@@ -670,9 +695,10 @@ export const TOURS = [
 			'Traditional Moroccan lunch with valley views',
 		],
 		itinerary: [
-			['Morning', 'Pickup & Drive', 'Depart Marrakech, scenic drive into the Ouirgane Valley.'],
-			['Midday', 'Valley & Villages', 'Visit Berber villages, optional hike, traditional Moroccan lunch.'],
-			['Evening', 'Return', 'Comfortable transfer back to your hotel.'],
+			['Morning', 'Depart Marrakech', 'Pickup and the drive into the Ouirgane Valley via the Tichka road.'],
+			['Midday', 'Berber Villages', 'Visit villages along the valley floor, walking among the terraced fields and olive groves.'],
+			['Afternoon', 'Optional Hike & Lunch', 'Optional guided hike further into the terraces, plus free time for lunch at a local spot.'],
+			['Evening', 'Return to Marrakech', 'Transfer back to your hotel.'],
 		],
 		gallery: [IMG.ouirgane, IMG.atlas],
 		included: [

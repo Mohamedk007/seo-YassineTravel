@@ -1,0 +1,645 @@
+================================================================================
+YASSINE TRAVEL — INDEXING AUDIT REPORT
+Why yassinetravel.com isn't getting indexed
+================================================================================
+
+Site:      yassinetravel.com
+Prepared:  24 Aug 2026
+Window:    4-21 Aug 2026 (GSC export)
+Scope:     EN + FR, 142 content URLs
+
+--------------------------------------------------------------------------------
+HEADLINE NUMBERS (from live Google Search Console export)
+--------------------------------------------------------------------------------
+  132   Discovered - currently not indexed
+    1   Crawled - currently not indexed
+    9   Pages currently indexed
+  142   Content URLs across all sitemaps
+
+--------------------------------------------------------------------------------
+CORRECTION TO THE ORIGINAL BRIEF
+--------------------------------------------------------------------------------
+The GSC export shows the dominant problem is NOT "Crawled - currently not
+indexed" — that status holds exactly 1 page. 132 pages (97% of the issue) are
+"Discovered - currently not indexed": Google knows these URLs exist but has
+not crawled them at all yet. That is a crawl-priority / site-trust signal,
+not a "Google looked and rejected it" signal. The two have different fixes,
+so this report is built around the status the data actually shows.
+
+Also correcting the brief's assumption of an EN/FR/AR site: the codebase
+only supports EN and FR (SUPPORTED_LANGUAGES = ['en', 'fr']). No Arabic
+routes exist, live or in code. Two places DID falsely claim Arabic as a
+served language in structured data (schema.js's Organization contactPoint
+and AirportTransferDetailPage.jsx's Service availableLanguage, both
+'availableLanguage: [en, fr, ar]') — this has been fixed (Section 3.5); every
+other reference to 'ar' found in the codebase was a false-positive substring
+match (e.g. "car", "nearby"), not real Arabic-locale code.
+
+--------------------------------------------------------------------------------
+IMPLEMENTATION STATUS (as of this revision)
+--------------------------------------------------------------------------------
+All fixes in Sections 3 and 4 have been implemented in code, on branch
+fix/indexing-audit-remediation (pushed to origin; open a PR at
+https://github.com/Mohamedk007/seo-YassineTravel/pull/new/fix/indexing-audit-remediation),
+and verified against the project's existing automated checks
+(related-tours:check, tour-description-check, seo:check, airport:check, full
+production build, lint) — all passing. Nothing has been deployed to
+production yet; this branch is ready for review/merge. Section 8 (trust
+signals) is new in this revision and is a recommendation set, not yet
+implemented — it requires business decisions (which credentials to pursue,
+budget for outreach) that are the client's to make.
+
+================================================================================
+1. ROOT CAUSE
+================================================================================
+Nothing in the technical layer is blocking or misdirecting crawlers —
+robots.txt, meta robots, canonical tags, hreflang, and server-side rendering
+all check out clean across a full 144-URL sitemap sweep. Every page fetched
+returns HTTP 200 with unique titles, meta descriptions, H1s, and fully
+server-rendered content. That rules out the usual suspects for a young,
+low-authority site: this is a crawl-priority and content-density problem,
+not a technical block.
+
+Three compounding factors explain why Google is choosing not to spend crawl
+budget on 132 of ~142 pages:
+
+1. LOW SITE AUTHORITY / EARLY TRUST TIER
+   Only 9 of 142 pages are indexed and daily impressions are in the
+   single-to-low-double digits. Google throttles crawl frequency on sites
+   it hasn't yet built confidence in — this is the base rate the other two
+   factors compound on top of.
+
+2. A 31-PAGE TOUR CLUSTER WAS TEMPLATED — NOW REWRITTEN AROUND ITS OWN
+   TARGET QUERY [FIXED]
+   The 7-8 Marrakech day-trip pages shared 70-88% identical visible text
+   (verified by line-diffing live HTML) — identical itinerary structure,
+   identical inclusion/exclusion lists, one shared "Overview" sentence
+   template reused across all 31 tours. Only the H1, 3-4 highlight bullets,
+   and the FAQ block were genuinely unique per page. Each page's title and
+   tagline already implied a distinct target query (e.g. "Essaouira day trip
+   from Marrakech," "Day Trip to Ait Ben Haddou from Marrakech," "Ouzoud
+   Waterfalls... Morocco's tallest") — the body copy just didn't back that
+   query up with matching, page-specific detail. Every one of the 8 pages
+   (plus the marrakech-day-trips hub) now has an authored `overview`
+   paragraph and a real 4-step itinerary naming what's actually distinctive
+   about that destination — the UNESCO ramparts and argan groves for
+   Essaouira, the Tizi n'Tichka pass and film-location history for Ait Ben
+   Haddou, altitude and Toubkal-trailhead framing for Imlil, and so on —
+   in both EN and FR. See Section 4 for the full before/after per page.
+
+3. THAT SAME CLUSTER WAS INTERNALLY UNDER-LINKED [FIXED]
+   getRelatedTours() always returned the first three same-category tours in
+   array order, never rotated. Of the 10 day-trip tours, only the first 3
+   in the source file ever appeared in another page's "Related tours" widget
+   — the other 7 got exactly one inbound internal link sitewide: their own
+   card on the /day-trips listing page. Fixed by rotating the same-category
+   slice by each tour's own position in the catalog, so every tour in a
+   10-tour category gets picked as "related" somewhere instead of the same
+   2-3 tours absorbing all the inbound link equity. See Section 3.1.
+
+These three factors reinforce each other: a low-trust site is exactly the
+kind of site where Google's crawler is least forgiving of a thin,
+weakly-linked cluster — it deprioritizes crawling those pages rather than
+fetching and then rejecting them, which is why "Discovered" (132) dwarfs
+"Crawled" (1) rather than the reverse.
+
+================================================================================
+2. AFFECTED URLS
+================================================================================
+132 pages carry "Discovered - not indexed"; GSC's export does not break that
+status down by individual URL (it only does that for statuses with
+page-level detail, like the ones below). The rows below are the ones that
+can be named exactly, plus the highest-risk named cluster from the
+content/linking audit.
+
+URL / CLUSTER                                  GSC STATUS                        PROBLEM                                                          PRIORITY    ACTION
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+132 unnamed URLs (sitemap balance)             Discovered - not indexed          Not yet crawled at all                                           CRITICAL    Linking fixed; resubmit sitemap on deploy
+1 unnamed URL                                  Crawled - not indexed             Crawled, judged low-value                                        MEDIUM      Inspect in GSC, likely same cluster below
+2 unnamed URLs                                 Alternate w/ proper canonical     Correctly consolidated by Google                                 INFO        No action — working as intended
+1 unnamed URL                                  Page with redirect                Redirect target, correctly excluded                              INFO        No action unless unintended — confirm in GSC
+/en/tour/ait-benhaddou-day-trip                Not confirmed in GSC              was 88% text-identical to agadir-day-trip; 0 related-widget links   CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/agadir-day-trip                       Not confirmed in GSC              was same template cluster; 0 inbound related-widget links           CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/ourika-valley-day-trip                Not confirmed in GSC              was 83.5% overlap with Essaouira; 0 related-widget links            CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/imlil-day-trip                        Not confirmed in GSC              was 90.7% overlap with Ouirgane; 0 related-widget links             CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/casablanca-day-trip                   Not confirmed in GSC              was same template cluster; 0 inbound related-widget links           CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/ouirgane-day-trip                     Not confirmed in GSC              was 90.7% overlap with Imlil; 0 inbound related-widget links        CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/ouzoud-waterfalls-day-trip            Not confirmed in GSC              was same template cluster; 0 inbound related-widget links           CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/day-trip-to-essaouira-from-marrakech  Not confirmed in GSC              was byte-identical itinerary to marrakech-day-trips hub             CRITICAL    DONE — rewritten EN+FR, linking fixed
+/en/tour/marrakech-day-trips                   Not confirmed in GSC              Hub duplicated Essaouira's exact itinerary; price matched no child  HIGH        DONE — repositioned as a pointer to the real /day-trips comparison hub
+/, /en, /en/, /fr/                             Alternate w/ proper canonical     4 URLs serve byte-identical content; root slash doesn't 301      MEDIUM      Open — hosting-layer change, not shipped in this branch
+
+NOTE: the day-trip URLs above are not individually confirmed against GSC's
+per-URL data (that export wasn't available at this level of detail) —
+they're flagged because they're the strongest content/linking match for the
+132-page "Discovered" bucket. Recommend running URL Inspection on these 8
+specifically (see Section 8) to confirm.
+
+================================================================================
+3. TECHNICAL FIXES
+================================================================================
+Status: 3.1, 3.3, 3.4 and 3.5 are implemented on branch
+fix/indexing-audit-remediation and verified (build, lint, and the project's
+own automated checks all pass). 3.2 is a hosting-layer change outside this
+codebase and is not shipped here — it needs to be made in the Hostinger/hcdn
+configuration directly.
+
+--------------------------------------------------------------------------------
+3.1 Rotate the related-tours selection instead of always picking the first 3 [DONE]
+--------------------------------------------------------------------------------
+FILE: apps/web/src/data/tours/index.js — getRelatedTours()
+
+CURRENT:
+    const sameCategory = others.filter((entry) => entry.categoryKey === current.categoryKey);
+    const rest = others.filter((entry) => entry.categoryKey !== current.categoryKey);
+    return [...sameCategory, ...rest].slice(0, limit);
+
+CHANGE TO:
+    const sameCategory = others.filter((entry) => entry.categoryKey === current.categoryKey);
+    const rest = others.filter((entry) => entry.categoryKey !== current.categoryKey);
+    // Rotate the starting point by the current tour's position so every tour in a
+    // category gets picked as "related" somewhere, instead of the same first 3
+    // absorbing every inbound link and the rest going unlinked.
+    const startIndex = tours.findIndex((entry) => entry.slug === slug) % Math.max(sameCategory.length, 1);
+    const rotated = [...sameCategory.slice(startIndex), ...sameCategory.slice(0, startIndex)];
+    return [...rotated, ...rest].slice(0, limit);
+
+WHY: today, every page in a category shows the identical first-3-in-array
+related tours. In the 10-tour day-trips category, 7 tours never appear in
+anyone's related widget — their only inbound link sitewide is their own
+listing-page card. Rotating the start index by each tour's own position
+spreads inbound links across the whole category instead of concentrating
+them on 2-3 tours.
+
+--------------------------------------------------------------------------------
+3.2 Normalize the root and language-root trailing slash at the edge [OPEN]
+--------------------------------------------------------------------------------
+LOCATION: Hosting layer (Hostinger/hcdn) — not an application-code fix
+
+CURRENT:
+    /           -> 200 (duplicate of /en)
+    /en         -> 200 (canonical target)
+    /en/        -> 200 (duplicate, does not redirect)
+    /fr/        -> 200 (duplicate, does not redirect)
+
+CHANGE TO:
+    /           -> 301 -> /en
+    /en         -> 200 (canonical target, unchanged)
+    /en/        -> 301 -> /en
+    /fr/        -> 301 -> /fr
+
+WHY: every other route on the site correctly 301s a trailing slash to the
+clean URL (/en/about/ -> /en/about) except the bare root and the two
+language roots. The <Seo/> component already emits a correct
+self-referencing canonical on all four variants, so this isn't causing
+duplicate indexing — but it is 4 extra crawl events for zero benefit on a
+142-URL site where crawl budget is already the binding constraint. Low
+severity, cheap to fix, worth doing alongside the higher-priority items.
+
+--------------------------------------------------------------------------------
+3.3 Give LocalBusiness its own @id [DONE]
+--------------------------------------------------------------------------------
+FILE: apps/web/src/seo/schema.js — lines 70, 139
+
+WAS:
+    // buildTravelAgencySchema()
+    '@id': `${SITE_ORIGIN}/#localbusiness`
+
+    // buildLocalBusinessSchema()
+    '@id': `${SITE_ORIGIN}/#localbusiness`   // same id, different @type
+
+NOW:
+    // buildTravelAgencySchema()
+    '@id': `${SITE_ORIGIN}/#travelagency`
+
+    // buildLocalBusinessSchema()
+    '@id': `${SITE_ORIGIN}/#localbusiness`   // now the sole owner of this id
+
+WHY: both schema builders emitted the identical @id for two different @type
+declarations (TravelAgency vs LocalBusiness), on every single page
+site-wide. Per JSON-LD conventions one @id should resolve to one entity.
+Google's parser is generally tolerant of this, so it's unlikely to have been
+blocking indexing on its own — but it was a real correctness defect. The one
+cross-reference at schema.js:255 (buildTourSchema's offers.provider) still
+correctly points at #localbusiness (unchanged) — it references the more
+complete commercial entity (address/geo/opening hours), not the one that
+was renamed.
+
+--------------------------------------------------------------------------------
+3.4 Merge sitemap-reviews.xml into sitemap-pages.xml [DONE]
+--------------------------------------------------------------------------------
+FILES: apps/web/tools/generate-sitemap.mjs, apps/web/src/seo/sitemap.js
+
+WAS:
+    writeSitemap('sitemap-reviews.xml', reviewEntries);
+    // ...and separately included again in sitemap-pages.xml
+    // SITEMAP_FILES included 'sitemap-reviews.xml'
+
+NOW:
+    // The reviewEntries block and its writeSitemap('sitemap-reviews.xml', ...)
+    // call were removed entirely. /en/reviews and /fr/avis already appear in
+    // sitemap-pages.xml via the static route table, so nothing was lost.
+    // SITEMAP_FILES no longer lists 'sitemap-reviews.xml'.
+
+WHY: /en/reviews and /fr/avis were listed in both sitemap-pages.xml and
+sitemap-reviews.xml. Not invalid per the sitemap spec, but it was dead
+weight on a site where every unnecessary URL competes for the same limited
+crawl budget. Verified by re-running the generator: sitemap-index.xml now
+lists 5 children instead of 6, and the reviews URLs are still present (and
+now only present) in sitemap-pages.xml. The stale sitemap-reviews.xml file
+in apps/web/public/ has been deleted; the next production deploy will not
+regenerate it.
+
+--------------------------------------------------------------------------------
+3.5 Stop claiming Arabic as a served language in structured data [DONE]
+--------------------------------------------------------------------------------
+FILES: apps/web/src/seo/schema.js (line 43),
+       apps/web/src/pages/AirportTransferDetailPage.jsx (line 168)
+
+WAS:
+    availableLanguage: ['en', 'fr', 'ar']
+
+NOW:
+    availableLanguage: ['en', 'fr']
+
+WHY: the site has no Arabic routes — SUPPORTED_LANGUAGES in seo/sitemap.js
+is ['en', 'fr'] only — but the Organization.contactPoint schema (emitted on
+every page site-wide) and the airport-transfer pages' Service schema both
+claimed 'ar' as an available contact language. Search engines and AI answer
+engines treat availableLanguage as a factual capability signal; claiming a
+language the site can't actually serve is a real accuracy defect, not
+optimization. Verified via airport:check (12/12 pages still pass with
+availableChannel=true after the change).
+
+================================================================================
+4. CONTENT FIXES
+================================================================================
+Status: DONE. All 9 pages below have been rewritten in both EN and FR
+(apps/web/src/data/tours/catalog.en.js and catalog.fr.js) and pass the
+project's own tour-description-check (no new near-duplicate descriptions)
+and related-tours:check. Everything else on the site — the multi-day
+desert/imperial-city tours, the 6 airport-transfer pages, the destination
+pages — was checked against the same evidence bar and found to already have
+genuinely unique, page-specific content; they were left untouched.
+
+Each page's title/tagline already implied a specific target query. The fix
+was making the body copy actually deliver on that query instead of falling
+back to a shared template — every page below now has an authored `overview`
+paragraph and a real 4-step itinerary naming what's specifically true of
+that destination, not a generic Morning/Midday/Evening skeleton.
+
+--------------------------------------------------------------------------------
+4.1 The day-trip template cluster — REWRITTEN, target query per page
+--------------------------------------------------------------------------------
+Pages: essaouira-day-trip, ait-benhaddou-day-trip, ourika-valley-day-trip,
+imlil-day-trip, casablanca-day-trip, agadir-day-trip, ouirgane-day-trip,
+ouzoud-waterfalls-day-trip
+
+PAGE                    TARGET QUERY (implied by existing title/tagline)     WHAT THE REWRITE ADDS
+-----------------------------------------------------------------------------------------------------------------------------
+Essaouira               "Essaouira day trip from Marrakech"                  Names the Skala du Port bastion, the argan-goat
+                                                                              stop, and positions Essaouira against Marrakech's
+                                                                              crowds — the actual reason to pick this trip
+Ait Ben Haddou           "Ait Ben Haddou day trip" / kasbah + film location   Names the Tizi n'Tichka pass specifically, the
+                                                                              granary viewpoint, and the Gladiator/Game of
+                                                                              Thrones film-location hook already in search demand
+Ouzoud Waterfalls        "Ouzoud Waterfalls day trip", "tallest waterfall"   States the ~110m figure, names Tanaghmeilt village
+                          Morocco                                           and the Barbary macaques as the differentiators
+Ourika Valley            "Ourika Valley day trip", "Kasbah Bab Ourika"       Names Setti Fatma waterfalls specifically (was
+                                                                              previously unnamed — just "the waterfalls"),
+                                                                              positions as the family-friendly, included-lunch option
+Imlil                    "Imlil day trip", "Toubkal day trip"                Explicitly states this is NOT a Toubkal summit
+                                                                              attempt (a real search-intent mismatch risk) and
+                                                                              gives the 1,740m altitude fact
+Casablanca               "Casablanca day trip from Marrakech"                Frames Casablanca honestly as a longer, different-
+                                                                              purpose trip (modern capital, not medina) rather
+                                                                              than competing on the same terms as the others
+Agadir                   "Agadir day trip", beach vs. medina framing         Explicit Agadir-vs-Essaouira differentiation (resort
+                                                                              beach city vs. historic medina port)
+Ouirgane                 "Ouirgane Valley day trip"                          Positions explicitly as the quietest/least-visited
+                                                                              Atlas valley option vs. Imlil and Ourika
+
+Also fixed sitewide: the shared overview template in TourPage.jsx
+(overviewText()) said "handpicked luxury accommodation" on every tour
+including half-day trips with no accommodation at all. It now prefers a
+per-tour `overview` field (the same pattern faqs already used) and only
+falls back to the old generic template for the 22 tours that don't have
+their own `overview` yet — those were not rewritten in this pass since they
+were not flagged as templated (see Section 1).
+
+INCLUDED/EXCLUDED lists were left as-is — they were evidence-based low
+severity (shared logistics lines like "Bottled water on board" are
+genuinely shared facts, not filler) and rewriting them was not necessary
+once the itinerary and overview carry the real differentiation.
+
+WHAT WAS KEPT UNCHANGED: the FAQ blocks, which were already the strongest
+part of these pages — several explicitly differentiate one day trip from
+another ("How is this different from the Imlil day trip?"). No FAQ content
+was touched.
+
+--------------------------------------------------------------------------------
+4.2 marrakech-day-trips — REPOSITIONED
+--------------------------------------------------------------------------------
+This hub page previously duplicated Essaouira's itinerary text verbatim and
+quoted a price (EUR 120) that matched none of its own child pages. Its
+title already implied the right role ("See our full day trip comparison
+guide") — the page now commits to that: the itinerary was replaced with a
+3-step "Compare -> Pick -> Book" guide, and the overview explicitly directs
+readers to the real comparison table.
+
+Note: the real, detailed comparison table (duration, distance, best-for)
+already existed — not on this tour-detail page, but on the actual
+/day-trips CATEGORY hub (apps/web/src/data/tours/categories.en.js /
+categories.fr.js, routeKey 'dayTrips'), which was already well-built with a
+genuine 5-row comparison table and no duplication issues. The fix for
+marrakech-day-trips was to stop it from competing with that page and its
+own sibling tour pages, not to duplicate the comparison table a second time
+on a page not structured to render one.
+
+================================================================================
+5. INTERNAL LINKING FIXES
+================================================================================
+Global navigation and footer link only to hub/category pages — zero direct
+links to any of the 31 tour, 8 destination, 7 blog, or 6 airport detail
+pages. That's an acceptable pattern IF the layer beneath it (listing cards +
+related-content widgets) reliably reaches every page at least twice. For
+destinations, blog, and airport pages it does. For the day-trip tour
+cluster it didn't — the related-tours selection bug from Section 3.1 is
+now FIXED.
+
+SOURCE                                          TARGET                                              RECOMMENDED ANCHOR / STATUS
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+/en/tour/* (getRelatedTours, rotated)           Every same-category sibling, rotated                 DONE — Tour title (existing TourCard pattern);
+                                                                                                       verified via related-tours:check
+/en/tour/marrakech-day-trips (repositioned)     All 8-10 day-trip detail pages via the real           DONE — page now points readers to
+                                                 /day-trips comparison hub                            /day-trips instead of duplicating it
+/en/destinations/essaouira                      /en/tour/day-trip-to-essaouira-from-marrakech        Open — "Best tours to Essaouira" already
+                                                                                                       implemented via getToursForDestination;
+                                                                                                       confirm the day trip carries the right
+                                                                                                       destinationIds (not verified this pass)
+/en/blog/best-time-to-visit-morocco             Relevant day-trip pages by season                     Open — contextual in-paragraph link, not a
+                                                                                                       widget; not implemented this pass
+Footer "Day Trips" column                       /en/day-trips hub only (unchanged)                    No change — hub-only footer linking is fine now
+                                                                                                       that the layer beneath it works
+
+================================================================================
+6. SITEMAP FIXES
+================================================================================
+The sitemap itself is in good shape — this was the cleanest layer audited.
+Full findings:
+
+- NO GAPS IN EITHER DIRECTION. Every route in routes.jsx maps to a sitemap
+  entry; every sitemap entry maps to a real, live, 200-returning route.
+  144/144 URLs swept, zero 404s, zero redirects, zero duplicates.
+
+- AIRPORT TRANSFER PAGES ARE IN THE SITEMAP (folded into
+  sitemap-pages.xml by design, not a separate file) — worth confirming
+  explicitly since it's an easy thing to assume is missing.
+
+- sitemap-images.xml IS A VALID, correctly-namespaced image sitemap —
+  92/92 URLs have a matching image:image block.
+
+- sitemap-reviews.xml's 2 URLs were a duplicate of what's already in
+  sitemap-pages.xml — FIXED, see technical fix 3.4.
+
+- LASTMOD DATES ARE REAL, not a fake identical-date pattern — blog's older
+  2026-07-29 date versus everything else's 2026-08-16 reflects genuine
+  last-edit tracking via git, which is a positive signal Google's crawler
+  will trust.
+
+================================================================================
+7. HREFLANG FIXES
+================================================================================
+NONE FOUND in the hreflang implementation itself. This audit corrects the
+original brief's assumption of an EN/FR/AR setup — the codebase only
+supports EN and FR (SUPPORTED_LANGUAGES = ['en', 'fr']); no Arabic routes
+exist, live or in code, and this has now been fully swept: the two places
+that DID falsely claim 'ar' as a served language — both in structured data,
+not hreflang — have been fixed (Section 3.5).
+
+- Every EN<->FR page pair carries reciprocal, self-consistent hreflang
+  pairs, spot-checked across homepage, tours, destinations, and about
+  pages.
+
+- x-default consistently resolves to the EN URL across every page and
+  every sitemap entry.
+
+- Sitemap-level xhtml:link hreflang annotations are present and match the
+  live page-level tags exactly — no drift between the two layers.
+
+- The homepage's / -> /en canonical redirect target and the sitemap's
+  homepage entry (/en, never bare /) are consistent with each other.
+
+================================================================================
+8. TRUST SIGNALS — ON-SITE AND OFF-SITE
+================================================================================
+Not part of the original GSC-driven diagnosis, but relevant to the same
+underlying constraint identified in Section 1: this is a low-authority site
+in Google's early trust tier, and crawl budget is allocated in proportion to
+that trust. Content and internal-linking fixes address the demand side
+(making pages worth indexing); trust signals address the supply side
+(making Google willing to spend more crawl budget on this domain at all).
+None of this is implemented — it requires business decisions the client
+needs to make, listed here as a recommendation set grounded in what's
+already on the site versus what's missing.
+
+--------------------------------------------------------------------------------
+8.1 ON-SITE
+--------------------------------------------------------------------------------
+- REVIEW VOLUME IS THE SINGLE WEAKEST SIGNAL FOUND. The site's own
+  TripAdvisor data (apps/web/src/data/tripadvisor.js) shows a 5.0/5 rating
+  but only 43 reviews, ranking #199 of 2,160 Transportation listings in
+  Marrakech — a perfect score with a rank that low means the ranking
+  algorithm is weighting volume far more than the score itself. A perfect
+  rating on 43 reviews reads as under-reviewed, not exceptional, to both
+  users and algorithms. This is the highest-leverage single fix available:
+  prioritize a systematic post-trip review request (WhatsApp follow-up,
+  timed email) over any other trust-signal work below.
+
+- AUTHOR/EXPERTISE SIGNALS ARE MISSING FROM BLOG CONTENT. BlogArticlePage.jsx
+  renders post.author.name and post.author.role when present (confirmed in
+  ArticleMeta, lines 48-56), but this is optional per-post data — worth
+  auditing whether all 7 blog posts actually populate it, and pairing it
+  with something Google's E-E-A-T signals reward: a short author bio linking
+  to a real person's on-the-ground experience in Morocco, not a generic
+  "Yassine Travel Team" byline.
+
+- THE "18+ YEARS EXPERIENCE" / "SINCE 2008" CLAIM (used in tour-page trust
+  strips and footer copy) has no supporting on-site evidence — no About
+  page timeline, no founding story, no press mentions. If the claim is
+  true, it's underused; a short verifiable history on the About page
+  strengthens both user trust and E-E-A-T without new content strategy.
+
+- STRUCTURED DATA IS ALREADY STRONG (Organization, LocalBusiness,
+  TravelAgency, aggregateRating, Review schema on airport pages) and does
+  not need more added — the fixes in Section 3.3/3.5 corrected what was
+  there rather than expanding it. Priority is fixing review volume
+  (8.1) which aggregateRating actually reports on, not adding new schema
+  types.
+
+- SECURITY/BUSINESS-LEGITIMACY SIGNALS ARE PARTIALLY PRESENT: HSTS,
+  security headers and HTTPS are all correctly configured (confirmed in the
+  technical crawl). "Licensed Moroccan Travel Agency" appears in tour-page
+  trust strips as copy, but there's no verifiable license number or
+  registration reference a skeptical visitor (or an AI answer engine
+  evaluating trustworthiness) could check independently.
+
+--------------------------------------------------------------------------------
+8.2 OFF-SITE
+--------------------------------------------------------------------------------
+- GOOGLE BUSINESS PROFILE was not checked this session (no access) — this
+  is NOT VERIFIED but is worth confirming exists and is fully optimized
+  (category, hours, photos, Q&A, posts) before any other off-site work,
+  since GBP signals feed directly into local trust and often correlate with
+  a domain's perceived legitimacy even for non-local-pack queries.
+
+- BACKLINK PROFILE was not audited this session (NOT VERIFIED) — for a
+  site this young, a handful of genuine links from real Morocco travel
+  publications, tourism board resources, or a listing in reputable travel
+  directories (not link-farm submissions) would do more for crawl-budget
+  trust than a large volume of low-quality links. This is explicitly
+  the kind of work Section 10 (Do Not Do) warns against doing the wrong
+  way — quality and relevance over volume.
+
+- SOCIAL PROFILE COMPLETENESS: SOCIAL_LINKS (apps/web/src/data/site-config.js)
+  currently covers Instagram, Facebook and TikTok, all real accounts
+  (confirmed correctly referenced in Organization.sameAs, not placeholder
+  '#' links). No YouTube or LinkedIn presence — YouTube in particular is
+  worth considering given the visual nature of desert-camp/riad content,
+  and sameAs entries compound as trust signals the more consistently a
+  brand identity resolves across platforms.
+
+- NAP (NAME/ADDRESS/PHONE) CONSISTENCY across TripAdvisor, Google Business
+  Profile, and any directory listings was not audited this session (NOT
+  VERIFIED) — worth a manual pass to confirm the address in
+  CONTACT.streetAddress (apps/web/src/data/contact.js) matches exactly
+  what's listed everywhere else the business appears online; inconsistent
+  NAP is a known trust-signal degrader for local/regional businesses.
+
+================================================================================
+10. INDEXING PLAN
+================================================================================
+
+DAY 0 [CODE READY — MERGE + DEPLOY IS THE REMAINING STEP]
+  The related-tours rotation fix, the 9-page day-trip content rewrite (EN+FR),
+  the sitemap-reviews.xml merge, the LocalBusiness/TravelAgency @id fix, and
+  the false Arabic availableLanguage claim have all been implemented on
+  branch fix/indexing-audit-remediation and verified: related-tours:check,
+  tour-description-check, seo:check, airport:check, full production build
+  (build:client + build:ssr) and lint all pass. Remaining before this is
+  "done": review and merge the PR, deploy to production, then validate the
+  live URLs (Section 8 of the original brief — canonical, robots, hreflang,
+  schema, title/H1 all match what shipped locally). Resubmit sitemap-index.xml
+  in GSC only if the merge changed it materially (it now lists 5 children
+  instead of 6).
+
+DAY 1
+  Request indexing via URL Inspection for the 8 rewritten day-trip pages
+  (both EN and FR — 16 URLs) plus the marrakech-day-trips hub, plus the
+  site's top 3-4 money pages by impressions (check Performance -> Pages for
+  the actual leaders — this report doesn't have that data). Do not request
+  indexing for all 132 "Discovered" URLs.
+
+DAYS 2-7
+  Watch the GSC Page Indexing report daily for movement in the
+  "Discovered" count — a young site with a crawl-budget constraint
+  typically takes days, not hours, to reflect a linking-structure change.
+  Don't re-request indexing on the same URLs during this window.
+
+WEEKS 2-4
+  Re-pull the GSC export used for this report and compare against the
+  baseline below. If the day-trip cluster moves but the broader 132-page
+  count doesn't, the remaining cause is likely pure site-authority/crawl-
+  budget — begin acting on Section 8 (trust signals), starting with review
+  volume (8.1) since it's the single weakest signal found. If nothing moves
+  at all, re-open the technical audit — something was missed.
+
+================================================================================
+11. BEFORE / AFTER
+================================================================================
+
+BEFORE (21 Aug 2026 baseline):
+  132 pages "Discovered - currently not indexed"
+    9 indexed
+    1 "Crawled - not indexed"
+
+EXPECTED AFTER FIXES:
+  The 8-page day-trip cluster (16 URLs across EN+FR) plus the
+  marrakech-day-trips hub should be first to move, since it's the most
+  concretely diagnosed group and the fix is now shipped in code, not just
+  recommended. The remaining ~124 pages depend on whether the constraint is
+  purely linking/content (addressed by this remediation) or also
+  site-authority/crawl-budget (Section 8, time-dependent and not fixable by
+  a single code change). Expect partial, not full, recovery within the
+  4-week window.
+
+================================================================================
+12. DO NOT DO
+================================================================================
+  - Request indexing for all 132 "Discovered" URLs at once — GSC
+    rate-limits this and it signals low-quality bulk behavior rather than
+    fixing the underlying cause.
+
+  - Buy or exchange backlinks to try to raise site authority faster —
+    Section 8.2 recommends a handful of genuine, relevant links, not
+    volume; buying links is a Google Webmaster Guidelines violation and
+    risks a manual action, not just wasted spend.
+
+  - Pad the day-trip pages with generic filler text to hit a word-count
+    target — the fix already shipped (Section 4.1) was destination-specific
+    detail, not length. Don't add more words to these pages without a
+    specific new fact to convey.
+
+  - Create additional near-duplicate day-trip pages (e.g. splitting one
+    trip into multiple URL variants) to "cover more keywords" — this is
+    the exact pattern the Section 4.1 rewrite was fixing.
+
+  - Change any URL slugs to "improve" them — every current slug is
+    technically clean and already indexed correctly in the
+    sitemap/hreflang layer; changing one now would reset its (already
+    thin) authority. None of the fixes in this report touched a URL.
+
+  - Assume the AR language work applies here — this codebase is EN/FR
+    only, and the two places that falsely claimed 'ar' support have been
+    removed (Section 3.5). Don't build hreflang or routes for a language
+    that doesn't exist yet without confirming that's actually a planned
+    scope change first.
+
+  - Fake or inflate the review count to fix the "43 reviews, rank #199"
+    problem flagged in Section 8.1 — the fix is a genuine review-request
+    process, not review manipulation, which risks removal from TripAdvisor
+    and Google Business Profile entirely.
+
+================================================================================
+SOURCES / METHODOLOGY
+================================================================================
+Built from:
+  - Live GSC export (Graphique.csv, Problemes critiques.csv, 4-21 Aug 2026)
+  - Full 144-URL sitemap sweep (HTTP status, headers, redirects)
+  - Source audit of apps/web/src/seo/*, data/tours/*, pages/*.jsx
+  - Live HTML diffing of the day-trip tour page cluster
+  - Implementation on branch fix/indexing-audit-remediation, verified via:
+    node --check (syntax) on every edited file, related-tours:check,
+    tour-description-check, seo:check, airport:check, full production
+    build (npm run build: build:client + build:ssr), and eslint — all
+    passing with zero new failures or warnings introduced
+
+NOT VERIFIED (explicitly out of scope this session, flagged rather than
+assumed):
+  - Google Rich Results Test pass/fail (only JSON-LD syntax validity was
+    checked, not Google-side acceptance)
+  - Airport-page boilerplate ratio (spot-checked for uniqueness, not
+    pairwise line-diffed the way the day-trip cluster was)
+  - Review schema field-level correctness beyond JSON parse validity
+  - Per-URL GSC status for the 8 named day-trip pages (the GSC export
+    available did not break "Discovered" down to individual URLs —
+    confirm via URL Inspection before acting)
+  - Google Business Profile status/optimization (Section 8.2)
+  - Backlink profile (Section 8.2)
+  - NAP consistency across external listings (Section 8.2)
+  - Production behavior of the deployed changes — this branch has not
+    been merged or deployed; only local build/check output was verified
+
+================================================================================
+END OF REPORT
+================================================================================

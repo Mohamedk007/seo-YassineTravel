@@ -26,6 +26,14 @@ export function getToursForDestination(destinationId, lang = DEFAULT_LANGUAGE) {
 // Same-category tours first (e.g. viewing a day trip surfaces other day
 // trips), topped up with tours from other categories only if there aren't
 // enough to fill `limit`.
+//
+// The same-category slice is rotated by the current tour's own index rather
+// than always starting at position 0. A fixed start means every tour in a
+// category shows the identical first `limit` siblings as "related" — in a
+// 10-tour category that leaves the tail 7 tours with zero inbound links from
+// this widget (their only sitewide inbound link becomes their own listing-page
+// card). Rotating spreads inbound link equity across the whole category
+// instead of concentrating it on the first few entries in the source file.
 export function getRelatedTours(slug, lang = DEFAULT_LANGUAGE, limit = 3) {
 	const tours = getTours(lang);
 	const current = tours.find((entry) => entry.slug === slug);
@@ -35,5 +43,10 @@ export function getRelatedTours(slug, lang = DEFAULT_LANGUAGE, limit = 3) {
 
 	const sameCategory = others.filter((entry) => entry.categoryKey === current.categoryKey);
 	const rest = others.filter((entry) => entry.categoryKey !== current.categoryKey);
-	return [...sameCategory, ...rest].slice(0, limit);
+
+	const currentIndex = tours.findIndex((entry) => entry.slug === slug);
+	const startIndex = sameCategory.length ? currentIndex % sameCategory.length : 0;
+	const rotatedSameCategory = [...sameCategory.slice(startIndex), ...sameCategory.slice(0, startIndex)];
+
+	return [...rotatedSameCategory, ...rest].slice(0, limit);
 }

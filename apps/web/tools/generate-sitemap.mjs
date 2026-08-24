@@ -98,20 +98,16 @@ const tourEntries = await getTourEntries();
 const blogEntries = await getBlogEntries();
 const destinationEntries = await getDestinationEntries();
 const airportEntries = await getAirportEntries();
-// No individual review URLs exist (reviews live on one /reviews page, not one
-// page per review), so the "reviews" sitemap covers that single collection page.
-const reviewEntries = [
-	{
-		pathByLang: Object.fromEntries(SUPPORTED_LANGUAGES.map((lang) => [lang, STATIC_PATHS_BY_LANG[lang].reviews])),
-		lastmod: staticEntries[0]?.lastmod,
-	},
-];
+// The /reviews (and /avis) route is one of the static route keys, so it's
+// already included in staticEntries below — a dedicated sitemap-reviews.xml
+// listing the same 2 URLs a second time added no discovery value and just
+// spent extra crawl budget on a site where that budget is the binding
+// constraint. Removed 2026-08; see INDEXING_AUDIT_REPORT.txt section 3.4.
 
 const pagesCount = await writeSitemap('sitemap-pages.xml', [...staticEntries, ...airportEntries]);
 const toursCount = await writeSitemap('sitemap-tours.xml', tourEntries);
 const destinationsCount = await writeSitemap('sitemap-destinations.xml', destinationEntries);
 const blogCount = await writeSitemap('sitemap-blog.xml', blogEntries);
-const reviewsCount = await writeSitemap('sitemap-reviews.xml', reviewEntries);
 const imagesCount = await writeImageSitemap([...tourEntries, ...destinationEntries, ...blogEntries]);
 // No videos exist on the site yet — skipped per the "only when videos exist" rule.
 // Add a sitemap-videos.xml here (VideoObject entries) if/when video content is added.
@@ -128,5 +124,5 @@ ${SITEMAP_FILES.map(
 await writeFile(resolve(PUBLIC_DIR, SITEMAP_INDEX_FILE), sitemapIndex, 'utf8');
 
 console.log(
-	`[build] Generated sitemap-index.xml (pages: ${pagesCount}, tours: ${toursCount}, destinations: ${destinationsCount}, blog: ${blogCount}, reviews: ${reviewsCount}, images: ${imagesCount})`
+	`[build] Generated sitemap-index.xml (pages: ${pagesCount}, tours: ${toursCount}, destinations: ${destinationsCount}, blog: ${blogCount}, images: ${imagesCount})`
 );

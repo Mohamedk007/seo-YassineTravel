@@ -56,7 +56,14 @@ const COPY = {
 	en: {
 		verified: 'verified',
 		overview: 'Overview',
+		// Prefers a per-tour authored `overview` (same pattern as `faqs`) so the
+		// copy can be honest about what the trip actually includes — the old
+		// shared template said "handpicked luxury accommodation" even on a
+		// half-day trip with no accommodation at all. Tours without their own
+		// `overview` yet fall back to the generic template rather than rendering
+		// nothing.
 		overviewText: (tour) =>
+			tour.overview ||
 			`Discover the very best of Morocco on this ${tour.duration.toLowerCase()} private journey. ${tour.tagline} Travelling with your own driver-guide, you will move at your own pace, staying in handpicked luxury accommodation and enjoying privileged access to Morocco's most iconic sights and hidden gems.`,
 		highlights: 'Highlights',
 		itinerary: 'Detailed itinerary',
@@ -121,6 +128,7 @@ const COPY = {
 		verified: 'vérifié',
 		overview: 'Aperçu',
 		overviewText: (tour) =>
+			tour.overview ||
 			`Découvrez le meilleur du Maroc lors de ce voyage privé de ${tour.duration.toLowerCase()}. ${tour.tagline} En voyageant avec votre propre chauffeur-guide, vous avancerez à votre rythme, logerez dans des hébergements de luxe triés sur le volet et profiterez d'un accès privilégié aux sites les plus emblématiques du Maroc comme à ses trésors cachés.`,
 		highlights: 'Points forts',
 		itinerary: 'Itinéraire détaillé',

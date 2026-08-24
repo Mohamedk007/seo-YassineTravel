@@ -165,7 +165,9 @@ export default function AirportTransferDetailPage() {
 	const serviceChannel = buildServiceChannelSchema({
 		phone: CONTACT.phone,
 		whatsappUrl: waLink(`Hi! I need an airport transfer from ${airport.name}.`),
-		availableLanguage: ['en', 'fr', 'ar'],
+		// Matches SUPPORTED_LANGUAGES in seo/sitemap.js — the site has no Arabic
+		// routes, so claiming 'ar' here would misstate what's actually served.
+		availableLanguage: ['en', 'fr'],
 	});
 
 	const otherAirports = AIRPORTS.filter((entry) => entry.slug !== airport.slug);
