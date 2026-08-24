@@ -172,6 +172,8 @@ export const TOURS = [
 		price: 120,
 		image: IMG.atlas,
 		tagline: 'Choisissez votre destination et réservez directement — Atlas, cascades d\'Ouzoud, Essaouira ou désert d\'Agafay, de retour le soir même. Consultez notre guide comparatif si vous hésitez encore.',
+		overview:
+			'Cette page sert à vous aider à choisir, pas à être une excursion en soi — chaque excursion listée ci-dessous est un itinéraire privé à part entière, avec son propre chauffeur-guide, son prix et son parcours. Notre guide comparatif détaille la distance, le profil de voyageur et ce que vous verrez réellement ; ouvrez ensuite l\'excursion précise qui correspond à votre envie : montagne et villages berbères, côte atlantique, cascades, ou paysage désertique proche de la ville.',
 		highlights: [
 			'Choix entre l\'Atlas, la côte d\'Essaouira ou le désert d\'Agafay',
 			'Prise en charge et retour à l\'hôtel inclus',
@@ -179,9 +181,9 @@ export const TOURS = [
 			'Guide local agréé',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech, route panoramique vers la destination choisie.'],
-			['Midi', 'Expérience guidée', 'Déjeuner, visite à pied et temps libre.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Étape 1', 'Comparer', 'Consultez notre guide comparatif pour évaluer distance, durée et ce que chaque excursion vous montre réellement.'],
+			['Étape 2', 'Choisir votre excursion', 'Ouvrez la page de l\'excursion précise pour le prix, l\'itinéraire détaillé et les questions fréquentes.'],
+			['Étape 3', 'Réserver directement', 'Confirmez votre date par WhatsApp ou téléphone — sans frais de réservation tiers.'],
 		],
 		gallery: [IMG.marrakech, IMG.couple, IMG.kasbah],
 		included: [
@@ -216,6 +218,8 @@ export const TOURS = [
 		image: IMG.Essaouira1,
 		tagline:
 			'Une excursion privée à Essaouira depuis Marrakech : arganeraies, médina classée UNESCO, Skala du Port et littoral atlantique. Balade à dos de chameau ou de cheval offerte.',
+		overview:
+			'Essaouira offre un contrepoint côtier à la chaleur et à l\'agitation de Marrakech — un port de pêche actif avec des remparts portugais du XVIIIe siècle, une médina fortifiée assez petite pour s\'y promener sans carte, et bien moins de tourisme que la Ville Rouge. Cette excursion couvre les 2h30 de route environ dans chaque sens à travers les arganeraies (avec un arrêt où des chèvres grimpent aux arbres pour manger leurs fruits), une visite guidée de la médina et de la Skala du Port, puis du temps libre sur la plage atlantique avec une balade à dos de chameau ou de cheval incluse, et non vendue en option.',
 		highlights: [
 			'Route panoramique à travers les arganeraies, avec ses chèvres grimpant aux arbres',
 			'Découverte de la charmante médina d\'Essaouira (classée au patrimoine mondial de l\'UNESCO)',
@@ -227,9 +231,10 @@ export const TOURS = [
 			'Découverte de l\'architecture bleue et blanche unique d\'Essaouira',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech, route panoramique vers la destination choisie.'],
-			['Midi', 'Expérience guidée', 'Déjeuner, visite à pied et temps libre.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge à votre riad ou hôtel, puis route vers l\'ouest à travers les arganeraies — arrêt pour observer les chèvres grimpant aux arbres si les bergers sont présents.'],
+			['Midi', 'Skala du Port & médina', 'Visite guidée du bastion maritime du XVIIIe siècle et des ruelles bleues et blanches de la médina jusqu\'au port de pêche.'],
+			['Après-midi', 'Plage & temps libre', 'Balade à dos de chameau ou de cheval sur la plage atlantique, puis temps libre pour flâner dans les galeries d\'art et les souks avant le retour.'],
+			['Soir', 'Retour à Marrakech', 'Transfert privé jusqu\'à votre hôtel, arrivée en début de soirée.'],
 		],
 		gallery: [IMG.Essaouira1, IMG.marrakech],
 		included: [
@@ -359,6 +364,8 @@ export const TOURS = [
 		price: 100,
 		image: IMG.aitBenhaddouVillage,
 		tagline: 'Explorez le ksar classé UNESCO d\'Aït Ben Haddou lors d\'une excursion privée au départ de Marrakech, à travers le Haut Atlas.',
+		overview:
+			'Aït Ben Haddou est le ksar le mieux conservé du Maroc — un ensemble fortifié de bâtiments en terre ocre sur l\'ancienne route caravanière entre le Sahara et Marrakech, et un lieu de tournage pour Gladiator, Game of Thrones et Lawrence d\'Arabie. Cette excursion traverse le col du Tizi n\'Tichka, la route goudronnée la plus haute du Haut Atlas, avant une visite guidée à pied dans les ruelles en pisé du ksar jusqu\'au grenier fortifié en hauteur pour la vue panoramique classique. Elle convient aux voyageurs basés à Marrakech qui veulent voir le ksar sans s\'engager sur un circuit désertique de plusieurs jours qui y passe déjà.',
 		highlights: [
 			'Visite guidée du ksar historique d\'Aït Ben Haddou',
 			'Route panoramique par le col du Tizi n\'Tichka dans le Haut Atlas',
@@ -366,9 +373,10 @@ export const TOURS = [
 			'Véhicule privé climatisé avec prise en charge et retour à l\'hôtel',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech et traversée du Haut Atlas par le col du Tizi n\'Tichka.'],
-			['Midi', 'Aït Ben Haddou', 'Visite guidée du ksar fortifié et de ses ruelles couleur ocre.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel à Marrakech.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge puis route vers le sud, ascension du col du Tizi n\'Tichka avec arrêts aux points de vue sur le Haut Atlas.'],
+			['Midi', 'Ksar d\'Aït Ben Haddou', 'Traversée de la passerelle jusqu\'au ksar et visite à pied des ruelles en pisé avec votre guide, jusqu\'au grenier fortifié en hauteur.'],
+			['Après-midi', 'Temps libre & boutiques', 'Découverte des petits ateliers d\'artisanat local et de fossiles avant de reprendre la route par le col.'],
+			['Soir', 'Retour à Marrakech', 'Arrivée à votre hôtel en début de soirée.'],
 		],
 		gallery: [IMG.aitBenhaddouVillage, IMG.kasbah, IMG.atlas],
 		included: [
@@ -447,6 +455,8 @@ export const TOURS = [
 		price: 70,
 		image: IMG.ouzoud,
 		tagline: 'Découvrez les cascades d\'Ouzoud, les plus hautes du Maroc, lors d\'une excursion panoramique depuis Marrakech.',
+		overview:
+			'Ouzoud est la plus haute cascade du Maroc — environ 110 mètres en paliers, dans les contreforts du Grand Atlas, où le village berbère de Tanaghmeilt se trouve tout en haut et où des singes magots sauvages vivent dans les oliveraies le long des sentiers. Cette excursion est la plus verte et la moins fréquentée des sorties depuis Marrakech : une descente guidée par les terrasses jusqu\'aux bassins en contrebas, avec la possibilité de prendre une petite barque près de la cascade principale pour les photos.',
 		highlights: [
 			'Découverte des cascades d\'Ouzoud',
 			'Passage par le village de Tanaghmeilt, en haut des chutes',
@@ -454,9 +464,10 @@ export const TOURS = [
 			'Balade en barque optionnelle jusqu\'au pied des chutes',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech, route panoramique vers Ouzoud.'],
-			['Midi', 'Les cascades', 'Descente guidée vers les chutes, temps libre près des bassins.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge puis route vers le nord jusqu\'aux contreforts du Grand Atlas, arrivée au village de Tanaghmeilt.'],
+			['Midi', 'Descente vers les chutes', 'Descente guidée par les sentiers en terrasses le long des oliveraies — bon moment pour repérer les singes magots — jusqu\'aux bassins en contrebas.'],
+			['Après-midi', 'Chutes & barque optionnelle', 'Temps libre près de l\'eau, avec une balade en barque optionnelle près de la cascade principale avant la remontée.'],
+			['Soir', 'Retour à Marrakech', 'Transfert jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.ouzoud, IMG.atlas],
 		included: [
@@ -490,6 +501,8 @@ export const TOURS = [
 		price: 75,
 		image: IMG.ourika,
 		tagline: 'Découvrez les cascades de la vallée de l\'Ourika, le point de vue de Kasbah Bab Ourika et les villages berbères lors d\'une excursion depuis Marrakech.',
+		overview:
+			'La vallée de l\'Ourika est le paysage de montagne authentique le plus proche de Marrakech — une vallée verdoyante qui remonte dans le Haut Atlas, parsemée de villages berbères, de coopératives d\'huile d\'argan en bord de route et de champs en terrasses. Cette excursion comprend la marche jusqu\'aux cascades de Setti Fatma, un arrêt à la Kasbah Bab Ourika perchée pour l\'un des plus beaux panoramas près de la ville, et un déjeuner marocain traditionnel avec vue sur la vallée — inclus ici, contrairement à la plupart de nos autres excursions. Le rythme, plus doux qu\'à Imlil, en fait un bon choix pour les familles.',
 		highlights: [
 			'Route panoramique à travers la vallée de l\'Ourika',
 			'Visite des cascades de l\'Ourika et des villages berbères environnants',
@@ -497,9 +510,10 @@ export const TOURS = [
 			'Déjeuner marocain traditionnel avec vue sur la vallée',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech, route panoramique vers la vallée de l\'Ourika.'],
-			['Midi', 'Vallée & cascades', 'Marche jusqu\'aux cascades et découverte des villages berbères environnants.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge puis route vers le sud dans la vallée de l\'Ourika, en suivant la route de la rivière au fil des coopératives d\'huile d\'argan.'],
+			['Midi', 'Setti Fatma & cascades', 'Courte marche jusqu\'aux cascades de Setti Fatma, puis passage par les villages berbères environnants.'],
+			['Après-midi', 'Kasbah Bab Ourika & déjeuner', 'Déjeuner marocain traditionnel avec vue sur la vallée, suivi du point de vue panoramique de la Kasbah Bab Ourika.'],
+			['Soir', 'Retour à Marrakech', 'Transfert jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.ourika, IMG.atlas],
 		included: [
@@ -533,6 +547,8 @@ export const TOURS = [
 		price: 85,
 		image: IMG.imlil,
 		tagline: 'Découvrez Imlil, village du Haut Atlas au pied du Mont Toubkal, lors d\'une excursion depuis Marrakech.',
+		overview:
+			'Imlil se situe à environ 1 740 m dans le Haut Atlas, point de départ des treks vers le Mont Toubkal — le plus haut sommet d\'Afrique du Nord — et nettement plus frais que Marrakech même en été. Cette excursion ne tente pas l\'ascension du Toubkal, qui prend plusieurs jours ; c\'est une visite de village et de vallée, à pied dans les ruelles en pierre et pisé d\'Imlil et des hameaux berbères environnants, avec une balade à dos de mulet en option — le moyen traditionnel des habitants pour transporter marchandises vers les vallées d\'altitude.',
 		highlights: [
 			'Route panoramique à travers le Haut Atlas',
 			'Découverte des villages berbères et marchés locaux d\'Imlil',
@@ -540,9 +556,10 @@ export const TOURS = [
 			'Déjeuner avec vue sur les montagnes',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech, route panoramique vers le Haut Atlas.'],
-			['Midi', 'Village d\'Imlil', 'Découverte d\'Imlil et de ses villages berbères environnants, balade à dos de mulet optionnelle.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge puis ascension dans le Haut Atlas via Asni, avec points de vue sur la montagne en chemin.'],
+			['Midi', 'Village d\'Imlil', 'Marche dans les ruelles d\'Imlil et les noyeraies vers les hameaux berbères environnants, avec balade à dos de mulet en option.'],
+			['Après-midi', 'Déjeuner & temps libre', 'Déjeuner avec vue sur les montagnes, puis temps libre avant la descente vers Marrakech.'],
+			['Soir', 'Retour à Marrakech', 'Transfert jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.imlil, IMG.atlas],
 		included: [
@@ -576,6 +593,8 @@ export const TOURS = [
 		price: 90,
 		image: IMG.casablancaDayTrip,
 		tagline: 'Découvrez la mosquée Hassan II et la Corniche atlantique lors d\'une excursion à Casablanca depuis Marrakech.',
+		overview:
+			'Casablanca est la capitale économique moderne du Maroc, pas une ville de médina — l\'intérêt ici réside dans l\'architecture Art déco, la Corniche atlantique et la mosquée Hassan II, l\'une des seules mosquées du Maroc ouvertes aux visiteurs non musulmans lors d\'une visite guidée de l\'intérieur. Avec environ 2h30 à 3h de route dans chaque sens, c\'est l\'une des excursions les plus longues depuis Marrakech — elle convient donc aux voyageurs spécifiquement curieux de la ville plutôt qu\'à ceux dont le temps est compté et qui profiteraient davantage des sites de Marrakech elle-même.',
 		highlights: [
 			'Visite de l\'emblématique mosquée Hassan II',
 			'Balade le long de la Corniche et ses vues sur l\'Atlantique',
@@ -583,9 +602,10 @@ export const TOURS = [
 			'Vue extérieure sur le Palais Royal',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech vers la ville côtière de Casablanca.'],
-			['Midi', 'Essentiels de la ville', 'Visite guidée de la mosquée Hassan II, de la Corniche et du quartier Habous.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge tôt le matin pour la route vers le nord jusqu\'à Casablanca.'],
+			['Midi', 'Mosquée Hassan II & Corniche', 'Visite guidée de l\'extérieur de la mosquée Hassan II (visite de l\'intérieur disponible en option), puis balade le long de la Corniche atlantique.'],
+			['Après-midi', 'Quartier Habous & Palais Royal', 'Découverte de la médina de style colonial français du quartier Habous, puis passage devant l\'extérieur du Palais Royal.'],
+			['Soir', 'Retour à Marrakech', 'Route retour, arrivée en soirée.'],
 		],
 		gallery: [IMG.casablancaDayTrip, IMG.marrakech],
 		included: [
@@ -619,6 +639,8 @@ export const TOURS = [
 		price: 100,
 		image: IMG.agadir,
 		tagline: 'Échangez la médina contre les plages dorées d\'Agadir lors d\'une excursion côtière depuis Marrakech.',
+		overview:
+			'Agadir est une station balnéaire moderne, reconstruite après le séisme de 1960, avec de longues plages de sable et aucun des charmes de médina historique d\'Essaouira — c\'est le choix pour les voyageurs qui veulent du temps de plage plutôt qu\'une flânerie en vieille ville. Cette excursion traverse les contreforts de l\'Atlas jusqu\'à la côte pour du temps libre sur la plage, une balade autour de la Marina, et le point de vue de la Kasbah au-dessus de la ville, avec des fruits de mer frais disponibles au port si vous préférez manger sur place plutôt qu\'à votre hôtel.',
 		highlights: [
 			'Route panoramique à travers les contreforts de l\'Atlas jusqu\'à la côte',
 			'Détente sur les plages dorées d\'Agadir',
@@ -626,9 +648,10 @@ export const TOURS = [
 			'Fruits de mer frais dans un restaurant en bord de plage',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech, route panoramique vers la côte atlantique.'],
-			['Midi', 'Agadir', 'Temps libre sur la plage, à la Marina et au point de vue de la Kasbah.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge puis route vers le sud-ouest à travers les contreforts de l\'Atlas jusqu\'à la côte atlantique.'],
+			['Midi', 'Plage & Marina', 'Temps libre sur la plage d\'Agadir, puis balade autour de la Marina.'],
+			['Après-midi', 'Point de vue de la Kasbah', 'Montée au point de vue de la Kasbah au-dessus de la ville pour une vue panoramique sur la baie avant le retour.'],
+			['Soir', 'Retour à Marrakech', 'Transfert jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.agadir, IMG.atlas],
 		included: [
@@ -662,6 +685,8 @@ export const TOURS = [
 		price: 85,
 		image: IMG.ouirgane,
 		tagline: 'Randonnée à travers les oliveraies et hameaux authentiques de la vallée d\'Ouirgane, une échappée tranquille au pied de l\'Atlas.',
+		overview:
+			'Ouirgane est la plus tranquille des vallées du Haut Atlas accessibles en excursion depuis Marrakech — moins de visiteurs qu\'à Imlil ou dans l\'Ourika, avec des champs en terrasses, des oliveraies et des noyeraies, et des villages berbères disséminés le long de la vallée, en contrebas du parc national de Toubkal. Cette excursion est construite autour de ce rythme plus lent : visites de villages, randonnée guidée optionnelle à travers les terrasses pour ceux qui veulent aller plus loin, et déjeuner dans la vallée, à votre charge afin de choisir vous-même un lieu local.',
 		highlights: [
 			'Route de montagne panoramique à travers la vallée d\'Ouirgane',
 			'Visite de villages berbères traditionnels',
@@ -669,9 +694,10 @@ export const TOURS = [
 			'Déjeuner marocain traditionnel avec vue sur la vallée',
 		],
 		itinerary: [
-			['Matin', 'Prise en charge & route', 'Départ de Marrakech, route panoramique vers la vallée d\'Ouirgane.'],
-			['Midi', 'Vallée & villages', 'Visite de villages berbères, randonnée optionnelle, déjeuner marocain traditionnel.'],
-			['Soir', 'Retour', 'Transfert confortable jusqu\'à votre hôtel.'],
+			['Matin', 'Départ de Marrakech', 'Prise en charge puis route vers la vallée d\'Ouirgane par la route du Tichka.'],
+			['Midi', 'Villages berbères', 'Visite de villages le long de la vallée, marche parmi les champs en terrasses et les oliveraies.'],
+			['Après-midi', 'Randonnée optionnelle & déjeuner', 'Randonnée guidée optionnelle plus loin dans les terrasses, avec temps libre pour déjeuner dans un lieu local.'],
+			['Soir', 'Retour à Marrakech', 'Transfert jusqu\'à votre hôtel.'],
 		],
 		gallery: [IMG.ouirgane, IMG.atlas],
 		included: [

@@ -67,12 +67,17 @@ export const ROUTE_PATHS_BY_LANG = {
 
 // Children of sitemap-index.xml. Names are kept stable because they are already
 // submitted to Search Console and referenced from robots.txt.
+//
+// No dedicated sitemap-reviews.xml: /reviews and /avis are static routes
+// already covered by sitemap-pages.xml, so a second file listing the same 2
+// URLs was pure duplication. Removed 2026-08 — see INDEXING_AUDIT_REPORT.txt
+// section 3.4. If this file still exists on the live server from a previous
+// deploy, it's stale; delete it or let it 404 rather than resubmitting it.
 export const SITEMAP_FILES = [
 	'sitemap-pages.xml',
 	'sitemap-tours.xml',
 	'sitemap-destinations.xml',
 	'sitemap-blog.xml',
-	'sitemap-reviews.xml',
 	'sitemap-images.xml',
 ];
 

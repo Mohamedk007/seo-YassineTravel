@@ -40,7 +40,10 @@ export function buildOrganizationSchema(lang = DEFAULT_LANGUAGE) {
 			telephone: CONTACT.phone,
 			email: CONTACT.email,
 			contactType: 'customer service',
-			availableLanguage: ['en', 'fr', 'ar'],
+			// Matches SUPPORTED_LANGUAGES in seo/sitemap.js — only claim languages
+			// the site actually serves. Search engines and AI answer engines treat
+			// this as a factual capability signal, not aspirational marketing copy.
+			availableLanguage: ['en', 'fr'],
 		},
 		// Real, verified profile URLs only — TripAdvisor plus the social
 		// accounts confirmed by the client. Never add a placeholder '#' here:
@@ -67,7 +70,10 @@ export function buildTravelAgencySchema(lang = DEFAULT_LANGUAGE) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'TravelAgency',
-		'@id': `${SITE_ORIGIN}/#localbusiness`,
+		// Distinct from LocalBusiness's '#localbusiness' id below — the two were
+		// previously sharing one @id, which is a same-node type conflict (one
+		// @id should resolve to one entity, not two different @type values).
+		'@id': `${SITE_ORIGIN}/#travelagency`,
 		name: SITE_BRAND.name,
 		url: SITE_ORIGIN,
 		description: getSeoDefaults(lang).description,
