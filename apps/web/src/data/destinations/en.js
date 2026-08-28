@@ -10,6 +10,12 @@ export const DESTINATION_HIGHLIGHTS = [
 		bestTimeToVisit: 'March–May and September–November, for warm days without summer heat.',
 		slug: 'marrakech',
 		name: 'Marrakech',
+		// Marrakech and Essaouira previously had no seoTitle, so the page title
+		// fell back to the bare (untranslated) `name` — byte-identical between
+		// /en and /fr and flagged as a cross-language duplicate title. Every
+		// other destination already has its own seoTitle; this brings these two
+		// in line with that pattern instead of leaving them as the exception.
+		seoTitle: 'Marrakech: The Red City Travel Guide, Morocco',
 		summary: 'The Red City — palaces, souks and the electric Jemaa el-Fnaa.',
 		image: IMG.marrakech,
 	},
@@ -245,6 +251,7 @@ export const DESTINATION_HIGHLIGHTS = [
 		bestTimeToVisit: 'Pleasant nearly year-round thanks to the Atlantic breeze — spring and autumn are calmest, while summer brings the best wind for kitesurfing.',
 		slug: 'essaouira',
 		name: 'Essaouira',
+		seoTitle: 'Essaouira: Atlantic Coast & UNESCO Medina, Morocco',
 		summary: 'A fortified Atlantic port town with a UNESCO medina, fresh seafood, and a windswept, laid-back pace.',
 		image: IMG.Essaouira1,
 	},
