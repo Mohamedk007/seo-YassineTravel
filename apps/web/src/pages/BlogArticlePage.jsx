@@ -156,6 +156,8 @@ function ArticleBody({ content, lang }) {
 						</p>
 					))}
 					{block.table && <ComparisonTable table={block.table} />}
+					{/* Sanitized by the admin server when saved (admin-server.js sanitizeHtmlFields). */}
+					{block.html ? <div className="custom-html mt-6" dangerouslySetInnerHTML={{ __html: block.html }} /> : null}
 				</div>
 			))}
 		</div>

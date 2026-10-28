@@ -20,6 +20,7 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
+import sanitizeHtml from "sanitize-html";
 
 const SESSION_COOKIE = "yt_admin";
 const SESSION_TTL_MS = 8 * 60 * 60 * 1000;
@@ -148,6 +149,93 @@ function findUnsafeUrls(value, pathLabel = "", out = []) {
   return out;
 }
 
+// Custom HTML blocks (any field named "html") are rendered raw on the public
+// site, so they are reduced to an allowlist: no scripts, event handlers,
+// forms or script URLs; iframes only from well-known embed providers.
+const HTML_EMBED_HOSTS = [
+  "www.youtube.com",
+  "youtube.com",
+  "www.youtube-nocookie.com",
+  "player.vimeo.com",
+  "www.google.com",
+  "maps.google.com",
+  "www.tripadvisor.com",
+  "www.tripadvisor.fr",
+  "www.instagram.com",
+  "www.facebook.com",
+  "open.spotify.com",
+];
+
+const HTML_SANITIZE_OPTIONS = {
+  allowedTags: [
+    ...sanitizeHtml.defaults.allowedTags,
+    "img",
+    "picture",
+    "source",
+    "video",
+    "audio",
+    "iframe",
+    "details",
+    "summary",
+    "mark",
+    "small",
+    "sub",
+    "sup",
+    "u",
+    "s",
+  ],
+  allowedAttributes: {
+    "*": ["class", "style", "title", "dir", "lang"],
+    a: ["href", "target", "rel"],
+    img: ["src", "srcset", "sizes", "alt", "width", "height", "loading", "decoding"],
+    source: ["src", "srcset", "sizes", "type", "media"],
+    video: ["src", "poster", "controls", "width", "height", "preload", "muted", "loop", "playsinline"],
+    audio: ["src", "controls", "preload"],
+    iframe: ["src", "width", "height", "allow", "allowfullscreen", "loading", "referrerpolicy"],
+    td: ["colspan", "rowspan"],
+    th: ["colspan", "rowspan", "scope"],
+    ol: ["start", "type"],
+    details: ["open"],
+  },
+  allowedSchemes: ["https", "http", "mailto", "tel"],
+  allowedSchemesAppliedToAttributes: ["href", "src", "srcset", "poster", "cite"],
+  allowProtocolRelative: false,
+  allowedIframeHostnames: HTML_EMBED_HOSTS,
+  allowIframeRelativeUrls: false,
+  // Drop iframes whose src was rejected instead of leaving an empty frame.
+  exclusiveFilter: (frame) => frame.tag === "iframe" && !frame.attribs.src,
+  transformTags: {
+    a: (tagName, attribs) => {
+      if (attribs.target !== "_blank") return { tagName, attribs };
+      const rel = new Set(String(attribs.rel || "").split(/\s+/).filter(Boolean));
+      rel.add("noopener");
+      rel.add("noreferrer");
+      return { tagName, attribs: { ...attribs, rel: [...rel].join(" ") } };
+    },
+    iframe: (tagName, attribs) => ({ tagName, attribs: { loading: "lazy", ...attribs } }),
+  },
+};
+
+function cleanHtml(html) {
+  return sanitizeHtml(html, HTML_SANITIZE_OPTIONS).trim();
+}
+
+// Returns a copy of `value` with every string field named "html" sanitized.
+function sanitizeHtmlFields(value, state = { changed: false }) {
+  if (Array.isArray(value)) return value.map((item) => sanitizeHtmlFields(item, state));
+  if (!isPlainObject(value)) return value;
+  const out = {};
+  for (const [key, item] of Object.entries(value)) {
+    if (key === "html" && typeof item === "string") {
+      out[key] = cleanHtml(item);
+      if (out[key] !== item.trim()) state.changed = true;
+    } else {
+      out[key] = sanitizeHtmlFields(item, state);
+    }
+  }
+  return out;
+}
+
 export function mountAdmin(app, { ssr, distDir, rootDir }) {
   const ADMIN_USER = process.env.ADMIN_USER || "admin";
   const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
@@ -181,7 +269,7 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
   const knownKeys = () => new Set(ssr.getContentKeys());
 
   function normalizeStore(raw) {
-    const data = isPlainObject(raw?.data) ? raw.data : {};
+    const data = isPlainObject(raw?.data) ? sanitizeHtmlFields(raw.data) : {};
     const updatedAt = isPlainObject(raw?.updatedAt) ? raw.updatedAt : {};
     return { version: 1, updatedAt, data };
   }
@@ -347,7 +435,7 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
     const updatedAt = isPlainObject(candidate.updatedAt) ? candidate.updatedAt : {};
     return commit({
       version: 1,
-      data: candidate.data,
+      data: sanitizeHtmlFields(candidate.data),
       updatedAt: Object.fromEntries(Object.keys(candidate.data).map((key) => [key, typeof updatedAt[key] === "string" ? updatedAt[key] : now])),
     });
   }
@@ -778,7 +866,8 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
       res.status(400).json({ error: 'Expected a JSON body with a "value" field.' });
       return;
     }
-    const value = req.body.value;
+    const sanitized = { changed: false };
+    const value = sanitizeHtmlFields(req.body.value, sanitized);
     const errors = validateValue(key, value);
     if (errors.length) {
       res.status(422).json({ error: "Validation failed.", details: errors.slice(0, 50) });
@@ -793,7 +882,9 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
         updatedAt: { ...store.updatedAt, [key]: now },
       });
     });
-    res.status(status).json(status === 200 ? { ...body, updatedAt: store.updatedAt[key] } : body);
+    res
+      .status(status)
+      .json(status === 200 ? { ...body, updatedAt: store.updatedAt[key], ...(sanitized.changed ? { sanitized: true, value } : {}) } : body);
   });
 
   api.delete("/content/:key", async (req, res) => {

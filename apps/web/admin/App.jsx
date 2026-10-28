@@ -150,9 +150,17 @@ function ContentPage({ contentKey, routes, onSaved, setDirty, notify }) {
 		setSaveError(null);
 		try {
 			const result = await api.saveContent(contentKey, value);
-			setOriginal(JSON.stringify(value));
+			const saved = result.sanitized ? result.value : value;
+			if (result.sanitized) {
+				setDraft(saved);
+				setJsonText(JSON.stringify(saved, null, 2));
+			}
+			setOriginal(JSON.stringify(saved));
 			setState((prev) => ({ ...prev, overridden: true, updatedAt: result.updatedAt }));
-			notify(`Saved and published. ${result.checkedPages} pages were checked and render correctly.`);
+			notify(
+				`Saved and published. ${result.checkedPages} pages were checked and render correctly.` +
+					(result.sanitized ? ' Some custom HTML was cleaned up (scripts, event handlers or unsupported embeds were removed).' : '')
+			);
 			onSaved();
 		} catch (err) {
 			setSaveError(err);

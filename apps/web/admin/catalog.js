@@ -7,7 +7,7 @@
 // entry doesn't have them yet; `item` is the template used by "+ Add".
 // Optional `newItem()`: the complete blank entry created by "+ New".
 
-const BLOG_SECTION = { heading: '', headingLevel: 'h2', paragraphs: [''], image: '', imageAlt: '', imageCaption: '' };
+const BLOG_SECTION = { heading: '', headingLevel: 'h2', paragraphs: [''], image: '', imageAlt: '', imageCaption: '', html: '' };
 
 const BLOG_FIELDS = {
 	'*.id': { label: 'ID (same in EN and FR)', help: 'Links the English and French versions of the article. Lowercase letters, numbers and dashes.' },
@@ -45,6 +45,12 @@ const BLOG_FIELDS = {
 	'*.content.*.imageCaption': { label: 'Section image caption', default: '' },
 	'*.content.*.paragraphs': { label: 'Paragraphs', item: '', itemName: 'paragraph' },
 	'*.content.*.paragraphs.*': { rich: true },
+	'*.content.*.html': {
+		label: 'Custom HTML (optional)',
+		default: '',
+		html: true,
+		help: 'Shown after the paragraphs of this section. Scripts, event handlers (onclick...) and forms are removed when saving; iframes are allowed from YouTube, Vimeo, Google Maps, TripAdvisor, Instagram, Facebook and Spotify.',
+	},
 	'*.internalLinks': { label: 'Related links box', item: { label: '', description: '', to: '' }, itemName: 'link' },
 	'*.internalLinks.*.to': { label: 'Link', help: 'A site path such as /tour/marrakech-merzouga-desert or /destinations/marrakech.' },
 };
