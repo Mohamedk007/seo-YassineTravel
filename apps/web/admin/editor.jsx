@@ -292,6 +292,57 @@ export function ImageField({ value, onChange }) {
 	);
 }
 
+const HTML_SNIPPETS = [
+	{
+		label: 'Table',
+		html: '<table>\n  <thead>\n    <tr><th>Column 1</th><th>Column 2</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Cell</td><td>Cell</td></tr>\n  </tbody>\n</table>',
+	},
+	{ label: 'YouTube video', html: '<iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Video title" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>' },
+	{ label: 'Google map', html: '<iframe src="https://www.google.com/maps?q=Marrakech&output=embed" title="Map"></iframe>' },
+	{ label: 'Button link', html: '<a class="btn" href="/en/contact">Book now</a>' },
+	{ label: 'Note box', html: '<div class="note"><strong>Tip:</strong> Your text here.</div>' },
+	{ label: 'Quote', html: '<blockquote>Quote text here.</blockquote>' },
+];
+
+/** Raw HTML block with ready-made snippets. The server sanitizes it on save. */
+function HtmlField({ value, onChange }) {
+	const textarea = useRef(null);
+	const insert = (snippet) => {
+		const el = textarea.current;
+		const start = el ? el.selectionStart : value.length;
+		const end = el ? el.selectionEnd : value.length;
+		const before = value.slice(0, start);
+		const text = (before && !before.endsWith('\n') ? '\n' : '') + snippet;
+		onChange(before + text + value.slice(end));
+		requestAnimationFrame(() => {
+			if (!textarea.current) return;
+			textarea.current.focus();
+			textarea.current.setSelectionRange(start + text.length, start + text.length);
+		});
+	};
+	const rows = Math.min(20, Math.max(4, value.split('\n').length + 1));
+	return (
+		<div className="adm-rich">
+			<div className="adm-rich-toolbar">
+				{HTML_SNIPPETS.map((snippet) => (
+					<button key={snippet.label} type="button" className="adm-btn adm-btn-small" onClick={() => insert(snippet.html)}>
+						+ {snippet.label}
+					</button>
+				))}
+			</div>
+			<textarea
+				ref={textarea}
+				className="adm-input adm-textarea adm-code"
+				rows={rows}
+				value={value}
+				spellCheck={false}
+				placeholder="<p>Your HTML here</p>"
+				onChange={(event) => onChange(event.target.value)}
+			/>
+		</div>
+	);
+}
+
 // ---------------------------------------------------------------------------
 // Recursive field editor
 // ---------------------------------------------------------------------------
@@ -311,6 +362,8 @@ export function FieldEditor({ name, value, onChange, path = '', depth = 0, image
 			control = <SelectField value={value} onChange={onChange} options={hint.options} />;
 		} else if (hint?.type === 'date' && /^(?:\d{4}-\d{2}-\d{2})?$/.test(value)) {
 			control = <input className="adm-input adm-input-number" type="date" value={value} onChange={(event) => onChange(event.target.value)} />;
+		} else if (hint?.html) {
+			control = <HtmlField value={value} onChange={onChange} />;
 		} else if (hint?.image || imageHint || isImageName(name) || looksLikeImage(value)) {
 			control = <ImageField value={value} onChange={onChange} />;
 		} else if (hint?.rich) {

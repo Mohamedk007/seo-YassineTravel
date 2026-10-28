@@ -216,6 +216,14 @@ h4 {
 	line-height: 1.5;
 }
 
+.adm-code {
+	font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+	font-size: 13px;
+	tab-size: 2;
+	white-space: pre;
+	overflow-x: auto;
+}
+
 .adm-input-number {
 	max-width: 200px;
 }
