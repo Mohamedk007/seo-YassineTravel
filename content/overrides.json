@@ -448,7 +448,8 @@
             ],
             "image": "",
             "imageAlt": "",
-            "imageCaption": ""
+            "imageCaption": "",
+            "html": "<div style=\"border:1px solid #e2e6f0;border-left:5px solid #F68712;background:#f7f9fc;border-radius:10px;padding:18px 20px;margin:28px 0;font-family:inherit\">\n  <div style=\"font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#F68712;margin-bottom:6px\">Source &amp; further reading</div>\n  <p style=\"margin:0;color:#23255C;font-size:15px;line-height:1.55\">\n    The figures in this article come from the <strong>Cap 2030</strong> coverage by <strong>Tourisme News</strong>, Morocco's leading magazine for tourism professionals. Read the full analysis:\n    <a href=\"https://tourismenews.ma/coupe-du-monde-2030-maroc-tourisme/\" style=\"color:#2C3892;font-weight:600\">the 2030 World Cup and the turning point for Moroccan tourism</a>.\n  </p>\n</div>"
           },
           {
             "heading": "Planning your journey",
@@ -3745,7 +3746,7 @@
   "updatedAt": {
     "home.en": "2026-10-28T14:41:19.595Z",
     "home.fr": "2026-10-28T14:44:12.741Z",
-    "blog.en": "2026-10-28T16:42:07.930Z",
+    "blog.en": "2026-10-28T21:41:31.537Z",
     "tours.en": "2026-10-28T20:08:48.354Z"
   }
 }
