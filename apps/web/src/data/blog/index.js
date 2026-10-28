@@ -1,6 +1,10 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { registerContent } from '@/content/registry';
 import { BLOG_PAGE_POSTS as EN_POSTS } from './posts.en';
 import { BLOG_PAGE_POSTS as FR_POSTS } from './posts.fr';
+
+registerContent('blog.en', EN_POSTS);
+registerContent('blog.fr', FR_POSTS);
 
 const POSTS_BY_LANG = { en: EN_POSTS, fr: FR_POSTS };
 

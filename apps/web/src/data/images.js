@@ -1,4 +1,5 @@
 import { images } from '../../../../Imgs/images';
+import { registerContent, registerImages } from '@/content/registry';
 // Imported from @/seo/sitemap (not @/i18n/config) to keep this data module free
 // of the i18next initialisation side effect.
 import { DEFAULT_LANGUAGE } from '@/seo/sitemap';
@@ -482,13 +483,17 @@ export const IMG_META = {
 	},
 };
 
+registerImages(IMG);
+registerContent('images.meta', IMG_META);
+
 // Vite resolves each IMG value to a hashed asset URL at build time, so the
 // reverse map is built from the resolved URLs rather than from filenames.
-const META_BY_SRC = new Map(
-	Object.entries(IMG)
-		.map(([key, src]) => [src, IMG_META[key]])
-		.filter(([, meta]) => Boolean(meta))
-);
+// It maps to the IMG key (not the meta object) so admin edits to IMG_META
+// are picked up live.
+const KEY_BY_SRC = new Map();
+for (const [key, src] of Object.entries(IMG)) {
+	if (!KEY_BY_SRC.has(src) || (IMG_META[key] && !IMG_META[KEY_BY_SRC.get(src)])) KEY_BY_SRC.set(src, key);
+}
 
 /**
  * Renderable `<img>` attributes for a bundled image: translated alt plus real
@@ -496,8 +501,9 @@ const META_BY_SRC = new Map(
  * destination galleries) that aren't part of the shared IMG set.
  */
 export function getImageAttrs(src, lang = DEFAULT_LANGUAGE, fallbackAlt = '') {
-	const meta = META_BY_SRC.get(src);
-	if (!meta) return { alt: fallbackAlt };
+	const key = KEY_BY_SRC.get(src);
+	const meta = key ? IMG_META[key] : undefined;
+	if (!meta?.alt) return { alt: fallbackAlt };
 
 	return {
 		alt: meta.alt[lang] || meta.alt[DEFAULT_LANGUAGE] || fallbackAlt,

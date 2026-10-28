@@ -3,7 +3,10 @@ import path from "path";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { matchRoutes } from "react-router-dom";
-import { render, resolveLang, defaultLanguage, getRoutePaths } from "./dist/ssr/entry-server.js";
+import * as ssr from "./dist/ssr/entry-server.js";
+import { mountAdmin } from "./admin-server.js";
+
+const { render, resolveLang, defaultLanguage, getRoutePaths } = ssr;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -60,6 +63,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Admin panel (/admin), its API (/api/admin), uploaded media (/uploads), the
+// runtime content script and dynamic sitemaps for edited datasets. Mounted
+// before static serving so an edited dataset's sitemap replaces the
+// build-time file.
+const admin = mountAdmin(app, { ssr, distDir: dist, rootDir: __dirname });
+
 // Never let static serving return the SPA shell for a directory-style
 // request before the SSR handler below gets a chance — only real asset
 // files (hashed JS/CSS, images, etc.) should be served statically.
@@ -78,7 +87,11 @@ app.use(
     maxAge: "1y",
   })
 );
-app.use(express.static(dist, { index: false }));
+// redirect: false — directories are never served (index: false), so serve-static
+// must not 301 "/en/tours" -> "/en/tours/" when a stale prerendered folder of
+// that name exists in dist; that fights the trailing-slash normalisation and
+// loops forever.
+app.use(express.static(dist, { index: false, redirect: false }));
 
 // Route tables (by lang) used only to detect a true 404 before rendering, so
 // NotFoundPage's real body still ships but with the correct status code.
@@ -110,13 +123,13 @@ function injectHead(html, helmet) {
     // </title> (including the <script>/<link rel="stylesheet"> tags in
     // between) and leaving them inside an unclosed comment in the response.
     .replace(/<!--[\s\S]*?-->\s*/g, "")
-    .replace(/<html lang="[^"]*"[^>]*>/, `<html ${helmet.htmlAttributes.toString()}>`)
-    .replace(/<title>[\s\S]*?<\/title>\s*/, `${helmet.title.toString()}\n\t\t`)
+    .replace(/<html lang="[^"]*"[^>]*>/, () => `<html ${helmet.htmlAttributes.toString()}>`)
+    .replace(/<title>[\s\S]*?<\/title>\s*/, () => `${helmet.title.toString()}\n\t\t`)
     .replace(/<meta\s+name="description"[\s\S]*?\/>\s*/, "")
     .replace(/<meta\s+name="robots"[\s\S]*?\/>\s*/, "")
     .replace(
       "</head>",
-      `\t\t${helmet.priority.toString()}\n\t\t${helmet.meta.toString()}\n\t\t${helmet.link.toString()}\n\t\t${helmet.script.toString()}\n\t</head>`
+      () => `\t\t${helmet.priority.toString()}\n\t\t${helmet.meta.toString()}\n\t\t${helmet.link.toString()}\n\t\t${helmet.script.toString()}\n\t</head>`
     );
 }
 
@@ -163,14 +176,14 @@ app.get("/{*any}", (req, res) => {
     const localizedPath = rest === '/' ? `/${lang}` : `/${lang}${rest}`;
     const statusCode = isKnownRoute(lang, rest) ? 200 : 404;
     const { html, helmet } = render(localizedPath, lang);
-    const page = injectHead(template.replace('<div id="root"></div>', `<div id="root">${html}</div>`), helmet);
+    const page = injectHead(template.replace('<div id="root"></div>', () => `<div id="root">${html}</div>${admin.contentScriptTag()}`), helmet);
     res.status(statusCode).send(page);
     return;
   }
 
   const statusCode = isKnownRoute(lang, rest) ? 200 : 404;
   const { html, helmet } = render(req.path, lang);
-  const page = injectHead(template.replace('<div id="root"></div>', `<div id="root">${html}</div>`), helmet);
+  const page = injectHead(template.replace('<div id="root"></div>', () => `<div id="root">${html}</div>${admin.contentScriptTag()}`), helmet);
 
   res.status(statusCode).send(page);
 });

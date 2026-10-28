@@ -3,11 +3,13 @@ import { getImageAttrs } from '@/data/images';
 import { useLocale } from '@/i18n/LocaleContext';
 import { TripAdvisorRatingBadge } from '@/components/site/TripAdvisorRatingBadge';
 
-export function PageHero({ title, subtitle, image, crumb, imageAlt, showTripAdvisorBadge }) {
+export function PageHero({ title, subtitle, image, crumb, imageAlt, preferImageAlt = false, showTripAdvisorBadge }) {
 	const lang = useLocale();
 	// Falls back to the page title only when the image isn't one of the shared,
 	// individually described assets.
-	const { alt, width, height } = getImageAttrs(image, lang, imageAlt || title);
+	const attrs = getImageAttrs(image, lang, imageAlt || title);
+	const { width, height } = attrs;
+	const alt = preferImageAlt && imageAlt ? imageAlt : attrs.alt;
 
 	return (
 		<section className="relative flex min-h-[52vh] items-end overflow-hidden pt-24">

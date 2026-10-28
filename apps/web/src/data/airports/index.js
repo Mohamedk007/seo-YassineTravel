@@ -1,3 +1,4 @@
+import { registerContent } from '@/content/registry';
 import { agadirAirport } from './agadir';
 import { casablancaAirport } from './casablanca';
 import { fesAirport } from './fes';
@@ -13,6 +14,8 @@ export const AIRPORTS = [
 	tangierAirport,
 	agadirAirport,
 ];
+
+registerContent('airports', AIRPORTS);
 
 export function getAirportByCode(code) {
 	return code ? AIRPORTS.find((airport) => airport.code === code) : undefined;

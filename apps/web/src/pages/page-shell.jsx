@@ -80,6 +80,9 @@ export function Page({
 	seoDescription,
 	image,
 	imageAlt,
+	// When true, `imageAlt` wins over the shared image library's alt text in the
+	// hero (an article's own, explicitly written cover alt).
+	preferImageAlt = false,
 	crumb,
 	children,
 	structuredData,
@@ -110,7 +113,7 @@ export function Page({
 				preloadImage
 				preconnectMaps={preconnectMaps}
 			/>
-			<PageHero title={title} subtitle={subtitle} image={image} crumb={crumb} />
+			<PageHero title={title} subtitle={subtitle} image={image} crumb={crumb} imageAlt={imageAlt} preferImageAlt={preferImageAlt} />
 			{children}
 			<CTA />
 		</Layout>

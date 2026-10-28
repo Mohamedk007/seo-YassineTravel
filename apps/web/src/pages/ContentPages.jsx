@@ -6,7 +6,7 @@ import { LeadForm } from '@/components/site/LeadForm';
 import { Reveal } from '@/components/site/Reveal';
 import { Stars } from '@/components/site/Typography';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { CONTACT, GOOGLE_BUSINESS_MAP_EMBED_URL, waLink } from '@/data/contact';
+import { CONTACT, waLink } from '@/data/contact';
 import { getFaqs, getReviews } from '@/data/content';
 import { getDestinationHighlights, getDestinations } from '@/data/destinations';
 import { IMG, getImageAlt, getImageAttrs } from '@/data/images';
@@ -271,6 +271,7 @@ export function Blog() {
 									<img
 										src={post.image}
 										{...getImageAttrs(post.image, lang, post.title)}
+										{...(post.imageAlt ? { alt: post.imageAlt } : {})}
 										className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
 										loading="lazy"
 										decoding="async"
@@ -367,7 +368,7 @@ export function Contact() {
 							style={{ border: 0 }}
 							loading="lazy"
 							referrerPolicy="strict-origin-when-cross-origin"
-							src={GOOGLE_BUSINESS_MAP_EMBED_URL}
+							src={CONTACT.mapEmbedUrl}
 						/>
 					</div>
 				</div>

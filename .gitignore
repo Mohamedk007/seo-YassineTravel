@@ -1,2 +1,8 @@
 node_modules/
 dist/
+# Runtime content edited from /admin. overrides.json and uploads/ are committed
+# by the admin "Push to repo" button; backups and temp files stay local.
+# Root-anchored: an unanchored "content/" would also hide apps/web/src/content/.
+/content/*
+!/content/overrides.json
+!/content/uploads/

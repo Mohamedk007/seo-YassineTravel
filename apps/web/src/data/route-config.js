@@ -67,36 +67,8 @@ export function getNav(lang = DEFAULT_LANGUAGE) {
 	];
 }
 
-export function getFooterTourLinks(lang = DEFAULT_LANGUAGE) {
-	const P = getRoutePaths(lang);
-	return [
-		['Luxury Tours', P.luxuryTours, 'nav.luxuryTours'],
-		['Private Tours', P.privateTours, 'nav.privateTours'],
-		['Desert Tours', P.desertTours, 'nav.desertTours'],
-		['Day Trips', P.dayTrips, 'nav.dayTrips'],
-		['Adventure Excursions', P.excursions, 'nav.excursions'],
-		['Guided City Tours', P.guidedTours, 'nav.guidedTours'],
-		['Custom Tours', P.customTours, 'nav.customTours'],
-	];
-}
-
-export function getFooterCompanyLinks(lang = DEFAULT_LANGUAGE) {
-	const P = getRoutePaths(lang);
-	return [
-		['About Us', P.about, 'nav.about'],
-		['Destinations', P.destinations, 'nav.destinations'],
-		['Reviews', P.reviews, 'nav.reviews'],
-		['Gallery', P.gallery, 'nav.gallery'],
-		['Blog', P.blog, 'nav.blog'],
-		['Travel Guide', P.travelGuide, 'nav.travelGuide'],
-		['FAQ', P.faq, 'nav.faq'],
-	];
-}
-
 // Kept for call sites that haven't been made locale-aware yet; always English.
 export const NAV = getNav(DEFAULT_LANGUAGE);
 export const TOUR_ROUTE_LINKS = getTourRouteLinks(DEFAULT_LANGUAGE);
 export const SERVICE_ROUTE_LINKS = getServiceRouteLinks(DEFAULT_LANGUAGE);
 export const MORE_ROUTE_LINKS = getMoreRouteLinks(DEFAULT_LANGUAGE);
-export const FOOTER_TOUR_LINKS = getFooterTourLinks(DEFAULT_LANGUAGE);
-export const FOOTER_COMPANY_LINKS = getFooterCompanyLinks(DEFAULT_LANGUAGE);

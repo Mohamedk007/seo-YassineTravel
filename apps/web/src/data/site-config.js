@@ -2,6 +2,7 @@
 // dependency path (via seo.config.js), which tools/prerender.mjs runs directly
 // under plain Node without a bundler to resolve `@/`.
 import { DEFAULT_LANGUAGE } from '../seo/sitemap.js';
+import { registerContent } from '../content/registry.js';
 import { TRIPADVISOR } from './tripadvisor.js';
 
 // Brand identity: name, origin, locale. These are not translated — a brand
@@ -28,20 +29,14 @@ function resolve(dict, lang) {
 	return dict[lang] || dict[DEFAULT_LANGUAGE];
 }
 
-const SITE_COPY_BY_LANG = {
-	en: {
-		reviewSummary: `${TRIPADVISOR.rating.toFixed(1)}/5 · ${TRIPADVISOR.reviewCount} reviews`,
-		reviewSummaryCompact: `${TRIPADVISOR.rating.toFixed(1)}/5 · ${TRIPADVISOR.reviewCount} reviews`,
-		footerDescription: 'Bespoke luxury private tours crafted by local experts. Trusted by discerning travellers worldwide since 2008.',
-		footerLegal: 'All rights reserved. · Licensed Moroccan tour operator.',
-	},
-	fr: {
-		reviewSummary: `${TRIPADVISOR.rating.toFixed(1).replace('.', ',')}/5 · ${TRIPADVISOR.reviewCount} avis`,
-		reviewSummaryCompact: `${TRIPADVISOR.rating.toFixed(1).replace('.', ',')}/5 · ${TRIPADVISOR.reviewCount} avis`,
-		footerDescription: 'Circuits privés de luxe conçus par des experts locaux. La confiance des voyageurs exigeants du monde entier depuis 2008.',
-		footerLegal: 'Tous droits réservés. · Voyagiste marocain agréé.',
-	},
-};
+// Computed on every call (not frozen into the dict at module load) so an
+// admin edit to the TripAdvisor rating/count shows up immediately.
+function formatReviewSummary(lang) {
+	const rating = Number(TRIPADVISOR.rating).toFixed(1);
+	return lang === 'fr'
+		? `${rating.replace('.', ',')}/5 · ${TRIPADVISOR.reviewCount} avis`
+		: `${rating}/5 · ${TRIPADVISOR.reviewCount} reviews`;
+}
 
 const NAVBAR_CONFIG_BY_LANG = {
 	en: { desktopCtaLabel: 'Book Now', mobileCtaLabel: 'Chat on WhatsApp' },
@@ -71,18 +66,7 @@ export const SOCIAL_LINKS = {
 	tiktok: 'https://www.tiktok.com/@yasine.travel',
 };
 
-const FOOTER_CONFIG_BY_LANG = {
-	en: {
-		newsletterTitle: 'Get insider Morocco travel tips',
-		newsletterDescription: 'Seasonal guides, hidden riads and members-only offers.',
-		socialLinks: SOCIAL_LINKS,
-	},
-	fr: {
-		newsletterTitle: 'Recevez nos conseils de voyage sur le Maroc',
-		newsletterDescription: 'Guides saisonniers, riads secrets et offres réservées aux membres.',
-		socialLinks: SOCIAL_LINKS,
-	},
-};
+// Footer texts, columns and links live in data/footer.js.
 
 const LEAD_FORM_CONFIG_BY_LANG = {
 	en: {
@@ -146,7 +130,8 @@ const LEAD_FORM_CONFIG_BY_LANG = {
 };
 
 export function getSiteCopy(lang = DEFAULT_LANGUAGE) {
-	return resolve(SITE_COPY_BY_LANG, lang);
+	const reviewSummary = formatReviewSummary(lang);
+	return { reviewSummary, reviewSummaryCompact: reviewSummary };
 }
 
 export function getNavbarConfig(lang = DEFAULT_LANGUAGE) {
@@ -157,16 +142,19 @@ export function getPageShellConfig(lang = DEFAULT_LANGUAGE) {
 	return resolve(PAGE_SHELL_CONFIG_BY_LANG, lang);
 }
 
-export function getFooterConfig(lang = DEFAULT_LANGUAGE) {
-	return resolve(FOOTER_CONFIG_BY_LANG, lang);
-}
-
 export function getLeadFormConfig(lang = DEFAULT_LANGUAGE) {
 	return resolve(LEAD_FORM_CONFIG_BY_LANG, lang);
 }
 
+registerContent('site.brand', SITE_BRAND);
+registerContent('site.social', SOCIAL_LINKS);
+registerContent('site.copy', {
+	navbar: NAVBAR_CONFIG_BY_LANG,
+	pageShell: PAGE_SHELL_CONFIG_BY_LANG,
+	leadForm: LEAD_FORM_CONFIG_BY_LANG,
+});
+
 // Kept for call sites that haven't been made locale-aware yet; always English.
 export const NAVBAR_CONFIG = NAVBAR_CONFIG_BY_LANG[DEFAULT_LANGUAGE];
 export const PAGE_SHELL_CONFIG = PAGE_SHELL_CONFIG_BY_LANG[DEFAULT_LANGUAGE];
-export const FOOTER_CONFIG = FOOTER_CONFIG_BY_LANG[DEFAULT_LANGUAGE];
 export const LEAD_FORM_CONFIG = LEAD_FORM_CONFIG_BY_LANG[DEFAULT_LANGUAGE];

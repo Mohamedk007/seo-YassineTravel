@@ -10,9 +10,10 @@ function normalizeStructuredData(data) {
 }
 
 // `<` is escaped so a title or description inside the payload can never close
-// the script tag early.
+// the script tag early. Note the double backslash: '\u003c' in JS source is
+// the `<` character itself, which made the previous replace a no-op.
 function serialize(entry) {
-	return JSON.stringify(entry).replace(/</g, '\u003c');
+	return JSON.stringify(entry).replace(/</g, '\\u003c');
 }
 
 export function StructuredData({ data }) {

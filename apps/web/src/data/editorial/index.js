@@ -1,7 +1,11 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
 import { BLOG_POSTS, getBlogPostBySlug, getBlogPostTranslations, getBlogPosts, getBlogPostsForDestination } from '@/data/blog';
+import { registerContent } from '@/content/registry';
 import * as en from './en';
 import * as fr from './fr';
+
+registerContent('editorial.en', { ...en });
+registerContent('editorial.fr', { ...fr });
 
 const EDITORIAL_BY_LANG = { en, fr };
 

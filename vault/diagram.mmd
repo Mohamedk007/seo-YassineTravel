@@ -1,0 +1,70 @@
+flowchart TD
+    START([Créer une VIP]):::startNode
+    START --> Q_FAMILY
+
+    Q_FAMILY{{"S'agit-il d'une\nVIP RP ou VIP LB ?"}}:::decision
+    Q_FAMILY -- "VIP RP" --> Q_COMTYPE
+    Q_FAMILY -- "VIP LB" --> Q_SERVERS
+
+    Q_COMTYPE{{"Quel type de\ncommunication ?"}}:::decision
+    Q_COMTYPE -- "Machine to Machine" --> FIN_M2M
+    Q_COMTYPE -- "User to Machine" --> Q_DEST
+
+    FIN_M2M[["Fin — Cas 1\nMachine to Machine"]]:::action
+
+    Q_DEST{{"Quelle est\nla destination ?"}}:::decision
+    Q_DEST -- "Utilisateurs internes" --> FIN_INTERNES
+    Q_DEST -- "Exposé sur Internet" --> FIN_INTERNET
+
+    FIN_INTERNES[["Fin — Accès\nutilisateurs internes"]]:::action
+    FIN_INTERNET[["Fin — Service\nexposé Internet"]]:::action
+
+    Q_SERVERS{{"Les serveurs sont-ils\ndéjà provisionnés ?"}}:::decision
+    Q_SERVERS -- "Oui" --> NODE_COMMON_RPLB
+    Q_SERVERS -- "Non" --> ALERT_PROV
+
+    ALERT_PROV["Demande de provisionnement\ndes serveurs OU communication\nde l'infra zone"]:::alert
+    ALERT_PROV --> NODE_COMMON_RPLB
+
+    FIN_M2M --> NODE_COMMON_RPLB
+    FIN_INTERNES --> NODE_COMMON_RPLB
+    FIN_INTERNET --> NODE_COMMON_RPLB
+
+    NODE_COMMON_RPLB["Nœud commun RP & LB"]:::common
+    NODE_COMMON_RPLB --> Q_L4L7
+
+    Q_L4L7{{"La VIP est-elle\nde type L4 ou L7 ?"}}:::decision
+    Q_L4L7 -- "L4" --> L4_SERVICES
+    Q_L4L7 -- "L7" --> Q_SSL
+
+    L4_SERVICES["Collecter les infos du service\nen amont et en aval"]:::action
+    L4_SERVICES --> L4_HEALTH
+    L4_HEALTH["Définir le test de vie"]:::action
+    L4_HEALTH --> L4_FIN
+    L4_FIN(["FIN"]):::endNode
+
+    Q_SSL{{"Qui gère la\nterminaison SSL ?"}}:::decision
+    Q_SSL -- "Gérée par le RP/LB" --> SSL_RPLB_CNSAN
+    Q_SSL -- "Gérée côté serveur" --> SSL_SERV_IP
+
+    SSL_RPLB_CNSAN["Demander le CN\net les SAN"]:::action
+    SSL_RPLB_CNSAN --> SSL_RPLB_IP
+    SSL_RPLB_IP["Réserver l'IP de la VIP"]:::action
+    SSL_RPLB_IP --> SSL_RPLB_COMM
+    SSL_RPLB_COMM["Communiquer l'adresse IP\nau projet"]:::action
+    SSL_RPLB_COMM --> SSL_RPLB_DNS
+    SSL_RPLB_DNS["Lancer la demande DNS\nvia DIANE"]:::action
+    SSL_RPLB_DNS --> NODE_COMMON_L7
+
+    SSL_SERV_IP["Communiquer uniquement\nl'adresse IP au projet"]:::action
+    SSL_SERV_IP --> SSL_SERV_CONFIG
+    SSL_SERV_CONFIG["Le projet gère\nla configuration SSL"]:::action
+    SSL_SERV_CONFIG --> NODE_COMMON_L7
+
+    NODE_COMMON_L7["Nœud commun L7"]:::common
+    NODE_COMMON_L7 --> L7_SERVICES
+    L7_SERVICES["Collecter les infos du service\nen amont et en aval"]:::action
+    L7_SERVICES --> L7_HEALTH
+    L7_HEALTH["Définir le test de vie"]:::action
+    L7_HEALTH --> L7_FIN
+    L7_FIN(["FIN"]):::endNode

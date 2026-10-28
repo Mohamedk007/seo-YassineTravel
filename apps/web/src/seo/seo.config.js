@@ -2,6 +2,7 @@
 // the dependency path of buildSeoHead() in ./head.js, which tools/prerender.mjs
 // runs directly under plain Node, without a bundler to resolve `@/` or assets.
 import { SITE_BRAND } from '../data/site-config.js';
+import { registerContent } from '../content/registry.js';
 import { DEFAULT_LANGUAGE, SITE_ORIGIN, SUPPORTED_LANGUAGES, resolveLanguage } from './sitemap.js';
 
 /**
@@ -27,6 +28,8 @@ export const SEO_DEFAULTS_BY_LANG = {
 		imageAlt: 'Dunes du Sahara au coucher du soleil lors d’un circuit privé au Maroc',
 	},
 };
+
+registerContent('seo.defaults', SEO_DEFAULTS_BY_LANG);
 
 export const SEO_CONFIG = {
 	origin: SITE_ORIGIN,

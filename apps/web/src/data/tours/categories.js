@@ -1,6 +1,10 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { registerContent } from '@/content/registry';
 import { TOUR_COLLECTIONS as EN_COLLECTIONS } from './categories.en';
 import { TOUR_COLLECTIONS as FR_COLLECTIONS } from './categories.fr';
+
+registerContent('tourCategories.en', EN_COLLECTIONS);
+registerContent('tourCategories.fr', FR_COLLECTIONS);
 
 const COLLECTIONS_BY_LANG = { en: EN_COLLECTIONS, fr: FR_COLLECTIONS };
 
