@@ -9,8 +9,9 @@
 //
 // Required env: ADMIN_PASSWORD (12+ chars). Optional: ADMIN_USER (default
 // "admin"), ADMIN_SESSION_SECRET, CONTENT_DIR, ADMIN_GIT_PUSH=off (hides the
-// "Push to repo" button, which commits CONTENT_DIR edits and pushes the
-// current branch using the git credentials of the server user).
+// "Push to repo" button). The button pushes overrides.json + uploads/ either
+// through the GitHub API (when GITHUB_TOKEN + GITHUB_REPO are set, see below)
+// or with the git CLI when the app folder is a git clone with credentials.
 
 import express from "express";
 import { execFile } from "node:child_process";
@@ -359,13 +360,131 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
 
   const gitPushEnabled = process.env.ADMIN_GIT_PUSH !== "off";
 
+  function commitMessage(raw, user) {
+    const cleaned = String(raw || "")
+      .replace(/[\u0000-\u001f\u007f]+/g, " ")
+      .trim()
+      .slice(0, COMMIT_MESSAGE_MAX);
+    return cleaned || `Update website content from admin (${user})`;
+  }
+
+  // GitHub API mode (for hosts where the app folder is not a git clone, e.g.
+  // Hostinger): GITHUB_TOKEN = fine-grained token with "Contents: Read and
+  // write" on the repo, GITHUB_REPO = owner/name, GITHUB_BRANCH (default
+  // main), GITHUB_CONTENT_PATH (folder in the repo, default "content").
+  const SAFE_REF_PATTERN = /^(?!.*\.\.)[A-Za-z0-9._/-]+$/;
+  const github = (() => {
+    const token = process.env.GITHUB_TOKEN || "";
+    const repo = process.env.GITHUB_REPO || "";
+    const branch = process.env.GITHUB_BRANCH || "main";
+    const dir = (process.env.GITHUB_CONTENT_PATH || "content").replace(/^\/+|\/+$/g, "");
+    if (!token && !repo) return null;
+    if (!token || !/^[\w.-]+\/[\w.-]+$/.test(repo) || !SAFE_REF_PATTERN.test(branch) || !SAFE_REF_PATTERN.test(dir)) {
+      return { invalid: true };
+    }
+    return { token, repo, branch, dir };
+  })();
+
+  async function githubApi(method, apiPath, body) {
+    let response;
+    try {
+      response = await fetch(`https://api.github.com/repos/${github.repo}${apiPath}`, {
+        method,
+        headers: {
+          Authorization: `Bearer ${github.token}`,
+          Accept: "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28",
+          "User-Agent": "yassinetravel-admin",
+          ...(body ? { "Content-Type": "application/json" } : {}),
+        },
+        body: body ? JSON.stringify(body) : undefined,
+        signal: AbortSignal.timeout(GIT_TIMEOUT_MS),
+      });
+    } catch (error) {
+      throw new Error(`Cannot reach GitHub (${error.name === "TimeoutError" ? "timeout" : error.message}).`);
+    }
+    const data = await response.json().catch(() => null);
+    if (!response.ok) {
+      const hints = {
+        401: "the GITHUB_TOKEN is invalid or expired",
+        403: `the token is not allowed to write to ${github.repo} (it needs "Contents: Read and write")`,
+        404: `repository ${github.repo} or branch "${github.branch}" not found, or the token cannot access it`,
+      };
+      const error = new Error(`GitHub refused the request: ${hints[response.status] || data?.message || response.status}.`);
+      error.status = response.status;
+      throw error;
+    }
+    return data;
+  }
+
+  function gitBlobSha(buffer) {
+    return crypto.createHash("sha1").update(`blob ${buffer.length}\0`).update(buffer).digest("hex");
+  }
+
+  // Compares the local content files with the branch on GitHub and returns the
+  // tree entries needed to make GitHub match (uploads removed locally are deleted).
+  async function githubDiff() {
+    const ref = await githubApi("GET", `/git/ref/heads/${github.branch}`);
+    const head = await githubApi("GET", `/git/commits/${ref.object.sha}`);
+    const tree = await githubApi("GET", `/git/trees/${head.tree.sha}?recursive=1`);
+    const prefix = `${github.dir}/`;
+    const remote = new Map(
+      tree.tree
+        .filter((entry) => entry.type === "blob" && (entry.path === `${prefix}overrides.json` || (entry.path.startsWith(`${prefix}uploads/`) && UPLOAD_NAME_PATTERN.test(entry.path.slice(prefix.length + 8)))))
+        .map((entry) => [entry.path, entry.sha])
+    );
+
+    const local = new Map();
+    if (fs.existsSync(overridesFile)) local.set(`${prefix}overrides.json`, overridesFile);
+    for (const name of await fsp.readdir(uploadsDir)) {
+      if (UPLOAD_NAME_PATTERN.test(name)) local.set(`${prefix}uploads/${name}`, path.join(uploadsDir, name));
+    }
+
+    const changes = [];
+    for (const [repoPath, file] of local) {
+      const buffer = await fsp.readFile(file);
+      if (remote.get(repoPath) !== gitBlobSha(buffer)) changes.push({ path: repoPath, buffer });
+    }
+    for (const repoPath of remote.keys()) {
+      if (!local.has(repoPath)) changes.push({ path: repoPath, buffer: null });
+    }
+    return { headSha: ref.object.sha, treeSha: head.tree.sha, changes };
+  }
+
+  async function githubPush(user, rawMessage) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const { headSha, treeSha, changes } = await githubDiff();
+      if (!changes.length) return [200, { ok: true, nothingToPush: true, branch: github.branch, remote: github.repo }];
+      const entries = [];
+      for (const change of changes) {
+        let sha = null;
+        if (change.buffer) {
+          sha = (await githubApi("POST", "/git/blobs", { content: change.buffer.toString("base64"), encoding: "base64" })).sha;
+        }
+        entries.push({ path: change.path, mode: "100644", type: "blob", sha });
+      }
+      const tree = await githubApi("POST", "/git/trees", { base_tree: treeSha, tree: entries });
+      const commit = await githubApi("POST", "/git/commits", { message: commitMessage(rawMessage, user), tree: tree.sha, parents: [headSha] });
+      try {
+        await githubApi("PATCH", `/git/refs/heads/${github.branch}`, { sha: commit.sha, force: false });
+      } catch (error) {
+        // 422 = the branch moved meanwhile (someone else pushed): rebuild on top of it once.
+        if (error.status === 422 && attempt === 0) continue;
+        throw error;
+      }
+      return [200, { ok: true, committed: true, commit: commit.sha.slice(0, 7), branch: github.branch, remote: github.repo }];
+    }
+    return [409, { error: "The branch changed on GitHub during the push. Try again." }];
+  }
+
   async function gitInfo() {
     if (!gitPushEnabled) return { available: false, reason: "Pushing is disabled on this server (ADMIN_GIT_PUSH=off)." };
+    if (github?.invalid) return { available: false, reason: "GITHUB_TOKEN / GITHUB_REPO / GITHUB_BRANCH are incomplete or invalid." };
     let repoRoot;
     try {
       repoRoot = path.resolve(await git(["rev-parse", "--show-toplevel"], contentDir));
     } catch {
-      return { available: false, reason: "The content folder is not inside a git repository." };
+      return { available: false, reason: "This server's folder is not a git clone. Set GITHUB_TOKEN and GITHUB_REPO to push through the GitHub API." };
     }
     const contentPath = path.relative(repoRoot, contentDir).split(path.sep).join("/");
     if (!contentPath || contentPath.startsWith("..") || path.isAbsolute(contentPath)) {
@@ -397,6 +516,13 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
   }
 
   async function pushContent(user, rawMessage) {
+    if (gitPushEnabled && github && !github.invalid) {
+      try {
+        return await githubPush(user, rawMessage);
+      } catch (error) {
+        return [502, { error: error.message }];
+      }
+    }
     const info = await gitInfo();
     if (!info.available) return [409, { error: info.reason }];
     const { repoRoot, contentPath, branch, remote } = info;
@@ -406,11 +532,7 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
     try {
       await git(["add", "-A", ...pathspec], repoRoot);
       if (await git(["diff", "--cached", "--name-only", ...pathspec], repoRoot)) {
-        const cleaned = String(rawMessage || "")
-          .replace(/[\u0000-\u001f\u007f]+/g, " ")
-          .trim()
-          .slice(0, COMMIT_MESSAGE_MAX);
-        const message = cleaned || `Update website content from admin (${user})`;
+        const message = commitMessage(rawMessage, user);
         // Only the content folder is committed, whatever else is staged.
         await git([...(await gitIdentityArgs(repoRoot, user)), "commit", "-m", message, ...pathspec], repoRoot);
         committed = true;
@@ -765,6 +887,15 @@ export function mountAdmin(app, { ssr, distDir, rootDir }) {
   });
 
   api.get("/git/status", async (req, res) => {
+    if (gitPushEnabled && github && !github.invalid) {
+      try {
+        const { changes } = await githubDiff();
+        res.json({ available: true, branch: github.branch, remote: github.repo, changes: changes.length, ahead: 0 });
+      } catch (error) {
+        res.json({ available: false, reason: error.message });
+      }
+      return;
+    }
     const info = await gitInfo();
     if (!info.available) {
       res.json({ available: false, reason: info.reason });
