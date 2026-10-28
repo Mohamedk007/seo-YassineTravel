@@ -16,6 +16,12 @@ export default defineConfig({
   server: {
     host: true,
     port: 3000,
+    // Admin API + uploads are served by the Node server (server.js); run it
+    // on 3001 (`PORT=3001 node server.js` after a build) to use /admin.html in dev.
+    proxy: {
+      "/api": "http://localhost:3001",
+      "/uploads": "http://localhost:3001",
+    },
   },
 
   build: {
@@ -23,6 +29,12 @@ export default defineConfig({
     assetsDir: "assets",
 
     rollupOptions: {
+      // admin.html is a separate entry (the /admin panel) so none of its code
+      // ends up in the public site's bundle.
+      input: {
+        index: path.resolve(__dirname, "index.html"),
+        admin: path.resolve(__dirname, "admin.html"),
+      },
       output: {
         // The previous static manualChunks object silently failed for
         // react/react-dom: the "react" chunk built at 0 bytes (confirmed by
@@ -40,6 +52,10 @@ export default defineConfig({
         // Rebuilding with this fix: react-*.js is now ~165KB (real content)
         // and router-*.js dropped to ~37KB (its actual, much smaller size).
         manualChunks(id) {
+          // With two entries (site + admin) Vite would split its tiny
+          // modulepreload polyfill into its own chunk — an extra request on
+          // every public page. Fold it into the react chunk both already load.
+          if (id.includes("modulepreload-polyfill")) return "react";
           if (!id.includes("node_modules")) return undefined;
           if (id.includes("react-router-dom")) return "router";
           if (id.includes("lucide-react")) return "ui";

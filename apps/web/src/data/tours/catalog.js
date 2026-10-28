@@ -1,6 +1,10 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { registerContent } from '@/content/registry';
 import { TOURS as EN_TOURS } from './catalog.en';
 import { TOURS as FR_TOURS } from './catalog.fr';
+
+registerContent('tours.en', EN_TOURS);
+registerContent('tours.fr', FR_TOURS);
 
 const TOURS_BY_LANG = { en: EN_TOURS, fr: FR_TOURS };
 

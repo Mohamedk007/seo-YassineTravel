@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "mcp__claude_ai_UberSuggest__location_suggest",
+      "mcp__claude_ai_UberSuggest__location_details",
+      "mcp__claude_ai_UberSuggest__keyword_overview",
+      "Bash(claude-seo doctor *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://yassinetravel.com/robots.txt)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://yassinetravel.com/sitemap-index.xml)",
+      "Bash(python -c \"import playwright; print\\('playwright ok'\\)\")",
+      "Bash(py -3 -c \"print\\('ok'\\)\")",
+      "Bash(claude-seo run *)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(python -c ' *)",
+      "Bash(py -3 -c \"import playwright; print\\('playwright module ok'\\)\")",
+      "Bash(py -3 -m pip show playwright)",
+      "Bash(py -3 -m playwright install chromium)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://yassinetravel.com/llms.txt)",
+      "Bash(curl -s -o /dev/null -w \"TripAdvisor URL status: %{http_code}\\\\n\" -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" -L \"https://www.tripadvisor.com/Attraction_Review-g293734-d28102443-Reviews-Morocco_Trip_Holidays-Marrakech_Marrakech_Safi.html\" --max-time 20)",
+      "Bash(curl -s https://yassinetravel.com/en -o \"C:\\\\Users\\\\mkarami\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-mkarami-Desktop-seo-YassineTravel\\\\e5a0630a-95b9-4aa1-bb45-97817d6aa2af\\\\scratchpad\\\\home.html\")",
+      "Bash(curl -s -I -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36\" \"https://www.tripadvisor.com/Attraction_Review-g293734-d28102443-Reviews-Morocco_Trip_Holidays-Marrakech_Marrakech_Safi.html\" --max-time 20)",
+      "Bash(py -3 \"C:\\\\Users\\\\mkarami\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-mkarami-Desktop-seo-YassineTravel\\\\e5a0630a-95b9-4aa1-bb45-97817d6aa2af\\\\scratchpad\\\\capture.py\")"
+    ]
+  }
+}

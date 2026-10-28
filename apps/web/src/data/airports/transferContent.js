@@ -1,6 +1,10 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { registerContent } from '@/content/registry';
 import { AIRPORT_CONTENT as EN_CONTENT } from './transferContent.en';
 import { AIRPORT_CONTENT as FR_CONTENT } from './transferContent.fr';
+
+registerContent('airportContent.en', EN_CONTENT);
+registerContent('airportContent.fr', FR_CONTENT);
 
 const CONTENT_BY_LANG = { en: EN_CONTENT, fr: FR_CONTENT };
 

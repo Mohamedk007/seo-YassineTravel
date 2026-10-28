@@ -9,6 +9,8 @@ import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildBlogPostingSchema, buildImageObjectSchema } from '@/seo/schemas';
 import { getBreadcrumbLabel } from '@/seo/breadcrumbs';
+import { getImageAttrs } from '@/data/images';
+import { RichText } from '@/components/site/RichText';
 import { Page } from './page-shell';
 
 const DATE_LOCALES = { en: 'en-US', fr: 'fr-FR' };
@@ -108,20 +110,49 @@ function QuickAnswer({ text, lang }) {
 	return (
 		<div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
 			<p className="text-sm font-semibold uppercase tracking-wide text-primary">{copy.inShort}</p>
-			<p className="mt-1.5 text-base leading-relaxed">{text}</p>
+			<p className="mt-1.5 text-base leading-relaxed">
+				<RichText text={text} />
+			</p>
 		</div>
 	);
 }
 
-function ArticleBody({ content }) {
+function SectionHeading({ block }) {
+	if (!block.heading) return null;
+	if (block.headingLevel === 'h3') {
+		return <h3 className="mt-8 mb-3 font-display text-xl font-semibold md:text-2xl">{block.heading}</h3>;
+	}
+	return <h2 className="mt-10 mb-4 font-display text-2xl font-semibold md:text-3xl">{block.heading}</h2>;
+}
+
+function SectionImage({ block, lang }) {
+	if (!block.image) return null;
+	const attrs = getImageAttrs(block.image, lang, block.imageAlt || block.heading || '');
+	return (
+		<figure className="my-6">
+			<img
+				src={block.image}
+				{...attrs}
+				alt={block.imageAlt || attrs.alt}
+				className="w-full rounded-xl object-cover"
+				loading="lazy"
+				decoding="async"
+			/>
+			{block.imageCaption ? <figcaption className="mt-2 text-center text-sm text-muted-foreground">{block.imageCaption}</figcaption> : null}
+		</figure>
+	);
+}
+
+function ArticleBody({ content, lang }) {
 	return (
 		<div className="mt-10 space-y-6">
 			{content.map((block, index) => (
-				<div key={block.heading || index}>
-					{block.heading && <h2 className="mt-10 mb-4 font-display text-2xl font-semibold md:text-3xl">{block.heading}</h2>}
+				<div key={index}>
+					<SectionHeading block={block} />
+					<SectionImage block={block} lang={lang} />
 					{block.paragraphs?.map((paragraph, pIndex) => (
 						<p key={pIndex} className="mt-4 leading-relaxed text-muted-foreground first:mt-0">
-							{paragraph}
+							<RichText text={paragraph} />
 						</p>
 					))}
 					{block.table && <ComparisonTable table={block.table} />}
@@ -204,18 +235,22 @@ export default function BlogArticlePage() {
 		: [];
 	const clusterDestination = post.destinationId ? getDestinations(lang).find((d) => d.id === post.destinationId) : null;
 	const copy = COPY[lang] || COPY.en;
+	const coverAlt = post.imageAlt || post.title;
 
 	return (
 		<Page
 			title={post.title}
+			seoTitle={post.seoTitle || undefined}
 			subtitle={post.summary}
+			seoDescription={post.metaDescription || undefined}
 			image={post.image}
-			imageAlt={post.title}
+			imageAlt={coverAlt}
+			preferImageAlt={Boolean(post.imageAlt)}
 			crumb={getBreadcrumbLabel('blog', lang)}
 			pageType="BlogPosting"
 			structuredData={[
 				buildBlogPostingSchema(post, postPath, lang),
-				buildImageObjectSchema({ url: post.image, caption: post.title }),
+				buildImageObjectSchema({ url: post.image, caption: coverAlt }),
 			]}
 			alternateUrls={alternateUrls}
 			breadcrumbItems={[
@@ -230,7 +265,7 @@ export default function BlogArticlePage() {
 				<QuickAnswer text={post.quickAnswer} lang={lang} />
 
 				{post.content ? (
-					<ArticleBody content={post.content} />
+					<ArticleBody content={post.content} lang={lang} />
 				) : (
 					<p className="mt-8 text-lg leading-relaxed text-muted-foreground">{copy.defaultBody}</p>
 				)}

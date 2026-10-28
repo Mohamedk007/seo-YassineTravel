@@ -1,6 +1,10 @@
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import { registerContent } from '@/content/registry';
 import { DESTINATION_HIGHLIGHTS as EN_DESTINATIONS } from './en';
 import { DESTINATION_HIGHLIGHTS as FR_DESTINATIONS } from './fr';
+
+registerContent('destinations.en', EN_DESTINATIONS);
+registerContent('destinations.fr', FR_DESTINATIONS);
 
 const DESTINATIONS_BY_LANG = { en: EN_DESTINATIONS, fr: FR_DESTINATIONS };
 

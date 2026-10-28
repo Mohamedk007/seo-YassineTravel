@@ -387,7 +387,7 @@ export function buildBlogPostingSchema(post, path, lang = DEFAULT_LANGUAGE) {
 		'@context': 'https://schema.org',
 		'@type': 'BlogPosting',
 		headline: post.title,
-		description: post.summary,
+		description: post.metaDescription || post.summary,
 		articleSection: post.category,
 		image: assetUrl(post.image) || undefined,
 		url: absoluteUrl(path || '/blog', lang),
