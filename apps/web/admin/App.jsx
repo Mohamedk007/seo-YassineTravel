@@ -260,7 +260,7 @@ function ContentPage({ contentKey, routes, onSaved, setDirty, notify }) {
 					<textarea className="adm-input adm-code" spellCheck={false} value={jsonText} onChange={(event) => setJsonText(event.target.value)} />
 				</div>
 			) : (
-				<EditorFilter filter={filter} hints={item.fields}>
+				<EditorFilter filter={filter} hints={typeof item.fields === 'function' ? item.fields(lang) : item.fields}>
 					<DatasetEditor
 						value={draft}
 						onChange={setDraft}

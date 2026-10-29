@@ -2,6 +2,15 @@ import { DEFAULT_LANGUAGE } from '@/i18n/config';
 import { registerContent } from '@/content/registry';
 import { TOURS as EN_TOURS } from './catalog.en';
 import { TOURS as FR_TOURS } from './catalog.fr';
+import { defaultGroupPrices } from './pricing';
+
+// Explicit per-tour group prices, so the admin panel shows (and edits) the
+// real values instead of a hidden formula.
+for (const [lang, tours] of [['en', EN_TOURS], ['fr', FR_TOURS]]) {
+	for (const tour of tours) {
+		if (!Array.isArray(tour.groupPrices)) tour.groupPrices = defaultGroupPrices(tour.price, lang);
+	}
+}
 
 registerContent('tours.en', EN_TOURS);
 registerContent('tours.fr', FR_TOURS);

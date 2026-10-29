@@ -4,8 +4,12 @@
 // Optional `fields`: per-field hints keyed by path pattern ("*" = any list
 // index). A hint can set { label, help, default, item, options, type, image,
 // rich, multiline, maxLength }. Fields with a `default` are shown even when an
-// entry doesn't have them yet; `item` is the template used by "+ Add".
+// entry doesn't have them yet (a function default receives the parent object);
+// `item` is the template used by "+ Add". `fields` can also be a function of
+// the language.
 // Optional `newItem()`: the complete blank entry created by "+ New".
+
+import { defaultGroupPrices } from '../src/data/tours/pricing.js';
 
 const BLOG_SECTION = { heading: '', headingLevel: 'h2', paragraphs: [''], image: '', imageAlt: '', imageCaption: '', html: '' };
 
@@ -197,6 +201,31 @@ const FOOTER_FIELDS = {
 	'*.text': { multiline: true },
 };
 
+// Built per language so a tour that has no group prices yet starts from the
+// same values the live page shows (labels in the right language).
+const TOUR_FIELDS_BY_LANG = {};
+function tourFields(lang) {
+	TOUR_FIELDS_BY_LANG[lang] ||= {
+		'*.id': { label: 'ID (same in EN and FR)' },
+		'*.slug': { label: 'URL slug' },
+		'*.title': { label: 'Title (H1)' },
+		'*.price': {
+			label: 'From price (€ per person)',
+			help: 'The "from €…" price on tour cards, the booking box and in Google results. EN and FR are edited separately: change both.',
+		},
+		'*.groupPrices': {
+			label: 'Group pricing (price per person)',
+			default: (tour) => defaultGroupPrices(tour?.price, lang),
+			item: { travellers: '', price: 0 },
+			itemName: 'group size',
+			help: 'Rows of the "Pricing" table on the tour page. Add, remove or reorder rows freely. Remove every row to go back to the automatic prices (from price, -15% for 3-4, -28% for 5+).',
+		},
+		'*.groupPrices.*.travellers': { label: 'Group size', help: 'e.g. "2 travellers", "3–4 travellers", "Solo traveller".' },
+		'*.groupPrices.*.price': { label: 'Price per person (€)' },
+	};
+	return TOUR_FIELDS_BY_LANG[lang];
+}
+
 export const SECTIONS = [
 	{
 		id: 'site',
@@ -238,7 +267,13 @@ export const SECTIONS = [
 		id: 'tours',
 		title: 'Tours',
 		items: [
-			{ key: 'tours.{lang}', label: 'Tours', help: 'Every tour: title, prices, itinerary, images, inclusions. Keep the same "id" in EN and FR so both versions link together.', preview: 'tourDetail' },
+			{
+				key: 'tours.{lang}',
+				label: 'Tours',
+				help: 'Every tour: title, from price, group pricing, itinerary, images, inclusions. Keep the same "id" in EN and FR so both versions link together.',
+				preview: 'tourDetail',
+				fields: tourFields,
+			},
 			{ key: 'tourCategories.{lang}', label: 'Tour collections', help: 'The collection pages (luxury, desert, day trips...) and the tours they list.' },
 		],
 	},

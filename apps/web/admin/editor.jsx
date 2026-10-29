@@ -414,11 +414,12 @@ function ObjectFields({ value, onChange, path, depth, forceShow }) {
 	return orderedKeys(value, hints, path).map((key) => {
 		const childPath = path ? `${path}.${key}` : key;
 		const present = Object.prototype.hasOwnProperty.call(value, key);
+		const fallback = present ? undefined : hints[hintPath(childPath)].default;
 		return (
 			<FieldEditor
 				key={key}
 				name={key}
-				value={present ? value[key] : structuredClone(hints[hintPath(childPath)].default)}
+				value={present ? value[key] : typeof fallback === 'function' ? fallback(value) : structuredClone(fallback)}
 				path={childPath}
 				depth={depth + 1}
 				forceShow={forceShow}

@@ -14,6 +14,7 @@ import { getTourInternalLinks } from '@/data/internal-links';
 import { useLocale } from '@/i18n/LocaleContext';
 import { getPath, getRoutePaths } from '../data/route-config';
 import { getTours } from '@/data/tours/catalog';
+import { getGroupPrices } from '@/data/tours/pricing';
 import { getRelatedTours, getTourBySlug, getToursByCategory, getTourCollectionByRouteKey, getTourTranslations } from '@/data/tours/index';
 import { SITE_BRAND } from '@/data/site-config';
 import { buildFaqSchema, buildImageObjectSchema, buildItemListSchema, buildTourSchema } from '@/seo/schemas';
@@ -73,9 +74,6 @@ const COPY = {
 		pricing: 'Pricing',
 		groupSize: 'Group size',
 		price: 'Price per person',
-		travellers2: '2 travellers',
-		travellers34: '3–4 travellers',
-		travellers5plus: '5+ travellers',
 		perPerson: 'per person',
 		included: "What's included",
 		notIncluded: 'Not included',
@@ -138,9 +136,6 @@ const COPY = {
 		pricing: 'Tarifs',
 		groupSize: 'Taille du groupe',
 		price: 'Prix par personne',
-		travellers2: '2 voyageurs',
-		travellers34: '3-4 voyageurs',
-		travellers5plus: '5 voyageurs et +',
 		perPerson: 'par personne',
 		included: 'Ce qui est inclus',
 		notIncluded: 'Non inclus',
@@ -226,11 +221,7 @@ export function TourDetail() {
 	const routeMapUrl = buildGoogleMapsRouteUrl(tour.mapStops);
 	const routeEmbedUrl = buildGoogleMapsRouteEmbedUrl(tour.mapStops);
 	const tourGallery = tour.gallery || [];
-	const priceRows = [
-		[copy.travellers2, `€${tour.price.toLocaleString()}`],
-		[copy.travellers34, `€${Math.round(tour.price * 0.85).toLocaleString()}`],
-		[copy.travellers5plus, `€${Math.round(tour.price * 0.72).toLocaleString()}`],
-	];
+	const priceRows = getGroupPrices(tour, lang).map((row) => [row.travellers, `€${Number(row.price || 0).toLocaleString()}`]);
 
 	return (
 		<Layout hideWhatsAppOnMobile>
