@@ -11,6 +11,18 @@ import { getPath, getRoutePaths } from '@/data/route-config';
 import { buildFaqSchema, buildItemListSchema, buildServiceSchema } from '@/seo/schemas';
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page } from './page-shell';
+import { ContentSections } from '@/components/site/ContentSections';
+
+// Extra sections added from the admin panel (H2/H3, paragraphs, image, custom
+// HTML, picked tours) - see `sections` in src/data/services/*.js.
+function ServiceSections({ page, lang }) {
+	if (!page.sections?.length) return null;
+	return (
+		<section className="mx-auto max-w-[70rem] px-5 pb-16 lg:px-8">
+			<ContentSections content={page.sections} lang={lang} className="space-y-6" />
+		</section>
+	);
+}
 
 export function AirportTransfers() {
 	const lang = useLocale();
@@ -19,7 +31,8 @@ export function AirportTransfers() {
 	return (
 		<Page
 			title={AIRPORT_TRANSFER_PAGE.title}
-			seoTitle={AIRPORT_TRANSFER_PAGE.seoTitle}
+			seoTitle={AIRPORT_TRANSFER_PAGE.seoTitle || undefined}
+			seoDescription={AIRPORT_TRANSFER_PAGE.metaDescription || undefined}
 			subtitle={AIRPORT_TRANSFER_PAGE.subtitle}
 			image={AIRPORT_TRANSFER_PAGE.image}
 			crumb={AIRPORT_TRANSFER_PAGE.crumb}
@@ -91,6 +104,7 @@ export function AirportTransfers() {
 						))}
 					</div>
 			</section>
+			<ServiceSections page={AIRPORT_TRANSFER_PAGE} lang={lang} />
 		</Page>
 	);
 }
@@ -105,6 +119,8 @@ export function PrivateDrivers() {
 	return (
 		<Page
 			title={PRIVATE_DRIVER_PAGE.title}
+			seoTitle={PRIVATE_DRIVER_PAGE.seoTitle || undefined}
+			seoDescription={PRIVATE_DRIVER_PAGE.metaDescription || undefined}
 			subtitle={PRIVATE_DRIVER_PAGE.subtitle}
 			image={PRIVATE_DRIVER_PAGE.image}
 			crumb={PRIVATE_DRIVER_PAGE.crumb}
@@ -142,6 +158,7 @@ export function PrivateDrivers() {
 					</div>
 				</div>
 			</section>
+			<ServiceSections page={PRIVATE_DRIVER_PAGE} lang={lang} />
 
 			{/* Comparison: private driver vs. self-drive vs. group tour — the
 			    weakest persona in the SXO audit (Comparison Shopper, 37/100)
@@ -206,6 +223,8 @@ export function CustomTours() {
 	return (
 		<Page
 			title={CUSTOM_TOURS_PAGE.title}
+			seoTitle={CUSTOM_TOURS_PAGE.seoTitle || undefined}
+			seoDescription={CUSTOM_TOURS_PAGE.metaDescription || undefined}
 			subtitle={CUSTOM_TOURS_PAGE.subtitle}
 			image={CUSTOM_TOURS_PAGE.image}
 			crumb={CUSTOM_TOURS_PAGE.crumb}
@@ -233,6 +252,7 @@ export function CustomTours() {
 				</div>
 				<LeadForm title={CUSTOM_TOURS_PAGE.formTitle} subtitle={CUSTOM_TOURS_PAGE.formSubtitle} />
 			</section>
+			<ServiceSections page={CUSTOM_TOURS_PAGE} lang={lang} />
 			<MiniReviews />
 		</Page>
 	);

@@ -240,6 +240,21 @@ h4 {
 	white-space: pre;
 }
 
+.adm-tour-picker {
+	display: grid;
+	gap: 6px;
+}
+
+.adm-tour-list {
+	display: grid;
+	gap: 4px;
+	max-height: 260px;
+	overflow: auto;
+	padding: 8px;
+	border: 1px solid var(--adm-line);
+	border-radius: 8px;
+}
+
 .adm-label {
 	display: block;
 	margin: 0 0 4px;

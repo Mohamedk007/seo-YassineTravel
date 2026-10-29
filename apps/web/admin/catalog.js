@@ -226,6 +226,61 @@ function tourFields(lang) {
 	return TOUR_FIELDS_BY_LANG[lang];
 }
 
+// Service pages reuse the blog section editor (H2/H3, paragraphs, image,
+// custom HTML) plus a tour picker per section.
+const SERVICE_SECTION = { ...BLOG_SECTION, tours: [] };
+const SERVICE_PAGES = [
+	['AIRPORT_TRANSFER_PAGE', 'Airport transfers page'],
+	['PRIVATE_DRIVER_PAGE', 'Private driver page'],
+	['CUSTOM_TOURS_PAGE', 'Custom tours page'],
+];
+const SERVICE_FIELDS_BY_LANG = {};
+function serviceFields(lang) {
+	if (SERVICE_FIELDS_BY_LANG[lang]) return SERVICE_FIELDS_BY_LANG[lang];
+	const hints = {};
+	for (const [key, label] of SERVICE_PAGES) {
+		Object.assign(hints, {
+			[key]: { label },
+			[`${key}.title`]: { label: 'H1 heading', help: 'The main heading of the page (its only H1). Also used as the Google title when "SEO title" is empty.' },
+			[`${key}.seoTitle`]: {
+				label: 'SEO title',
+				default: '',
+				maxLength: 60,
+				help: 'Title shown in Google results and the browser tab ("| Yassine Travel" is added automatically). Leave empty to reuse the H1.',
+			},
+			[`${key}.metaDescription`]: {
+				label: 'Meta description',
+				default: '',
+				maxLength: 160,
+				multiline: true,
+				help: 'Snippet shown under the title in Google (aim for 140-160 characters). Leave empty to reuse the intro.',
+			},
+			[`${key}.subtitle`]: { label: 'Intro (under the H1)', multiline: true },
+			[`${key}.image`]: { label: 'Hero image', image: true },
+			[`${key}.heading`]: { label: 'First section H2 heading' },
+			[`${key}.description`]: { label: 'First section text', multiline: true },
+			[`${key}.sections`]: {
+				label: 'Extra sections (H2 / H3, text, tours)',
+				default: [],
+				item: SERVICE_SECTION,
+				itemName: 'section',
+				help: 'Shown after the first section. Each section is an H2 (or H3) heading with paragraphs, an optional image, custom HTML and a selection of tours.',
+			},
+		});
+		for (const [pattern, hint] of Object.entries(BLOG_FIELDS)) {
+			if (pattern.startsWith('*.content.*.')) hints[pattern.replace('*.content', `${key}.sections`)] = hint;
+		}
+		hints[`${key}.sections.*.tours`] = {
+			label: 'Tours to show (optional)',
+			default: [],
+			tourPicker: lang,
+			help: 'Ticked tours are shown as cards at the end of this section, in the order you tick them.',
+		};
+	}
+	SERVICE_FIELDS_BY_LANG[lang] = hints;
+	return hints;
+}
+
 export const SECTIONS = [
 	{
 		id: 'site',
@@ -303,7 +358,12 @@ export const SECTIONS = [
 			{ key: 'airports', label: 'Airports', help: 'Airport transfer pages (shared by both languages).', preview: 'airportTransferDetail' },
 			{ key: 'airportContent.{lang}', label: 'Airport page texts' },
 			{ key: 'transferPolicy.{lang}', label: 'Transfer policy' },
-			{ key: 'services.{lang}', label: 'Services pages', help: 'Airport transfers, private drivers and custom tours pages.' },
+			{
+				key: 'services.{lang}',
+				label: 'Services pages',
+				help: 'Airport transfers, private drivers and custom tours pages: SEO title, meta description, H1, texts and extra sections (H2/H3, paragraphs, images, custom HTML, tours). In paragraphs, use "Insert link" for links and "Bold" for **bold text**.',
+				fields: serviceFields,
+			},
 		],
 	},
 	{

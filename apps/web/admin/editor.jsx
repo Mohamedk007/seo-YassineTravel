@@ -258,6 +258,66 @@ function NumberField({ value, onChange }) {
 	);
 }
 
+const tourListCache = {};
+
+/** Pick tours (stored as a list of tour ids, in the order they are ticked). */
+function TourPickerField({ value, onChange, lang }) {
+	const [tours, setTours] = useState(tourListCache[lang] || null);
+	const [error, setError] = useState('');
+	const [query, setQuery] = useState('');
+
+	useEffect(() => {
+		if (tourListCache[lang]) return;
+		let active = true;
+		api
+			.getContent(`tours.${lang}`)
+			.then((data) => {
+				const list = (data.value || []).filter((tour) => tour?.id).map((tour) => ({ id: tour.id, title: tour.title || tour.id, price: tour.price }));
+				tourListCache[lang] = list;
+				if (active) setTours(list);
+			})
+			.catch((err) => active && setError(err.message));
+		return () => {
+			active = false;
+		};
+	}, [lang]);
+
+	if (error) return <p className="adm-field-error">Could not load the tours: {error}</p>;
+	if (!tours) return <p className="adm-muted adm-small">Loading tours...</p>;
+
+	const toggle = (id) => onChange(value.includes(id) ? value.filter((item) => item !== id) : [...value, id]);
+	const needle = query.trim().toLowerCase();
+	const shown = needle ? tours.filter((tour) => `${tour.title} ${tour.id}`.toLowerCase().includes(needle)) : tours;
+	const missing = value.filter((id) => !tours.some((tour) => tour.id === id));
+
+	return (
+		<div className="adm-tour-picker">
+			<p className="adm-muted adm-small">
+				{value.length ? `${value.length} selected: ${value.map((id) => tours.find((tour) => tour.id === id)?.title || id).join(' \u00b7 ')}` : 'No tour selected.'}
+			</p>
+			<input className="adm-input" type="search" placeholder="Filter tours..." value={query} onChange={(event) => setQuery(event.target.value)} />
+			<div className="adm-tour-list">
+				{shown.map((tour) => (
+					<label key={tour.id} className="adm-switch">
+						<input type="checkbox" checked={value.includes(tour.id)} onChange={() => toggle(tour.id)} />
+						<span>
+							{tour.title} {Number.isFinite(tour.price) ? <span className="adm-muted">(from \u20ac{tour.price})</span> : null}
+						</span>
+					</label>
+				))}
+			</div>
+			{missing.length ? (
+				<p className="adm-field-error">
+					Unknown tour id(s), not shown on the site: {missing.join(', ')}{' '}
+					<button type="button" className="adm-btn adm-btn-small" onClick={() => onChange(value.filter((id) => !missing.includes(id)))}>
+						Remove
+					</button>
+				</p>
+			) : null}
+		</div>
+	);
+}
+
 function BooleanField({ value, onChange }) {
 	return (
 		<label className="adm-switch">
@@ -384,6 +444,8 @@ export function FieldEditor({ name, value, onChange, path = '', depth = 0, image
 				</button>
 			</div>
 		);
+	} else if (Array.isArray(value) && hint?.tourPicker) {
+		control = <TourPickerField value={value} onChange={onChange} lang={hint.tourPicker} />;
 	} else if (Array.isArray(value)) {
 		return <ArrayField name={name} value={value} onChange={onChange} path={path} depth={depth} forceShow={showAll} />;
 	} else {
@@ -717,6 +779,7 @@ function KeyedListEditor({ value, onChange }) {
 /** Picks the best top-level layout for a whole dataset. */
 export function DatasetEditor({ value, onChange, previewFor, entityLabel, newItem, itemTypes, itemTitle }) {
 	const [tab, setTab] = useState(null);
+	const { hints } = useContext(EditorContext);
 
 	if (Array.isArray(value)) {
 		if (value.length === 0 || isPlainObject(value[0])) {
@@ -759,7 +822,7 @@ export function DatasetEditor({ value, onChange, previewFor, entityLabel, newIte
 			<nav className="adm-tabs">
 				{tabs.map((key) => (
 					<button type="button" key={key} className={key === activeTab ? 'is-active' : ''} onClick={() => setTab(key)}>
-						{key === '__general' ? 'General' : humanize(key)}
+						{key === '__general' ? 'General' : hints?.[key]?.label || humanize(key)}
 					</button>
 				))}
 			</nav>
