@@ -1,0 +1,11 @@
+﻿validate blog.en []
+validate tours.en []
+validate destinations.en []
+validate services.en []
+validate home.en []
+blog /en/blog/the-ultimate-guide-to-a-luxury-sahara-desert-night {"rt":true,"faq":true,"tours":true,"hiddenSkipped":true,"h1":1}
+tour /en/tour/imperial-cities-sahara {"rt":true,"faq":true,"tours":true,"hiddenSkipped":true,"h1":1}
+dest /en/tour/marrakech-merzouga-desert {"rt":false,"faq":false,"tours":false,"hiddenSkipped":true,"h1":1}
+svc /en/private-drivers {"rt":true,"faq":true,"tours":true,"hiddenSkipped":true,"h1":1}
+home /en {"rt":false,"faq":false,"tours":true,"hiddenSkipped":true,"h1":1}
+END

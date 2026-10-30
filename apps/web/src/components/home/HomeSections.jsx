@@ -11,7 +11,10 @@ import { Eyebrow, Stars } from '@/components/site/Typography';
 import { TripAdvisorRatingBadge } from '@/components/site/TripAdvisorRatingBadge';
 import { TourCard } from '@/components/tours/TourCard';
 import { CONTACT, waLink } from '@/data/contact';
+import { getAwards, getFaqs, getReviews } from '@/data/content';
 import { getImageAttrs } from '@/data/images';
+import { getRoutePaths } from '@/data/route-config';
+import { getTours } from '@/data/tours/catalog';
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from '@/components/ui/accordion';
@@ -32,6 +35,26 @@ const GRID_COLUMNS = { 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-col
 
 const list = (value) => (Array.isArray(value) ? value : []);
 const count = (value) => Math.max(0, Number(value) || 0);
+
+/** Data every part component receives (besides `section`). */
+export function getSectionContext(lang) {
+  return {
+    lang,
+    awards: getAwards(lang),
+    faqs: getFaqs(lang),
+    reviews: getReviews(lang),
+    routes: getRoutePaths(lang),
+    tours: getTours(lang),
+  };
+}
+
+/** [question, answer] pairs of a FAQ part: its own questions, else the site-wide FAQ. */
+export function getFaqItems(section, faqs) {
+  const own = list(section?.questions)
+    .filter((item) => item?.question)
+    .map((item) => [item.question, item.answer || '']);
+  return own.length ? own : faqs;
+}
 
 function SectionImage({ src, alt, lang, ...props }) {
   if (!src) return null;
@@ -362,7 +385,7 @@ function FaqSection({ section: s, faqs, routes }) {
         {s.title ? <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">{s.title}</h2> : null}
       </div>
       <Accordion type="single" collapsible className="mt-10">
-        {faqs.map(([q, a], i) => (
+        {getFaqItems(s, faqs).map(([q, a], i) => (
           <AccordionItem key={i} value={`f${i}`} className="border-b border-border">
             <AccordionTrigger className="text-left font-display text-lg font-medium">{q}</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">{a}</AccordionContent>
@@ -486,6 +509,32 @@ function CtaBandSection({ section: s }) {
   );
 }
 
+function TourCardsSection({ section: s, tours }) {
+  const picked = list(s.tours).map((id) => tours.find((tour) => tour.id === id)).filter(Boolean);
+  if (!picked.length) return null;
+  const dark = s.background === 'dark';
+  return (
+    <section className={`py-20 ${BACKGROUNDS[s.background] ?? ''}`}>
+      <div className="mx-auto max-w-[90rem] px-5 lg:px-8">
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <Heading section={s} />
+            {s.description ? <p className={`mt-4 max-w-2xl ${dark ? 'text-white/70' : 'text-muted-foreground'}`}>{s.description}</p> : null}
+          </div>
+          {s.ctaLabel && s.ctaLink ? (
+            <SmartLink href={s.ctaLink} className={`inline-flex items-center gap-2 font-semibold transition-all hover:gap-3 ${dark ? 'text-gold' : 'text-primary'}`}>
+              {s.ctaLabel} <ArrowRight className="h-4 w-4" />
+            </SmartLink>
+          ) : null}
+        </div>
+        <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {picked.map((tour, i) => <TourCard key={tour.id} tour={tour} delay={i * 90} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /** `type` -> component. Parts with an unknown type are skipped. */
 export const HOME_SECTION_COMPONENTS = {
   hero: HeroSection,
@@ -502,4 +551,5 @@ export const HOME_SECTION_COMPONENTS = {
   richText: RichTextSection,
   cards: CardsSection,
   ctaBand: CtaBandSection,
+  tourCards: TourCardsSection,
 };

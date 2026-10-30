@@ -6,10 +6,19 @@
 // rich, multiline, maxLength }. Fields with a `default` are shown even when an
 // entry doesn't have them yet (a function default receives the parent object);
 // `item` is the template used by "+ Add". `fields` can also be a function of
-// the language.
+// the language. List hints may set `itemTypes` (typed "+ Add" with a type
+// picker) and `itemTitle(item, index)`; `last` puts a field after the others,
+// `showIf(parent)` limits when a missing defaulted field is offered, and
+// `tourPicker: lang` edits a list of tour ids with checkboxes.
 // Optional `newItem()`: the complete blank entry created by "+ New".
 
 import { defaultGroupPrices } from '../src/data/tours/pricing.js';
+
+/** Caches a per-language `fields` builder. */
+function perLang(build) {
+	const cache = {};
+	return (lang) => (cache[lang] ||= build(lang));
+}
 
 const BLOG_SECTION = { heading: '', headingLevel: 'h2', paragraphs: [''], image: '', imageAlt: '', imageCaption: '', html: '' };
 
@@ -80,6 +89,7 @@ function newBlogPost() {
 		author: { name: '', role: '' },
 		content: [structuredClone(BLOG_SECTION)],
 		internalLinks: [],
+		widgets: [],
 	};
 }
 
@@ -130,10 +140,11 @@ const HOME_PART_TYPES = partTypes([
 	['bookingProcess', 'Booking steps', { eyebrow: '', title: '', steps: [] }],
 	['contactBanner', 'Map & WhatsApp banner', { title: '', description: '', primaryCtaLabel: '', showMap: true }],
 	['leadCapture', 'Quote form with image', { eyebrow: '', title: '', description: '', points: [], image: '', imageAlt: '' }],
-	['faq', 'FAQ', { eyebrow: '', title: '', ctaLabel: '' }],
+	['faq', 'FAQ', { eyebrow: '', title: '', ctaLabel: '', questions: [] }],
 	['richText', 'Text block (paragraphs, image, button)', { background: 'light', eyebrow: '', title: '', paragraphs: [''], image: '', imageAlt: '', imagePosition: 'right', ctaLabel: '', ctaLink: '' }],
 	['cards', 'Cards grid', { background: 'light', eyebrow: '', title: '', description: '', items: [{ icon: '', title: '', text: '', linkLabel: '', link: '' }] }],
 	['ctaBand', 'Call-to-action band', { background: 'dark', title: '', description: '', ctaLabel: '', ctaLink: '', whatsAppLabel: '' }],
+	['tourCards', 'Selected tours (tour cards)', { background: 'light', eyebrow: '', title: '', description: '', tours: [], ctaLabel: '', ctaLink: '' }],
 ]);
 
 const PART_COMMON_FIELDS = {
@@ -178,7 +189,47 @@ const HOME_FIELDS = {
 	'*.showAwards': { label: 'Show the awards' },
 	'*.quoteText': { label: 'Quote', multiline: true },
 	'*.quoteAuthor': { label: 'Quote author' },
+	'*.questions': {
+		label: 'Questions (optional)',
+		default: [],
+		showIf: (part) => part?.type === 'faq',
+		item: { question: '', answer: '' },
+		itemName: 'question',
+		help: 'Leave empty to show the site-wide FAQ (Other pages > Reviews, FAQs & awards).',
+	},
+	'*.questions.*.answer': { multiline: true },
 };
+
+const homeFields = perLang((lang) => ({
+	...HOME_FIELDS,
+	'*.tours': { label: 'Tours to show', tourPicker: lang, help: 'Ticked tours are shown as cards, in the order you tick them.' },
+}));
+
+// Widgets: home page parts (except the hero) that can be added at the bottom
+// of blog, service, tour and destination pages (rendered by SiteWidgets.jsx).
+const WIDGET_TYPES = HOME_PART_TYPES.filter((type) => type.value !== 'hero');
+
+function widgetHints(listPath, lang) {
+	const hints = {
+		[listPath]: {
+			label: 'Widgets (bottom of the page)',
+			default: [],
+			last: true,
+			itemTypes: WIDGET_TYPES,
+			itemTitle: partTitle(WIDGET_TYPES),
+			itemName: 'widget',
+			help: 'Pick a widget type (text block, FAQ, selected tours, cards, reviews...) and click "+ Add widget". Widgets are shown at the bottom of the page, in this order.',
+		},
+	};
+	for (const [pattern, hint] of Object.entries(homeFields(lang))) hints[`${listPath}.${pattern}`] = hint;
+	hints[`${listPath}.*.id`] = { label: 'Widget ID', help: 'Unique name of this widget (lowercase letters, numbers, dashes).' };
+	hints[`${listPath}.*.hidden`] = { label: 'Hide this widget', help: 'Keeps the widget here but removes it from the live page.' };
+	hints[`${listPath}.*.title`] = { label: 'Heading (H2)' };
+	return hints;
+}
+
+const blogFields = perLang((lang) => ({ ...BLOG_FIELDS, ...widgetHints('*.widgets', lang) }));
+const destinationFields = perLang((lang) => widgetHints('*.widgets', lang));
 
 const FOOTER_PART_TYPES = partTypes([
 	['newsletter', 'Newsletter band (top)', { title: '', description: '' }],
@@ -222,6 +273,7 @@ function tourFields(lang) {
 		},
 		'*.groupPrices.*.travellers': { label: 'Group size', help: 'e.g. "2 travellers", "3–4 travellers", "Solo traveller".' },
 		'*.groupPrices.*.price': { label: 'Price per person (€)' },
+		...widgetHints('*.widgets', lang),
 	};
 	return TOUR_FIELDS_BY_LANG[lang];
 }
@@ -276,6 +328,7 @@ function serviceFields(lang) {
 			tourPicker: lang,
 			help: 'Ticked tours are shown as cards at the end of this section, in the order you tick them.',
 		};
+		Object.assign(hints, widgetHints(`${key}.widgets`, lang));
 	}
 	SERVICE_FIELDS_BY_LANG[lang] = hints;
 	return hints;
@@ -312,7 +365,7 @@ export const SECTIONS = [
 				label: 'Home page',
 				help: 'The home page parts in page order. Use Up/Down to reorder, Duplicate to copy, "Hide this part" to remove one temporarily, Delete to remove it, and "Add part" to insert a new part (including free text blocks, cards and call-to-action bands) after the selected one. Items inside a part (benefits, steps, stats…) can be added, removed and reordered too.',
 				entityLabel: 'part',
-				fields: HOME_FIELDS,
+				fields: homeFields,
 				itemTypes: HOME_PART_TYPES,
 				itemTitle: partTitle(HOME_PART_TYPES),
 			},
@@ -341,7 +394,7 @@ export const SECTIONS = [
 				label: 'Blog articles',
 				help: 'Keep the same "id" in EN and FR so translations link together. In paragraphs, use "Insert link" for do-follow links (written as [anchor text](/path or https://...)) and "Bold" for **bold text**.',
 				preview: 'blogArticle',
-				fields: BLOG_FIELDS,
+				fields: blogFields,
 				newItem: newBlogPost,
 			},
 		],
@@ -349,7 +402,15 @@ export const SECTIONS = [
 	{
 		id: 'destinations',
 		title: 'Destinations',
-		items: [{ key: 'destinations.{lang}', label: 'Destinations', preview: 'destinationDetail' }],
+		items: [
+			{
+				key: 'destinations.{lang}',
+				label: 'Destinations',
+				help: 'Every destination page. Use "Widgets" at the bottom of a destination to add text blocks, FAQs, selected tours and more.',
+				preview: 'destinationDetail',
+				fields: destinationFields,
+			},
+		],
 	},
 	{
 		id: 'services',

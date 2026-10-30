@@ -64,19 +64,22 @@ function useHint(path) {
 	return hints?.[hintPath(path)] || null;
 }
 
-/** Object keys in hint order, plus hinted optional fields (with a default) the object doesn't have yet. */
+/** Object keys in hint order, plus hinted optional fields (with a default) the object doesn't have yet. Hints with `last` go after the other keys. */
 function orderedKeys(value, hints, path) {
 	const own = Object.keys(value);
 	if (!hints) return own;
 	const prefix = path ? `${hintPath(path)}.` : '';
 	const hinted = [];
+	const trailing = [];
 	for (const [pattern, hint] of Object.entries(hints)) {
 		if (!pattern.startsWith(prefix)) continue;
 		const key = pattern.slice(prefix.length);
 		if (!key || key === '*' || key.includes('.')) continue;
-		if (own.includes(key) || hint.default !== undefined) hinted.push(key);
+		if (own.includes(key) || (hint.default !== undefined && (!hint.showIf || hint.showIf(value)))) {
+			(hint.last ? trailing : hinted).push(key);
+		}
 	}
-	return [...hinted, ...own.filter((key) => !hinted.includes(key))];
+	return [...hinted, ...own.filter((key) => !hinted.includes(key) && !trailing.includes(key)), ...trailing];
 }
 
 function moveItem(list, from, to) {
@@ -517,10 +520,17 @@ function ArrayField({ name, value, onChange, path, depth, forceShow }) {
 	const imageList = isImageName(name) || value.some(looksLikeImage);
 	const sample = value[0];
 	const label = hint?.label ?? humanize(name);
+	const itemTypes = hint?.itemTypes;
+	const [newType, setNewType] = useState(itemTypes?.[0]?.value ?? '');
 
 	const update = (index, next) => onChange(value.map((item, i) => (i === index ? next : item)));
 	const remove = (index) => onChange(value.filter((_, i) => i !== index));
 	const add = () => {
+		if (itemTypes) {
+			const type = itemTypes.find((entry) => entry.value === newType);
+			if (type) onChange([...value, type.create()]);
+			return;
+		}
 		if (hint && hint.item !== undefined) {
 			onChange([...value, structuredClone(hint.item)]);
 			return;
@@ -548,7 +558,10 @@ function ArrayField({ name, value, onChange, path, depth, forceShow }) {
 						return (
 							<div className="adm-array-item" key={index}>
 								<div className="adm-array-head">
-									<span className="adm-array-title">{isContainer(item) ? itemLabel(item, index) : `#${index + 1}`}</span>
+									<span className="adm-array-title">
+										{hint?.itemTitle ? hint.itemTitle(item, index) : isContainer(item) ? itemLabel(item, index) : `#${index + 1}`}
+										{isPlainObject(item) && item.hidden === true ? ' (hidden)' : ''}
+									</span>
 									<div className="adm-row">
 										<button type="button" className="adm-icon-btn" title="Move up" disabled={index === 0} onClick={() => onChange(moveItem(value, index, index - 1))}>
 											{'\u2191'}
@@ -581,9 +594,24 @@ function ArrayField({ name, value, onChange, path, depth, forceShow }) {
 							</div>
 						);
 					})}
-					<button type="button" className="adm-btn adm-btn-small" onClick={add}>
-						+ Add {hint?.itemName || label.toLowerCase() || 'item'}
-					</button>
+					{itemTypes ? (
+						<div className="adm-row">
+							<select className="adm-input adm-input-number" value={newType} onChange={(event) => setNewType(event.target.value)} aria-label={`Type of new ${hint.itemName || 'item'}`}>
+								{itemTypes.map((type) => (
+									<option key={type.value} value={type.value}>
+										{type.label}
+									</option>
+								))}
+							</select>
+							<button type="button" className="adm-btn adm-btn-small adm-btn-primary" onClick={add}>
+								+ Add {hint.itemName || 'item'}
+							</button>
+						</div>
+					) : (
+						<button type="button" className="adm-btn adm-btn-small" onClick={add}>
+							+ Add {hint?.itemName || label.toLowerCase() || 'item'}
+						</button>
+					)}
 				</div>
 			) : null}
 		</fieldset>

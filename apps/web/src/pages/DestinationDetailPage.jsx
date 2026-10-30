@@ -15,6 +15,7 @@ import { useLocale } from '@/i18n/LocaleContext';
 import { Stars } from '@/components/site/Typography';
 import { Gallery } from '@/components/site/Gallery';
 import { TourCard } from '@/components/tours/TourCard';
+import { SiteWidgets } from '@/components/site/SiteWidgets';
 import { buildGoogleMapsEmbedUrl } from '@/lib/maps';
 import { Page } from './page-shell';
 
@@ -297,6 +298,7 @@ export default function DestinationDetailPage() {
 					<ArrowLeft className="h-4 w-4" /> {copy.backToDestinations}
 				</Link>
 			</section>
+			<SiteWidgets widgets={destination.widgets} lang={lang} />
 		</Page>
 	);
 }

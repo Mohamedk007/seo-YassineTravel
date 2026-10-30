@@ -12,6 +12,7 @@ import { buildFaqSchema, buildItemListSchema, buildServiceSchema } from '@/seo/s
 import { useLocale } from '@/i18n/LocaleContext';
 import { MiniReviews, Page } from './page-shell';
 import { ContentSections } from '@/components/site/ContentSections';
+import { SiteWidgets } from '@/components/site/SiteWidgets';
 
 // Extra sections added from the admin panel (H2/H3, paragraphs, image, custom
 // HTML, picked tours) - see `sections` in src/data/services/*.js.
@@ -105,6 +106,7 @@ export function AirportTransfers() {
 					</div>
 			</section>
 			<ServiceSections page={AIRPORT_TRANSFER_PAGE} lang={lang} />
+			<SiteWidgets widgets={AIRPORT_TRANSFER_PAGE.widgets} lang={lang} />
 		</Page>
 	);
 }
@@ -212,6 +214,7 @@ export function PrivateDrivers() {
 					))}
 				</Accordion>
 			</section>
+			<SiteWidgets widgets={PRIVATE_DRIVER_PAGE.widgets} lang={lang} />
 		</Page>
 	);
 }
@@ -254,6 +257,7 @@ export function CustomTours() {
 			</section>
 			<ServiceSections page={CUSTOM_TOURS_PAGE} lang={lang} />
 			<MiniReviews />
+			<SiteWidgets widgets={CUSTOM_TOURS_PAGE.widgets} lang={lang} />
 		</Page>
 	);
 }

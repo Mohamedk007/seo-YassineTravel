@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { AlertCircle, ArrowRight, BadgeCheck, Check, Clock, MapPin, MessageCircle, Phone, ShieldCheck, Star, Undo2, Users, X, Zap } from 'lucide-react';
 import { LeadForm } from '@/components/site/LeadForm';
+import { SiteWidgets } from '@/components/site/SiteWidgets';
 import { Layout } from '@/components/site/Layout';
 import { PageHero } from '@/components/site/PageHero';
 import { Seo } from '@/components/site/Seo';
@@ -540,6 +541,7 @@ export function TourDetail() {
 					))}
 				</div>
 			</section>
+			<SiteWidgets widgets={tour.widgets} lang={lang} />
 			<CTA />
 
 			{/* Fixed mobile-only CTA bar: the desktop booking card is sticky, but

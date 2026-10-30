@@ -11,6 +11,7 @@ import { buildBlogPostingSchema, buildImageObjectSchema } from '@/seo/schemas';
 import { getBreadcrumbLabel } from '@/seo/breadcrumbs';
 import { RichText } from '@/components/site/RichText';
 import { ContentSections } from '@/components/site/ContentSections';
+import { SiteWidgets } from '@/components/site/SiteWidgets';
 import { Page } from './page-shell';
 
 const DATE_LOCALES = { en: 'en-US', fr: 'fr-FR' };
@@ -203,6 +204,7 @@ export default function BlogArticlePage() {
 					<ArrowLeft className="h-4 w-4" /> {copy.backToArticles}
 				</Link>
 			</article>
+			<SiteWidgets widgets={post.widgets} lang={lang} />
 		</Page>
 	);
 }
